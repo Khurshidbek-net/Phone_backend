@@ -14,6 +14,12 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+enum PaymentType {
+  PAYME
+  CLICK
+  PAYNET
+}
+
 model Region {
   id        Int      @id @default(autoincrement())
   name      String   @unique
@@ -75,6 +81,10 @@ model User {
 
   Emails       Email[]
   PhoneNumbers PhoneNumber[]
+  Address      Address[]
+  Payments     Payment[]
+  Chat         Chat[]
+  Messages     Messages[]
 }
 
 model Email {
@@ -99,4 +109,49 @@ model PhoneNumber {
   user   User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   User User[] @relation("MainPhone")
+}
+
+model Address {
+  id        Int      @id @default(autoincrement())
+  name      String
+  address   String
+  lat       Float
+  long      Float
+  User      User?    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId    Int?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Payment {
+  id        Int         @id @default(autoincrement())
+  type      PaymentType
+  amount    Decimal
+  paid_date DateTime
+  createdAt DateTime    @default(now())
+  updatedAt DateTime    @updatedAt
+  User      User?       @relation(fields: [userId], references: [id], onDelete: SetNull)
+  userId    Int?
+}
+
+model Chat {
+  id        Int        @id @default(autoincrement())
+  productId Int?
+  sellerId  Int?
+  buyerId   Int?
+  User      User?      @relation(fields: [buyerId], references: [id], onDelete: SetNull)
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+  Messages  Messages[]
+}
+
+model Messages {
+  id       Int      @id @default(autoincrement())
+  message  String
+  is_read  Boolean
+  sent_at  DateTime
+  chatId   Int?
+  senderId Int?
+  User     User?    @relation(fields: [senderId], references: [id], onDelete: SetNull)
+  Chat     Chat?    @relation(fields: [chatId], references: [id], onDelete: SetNull)
 }

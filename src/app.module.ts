@@ -9,6 +9,10 @@ import { PrismaModule } from './prisma/prisma.module';
 import { RegionModule } from './region/region.module';
 import { DistrictModule } from './district/district.module';
 import { LanguageModule } from './language/language.module';
+import { AddressModule } from './address/address.module';
+import { ChatModule } from './chat/chat.module';
+import { PaymentModule } from './payment/payment.module';
+import { MessagesModule } from './messages/messages.module';
 
 @Module({
   imports: [
@@ -17,7 +21,11 @@ import { LanguageModule } from './language/language.module';
     PrismaModule,
     RegionModule,
     DistrictModule,
-    LanguageModule
+    LanguageModule,
+    AddressModule,
+    ChatModule,
+    PaymentModule,
+    MessagesModule
   ],
   controllers: [],
   providers: [

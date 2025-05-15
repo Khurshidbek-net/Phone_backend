@@ -179,6 +179,45 @@ exports.Prisma.PhoneNumberScalarFieldEnum = {
   userId: 'userId'
 };
 
+exports.Prisma.AddressScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  address: 'address',
+  lat: 'lat',
+  long: 'long',
+  userId: 'userId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.PaymentScalarFieldEnum = {
+  id: 'id',
+  type: 'type',
+  amount: 'amount',
+  paid_date: 'paid_date',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  userId: 'userId'
+};
+
+exports.Prisma.ChatScalarFieldEnum = {
+  id: 'id',
+  productId: 'productId',
+  sellerId: 'sellerId',
+  buyerId: 'buyerId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.MessagesScalarFieldEnum = {
+  id: 'id',
+  message: 'message',
+  is_read: 'is_read',
+  sent_at: 'sent_at',
+  chatId: 'chatId',
+  senderId: 'senderId'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -193,7 +232,11 @@ exports.Prisma.NullsOrder = {
   first: 'first',
   last: 'last'
 };
-
+exports.PaymentType = exports.$Enums.PaymentType = {
+  PAYME: 'PAYME',
+  CLICK: 'CLICK',
+  PAYNET: 'PAYNET'
+};
 
 exports.Prisma.ModelName = {
   Region: 'Region',
@@ -201,7 +244,11 @@ exports.Prisma.ModelName = {
   Language: 'Language',
   User: 'User',
   Email: 'Email',
-  PhoneNumber: 'PhoneNumber'
+  PhoneNumber: 'PhoneNumber',
+  Address: 'Address',
+  Payment: 'Payment',
+  Chat: 'Chat',
+  Messages: 'Messages'
 };
 
 /**
