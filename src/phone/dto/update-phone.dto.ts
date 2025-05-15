@@ -129,10 +129,10 @@ export class UpdatePhoneDto {
     @IsOptional()
     colorId: number;
 
-    @ApiProperty()
-    @IsNumber()
-    @IsOptional()
-    addressId: number;
+    // @ApiProperty()
+    // @IsNumber()
+    // @IsOptional()
+    // addressId: number;
 
     @ApiProperty()
     @IsNumber()

@@ -75,7 +75,6 @@ model User {
 
   Emails       Email[]
   PhoneNumbers PhoneNumber[]
-  // Address      Address[]
   Phones       Phone[]
 }
 
@@ -158,19 +157,6 @@ model Color {
   Phones Phone[]
 }
 
-// model Address {
-//   id      Int    @id @default(autoincrement())
-//   name    String
-//   address String
-//   lot     Float
-//   long    Float
-//   userId  Int
-
-//   Users User @relation(fields: [userId], references: [id])
-
-//   Phones Phone[]
-// }
-
 model Phone {
   id                Int      @id @default(autoincrement())
   title             String
@@ -194,14 +180,13 @@ model Phone {
   modelId    Int?
   brandId    Int?
   colorId    Int?
-  addressId  Int?
+  // addressId  Int?
   userId     Int?
 
   Currency Currency? @relation(fields: [currencyId], references: [id])
   Models   Model?    @relation(fields: [modelId], references: [id])
   Brands   Brand?    @relation(fields: [brandId], references: [id])
   Color    Color?    @relation(fields: [colorId], references: [id])
-  // Address  Address?  @relation(fields: [addressId], references: [id])
   User     User?     @relation(fields: [userId], references: [id])
 
   Images   Image[]

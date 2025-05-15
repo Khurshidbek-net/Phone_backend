@@ -13854,7 +13854,6 @@ export namespace Prisma {
     modelId: number | null
     brandId: number | null
     colorId: number | null
-    addressId: number | null
     userId: number | null
   }
 
@@ -13866,7 +13865,6 @@ export namespace Prisma {
     modelId: number | null
     brandId: number | null
     colorId: number | null
-    addressId: number | null
     userId: number | null
   }
 
@@ -13890,7 +13888,6 @@ export namespace Prisma {
     modelId: number | null
     brandId: number | null
     colorId: number | null
-    addressId: number | null
     userId: number | null
   }
 
@@ -13914,7 +13911,6 @@ export namespace Prisma {
     modelId: number | null
     brandId: number | null
     colorId: number | null
-    addressId: number | null
     userId: number | null
   }
 
@@ -13940,7 +13936,6 @@ export namespace Prisma {
     modelId: number
     brandId: number
     colorId: number
-    addressId: number
     userId: number
     _all: number
   }
@@ -13954,7 +13949,6 @@ export namespace Prisma {
     modelId?: true
     brandId?: true
     colorId?: true
-    addressId?: true
     userId?: true
   }
 
@@ -13966,7 +13960,6 @@ export namespace Prisma {
     modelId?: true
     brandId?: true
     colorId?: true
-    addressId?: true
     userId?: true
   }
 
@@ -13990,7 +13983,6 @@ export namespace Prisma {
     modelId?: true
     brandId?: true
     colorId?: true
-    addressId?: true
     userId?: true
   }
 
@@ -14014,7 +14006,6 @@ export namespace Prisma {
     modelId?: true
     brandId?: true
     colorId?: true
-    addressId?: true
     userId?: true
   }
 
@@ -14040,7 +14031,6 @@ export namespace Prisma {
     modelId?: true
     brandId?: true
     colorId?: true
-    addressId?: true
     userId?: true
     _all?: true
   }
@@ -14153,7 +14143,6 @@ export namespace Prisma {
     modelId: number | null
     brandId: number | null
     colorId: number | null
-    addressId: number | null
     userId: number | null
     _count: PhoneCountAggregateOutputType | null
     _avg: PhoneAvgAggregateOutputType | null
@@ -14198,7 +14187,6 @@ export namespace Prisma {
     modelId?: boolean
     brandId?: boolean
     colorId?: boolean
-    addressId?: boolean
     userId?: boolean
     Currency?: boolean | Phone$CurrencyArgs<ExtArgs>
     Models?: boolean | Phone$ModelsArgs<ExtArgs>
@@ -14233,7 +14221,6 @@ export namespace Prisma {
     modelId?: boolean
     brandId?: boolean
     colorId?: boolean
-    addressId?: boolean
     userId?: boolean
     Currency?: boolean | Phone$CurrencyArgs<ExtArgs>
     Models?: boolean | Phone$ModelsArgs<ExtArgs>
@@ -14264,7 +14251,6 @@ export namespace Prisma {
     modelId?: boolean
     brandId?: boolean
     colorId?: boolean
-    addressId?: boolean
     userId?: boolean
     Currency?: boolean | Phone$CurrencyArgs<ExtArgs>
     Models?: boolean | Phone$ModelsArgs<ExtArgs>
@@ -14295,11 +14281,10 @@ export namespace Prisma {
     modelId?: boolean
     brandId?: boolean
     colorId?: boolean
-    addressId?: boolean
     userId?: boolean
   }
 
-  export type PhoneOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "description" | "ram" | "rom" | "box_with_document" | "is_new" | "posted_date" | "views" | "like_counts" | "is_negotiable" | "brand" | "model" | "is_active" | "is_checked" | "is_archived" | "is_deleted" | "currencyId" | "modelId" | "brandId" | "colorId" | "addressId" | "userId", ExtArgs["result"]["phone"]>
+  export type PhoneOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "description" | "ram" | "rom" | "box_with_document" | "is_new" | "posted_date" | "views" | "like_counts" | "is_negotiable" | "brand" | "model" | "is_active" | "is_checked" | "is_archived" | "is_deleted" | "currencyId" | "modelId" | "brandId" | "colorId" | "userId", ExtArgs["result"]["phone"]>
   export type PhoneInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     Currency?: boolean | Phone$CurrencyArgs<ExtArgs>
     Models?: boolean | Phone$ModelsArgs<ExtArgs>
@@ -14360,7 +14345,6 @@ export namespace Prisma {
       modelId: number | null
       brandId: number | null
       colorId: number | null
-      addressId: number | null
       userId: number | null
     }, ExtArgs["result"]["phone"]>
     composites: {}
@@ -14814,7 +14798,6 @@ export namespace Prisma {
     readonly modelId: FieldRef<"Phone", 'Int'>
     readonly brandId: FieldRef<"Phone", 'Int'>
     readonly colorId: FieldRef<"Phone", 'Int'>
-    readonly addressId: FieldRef<"Phone", 'Int'>
     readonly userId: FieldRef<"Phone", 'Int'>
   }
     
@@ -18753,7 +18736,6 @@ export namespace Prisma {
     modelId: 'modelId',
     brandId: 'brandId',
     colorId: 'colorId',
-    addressId: 'addressId',
     userId: 'userId'
   };
 
@@ -19566,7 +19548,6 @@ export namespace Prisma {
     modelId?: IntNullableFilter<"Phone"> | number | null
     brandId?: IntNullableFilter<"Phone"> | number | null
     colorId?: IntNullableFilter<"Phone"> | number | null
-    addressId?: IntNullableFilter<"Phone"> | number | null
     userId?: IntNullableFilter<"Phone"> | number | null
     Currency?: XOR<CurrencyNullableScalarRelationFilter, CurrencyWhereInput> | null
     Models?: XOR<ModelNullableScalarRelationFilter, ModelWhereInput> | null
@@ -19600,7 +19581,6 @@ export namespace Prisma {
     modelId?: SortOrderInput | SortOrder
     brandId?: SortOrderInput | SortOrder
     colorId?: SortOrderInput | SortOrder
-    addressId?: SortOrderInput | SortOrder
     userId?: SortOrderInput | SortOrder
     Currency?: CurrencyOrderByWithRelationInput
     Models?: ModelOrderByWithRelationInput
@@ -19637,7 +19617,6 @@ export namespace Prisma {
     modelId?: IntNullableFilter<"Phone"> | number | null
     brandId?: IntNullableFilter<"Phone"> | number | null
     colorId?: IntNullableFilter<"Phone"> | number | null
-    addressId?: IntNullableFilter<"Phone"> | number | null
     userId?: IntNullableFilter<"Phone"> | number | null
     Currency?: XOR<CurrencyNullableScalarRelationFilter, CurrencyWhereInput> | null
     Models?: XOR<ModelNullableScalarRelationFilter, ModelWhereInput> | null
@@ -19671,7 +19650,6 @@ export namespace Prisma {
     modelId?: SortOrderInput | SortOrder
     brandId?: SortOrderInput | SortOrder
     colorId?: SortOrderInput | SortOrder
-    addressId?: SortOrderInput | SortOrder
     userId?: SortOrderInput | SortOrder
     _count?: PhoneCountOrderByAggregateInput
     _avg?: PhoneAvgOrderByAggregateInput
@@ -19705,7 +19683,6 @@ export namespace Prisma {
     modelId?: IntNullableWithAggregatesFilter<"Phone"> | number | null
     brandId?: IntNullableWithAggregatesFilter<"Phone"> | number | null
     colorId?: IntNullableWithAggregatesFilter<"Phone"> | number | null
-    addressId?: IntNullableWithAggregatesFilter<"Phone"> | number | null
     userId?: IntNullableWithAggregatesFilter<"Phone"> | number | null
   }
 
@@ -20441,7 +20418,6 @@ export namespace Prisma {
     is_checked?: boolean
     is_archived?: boolean
     is_deleted?: boolean
-    addressId?: number | null
     Currency?: CurrencyCreateNestedOneWithoutPhonesInput
     Models?: ModelCreateNestedOneWithoutPhonesInput
     Brands?: BrandCreateNestedOneWithoutPhonesInput
@@ -20474,7 +20450,6 @@ export namespace Prisma {
     modelId?: number | null
     brandId?: number | null
     colorId?: number | null
-    addressId?: number | null
     userId?: number | null
     Images?: ImageUncheckedCreateNestedManyWithoutPhoneInput
     Reviews?: ReviewUncheckedCreateNestedManyWithoutPhoneInput
@@ -20498,7 +20473,6 @@ export namespace Prisma {
     is_checked?: BoolFieldUpdateOperationsInput | boolean
     is_archived?: BoolFieldUpdateOperationsInput | boolean
     is_deleted?: BoolFieldUpdateOperationsInput | boolean
-    addressId?: NullableIntFieldUpdateOperationsInput | number | null
     Currency?: CurrencyUpdateOneWithoutPhonesNestedInput
     Models?: ModelUpdateOneWithoutPhonesNestedInput
     Brands?: BrandUpdateOneWithoutPhonesNestedInput
@@ -20531,7 +20505,6 @@ export namespace Prisma {
     modelId?: NullableIntFieldUpdateOperationsInput | number | null
     brandId?: NullableIntFieldUpdateOperationsInput | number | null
     colorId?: NullableIntFieldUpdateOperationsInput | number | null
-    addressId?: NullableIntFieldUpdateOperationsInput | number | null
     userId?: NullableIntFieldUpdateOperationsInput | number | null
     Images?: ImageUncheckedUpdateManyWithoutPhoneNestedInput
     Reviews?: ReviewUncheckedUpdateManyWithoutPhoneNestedInput
@@ -20560,7 +20533,6 @@ export namespace Prisma {
     modelId?: number | null
     brandId?: number | null
     colorId?: number | null
-    addressId?: number | null
     userId?: number | null
   }
 
@@ -20581,7 +20553,6 @@ export namespace Prisma {
     is_checked?: BoolFieldUpdateOperationsInput | boolean
     is_archived?: BoolFieldUpdateOperationsInput | boolean
     is_deleted?: BoolFieldUpdateOperationsInput | boolean
-    addressId?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type PhoneUncheckedUpdateManyInput = {
@@ -20606,7 +20577,6 @@ export namespace Prisma {
     modelId?: NullableIntFieldUpdateOperationsInput | number | null
     brandId?: NullableIntFieldUpdateOperationsInput | number | null
     colorId?: NullableIntFieldUpdateOperationsInput | number | null
-    addressId?: NullableIntFieldUpdateOperationsInput | number | null
     userId?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
@@ -21478,7 +21448,6 @@ export namespace Prisma {
     modelId?: SortOrder
     brandId?: SortOrder
     colorId?: SortOrder
-    addressId?: SortOrder
     userId?: SortOrder
   }
 
@@ -21490,7 +21459,6 @@ export namespace Prisma {
     modelId?: SortOrder
     brandId?: SortOrder
     colorId?: SortOrder
-    addressId?: SortOrder
     userId?: SortOrder
   }
 
@@ -21514,7 +21482,6 @@ export namespace Prisma {
     modelId?: SortOrder
     brandId?: SortOrder
     colorId?: SortOrder
-    addressId?: SortOrder
     userId?: SortOrder
   }
 
@@ -21538,7 +21505,6 @@ export namespace Prisma {
     modelId?: SortOrder
     brandId?: SortOrder
     colorId?: SortOrder
-    addressId?: SortOrder
     userId?: SortOrder
   }
 
@@ -21550,7 +21516,6 @@ export namespace Prisma {
     modelId?: SortOrder
     brandId?: SortOrder
     colorId?: SortOrder
-    addressId?: SortOrder
     userId?: SortOrder
   }
 
@@ -23293,7 +23258,6 @@ export namespace Prisma {
     is_checked?: boolean
     is_archived?: boolean
     is_deleted?: boolean
-    addressId?: number | null
     Currency?: CurrencyCreateNestedOneWithoutPhonesInput
     Models?: ModelCreateNestedOneWithoutPhonesInput
     Brands?: BrandCreateNestedOneWithoutPhonesInput
@@ -23325,7 +23289,6 @@ export namespace Prisma {
     modelId?: number | null
     brandId?: number | null
     colorId?: number | null
-    addressId?: number | null
     Images?: ImageUncheckedCreateNestedManyWithoutPhoneInput
     Reviews?: ReviewUncheckedCreateNestedManyWithoutPhoneInput
     Archives?: ArchivesUncheckedCreateNestedManyWithoutPhoneInput
@@ -23538,7 +23501,6 @@ export namespace Prisma {
     modelId?: IntNullableFilter<"Phone"> | number | null
     brandId?: IntNullableFilter<"Phone"> | number | null
     colorId?: IntNullableFilter<"Phone"> | number | null
-    addressId?: IntNullableFilter<"Phone"> | number | null
     userId?: IntNullableFilter<"Phone"> | number | null
   }
 
@@ -23913,7 +23875,6 @@ export namespace Prisma {
     is_checked?: boolean
     is_archived?: boolean
     is_deleted?: boolean
-    addressId?: number | null
     Models?: ModelCreateNestedOneWithoutPhonesInput
     Brands?: BrandCreateNestedOneWithoutPhonesInput
     Color?: ColorCreateNestedOneWithoutPhonesInput
@@ -23944,7 +23905,6 @@ export namespace Prisma {
     modelId?: number | null
     brandId?: number | null
     colorId?: number | null
-    addressId?: number | null
     userId?: number | null
     Images?: ImageUncheckedCreateNestedManyWithoutPhoneInput
     Reviews?: ReviewUncheckedCreateNestedManyWithoutPhoneInput
@@ -24015,7 +23975,6 @@ export namespace Prisma {
     is_checked?: boolean
     is_archived?: boolean
     is_deleted?: boolean
-    addressId?: number | null
     Currency?: CurrencyCreateNestedOneWithoutPhonesInput
     Models?: ModelCreateNestedOneWithoutPhonesInput
     Color?: ColorCreateNestedOneWithoutPhonesInput
@@ -24046,7 +24005,6 @@ export namespace Prisma {
     currencyId?: number | null
     modelId?: number | null
     colorId?: number | null
-    addressId?: number | null
     userId?: number | null
     Images?: ImageUncheckedCreateNestedManyWithoutPhoneInput
     Reviews?: ReviewUncheckedCreateNestedManyWithoutPhoneInput
@@ -24137,7 +24095,6 @@ export namespace Prisma {
     is_checked?: boolean
     is_archived?: boolean
     is_deleted?: boolean
-    addressId?: number | null
     Currency?: CurrencyCreateNestedOneWithoutPhonesInput
     Brands?: BrandCreateNestedOneWithoutPhonesInput
     Color?: ColorCreateNestedOneWithoutPhonesInput
@@ -24168,7 +24125,6 @@ export namespace Prisma {
     currencyId?: number | null
     brandId?: number | null
     colorId?: number | null
-    addressId?: number | null
     userId?: number | null
     Images?: ImageUncheckedCreateNestedManyWithoutPhoneInput
     Reviews?: ReviewUncheckedCreateNestedManyWithoutPhoneInput
@@ -24240,7 +24196,6 @@ export namespace Prisma {
     is_checked?: boolean
     is_archived?: boolean
     is_deleted?: boolean
-    addressId?: number | null
     Currency?: CurrencyCreateNestedOneWithoutPhonesInput
     Models?: ModelCreateNestedOneWithoutPhonesInput
     Brands?: BrandCreateNestedOneWithoutPhonesInput
@@ -24271,7 +24226,6 @@ export namespace Prisma {
     currencyId?: number | null
     modelId?: number | null
     brandId?: number | null
-    addressId?: number | null
     userId?: number | null
     Images?: ImageUncheckedCreateNestedManyWithoutPhoneInput
     Reviews?: ReviewUncheckedCreateNestedManyWithoutPhoneInput
@@ -24703,7 +24657,6 @@ export namespace Prisma {
     is_checked?: boolean
     is_archived?: boolean
     is_deleted?: boolean
-    addressId?: number | null
     Currency?: CurrencyCreateNestedOneWithoutPhonesInput
     Models?: ModelCreateNestedOneWithoutPhonesInput
     Brands?: BrandCreateNestedOneWithoutPhonesInput
@@ -24735,7 +24688,6 @@ export namespace Prisma {
     modelId?: number | null
     brandId?: number | null
     colorId?: number | null
-    addressId?: number | null
     userId?: number | null
     Reviews?: ReviewUncheckedCreateNestedManyWithoutPhoneInput
     Archives?: ArchivesUncheckedCreateNestedManyWithoutPhoneInput
@@ -24774,7 +24726,6 @@ export namespace Prisma {
     is_checked?: BoolFieldUpdateOperationsInput | boolean
     is_archived?: BoolFieldUpdateOperationsInput | boolean
     is_deleted?: BoolFieldUpdateOperationsInput | boolean
-    addressId?: NullableIntFieldUpdateOperationsInput | number | null
     Currency?: CurrencyUpdateOneWithoutPhonesNestedInput
     Models?: ModelUpdateOneWithoutPhonesNestedInput
     Brands?: BrandUpdateOneWithoutPhonesNestedInput
@@ -24806,7 +24757,6 @@ export namespace Prisma {
     modelId?: NullableIntFieldUpdateOperationsInput | number | null
     brandId?: NullableIntFieldUpdateOperationsInput | number | null
     colorId?: NullableIntFieldUpdateOperationsInput | number | null
-    addressId?: NullableIntFieldUpdateOperationsInput | number | null
     userId?: NullableIntFieldUpdateOperationsInput | number | null
     Reviews?: ReviewUncheckedUpdateManyWithoutPhoneNestedInput
     Archives?: ArchivesUncheckedUpdateManyWithoutPhoneNestedInput
@@ -24829,7 +24779,6 @@ export namespace Prisma {
     is_checked?: boolean
     is_archived?: boolean
     is_deleted?: boolean
-    addressId?: number | null
     Currency?: CurrencyCreateNestedOneWithoutPhonesInput
     Models?: ModelCreateNestedOneWithoutPhonesInput
     Brands?: BrandCreateNestedOneWithoutPhonesInput
@@ -24861,7 +24810,6 @@ export namespace Prisma {
     modelId?: number | null
     brandId?: number | null
     colorId?: number | null
-    addressId?: number | null
     userId?: number | null
     Images?: ImageUncheckedCreateNestedManyWithoutPhoneInput
     Archives?: ArchivesUncheckedCreateNestedManyWithoutPhoneInput
@@ -24900,7 +24848,6 @@ export namespace Prisma {
     is_checked?: BoolFieldUpdateOperationsInput | boolean
     is_archived?: BoolFieldUpdateOperationsInput | boolean
     is_deleted?: BoolFieldUpdateOperationsInput | boolean
-    addressId?: NullableIntFieldUpdateOperationsInput | number | null
     Currency?: CurrencyUpdateOneWithoutPhonesNestedInput
     Models?: ModelUpdateOneWithoutPhonesNestedInput
     Brands?: BrandUpdateOneWithoutPhonesNestedInput
@@ -24932,7 +24879,6 @@ export namespace Prisma {
     modelId?: NullableIntFieldUpdateOperationsInput | number | null
     brandId?: NullableIntFieldUpdateOperationsInput | number | null
     colorId?: NullableIntFieldUpdateOperationsInput | number | null
-    addressId?: NullableIntFieldUpdateOperationsInput | number | null
     userId?: NullableIntFieldUpdateOperationsInput | number | null
     Images?: ImageUncheckedUpdateManyWithoutPhoneNestedInput
     Archives?: ArchivesUncheckedUpdateManyWithoutPhoneNestedInput
@@ -24955,7 +24901,6 @@ export namespace Prisma {
     is_checked?: boolean
     is_archived?: boolean
     is_deleted?: boolean
-    addressId?: number | null
     Currency?: CurrencyCreateNestedOneWithoutPhonesInput
     Models?: ModelCreateNestedOneWithoutPhonesInput
     Brands?: BrandCreateNestedOneWithoutPhonesInput
@@ -24987,7 +24932,6 @@ export namespace Prisma {
     modelId?: number | null
     brandId?: number | null
     colorId?: number | null
-    addressId?: number | null
     userId?: number | null
     Images?: ImageUncheckedCreateNestedManyWithoutPhoneInput
     Reviews?: ReviewUncheckedCreateNestedManyWithoutPhoneInput
@@ -25026,7 +24970,6 @@ export namespace Prisma {
     is_checked?: BoolFieldUpdateOperationsInput | boolean
     is_archived?: BoolFieldUpdateOperationsInput | boolean
     is_deleted?: BoolFieldUpdateOperationsInput | boolean
-    addressId?: NullableIntFieldUpdateOperationsInput | number | null
     Currency?: CurrencyUpdateOneWithoutPhonesNestedInput
     Models?: ModelUpdateOneWithoutPhonesNestedInput
     Brands?: BrandUpdateOneWithoutPhonesNestedInput
@@ -25058,7 +25001,6 @@ export namespace Prisma {
     modelId?: NullableIntFieldUpdateOperationsInput | number | null
     brandId?: NullableIntFieldUpdateOperationsInput | number | null
     colorId?: NullableIntFieldUpdateOperationsInput | number | null
-    addressId?: NullableIntFieldUpdateOperationsInput | number | null
     userId?: NullableIntFieldUpdateOperationsInput | number | null
     Images?: ImageUncheckedUpdateManyWithoutPhoneNestedInput
     Reviews?: ReviewUncheckedUpdateManyWithoutPhoneNestedInput
@@ -25299,7 +25241,6 @@ export namespace Prisma {
     modelId?: number | null
     brandId?: number | null
     colorId?: number | null
-    addressId?: number | null
   }
 
   export type EmailUpdateWithoutUserInput = {
@@ -25363,7 +25304,6 @@ export namespace Prisma {
     is_checked?: BoolFieldUpdateOperationsInput | boolean
     is_archived?: BoolFieldUpdateOperationsInput | boolean
     is_deleted?: BoolFieldUpdateOperationsInput | boolean
-    addressId?: NullableIntFieldUpdateOperationsInput | number | null
     Currency?: CurrencyUpdateOneWithoutPhonesNestedInput
     Models?: ModelUpdateOneWithoutPhonesNestedInput
     Brands?: BrandUpdateOneWithoutPhonesNestedInput
@@ -25395,7 +25335,6 @@ export namespace Prisma {
     modelId?: NullableIntFieldUpdateOperationsInput | number | null
     brandId?: NullableIntFieldUpdateOperationsInput | number | null
     colorId?: NullableIntFieldUpdateOperationsInput | number | null
-    addressId?: NullableIntFieldUpdateOperationsInput | number | null
     Images?: ImageUncheckedUpdateManyWithoutPhoneNestedInput
     Reviews?: ReviewUncheckedUpdateManyWithoutPhoneNestedInput
     Archives?: ArchivesUncheckedUpdateManyWithoutPhoneNestedInput
@@ -25423,7 +25362,6 @@ export namespace Prisma {
     modelId?: NullableIntFieldUpdateOperationsInput | number | null
     brandId?: NullableIntFieldUpdateOperationsInput | number | null
     colorId?: NullableIntFieldUpdateOperationsInput | number | null
-    addressId?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type UserCreateManyMainEmailInput = {
@@ -25617,7 +25555,6 @@ export namespace Prisma {
     modelId?: number | null
     brandId?: number | null
     colorId?: number | null
-    addressId?: number | null
     userId?: number | null
   }
 
@@ -25638,7 +25575,6 @@ export namespace Prisma {
     is_checked?: BoolFieldUpdateOperationsInput | boolean
     is_archived?: BoolFieldUpdateOperationsInput | boolean
     is_deleted?: BoolFieldUpdateOperationsInput | boolean
-    addressId?: NullableIntFieldUpdateOperationsInput | number | null
     Models?: ModelUpdateOneWithoutPhonesNestedInput
     Brands?: BrandUpdateOneWithoutPhonesNestedInput
     Color?: ColorUpdateOneWithoutPhonesNestedInput
@@ -25669,7 +25605,6 @@ export namespace Prisma {
     modelId?: NullableIntFieldUpdateOperationsInput | number | null
     brandId?: NullableIntFieldUpdateOperationsInput | number | null
     colorId?: NullableIntFieldUpdateOperationsInput | number | null
-    addressId?: NullableIntFieldUpdateOperationsInput | number | null
     userId?: NullableIntFieldUpdateOperationsInput | number | null
     Images?: ImageUncheckedUpdateManyWithoutPhoneNestedInput
     Reviews?: ReviewUncheckedUpdateManyWithoutPhoneNestedInput
@@ -25697,7 +25632,6 @@ export namespace Prisma {
     modelId?: NullableIntFieldUpdateOperationsInput | number | null
     brandId?: NullableIntFieldUpdateOperationsInput | number | null
     colorId?: NullableIntFieldUpdateOperationsInput | number | null
-    addressId?: NullableIntFieldUpdateOperationsInput | number | null
     userId?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
@@ -25727,7 +25661,6 @@ export namespace Prisma {
     currencyId?: number | null
     modelId?: number | null
     colorId?: number | null
-    addressId?: number | null
     userId?: number | null
   }
 
@@ -25764,7 +25697,6 @@ export namespace Prisma {
     is_checked?: BoolFieldUpdateOperationsInput | boolean
     is_archived?: BoolFieldUpdateOperationsInput | boolean
     is_deleted?: BoolFieldUpdateOperationsInput | boolean
-    addressId?: NullableIntFieldUpdateOperationsInput | number | null
     Currency?: CurrencyUpdateOneWithoutPhonesNestedInput
     Models?: ModelUpdateOneWithoutPhonesNestedInput
     Color?: ColorUpdateOneWithoutPhonesNestedInput
@@ -25795,7 +25727,6 @@ export namespace Prisma {
     currencyId?: NullableIntFieldUpdateOperationsInput | number | null
     modelId?: NullableIntFieldUpdateOperationsInput | number | null
     colorId?: NullableIntFieldUpdateOperationsInput | number | null
-    addressId?: NullableIntFieldUpdateOperationsInput | number | null
     userId?: NullableIntFieldUpdateOperationsInput | number | null
     Images?: ImageUncheckedUpdateManyWithoutPhoneNestedInput
     Reviews?: ReviewUncheckedUpdateManyWithoutPhoneNestedInput
@@ -25823,7 +25754,6 @@ export namespace Prisma {
     currencyId?: NullableIntFieldUpdateOperationsInput | number | null
     modelId?: NullableIntFieldUpdateOperationsInput | number | null
     colorId?: NullableIntFieldUpdateOperationsInput | number | null
-    addressId?: NullableIntFieldUpdateOperationsInput | number | null
     userId?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
@@ -25848,7 +25778,6 @@ export namespace Prisma {
     currencyId?: number | null
     brandId?: number | null
     colorId?: number | null
-    addressId?: number | null
     userId?: number | null
   }
 
@@ -25869,7 +25798,6 @@ export namespace Prisma {
     is_checked?: BoolFieldUpdateOperationsInput | boolean
     is_archived?: BoolFieldUpdateOperationsInput | boolean
     is_deleted?: BoolFieldUpdateOperationsInput | boolean
-    addressId?: NullableIntFieldUpdateOperationsInput | number | null
     Currency?: CurrencyUpdateOneWithoutPhonesNestedInput
     Brands?: BrandUpdateOneWithoutPhonesNestedInput
     Color?: ColorUpdateOneWithoutPhonesNestedInput
@@ -25900,7 +25828,6 @@ export namespace Prisma {
     currencyId?: NullableIntFieldUpdateOperationsInput | number | null
     brandId?: NullableIntFieldUpdateOperationsInput | number | null
     colorId?: NullableIntFieldUpdateOperationsInput | number | null
-    addressId?: NullableIntFieldUpdateOperationsInput | number | null
     userId?: NullableIntFieldUpdateOperationsInput | number | null
     Images?: ImageUncheckedUpdateManyWithoutPhoneNestedInput
     Reviews?: ReviewUncheckedUpdateManyWithoutPhoneNestedInput
@@ -25928,7 +25855,6 @@ export namespace Prisma {
     currencyId?: NullableIntFieldUpdateOperationsInput | number | null
     brandId?: NullableIntFieldUpdateOperationsInput | number | null
     colorId?: NullableIntFieldUpdateOperationsInput | number | null
-    addressId?: NullableIntFieldUpdateOperationsInput | number | null
     userId?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
@@ -25953,7 +25879,6 @@ export namespace Prisma {
     currencyId?: number | null
     modelId?: number | null
     brandId?: number | null
-    addressId?: number | null
     userId?: number | null
   }
 
@@ -25974,7 +25899,6 @@ export namespace Prisma {
     is_checked?: BoolFieldUpdateOperationsInput | boolean
     is_archived?: BoolFieldUpdateOperationsInput | boolean
     is_deleted?: BoolFieldUpdateOperationsInput | boolean
-    addressId?: NullableIntFieldUpdateOperationsInput | number | null
     Currency?: CurrencyUpdateOneWithoutPhonesNestedInput
     Models?: ModelUpdateOneWithoutPhonesNestedInput
     Brands?: BrandUpdateOneWithoutPhonesNestedInput
@@ -26005,7 +25929,6 @@ export namespace Prisma {
     currencyId?: NullableIntFieldUpdateOperationsInput | number | null
     modelId?: NullableIntFieldUpdateOperationsInput | number | null
     brandId?: NullableIntFieldUpdateOperationsInput | number | null
-    addressId?: NullableIntFieldUpdateOperationsInput | number | null
     userId?: NullableIntFieldUpdateOperationsInput | number | null
     Images?: ImageUncheckedUpdateManyWithoutPhoneNestedInput
     Reviews?: ReviewUncheckedUpdateManyWithoutPhoneNestedInput
@@ -26033,7 +25956,6 @@ export namespace Prisma {
     currencyId?: NullableIntFieldUpdateOperationsInput | number | null
     modelId?: NullableIntFieldUpdateOperationsInput | number | null
     brandId?: NullableIntFieldUpdateOperationsInput | number | null
-    addressId?: NullableIntFieldUpdateOperationsInput | number | null
     userId?: NullableIntFieldUpdateOperationsInput | number | null
   }
 

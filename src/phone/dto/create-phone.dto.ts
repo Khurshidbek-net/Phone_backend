@@ -38,14 +38,14 @@ export class CreatePhoneDto {
     description: string;
 
     @ApiProperty()
-    @IsEnum(Ram)
+    @IsEnum(Ram, {each: true})
     @IsNotEmpty()
-    ram: Ram;
+    ram: Ram[];
 
     @ApiProperty()
-    @IsEnum(Rom)
+    @IsEnum(Rom, {each: true})
     @IsNotEmpty()
-    rom: Rom;
+    rom: Rom[];
 
 
     @ApiProperty()
@@ -112,30 +112,30 @@ export class CreatePhoneDto {
     @ApiProperty()
     @IsInt()
     @IsOptional()
-    currencyId: number;
+    currencyId?: number;
 
     @ApiProperty()
     @IsInt()
     @IsOptional()
-    modelId: number;
+    modelId?: number;
 
     @ApiProperty()
     @IsInt()
     @IsOptional()
-    brandId: number;
+    brandId?: number;
 
     @ApiProperty()
     @IsInt()
     @IsOptional()
-    colorId: number;
+    colorId?: number;
+
+    // @ApiProperty()
+    // @IsInt()
+    // @IsOptional()
+    // addressId: number;
 
     @ApiProperty()
     @IsInt()
     @IsOptional()
-    addressId: number;
-
-    @ApiProperty()
-    @IsInt()
-    @IsOptional()
-    userId: number;
+    userId?: number;
 }

@@ -222,7 +222,6 @@ exports.Prisma.PhoneScalarFieldEnum = {
   modelId: 'modelId',
   brandId: 'brandId',
   colorId: 'colorId',
-  addressId: 'addressId',
   userId: 'userId'
 };
 
