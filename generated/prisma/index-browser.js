@@ -257,29 +257,7 @@ exports.Prisma.NullsOrder = {
   first: 'first',
   last: 'last'
 };
-exports.Ram = exports.$Enums.Ram = {
-  GB_4: 'GB_4',
-  GB_6: 'GB_6',
-  GB_8: 'GB_8',
-  GB_12: 'GB_12',
-  GB_16: 'GB_16',
-  GB_24: 'GB_24',
-  GB_32: 'GB_32',
-  GB_64: 'GB_64',
-  GB_128: 'GB_128'
-};
 
-exports.Rom = exports.$Enums.Rom = {
-  GB_4: 'GB_4',
-  GB_6: 'GB_6',
-  GB_8: 'GB_8',
-  GB_12: 'GB_12',
-  GB_16: 'GB_16',
-  GB_24: 'GB_24',
-  GB_32: 'GB_32',
-  GB_64: 'GB_64',
-  GB_128: 'GB_128'
-};
 
 exports.Prisma.ModelName = {
   Region: 'Region',

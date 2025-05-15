@@ -85,49 +85,6 @@ export type Review = $Result.DefaultSelection<Prisma.$ReviewPayload>
 export type Archives = $Result.DefaultSelection<Prisma.$ArchivesPayload>
 
 /**
- * Enums
- */
-export namespace $Enums {
-  export const Ram: {
-  GB_4: 'GB_4',
-  GB_6: 'GB_6',
-  GB_8: 'GB_8',
-  GB_12: 'GB_12',
-  GB_16: 'GB_16',
-  GB_24: 'GB_24',
-  GB_32: 'GB_32',
-  GB_64: 'GB_64',
-  GB_128: 'GB_128'
-};
-
-export type Ram = (typeof Ram)[keyof typeof Ram]
-
-
-export const Rom: {
-  GB_4: 'GB_4',
-  GB_6: 'GB_6',
-  GB_8: 'GB_8',
-  GB_12: 'GB_12',
-  GB_16: 'GB_16',
-  GB_24: 'GB_24',
-  GB_32: 'GB_32',
-  GB_64: 'GB_64',
-  GB_128: 'GB_128'
-};
-
-export type Rom = (typeof Rom)[keyof typeof Rom]
-
-}
-
-export type Ram = $Enums.Ram
-
-export const Ram: typeof $Enums.Ram
-
-export type Rom = $Enums.Rom
-
-export const Rom: typeof $Enums.Rom
-
-/**
  * ##  Prisma Client ʲˢ
  *
  * Type-safe database client for TypeScript & Node.js
@@ -13872,6 +13829,8 @@ export namespace Prisma {
     id: number | null
     title: string | null
     description: string | null
+    ram: string | null
+    rom: string | null
     box_with_document: boolean | null
     is_new: boolean | null
     posted_date: Date | null
@@ -13895,6 +13854,8 @@ export namespace Prisma {
     id: number | null
     title: string | null
     description: string | null
+    ram: string | null
+    rom: string | null
     box_with_document: boolean | null
     is_new: boolean | null
     posted_date: Date | null
@@ -13967,6 +13928,8 @@ export namespace Prisma {
     id?: true
     title?: true
     description?: true
+    ram?: true
+    rom?: true
     box_with_document?: true
     is_new?: true
     posted_date?: true
@@ -13990,6 +13953,8 @@ export namespace Prisma {
     id?: true
     title?: true
     description?: true
+    ram?: true
+    rom?: true
     box_with_document?: true
     is_new?: true
     posted_date?: true
@@ -14125,8 +14090,8 @@ export namespace Prisma {
     id: number
     title: string
     description: string
-    ram: $Enums.Ram[]
-    rom: $Enums.Rom[]
+    ram: string
+    rom: string
     box_with_document: boolean
     is_new: boolean
     posted_date: Date
@@ -14327,8 +14292,8 @@ export namespace Prisma {
       id: number
       title: string
       description: string
-      ram: $Enums.Ram[]
-      rom: $Enums.Rom[]
+      ram: string
+      rom: string
       box_with_document: boolean
       is_new: boolean
       posted_date: Date
@@ -14780,8 +14745,8 @@ export namespace Prisma {
     readonly id: FieldRef<"Phone", 'Int'>
     readonly title: FieldRef<"Phone", 'String'>
     readonly description: FieldRef<"Phone", 'String'>
-    readonly ram: FieldRef<"Phone", 'Ram[]'>
-    readonly rom: FieldRef<"Phone", 'Rom[]'>
+    readonly ram: FieldRef<"Phone", 'String'>
+    readonly rom: FieldRef<"Phone", 'String'>
     readonly box_with_document: FieldRef<"Phone", 'Boolean'>
     readonly is_new: FieldRef<"Phone", 'Boolean'>
     readonly posted_date: FieldRef<"Phone", 'DateTime'>
@@ -18862,34 +18827,6 @@ export namespace Prisma {
 
 
   /**
-   * Reference to a field of type 'Ram[]'
-   */
-  export type ListEnumRamFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Ram[]'>
-    
-
-
-  /**
-   * Reference to a field of type 'Ram'
-   */
-  export type EnumRamFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Ram'>
-    
-
-
-  /**
-   * Reference to a field of type 'Rom[]'
-   */
-  export type ListEnumRomFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Rom[]'>
-    
-
-
-  /**
-   * Reference to a field of type 'Rom'
-   */
-  export type EnumRomFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Rom'>
-    
-
-
-  /**
    * Reference to a field of type 'BigInt'
    */
   export type BigIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'BigInt'>
@@ -19530,8 +19467,8 @@ export namespace Prisma {
     id?: IntFilter<"Phone"> | number
     title?: StringFilter<"Phone"> | string
     description?: StringFilter<"Phone"> | string
-    ram?: EnumRamNullableListFilter<"Phone">
-    rom?: EnumRomNullableListFilter<"Phone">
+    ram?: StringFilter<"Phone"> | string
+    rom?: StringFilter<"Phone"> | string
     box_with_document?: BoolFilter<"Phone"> | boolean
     is_new?: BoolFilter<"Phone"> | boolean
     posted_date?: DateTimeFilter<"Phone"> | Date | string
@@ -19599,8 +19536,8 @@ export namespace Prisma {
     NOT?: PhoneWhereInput | PhoneWhereInput[]
     title?: StringFilter<"Phone"> | string
     description?: StringFilter<"Phone"> | string
-    ram?: EnumRamNullableListFilter<"Phone">
-    rom?: EnumRomNullableListFilter<"Phone">
+    ram?: StringFilter<"Phone"> | string
+    rom?: StringFilter<"Phone"> | string
     box_with_document?: BoolFilter<"Phone"> | boolean
     is_new?: BoolFilter<"Phone"> | boolean
     posted_date?: DateTimeFilter<"Phone"> | Date | string
@@ -19665,8 +19602,8 @@ export namespace Prisma {
     id?: IntWithAggregatesFilter<"Phone"> | number
     title?: StringWithAggregatesFilter<"Phone"> | string
     description?: StringWithAggregatesFilter<"Phone"> | string
-    ram?: EnumRamNullableListFilter<"Phone">
-    rom?: EnumRomNullableListFilter<"Phone">
+    ram?: StringWithAggregatesFilter<"Phone"> | string
+    rom?: StringWithAggregatesFilter<"Phone"> | string
     box_with_document?: BoolWithAggregatesFilter<"Phone"> | boolean
     is_new?: BoolWithAggregatesFilter<"Phone"> | boolean
     posted_date?: DateTimeWithAggregatesFilter<"Phone"> | Date | string
@@ -20404,8 +20341,8 @@ export namespace Prisma {
   export type PhoneCreateInput = {
     title: string
     description: string
-    ram?: PhoneCreateramInput | $Enums.Ram[]
-    rom?: PhoneCreateromInput | $Enums.Rom[]
+    ram: string
+    rom: string
     box_with_document?: boolean
     is_new?: boolean
     posted_date: Date | string
@@ -20432,8 +20369,8 @@ export namespace Prisma {
     id?: number
     title: string
     description: string
-    ram?: PhoneCreateramInput | $Enums.Ram[]
-    rom?: PhoneCreateromInput | $Enums.Rom[]
+    ram: string
+    rom: string
     box_with_document?: boolean
     is_new?: boolean
     posted_date: Date | string
@@ -20459,8 +20396,8 @@ export namespace Prisma {
   export type PhoneUpdateInput = {
     title?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
-    ram?: PhoneUpdateramInput | $Enums.Ram[]
-    rom?: PhoneUpdateromInput | $Enums.Rom[]
+    ram?: StringFieldUpdateOperationsInput | string
+    rom?: StringFieldUpdateOperationsInput | string
     box_with_document?: BoolFieldUpdateOperationsInput | boolean
     is_new?: BoolFieldUpdateOperationsInput | boolean
     posted_date?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -20487,8 +20424,8 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     title?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
-    ram?: PhoneUpdateramInput | $Enums.Ram[]
-    rom?: PhoneUpdateromInput | $Enums.Rom[]
+    ram?: StringFieldUpdateOperationsInput | string
+    rom?: StringFieldUpdateOperationsInput | string
     box_with_document?: BoolFieldUpdateOperationsInput | boolean
     is_new?: BoolFieldUpdateOperationsInput | boolean
     posted_date?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -20515,8 +20452,8 @@ export namespace Prisma {
     id?: number
     title: string
     description: string
-    ram?: PhoneCreateramInput | $Enums.Ram[]
-    rom?: PhoneCreateromInput | $Enums.Rom[]
+    ram: string
+    rom: string
     box_with_document?: boolean
     is_new?: boolean
     posted_date: Date | string
@@ -20539,8 +20476,8 @@ export namespace Prisma {
   export type PhoneUpdateManyMutationInput = {
     title?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
-    ram?: PhoneUpdateramInput | $Enums.Ram[]
-    rom?: PhoneUpdateromInput | $Enums.Rom[]
+    ram?: StringFieldUpdateOperationsInput | string
+    rom?: StringFieldUpdateOperationsInput | string
     box_with_document?: BoolFieldUpdateOperationsInput | boolean
     is_new?: BoolFieldUpdateOperationsInput | boolean
     posted_date?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -20559,8 +20496,8 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     title?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
-    ram?: PhoneUpdateramInput | $Enums.Ram[]
-    rom?: PhoneUpdateromInput | $Enums.Rom[]
+    ram?: StringFieldUpdateOperationsInput | string
+    rom?: StringFieldUpdateOperationsInput | string
     box_with_document?: BoolFieldUpdateOperationsInput | boolean
     is_new?: BoolFieldUpdateOperationsInput | boolean
     posted_date?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -21344,22 +21281,6 @@ export namespace Prisma {
     id?: SortOrder
   }
 
-  export type EnumRamNullableListFilter<$PrismaModel = never> = {
-    equals?: $Enums.Ram[] | ListEnumRamFieldRefInput<$PrismaModel> | null
-    has?: $Enums.Ram | EnumRamFieldRefInput<$PrismaModel> | null
-    hasEvery?: $Enums.Ram[] | ListEnumRamFieldRefInput<$PrismaModel>
-    hasSome?: $Enums.Ram[] | ListEnumRamFieldRefInput<$PrismaModel>
-    isEmpty?: boolean
-  }
-
-  export type EnumRomNullableListFilter<$PrismaModel = never> = {
-    equals?: $Enums.Rom[] | ListEnumRomFieldRefInput<$PrismaModel> | null
-    has?: $Enums.Rom | EnumRomFieldRefInput<$PrismaModel> | null
-    hasEvery?: $Enums.Rom[] | ListEnumRomFieldRefInput<$PrismaModel>
-    hasSome?: $Enums.Rom[] | ListEnumRomFieldRefInput<$PrismaModel>
-    isEmpty?: boolean
-  }
-
   export type BigIntFilter<$PrismaModel = never> = {
     equals?: bigint | number | BigIntFieldRefInput<$PrismaModel>
     in?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
@@ -21466,6 +21387,8 @@ export namespace Prisma {
     id?: SortOrder
     title?: SortOrder
     description?: SortOrder
+    ram?: SortOrder
+    rom?: SortOrder
     box_with_document?: SortOrder
     is_new?: SortOrder
     posted_date?: SortOrder
@@ -21489,6 +21412,8 @@ export namespace Prisma {
     id?: SortOrder
     title?: SortOrder
     description?: SortOrder
+    ram?: SortOrder
+    rom?: SortOrder
     box_with_document?: SortOrder
     is_new?: SortOrder
     posted_date?: SortOrder
@@ -22334,14 +22259,6 @@ export namespace Prisma {
     deleteMany?: PhoneScalarWhereInput | PhoneScalarWhereInput[]
   }
 
-  export type PhoneCreateramInput = {
-    set: $Enums.Ram[]
-  }
-
-  export type PhoneCreateromInput = {
-    set: $Enums.Rom[]
-  }
-
   export type CurrencyCreateNestedOneWithoutPhonesInput = {
     create?: XOR<CurrencyCreateWithoutPhonesInput, CurrencyUncheckedCreateWithoutPhonesInput>
     connectOrCreate?: CurrencyCreateOrConnectWithoutPhonesInput
@@ -22412,16 +22329,6 @@ export namespace Prisma {
     connectOrCreate?: ArchivesCreateOrConnectWithoutPhoneInput | ArchivesCreateOrConnectWithoutPhoneInput[]
     createMany?: ArchivesCreateManyPhoneInputEnvelope
     connect?: ArchivesWhereUniqueInput | ArchivesWhereUniqueInput[]
-  }
-
-  export type PhoneUpdateramInput = {
-    set?: $Enums.Ram[]
-    push?: $Enums.Ram | $Enums.Ram[]
-  }
-
-  export type PhoneUpdateromInput = {
-    set?: $Enums.Rom[]
-    push?: $Enums.Rom | $Enums.Rom[]
   }
 
   export type BigIntFieldUpdateOperationsInput = {
@@ -23244,8 +23151,8 @@ export namespace Prisma {
   export type PhoneCreateWithoutUserInput = {
     title: string
     description: string
-    ram?: PhoneCreateramInput | $Enums.Ram[]
-    rom?: PhoneCreateromInput | $Enums.Rom[]
+    ram: string
+    rom: string
     box_with_document?: boolean
     is_new?: boolean
     posted_date: Date | string
@@ -23271,8 +23178,8 @@ export namespace Prisma {
     id?: number
     title: string
     description: string
-    ram?: PhoneCreateramInput | $Enums.Ram[]
-    rom?: PhoneCreateromInput | $Enums.Rom[]
+    ram: string
+    rom: string
     box_with_document?: boolean
     is_new?: boolean
     posted_date: Date | string
@@ -23483,8 +23390,8 @@ export namespace Prisma {
     id?: IntFilter<"Phone"> | number
     title?: StringFilter<"Phone"> | string
     description?: StringFilter<"Phone"> | string
-    ram?: EnumRamNullableListFilter<"Phone">
-    rom?: EnumRomNullableListFilter<"Phone">
+    ram?: StringFilter<"Phone"> | string
+    rom?: StringFilter<"Phone"> | string
     box_with_document?: BoolFilter<"Phone"> | boolean
     is_new?: BoolFilter<"Phone"> | boolean
     posted_date?: DateTimeFilter<"Phone"> | Date | string
@@ -23861,8 +23768,8 @@ export namespace Prisma {
   export type PhoneCreateWithoutCurrencyInput = {
     title: string
     description: string
-    ram?: PhoneCreateramInput | $Enums.Ram[]
-    rom?: PhoneCreateromInput | $Enums.Rom[]
+    ram: string
+    rom: string
     box_with_document?: boolean
     is_new?: boolean
     posted_date: Date | string
@@ -23888,8 +23795,8 @@ export namespace Prisma {
     id?: number
     title: string
     description: string
-    ram?: PhoneCreateramInput | $Enums.Ram[]
-    rom?: PhoneCreateromInput | $Enums.Rom[]
+    ram: string
+    rom: string
     box_with_document?: boolean
     is_new?: boolean
     posted_date: Date | string
@@ -23961,8 +23868,8 @@ export namespace Prisma {
   export type PhoneCreateWithoutBrandsInput = {
     title: string
     description: string
-    ram?: PhoneCreateramInput | $Enums.Ram[]
-    rom?: PhoneCreateromInput | $Enums.Rom[]
+    ram: string
+    rom: string
     box_with_document?: boolean
     is_new?: boolean
     posted_date: Date | string
@@ -23988,8 +23895,8 @@ export namespace Prisma {
     id?: number
     title: string
     description: string
-    ram?: PhoneCreateramInput | $Enums.Ram[]
-    rom?: PhoneCreateromInput | $Enums.Rom[]
+    ram: string
+    rom: string
     box_with_document?: boolean
     is_new?: boolean
     posted_date: Date | string
@@ -24081,8 +23988,8 @@ export namespace Prisma {
   export type PhoneCreateWithoutModelsInput = {
     title: string
     description: string
-    ram?: PhoneCreateramInput | $Enums.Ram[]
-    rom?: PhoneCreateromInput | $Enums.Rom[]
+    ram: string
+    rom: string
     box_with_document?: boolean
     is_new?: boolean
     posted_date: Date | string
@@ -24108,8 +24015,8 @@ export namespace Prisma {
     id?: number
     title: string
     description: string
-    ram?: PhoneCreateramInput | $Enums.Ram[]
-    rom?: PhoneCreateromInput | $Enums.Rom[]
+    ram: string
+    rom: string
     box_with_document?: boolean
     is_new?: boolean
     posted_date: Date | string
@@ -24182,8 +24089,8 @@ export namespace Prisma {
   export type PhoneCreateWithoutColorInput = {
     title: string
     description: string
-    ram?: PhoneCreateramInput | $Enums.Ram[]
-    rom?: PhoneCreateromInput | $Enums.Rom[]
+    ram: string
+    rom: string
     box_with_document?: boolean
     is_new?: boolean
     posted_date: Date | string
@@ -24209,8 +24116,8 @@ export namespace Prisma {
     id?: number
     title: string
     description: string
-    ram?: PhoneCreateramInput | $Enums.Ram[]
-    rom?: PhoneCreateromInput | $Enums.Rom[]
+    ram: string
+    rom: string
     box_with_document?: boolean
     is_new?: boolean
     posted_date: Date | string
@@ -24643,8 +24550,8 @@ export namespace Prisma {
   export type PhoneCreateWithoutImagesInput = {
     title: string
     description: string
-    ram?: PhoneCreateramInput | $Enums.Ram[]
-    rom?: PhoneCreateromInput | $Enums.Rom[]
+    ram: string
+    rom: string
     box_with_document?: boolean
     is_new?: boolean
     posted_date: Date | string
@@ -24670,8 +24577,8 @@ export namespace Prisma {
     id?: number
     title: string
     description: string
-    ram?: PhoneCreateramInput | $Enums.Ram[]
-    rom?: PhoneCreateromInput | $Enums.Rom[]
+    ram: string
+    rom: string
     box_with_document?: boolean
     is_new?: boolean
     posted_date: Date | string
@@ -24712,8 +24619,8 @@ export namespace Prisma {
   export type PhoneUpdateWithoutImagesInput = {
     title?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
-    ram?: PhoneUpdateramInput | $Enums.Ram[]
-    rom?: PhoneUpdateromInput | $Enums.Rom[]
+    ram?: StringFieldUpdateOperationsInput | string
+    rom?: StringFieldUpdateOperationsInput | string
     box_with_document?: BoolFieldUpdateOperationsInput | boolean
     is_new?: BoolFieldUpdateOperationsInput | boolean
     posted_date?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -24739,8 +24646,8 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     title?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
-    ram?: PhoneUpdateramInput | $Enums.Ram[]
-    rom?: PhoneUpdateromInput | $Enums.Rom[]
+    ram?: StringFieldUpdateOperationsInput | string
+    rom?: StringFieldUpdateOperationsInput | string
     box_with_document?: BoolFieldUpdateOperationsInput | boolean
     is_new?: BoolFieldUpdateOperationsInput | boolean
     posted_date?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -24765,8 +24672,8 @@ export namespace Prisma {
   export type PhoneCreateWithoutReviewsInput = {
     title: string
     description: string
-    ram?: PhoneCreateramInput | $Enums.Ram[]
-    rom?: PhoneCreateromInput | $Enums.Rom[]
+    ram: string
+    rom: string
     box_with_document?: boolean
     is_new?: boolean
     posted_date: Date | string
@@ -24792,8 +24699,8 @@ export namespace Prisma {
     id?: number
     title: string
     description: string
-    ram?: PhoneCreateramInput | $Enums.Ram[]
-    rom?: PhoneCreateromInput | $Enums.Rom[]
+    ram: string
+    rom: string
     box_with_document?: boolean
     is_new?: boolean
     posted_date: Date | string
@@ -24834,8 +24741,8 @@ export namespace Prisma {
   export type PhoneUpdateWithoutReviewsInput = {
     title?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
-    ram?: PhoneUpdateramInput | $Enums.Ram[]
-    rom?: PhoneUpdateromInput | $Enums.Rom[]
+    ram?: StringFieldUpdateOperationsInput | string
+    rom?: StringFieldUpdateOperationsInput | string
     box_with_document?: BoolFieldUpdateOperationsInput | boolean
     is_new?: BoolFieldUpdateOperationsInput | boolean
     posted_date?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -24861,8 +24768,8 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     title?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
-    ram?: PhoneUpdateramInput | $Enums.Ram[]
-    rom?: PhoneUpdateromInput | $Enums.Rom[]
+    ram?: StringFieldUpdateOperationsInput | string
+    rom?: StringFieldUpdateOperationsInput | string
     box_with_document?: BoolFieldUpdateOperationsInput | boolean
     is_new?: BoolFieldUpdateOperationsInput | boolean
     posted_date?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -24887,8 +24794,8 @@ export namespace Prisma {
   export type PhoneCreateWithoutArchivesInput = {
     title: string
     description: string
-    ram?: PhoneCreateramInput | $Enums.Ram[]
-    rom?: PhoneCreateromInput | $Enums.Rom[]
+    ram: string
+    rom: string
     box_with_document?: boolean
     is_new?: boolean
     posted_date: Date | string
@@ -24914,8 +24821,8 @@ export namespace Prisma {
     id?: number
     title: string
     description: string
-    ram?: PhoneCreateramInput | $Enums.Ram[]
-    rom?: PhoneCreateromInput | $Enums.Rom[]
+    ram: string
+    rom: string
     box_with_document?: boolean
     is_new?: boolean
     posted_date: Date | string
@@ -24956,8 +24863,8 @@ export namespace Prisma {
   export type PhoneUpdateWithoutArchivesInput = {
     title?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
-    ram?: PhoneUpdateramInput | $Enums.Ram[]
-    rom?: PhoneUpdateromInput | $Enums.Rom[]
+    ram?: StringFieldUpdateOperationsInput | string
+    rom?: StringFieldUpdateOperationsInput | string
     box_with_document?: BoolFieldUpdateOperationsInput | boolean
     is_new?: BoolFieldUpdateOperationsInput | boolean
     posted_date?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -24983,8 +24890,8 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     title?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
-    ram?: PhoneUpdateramInput | $Enums.Ram[]
-    rom?: PhoneUpdateromInput | $Enums.Rom[]
+    ram?: StringFieldUpdateOperationsInput | string
+    rom?: StringFieldUpdateOperationsInput | string
     box_with_document?: BoolFieldUpdateOperationsInput | boolean
     is_new?: BoolFieldUpdateOperationsInput | boolean
     posted_date?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -25223,8 +25130,8 @@ export namespace Prisma {
     id?: number
     title: string
     description: string
-    ram?: PhoneCreateramInput | $Enums.Ram[]
-    rom?: PhoneCreateromInput | $Enums.Rom[]
+    ram: string
+    rom: string
     box_with_document?: boolean
     is_new?: boolean
     posted_date: Date | string
@@ -25290,8 +25197,8 @@ export namespace Prisma {
   export type PhoneUpdateWithoutUserInput = {
     title?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
-    ram?: PhoneUpdateramInput | $Enums.Ram[]
-    rom?: PhoneUpdateromInput | $Enums.Rom[]
+    ram?: StringFieldUpdateOperationsInput | string
+    rom?: StringFieldUpdateOperationsInput | string
     box_with_document?: BoolFieldUpdateOperationsInput | boolean
     is_new?: BoolFieldUpdateOperationsInput | boolean
     posted_date?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -25317,8 +25224,8 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     title?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
-    ram?: PhoneUpdateramInput | $Enums.Ram[]
-    rom?: PhoneUpdateromInput | $Enums.Rom[]
+    ram?: StringFieldUpdateOperationsInput | string
+    rom?: StringFieldUpdateOperationsInput | string
     box_with_document?: BoolFieldUpdateOperationsInput | boolean
     is_new?: BoolFieldUpdateOperationsInput | boolean
     posted_date?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -25344,8 +25251,8 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     title?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
-    ram?: PhoneUpdateramInput | $Enums.Ram[]
-    rom?: PhoneUpdateromInput | $Enums.Rom[]
+    ram?: StringFieldUpdateOperationsInput | string
+    rom?: StringFieldUpdateOperationsInput | string
     box_with_document?: BoolFieldUpdateOperationsInput | boolean
     is_new?: BoolFieldUpdateOperationsInput | boolean
     posted_date?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -25538,8 +25445,8 @@ export namespace Prisma {
     id?: number
     title: string
     description: string
-    ram?: PhoneCreateramInput | $Enums.Ram[]
-    rom?: PhoneCreateromInput | $Enums.Rom[]
+    ram: string
+    rom: string
     box_with_document?: boolean
     is_new?: boolean
     posted_date: Date | string
@@ -25561,8 +25468,8 @@ export namespace Prisma {
   export type PhoneUpdateWithoutCurrencyInput = {
     title?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
-    ram?: PhoneUpdateramInput | $Enums.Ram[]
-    rom?: PhoneUpdateromInput | $Enums.Rom[]
+    ram?: StringFieldUpdateOperationsInput | string
+    rom?: StringFieldUpdateOperationsInput | string
     box_with_document?: BoolFieldUpdateOperationsInput | boolean
     is_new?: BoolFieldUpdateOperationsInput | boolean
     posted_date?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -25588,8 +25495,8 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     title?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
-    ram?: PhoneUpdateramInput | $Enums.Ram[]
-    rom?: PhoneUpdateromInput | $Enums.Rom[]
+    ram?: StringFieldUpdateOperationsInput | string
+    rom?: StringFieldUpdateOperationsInput | string
     box_with_document?: BoolFieldUpdateOperationsInput | boolean
     is_new?: BoolFieldUpdateOperationsInput | boolean
     posted_date?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -25615,8 +25522,8 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     title?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
-    ram?: PhoneUpdateramInput | $Enums.Ram[]
-    rom?: PhoneUpdateromInput | $Enums.Rom[]
+    ram?: StringFieldUpdateOperationsInput | string
+    rom?: StringFieldUpdateOperationsInput | string
     box_with_document?: BoolFieldUpdateOperationsInput | boolean
     is_new?: BoolFieldUpdateOperationsInput | boolean
     posted_date?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -25644,8 +25551,8 @@ export namespace Prisma {
     id?: number
     title: string
     description: string
-    ram?: PhoneCreateramInput | $Enums.Ram[]
-    rom?: PhoneCreateromInput | $Enums.Rom[]
+    ram: string
+    rom: string
     box_with_document?: boolean
     is_new?: boolean
     posted_date: Date | string
@@ -25683,8 +25590,8 @@ export namespace Prisma {
   export type PhoneUpdateWithoutBrandsInput = {
     title?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
-    ram?: PhoneUpdateramInput | $Enums.Ram[]
-    rom?: PhoneUpdateromInput | $Enums.Rom[]
+    ram?: StringFieldUpdateOperationsInput | string
+    rom?: StringFieldUpdateOperationsInput | string
     box_with_document?: BoolFieldUpdateOperationsInput | boolean
     is_new?: BoolFieldUpdateOperationsInput | boolean
     posted_date?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -25710,8 +25617,8 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     title?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
-    ram?: PhoneUpdateramInput | $Enums.Ram[]
-    rom?: PhoneUpdateromInput | $Enums.Rom[]
+    ram?: StringFieldUpdateOperationsInput | string
+    rom?: StringFieldUpdateOperationsInput | string
     box_with_document?: BoolFieldUpdateOperationsInput | boolean
     is_new?: BoolFieldUpdateOperationsInput | boolean
     posted_date?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -25737,8 +25644,8 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     title?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
-    ram?: PhoneUpdateramInput | $Enums.Ram[]
-    rom?: PhoneUpdateromInput | $Enums.Rom[]
+    ram?: StringFieldUpdateOperationsInput | string
+    rom?: StringFieldUpdateOperationsInput | string
     box_with_document?: BoolFieldUpdateOperationsInput | boolean
     is_new?: BoolFieldUpdateOperationsInput | boolean
     posted_date?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -25761,8 +25668,8 @@ export namespace Prisma {
     id?: number
     title: string
     description: string
-    ram?: PhoneCreateramInput | $Enums.Ram[]
-    rom?: PhoneCreateromInput | $Enums.Rom[]
+    ram: string
+    rom: string
     box_with_document?: boolean
     is_new?: boolean
     posted_date: Date | string
@@ -25784,8 +25691,8 @@ export namespace Prisma {
   export type PhoneUpdateWithoutModelsInput = {
     title?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
-    ram?: PhoneUpdateramInput | $Enums.Ram[]
-    rom?: PhoneUpdateromInput | $Enums.Rom[]
+    ram?: StringFieldUpdateOperationsInput | string
+    rom?: StringFieldUpdateOperationsInput | string
     box_with_document?: BoolFieldUpdateOperationsInput | boolean
     is_new?: BoolFieldUpdateOperationsInput | boolean
     posted_date?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -25811,8 +25718,8 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     title?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
-    ram?: PhoneUpdateramInput | $Enums.Ram[]
-    rom?: PhoneUpdateromInput | $Enums.Rom[]
+    ram?: StringFieldUpdateOperationsInput | string
+    rom?: StringFieldUpdateOperationsInput | string
     box_with_document?: BoolFieldUpdateOperationsInput | boolean
     is_new?: BoolFieldUpdateOperationsInput | boolean
     posted_date?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -25838,8 +25745,8 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     title?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
-    ram?: PhoneUpdateramInput | $Enums.Ram[]
-    rom?: PhoneUpdateromInput | $Enums.Rom[]
+    ram?: StringFieldUpdateOperationsInput | string
+    rom?: StringFieldUpdateOperationsInput | string
     box_with_document?: BoolFieldUpdateOperationsInput | boolean
     is_new?: BoolFieldUpdateOperationsInput | boolean
     posted_date?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -25862,8 +25769,8 @@ export namespace Prisma {
     id?: number
     title: string
     description: string
-    ram?: PhoneCreateramInput | $Enums.Ram[]
-    rom?: PhoneCreateromInput | $Enums.Rom[]
+    ram: string
+    rom: string
     box_with_document?: boolean
     is_new?: boolean
     posted_date: Date | string
@@ -25885,8 +25792,8 @@ export namespace Prisma {
   export type PhoneUpdateWithoutColorInput = {
     title?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
-    ram?: PhoneUpdateramInput | $Enums.Ram[]
-    rom?: PhoneUpdateromInput | $Enums.Rom[]
+    ram?: StringFieldUpdateOperationsInput | string
+    rom?: StringFieldUpdateOperationsInput | string
     box_with_document?: BoolFieldUpdateOperationsInput | boolean
     is_new?: BoolFieldUpdateOperationsInput | boolean
     posted_date?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -25912,8 +25819,8 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     title?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
-    ram?: PhoneUpdateramInput | $Enums.Ram[]
-    rom?: PhoneUpdateromInput | $Enums.Rom[]
+    ram?: StringFieldUpdateOperationsInput | string
+    rom?: StringFieldUpdateOperationsInput | string
     box_with_document?: BoolFieldUpdateOperationsInput | boolean
     is_new?: BoolFieldUpdateOperationsInput | boolean
     posted_date?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -25939,8 +25846,8 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     title?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
-    ram?: PhoneUpdateramInput | $Enums.Ram[]
-    rom?: PhoneUpdateromInput | $Enums.Rom[]
+    ram?: StringFieldUpdateOperationsInput | string
+    rom?: StringFieldUpdateOperationsInput | string
     box_with_document?: BoolFieldUpdateOperationsInput | boolean
     is_new?: BoolFieldUpdateOperationsInput | boolean
     posted_date?: DateTimeFieldUpdateOperationsInput | Date | string

@@ -2,7 +2,6 @@ import { Injectable } from '@nestjs/common';
 import { CreatePhoneDto } from './dto/create-phone.dto';
 import { UpdatePhoneDto } from './dto/update-phone.dto';
 import { PrismaService } from '../prisma/prisma.service';
-import { Ram, Rom } from '../../generated/prisma';
 
 @Injectable()
 export class PhoneService {
@@ -11,13 +10,7 @@ export class PhoneService {
     return await this.prisma.phone.create({
       data: {
         ...createPhoneDto,
-        ram: Array.isArray(createPhoneDto.ram) 
-          ? createPhoneDto.ram.map(r => r as Ram) 
-          : [createPhoneDto.ram as Ram],
-        rom: Array.isArray(createPhoneDto.rom) 
-          ? createPhoneDto.rom.map(r => r as Rom) 
-          : [createPhoneDto.rom as Rom],
-      }
+      },
     });
   }
 
@@ -52,15 +45,9 @@ export class PhoneService {
       where: { id },
       data: {
         ...updatePhoneDto,
-        ram: Array.isArray(updatePhoneDto.ram)
-          ? updatePhoneDto.ram.map(r => r as Ram)
-          : [updatePhoneDto.ram as Ram],
-        rom: Array.isArray(updatePhoneDto.rom)
-          ? updatePhoneDto.rom.map(r => r as Rom)
-          : [updatePhoneDto.rom as Rom],
       },
-    })
-    if (!result){
+    });
+    if (!result) {
       throw new Error('Phone not found');
     }
     return result;

@@ -1,30 +1,5 @@
 import { ApiProperty } from "@nestjs/swagger";
 import { IsBoolean, IsDate, IsEnum, IsNotEmpty, IsNumber, IsOptional, IsString } from "class-validator";
-import { Ram, Rom } from "../../../generated/prisma";
-
-// enum Ram {
-//     'GB_4',
-//     'GB_6',
-//     'GB_8',
-//     'GB_12',
-//     'GB_16',
-//     'GB_24',
-//     'GB_32',
-//     'GB_64',
-//     'GB_128'
-// }
-
-// enum Rom {
-//     'GB_4',
-//     'GB_6',
-//     'GB_8',
-//     'GB_12',
-//     'GB_16',
-//     'GB_24',
-//     'GB_32',
-//     'GB_64',
-//     'GB_128'
-// }
 
 export class UpdatePhoneDto {
     @ApiProperty()
@@ -38,21 +13,19 @@ export class UpdatePhoneDto {
     description: string;
 
     @ApiProperty()
-    @IsEnum(Ram)
+    @IsString()
     @IsNotEmpty()
-    ram: Ram;
+    ram: string;
 
     @ApiProperty()
-    @IsEnum(Rom)
+    @IsString()
     @IsNotEmpty()
-    rom: Rom;
-
+    rom: string;
 
     @ApiProperty()
     @IsBoolean()
     @IsNotEmpty()
     box_with_document: boolean;
-
 
     @ApiProperty()
     @IsBoolean()

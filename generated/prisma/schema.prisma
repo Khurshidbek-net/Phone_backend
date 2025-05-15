@@ -102,29 +102,29 @@ model PhoneNumber {
   User User[] @relation("MainPhone")
 }
 
-enum Ram {
-  GB_4
-  GB_6
-  GB_8
-  GB_12
-  GB_16
-  GB_24
-  GB_32
-  GB_64
-  GB_128
-}
+// enum Ram {
+//   GB_4   @map("4GB")
+//   GB_6   @map("6GB")
+//   GB_8   @map("8GB")
+//   GB_12  @map("12GB")
+//   GB_16  @map("16GB")
+//   GB_24  @map("24GB")
+//   GB_32  @map("32GB")
+//   GB_64  @map("64GB")
+//   GB_128 @map("128GB")
+// }
 
-enum Rom {
-  GB_4
-  GB_6
-  GB_8
-  GB_12
-  GB_16
-  GB_24
-  GB_32
-  GB_64
-  GB_128
-}
+// enum Rom {
+//   GB_4   @map("4GB")
+//   GB_6   @map("6GB")
+//   GB_8   @map("8GB")
+//   GB_12  @map("12GB")
+//   GB_16  @map("16GB")
+//   GB_24  @map("24GB")
+//   GB_32  @map("32GB")
+//   GB_64  @map("64GB")
+//   GB_128 @map("128GB")
+// }
 
 model Currency {
   id   Int    @id @default(autoincrement())
@@ -161,8 +161,8 @@ model Phone {
   id                Int      @id @default(autoincrement())
   title             String
   description       String
-  ram               Ram[]
-  rom               Rom[]
+  ram               String // Enum o'rniga oddiy string
+  rom               String // Enum o'rniga oddiy string
   box_with_document Boolean  @default(true)
   is_new            Boolean  @default(false)
   posted_date       DateTime
@@ -180,14 +180,13 @@ model Phone {
   modelId    Int?
   brandId    Int?
   colorId    Int?
-  // addressId  Int?
   userId     Int?
 
   Currency Currency? @relation(fields: [currencyId], references: [id])
   Models   Model?    @relation(fields: [modelId], references: [id])
   Brands   Brand?    @relation(fields: [brandId], references: [id])
   Color    Color?    @relation(fields: [colorId], references: [id])
-  User     User?     @relation(fields: [userId], references: [id])
+  User     User?     @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   Images   Image[]
   Reviews  Review[]
