@@ -49,7 +49,7 @@ model User {
   firstName     String?
   lastName      String?
   birthDate     DateTime
-  balance        Decimal   @default(0)
+  balance       Decimal   @default(0)
   loginAttempts Int       @default(0)
   lockedUntil   DateTime?
   isLocked      Boolean   @default(false)
@@ -73,8 +73,10 @@ model User {
   languageId Int?
   language   Language? @relation(fields: [languageId], references: [id])
 
-  Emails      Email[]
+  Emails       Email[]
   PhoneNumbers PhoneNumber[]
+  Address      Address[]
+  Phones       Phone[]
 }
 
 model Email {
@@ -99,4 +101,136 @@ model PhoneNumber {
   user   User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   User User[] @relation("MainPhone")
+}
+
+enum Ram {
+  GB_4
+  GB_6
+  GB_8
+  GB_12
+  GB_16
+  GB_24
+  GB_32
+  GB_64
+  GB_128
+}
+
+enum Rom {
+  GB_4
+  GB_6
+  GB_8
+  GB_12
+  GB_16
+  GB_24
+  GB_32
+  GB_64
+  GB_128
+}
+
+model Currency {
+  id   Int    @id @default(autoincrement())
+  name String
+
+  Phones Phone[]
+}
+
+model Brand {
+  id   Int    @id @default(autoincrement())
+  name String
+
+  Models Model[]
+  Phones Phone[]
+}
+
+model Model {
+  id      Int    @id @default(autoincrement())
+  name    String
+  brandId Int
+
+  Brand  Brand   @relation(fields: [brandId], references: [id])
+  Phones Phone[]
+}
+
+model Color {
+  id   Int    @id @default(autoincrement())
+  name String
+
+  Phones Phone[]
+}
+
+model Address {
+  id      Int    @id @default(autoincrement())
+  name    String
+  address String
+  lot     Float
+  long    Float
+  userId  Int
+
+  Users User @relation(fields: [userId], references: [id])
+
+  Phones Phone[]
+}
+
+model Phone {
+  id                Int      @id @default(autoincrement())
+  title             String
+  description       String
+  ram               Ram[]
+  rom               Rom[]
+  box_with_document Boolean  @default(true)
+  is_new            Boolean  @default(false)
+  posted_date       DateTime
+  views             BigInt
+  like_counts       BigInt
+  is_negotiable     Boolean  @default(false)
+  brand             String
+  model             String
+  is_active         Boolean  @default(true)
+  is_checked        Boolean  @default(false)
+  is_archived       Boolean  @default(false)
+
+  currencyId Int
+  modelId    Int
+  brandId    Int
+  colorId    Int
+  addressId  Int
+  userId     Int
+
+  Currency Currency @relation(fields: [currencyId], references: [id])
+  Models   Model    @relation(fields: [modelId], references: [id])
+  Brands   Brand    @relation(fields: [brandId], references: [id])
+  Color    Color    @relation(fields: [colorId], references: [id])
+  Address  Address  @relation(fields: [addressId], references: [id])
+  User     User     @relation(fields: [userId], references: [id])
+
+  Images   Image[]
+  Reviews  Review[]
+  Archives Archives[]
+}
+
+model Image {
+  id  Int    @id @default(autoincrement())
+  url String
+
+  phoneId Int
+
+  Phone Phone @relation(fields: [phoneId], references: [id])
+}
+
+model Review {
+  id   Int      @id @default(autoincrement())
+  date DateTime
+
+  phoneId Int
+
+  Phone Phone @relation(fields: [phoneId], references: [id])
+}
+
+model Archives {
+  id         Int      @id @default(autoincrement())
+  archivedAt DateTime
+
+  phoneId Int
+
+  Phone Phone @relation(fields: [phoneId], references: [id])
 }

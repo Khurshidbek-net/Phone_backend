@@ -179,6 +179,79 @@ exports.Prisma.PhoneNumberScalarFieldEnum = {
   userId: 'userId'
 };
 
+exports.Prisma.CurrencyScalarFieldEnum = {
+  id: 'id',
+  name: 'name'
+};
+
+exports.Prisma.BrandScalarFieldEnum = {
+  id: 'id',
+  name: 'name'
+};
+
+exports.Prisma.ModelScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  brandId: 'brandId'
+};
+
+exports.Prisma.ColorScalarFieldEnum = {
+  id: 'id',
+  name: 'name'
+};
+
+exports.Prisma.AddressScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  address: 'address',
+  lot: 'lot',
+  long: 'long',
+  userId: 'userId'
+};
+
+exports.Prisma.PhoneScalarFieldEnum = {
+  id: 'id',
+  title: 'title',
+  description: 'description',
+  ram: 'ram',
+  rom: 'rom',
+  box_with_document: 'box_with_document',
+  is_new: 'is_new',
+  posted_date: 'posted_date',
+  views: 'views',
+  like_counts: 'like_counts',
+  is_negotiable: 'is_negotiable',
+  brand: 'brand',
+  model: 'model',
+  is_active: 'is_active',
+  is_checked: 'is_checked',
+  is_archived: 'is_archived',
+  currencyId: 'currencyId',
+  modelId: 'modelId',
+  brandId: 'brandId',
+  colorId: 'colorId',
+  addressId: 'addressId',
+  userId: 'userId'
+};
+
+exports.Prisma.ImageScalarFieldEnum = {
+  id: 'id',
+  url: 'url',
+  phoneId: 'phoneId'
+};
+
+exports.Prisma.ReviewScalarFieldEnum = {
+  id: 'id',
+  date: 'date',
+  phoneId: 'phoneId'
+};
+
+exports.Prisma.ArchivesScalarFieldEnum = {
+  id: 'id',
+  archivedAt: 'archivedAt',
+  phoneId: 'phoneId'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -193,7 +266,29 @@ exports.Prisma.NullsOrder = {
   first: 'first',
   last: 'last'
 };
+exports.Ram = exports.$Enums.Ram = {
+  GB_4: 'GB_4',
+  GB_6: 'GB_6',
+  GB_8: 'GB_8',
+  GB_12: 'GB_12',
+  GB_16: 'GB_16',
+  GB_24: 'GB_24',
+  GB_32: 'GB_32',
+  GB_64: 'GB_64',
+  GB_128: 'GB_128'
+};
 
+exports.Rom = exports.$Enums.Rom = {
+  GB_4: 'GB_4',
+  GB_6: 'GB_6',
+  GB_8: 'GB_8',
+  GB_12: 'GB_12',
+  GB_16: 'GB_16',
+  GB_24: 'GB_24',
+  GB_32: 'GB_32',
+  GB_64: 'GB_64',
+  GB_128: 'GB_128'
+};
 
 exports.Prisma.ModelName = {
   Region: 'Region',
@@ -201,7 +296,16 @@ exports.Prisma.ModelName = {
   Language: 'Language',
   User: 'User',
   Email: 'Email',
-  PhoneNumber: 'PhoneNumber'
+  PhoneNumber: 'PhoneNumber',
+  Currency: 'Currency',
+  Brand: 'Brand',
+  Model: 'Model',
+  Color: 'Color',
+  Address: 'Address',
+  Phone: 'Phone',
+  Image: 'Image',
+  Review: 'Review',
+  Archives: 'Archives'
 };
 
 /**
