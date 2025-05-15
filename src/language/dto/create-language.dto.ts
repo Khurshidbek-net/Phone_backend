@@ -5,8 +5,8 @@ export class CreateLanguageDto {
   @ApiProperty()
   @IsNotEmpty()
   @IsString()
-  
   name: string;
+  
   @ApiProperty()
   @IsNotEmpty()
   @IsString()

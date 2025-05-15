@@ -9,6 +9,9 @@ import { PrismaModule } from './prisma/prisma.module';
 import { RegionModule } from './region/region.module';
 import { DistrictModule } from './district/district.module';
 import { LanguageModule } from './language/language.module';
+import { ColorModule } from './color/color.module';
+import { ImageModule } from './image/image.module';
+import { ReviewModule } from './review/review.module';
 
 @Module({
   imports: [
@@ -17,7 +20,10 @@ import { LanguageModule } from './language/language.module';
     PrismaModule,
     RegionModule,
     DistrictModule,
-    LanguageModule
+    LanguageModule,
+    ColorModule,
+    ImageModule,
+    ReviewModule
   ],
   controllers: [],
   providers: [
