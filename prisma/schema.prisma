@@ -14,32 +14,89 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-// model User {
-//   id        String   @id @default(cuid())
-//   firstName      String?
-//   lastName       String?
-//   birthDate     DateTime
-//   email     String?  @unique
-//   password  String?
-//   createdAt DateTime @default(now())
-//   updatedAt DateTime @updatedAt
-// }
-
 model Region {
-  id        Int   @id @default(autoincrement())
-  name      String @unique
+  id        Int      @id @default(autoincrement())
+  name      String   @unique
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  
+
   Districts District[]
 }
 
 model District {
-  id        Int   @id @default(autoincrement())
-  name      String @unique
+  id        Int      @id @default(autoincrement())
+  name      String   @unique
   regionId  Int
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  region Region @relation(fields: [regionId], references: [id])
+  Region Region @relation(fields: [regionId], references: [id], onDelete: Cascade)
+
+  Users User[]
+}
+
+model Language {
+  id        Int      @id @default(autoincrement())
+  name      String   @unique
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  Users User[]
+}
+
+model User {
+  id            Int       @id @default(autoincrement())
+  firstName     String?
+  lastName      String?
+  birthDate     DateTime
+  balance        Decimal   @default(0)
+  loginAttempts Int       @default(0)
+  lockedUntil   DateTime?
+  isLocked      Boolean   @default(false)
+  isActive      Boolean   @default(true)
+  isDeleted     Boolean   @default(false)
+  lastSeen      DateTime?
+  hashedToken   String?
+
+  mainEmailId Int?
+  mainEmail   Email? @relation("MainEmail", fields: [mainEmailId], references: [id], onDelete: SetNull)
+
+  mainPhoneId Int?
+  mainPhone   PhoneNumber? @relation("MainPhone", fields: [mainPhoneId], references: [id], onDelete: SetNull)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  districtId Int?
+  district   District? @relation(fields: [districtId], references: [id])
+
+  languageId Int?
+  language   Language? @relation(fields: [languageId], references: [id])
+
+  Emails      Email[]
+  PhoneNumbers PhoneNumber[]
+}
+
+model Email {
+  id        Int      @id @default(autoincrement())
+  email     String   @unique
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  userId Int
+  user   User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  User User[] @relation("MainEmail")
+}
+
+model PhoneNumber {
+  id        Int      @id @default(autoincrement())
+  phone     String   @unique
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  userId Int
+  user   User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  User User[] @relation("MainPhone")
 }

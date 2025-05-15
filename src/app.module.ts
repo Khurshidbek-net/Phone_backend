@@ -7,13 +7,17 @@ import { AllExceptionsFilter } from './logging/error.handling';
 import { PrismaService } from './prisma/prisma.service';
 import { PrismaModule } from './prisma/prisma.module';
 import { RegionModule } from './region/region.module';
+import { DistrictModule } from './district/district.module';
+import { LanguageModule } from './language/language.module';
 
 @Module({
   imports: [
     ConfigModule.forRoot({ envFilePath: '.env', isGlobal: true }),
     WinstonModule.forRoot(winstonConfig),
     PrismaModule,
-    RegionModule
+    RegionModule,
+    DistrictModule,
+    LanguageModule
   ],
   controllers: [],
   providers: [

@@ -135,6 +135,50 @@ exports.Prisma.DistrictScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
+exports.Prisma.LanguageScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.UserScalarFieldEnum = {
+  id: 'id',
+  firstName: 'firstName',
+  lastName: 'lastName',
+  birthDate: 'birthDate',
+  balance: 'balance',
+  loginAttempts: 'loginAttempts',
+  lockedUntil: 'lockedUntil',
+  isLocked: 'isLocked',
+  isActive: 'isActive',
+  isDeleted: 'isDeleted',
+  lastSeen: 'lastSeen',
+  hashedToken: 'hashedToken',
+  mainEmailId: 'mainEmailId',
+  mainPhoneId: 'mainPhoneId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  districtId: 'districtId',
+  languageId: 'languageId'
+};
+
+exports.Prisma.EmailScalarFieldEnum = {
+  id: 'id',
+  email: 'email',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  userId: 'userId'
+};
+
+exports.Prisma.PhoneNumberScalarFieldEnum = {
+  id: 'id',
+  phone: 'phone',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  userId: 'userId'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -145,10 +189,19 @@ exports.Prisma.QueryMode = {
   insensitive: 'insensitive'
 };
 
+exports.Prisma.NullsOrder = {
+  first: 'first',
+  last: 'last'
+};
+
 
 exports.Prisma.ModelName = {
   Region: 'Region',
-  District: 'District'
+  District: 'District',
+  Language: 'Language',
+  User: 'User',
+  Email: 'Email',
+  PhoneNumber: 'PhoneNumber'
 };
 
 /**
