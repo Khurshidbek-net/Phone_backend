@@ -64,11 +64,6 @@ export type Model = $Result.DefaultSelection<Prisma.$ModelPayload>
  */
 export type Color = $Result.DefaultSelection<Prisma.$ColorPayload>
 /**
- * Model Address
- * 
- */
-export type Address = $Result.DefaultSelection<Prisma.$AddressPayload>
-/**
  * Model Phone
  * 
  */
@@ -356,16 +351,6 @@ export class PrismaClient<
     * ```
     */
   get color(): Prisma.ColorDelegate<ExtArgs, ClientOptions>;
-
-  /**
-   * `prisma.address`: Exposes CRUD operations for the **Address** model.
-    * Example usage:
-    * ```ts
-    * // Fetch zero or more Addresses
-    * const addresses = await prisma.address.findMany()
-    * ```
-    */
-  get address(): Prisma.AddressDelegate<ExtArgs, ClientOptions>;
 
   /**
    * `prisma.phone`: Exposes CRUD operations for the **Phone** model.
@@ -856,7 +841,6 @@ export namespace Prisma {
     Brand: 'Brand',
     Model: 'Model',
     Color: 'Color',
-    Address: 'Address',
     Phone: 'Phone',
     Image: 'Image',
     Review: 'Review',
@@ -879,7 +863,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "region" | "district" | "language" | "user" | "email" | "phoneNumber" | "currency" | "brand" | "model" | "color" | "address" | "phone" | "image" | "review" | "archives"
+      modelProps: "region" | "district" | "language" | "user" | "email" | "phoneNumber" | "currency" | "brand" | "model" | "color" | "phone" | "image" | "review" | "archives"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1623,80 +1607,6 @@ export namespace Prisma {
           }
         }
       }
-      Address: {
-        payload: Prisma.$AddressPayload<ExtArgs>
-        fields: Prisma.AddressFieldRefs
-        operations: {
-          findUnique: {
-            args: Prisma.AddressFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$AddressPayload> | null
-          }
-          findUniqueOrThrow: {
-            args: Prisma.AddressFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$AddressPayload>
-          }
-          findFirst: {
-            args: Prisma.AddressFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$AddressPayload> | null
-          }
-          findFirstOrThrow: {
-            args: Prisma.AddressFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$AddressPayload>
-          }
-          findMany: {
-            args: Prisma.AddressFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$AddressPayload>[]
-          }
-          create: {
-            args: Prisma.AddressCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$AddressPayload>
-          }
-          createMany: {
-            args: Prisma.AddressCreateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          createManyAndReturn: {
-            args: Prisma.AddressCreateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$AddressPayload>[]
-          }
-          delete: {
-            args: Prisma.AddressDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$AddressPayload>
-          }
-          update: {
-            args: Prisma.AddressUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$AddressPayload>
-          }
-          deleteMany: {
-            args: Prisma.AddressDeleteManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          updateMany: {
-            args: Prisma.AddressUpdateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          updateManyAndReturn: {
-            args: Prisma.AddressUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$AddressPayload>[]
-          }
-          upsert: {
-            args: Prisma.AddressUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$AddressPayload>
-          }
-          aggregate: {
-            args: Prisma.AddressAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregateAddress>
-          }
-          groupBy: {
-            args: Prisma.AddressGroupByArgs<ExtArgs>
-            result: $Utils.Optional<AddressGroupByOutputType>[]
-          }
-          count: {
-            args: Prisma.AddressCountArgs<ExtArgs>
-            result: $Utils.Optional<AddressCountAggregateOutputType> | number
-          }
-        }
-      }
       Phone: {
         payload: Prisma.$PhonePayload<ExtArgs>
         fields: Prisma.PhoneFieldRefs
@@ -2087,7 +1997,6 @@ export namespace Prisma {
     brand?: BrandOmit
     model?: ModelOmit
     color?: ColorOmit
-    address?: AddressOmit
     phone?: PhoneOmit
     image?: ImageOmit
     review?: ReviewOmit
@@ -2281,14 +2190,12 @@ export namespace Prisma {
   export type UserCountOutputType = {
     Emails: number
     PhoneNumbers: number
-    Address: number
     Phones: number
   }
 
   export type UserCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     Emails?: boolean | UserCountOutputTypeCountEmailsArgs
     PhoneNumbers?: boolean | UserCountOutputTypeCountPhoneNumbersArgs
-    Address?: boolean | UserCountOutputTypeCountAddressArgs
     Phones?: boolean | UserCountOutputTypeCountPhonesArgs
   }
 
@@ -2315,13 +2222,6 @@ export namespace Prisma {
    */
   export type UserCountOutputTypeCountPhoneNumbersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: PhoneNumberWhereInput
-  }
-
-  /**
-   * UserCountOutputType without action
-   */
-  export type UserCountOutputTypeCountAddressArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: AddressWhereInput
   }
 
   /**
@@ -2523,37 +2423,6 @@ export namespace Prisma {
    * ColorCountOutputType without action
    */
   export type ColorCountOutputTypeCountPhonesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: PhoneWhereInput
-  }
-
-
-  /**
-   * Count Type AddressCountOutputType
-   */
-
-  export type AddressCountOutputType = {
-    Phones: number
-  }
-
-  export type AddressCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    Phones?: boolean | AddressCountOutputTypeCountPhonesArgs
-  }
-
-  // Custom InputTypes
-  /**
-   * AddressCountOutputType without action
-   */
-  export type AddressCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the AddressCountOutputType
-     */
-    select?: AddressCountOutputTypeSelect<ExtArgs> | null
-  }
-
-  /**
-   * AddressCountOutputType without action
-   */
-  export type AddressCountOutputTypeCountPhonesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: PhoneWhereInput
   }
 
@@ -6251,7 +6120,6 @@ export namespace Prisma {
     language?: boolean | User$languageArgs<ExtArgs>
     Emails?: boolean | User$EmailsArgs<ExtArgs>
     PhoneNumbers?: boolean | User$PhoneNumbersArgs<ExtArgs>
-    Address?: boolean | User$AddressArgs<ExtArgs>
     Phones?: boolean | User$PhonesArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
@@ -6335,7 +6203,6 @@ export namespace Prisma {
     language?: boolean | User$languageArgs<ExtArgs>
     Emails?: boolean | User$EmailsArgs<ExtArgs>
     PhoneNumbers?: boolean | User$PhoneNumbersArgs<ExtArgs>
-    Address?: boolean | User$AddressArgs<ExtArgs>
     Phones?: boolean | User$PhonesArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }
@@ -6361,7 +6228,6 @@ export namespace Prisma {
       language: Prisma.$LanguagePayload<ExtArgs> | null
       Emails: Prisma.$EmailPayload<ExtArgs>[]
       PhoneNumbers: Prisma.$PhoneNumberPayload<ExtArgs>[]
-      Address: Prisma.$AddressPayload<ExtArgs>[]
       Phones: Prisma.$PhonePayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
@@ -6783,7 +6649,6 @@ export namespace Prisma {
     language<T extends User$languageArgs<ExtArgs> = {}>(args?: Subset<T, User$languageArgs<ExtArgs>>): Prisma__LanguageClient<$Result.GetResult<Prisma.$LanguagePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     Emails<T extends User$EmailsArgs<ExtArgs> = {}>(args?: Subset<T, User$EmailsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$EmailPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     PhoneNumbers<T extends User$PhoneNumbersArgs<ExtArgs> = {}>(args?: Subset<T, User$PhoneNumbersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PhoneNumberPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    Address<T extends User$AddressArgs<ExtArgs> = {}>(args?: Subset<T, User$AddressArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AddressPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     Phones<T extends User$PhonesArgs<ExtArgs> = {}>(args?: Subset<T, User$PhonesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PhonePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -7349,30 +7214,6 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: PhoneNumberScalarFieldEnum | PhoneNumberScalarFieldEnum[]
-  }
-
-  /**
-   * User.Address
-   */
-  export type User$AddressArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Address
-     */
-    select?: AddressSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Address
-     */
-    omit?: AddressOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: AddressInclude<ExtArgs> | null
-    where?: AddressWhereInput
-    orderBy?: AddressOrderByWithRelationInput | AddressOrderByWithRelationInput[]
-    cursor?: AddressWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: AddressScalarFieldEnum | AddressScalarFieldEnum[]
   }
 
   /**
@@ -13994,1153 +13835,6 @@ export namespace Prisma {
 
 
   /**
-   * Model Address
-   */
-
-  export type AggregateAddress = {
-    _count: AddressCountAggregateOutputType | null
-    _avg: AddressAvgAggregateOutputType | null
-    _sum: AddressSumAggregateOutputType | null
-    _min: AddressMinAggregateOutputType | null
-    _max: AddressMaxAggregateOutputType | null
-  }
-
-  export type AddressAvgAggregateOutputType = {
-    id: number | null
-    lot: number | null
-    long: number | null
-    userId: number | null
-  }
-
-  export type AddressSumAggregateOutputType = {
-    id: number | null
-    lot: number | null
-    long: number | null
-    userId: number | null
-  }
-
-  export type AddressMinAggregateOutputType = {
-    id: number | null
-    name: string | null
-    address: string | null
-    lot: number | null
-    long: number | null
-    userId: number | null
-  }
-
-  export type AddressMaxAggregateOutputType = {
-    id: number | null
-    name: string | null
-    address: string | null
-    lot: number | null
-    long: number | null
-    userId: number | null
-  }
-
-  export type AddressCountAggregateOutputType = {
-    id: number
-    name: number
-    address: number
-    lot: number
-    long: number
-    userId: number
-    _all: number
-  }
-
-
-  export type AddressAvgAggregateInputType = {
-    id?: true
-    lot?: true
-    long?: true
-    userId?: true
-  }
-
-  export type AddressSumAggregateInputType = {
-    id?: true
-    lot?: true
-    long?: true
-    userId?: true
-  }
-
-  export type AddressMinAggregateInputType = {
-    id?: true
-    name?: true
-    address?: true
-    lot?: true
-    long?: true
-    userId?: true
-  }
-
-  export type AddressMaxAggregateInputType = {
-    id?: true
-    name?: true
-    address?: true
-    lot?: true
-    long?: true
-    userId?: true
-  }
-
-  export type AddressCountAggregateInputType = {
-    id?: true
-    name?: true
-    address?: true
-    lot?: true
-    long?: true
-    userId?: true
-    _all?: true
-  }
-
-  export type AddressAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which Address to aggregate.
-     */
-    where?: AddressWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of Addresses to fetch.
-     */
-    orderBy?: AddressOrderByWithRelationInput | AddressOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the start position
-     */
-    cursor?: AddressWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` Addresses from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` Addresses.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Count returned Addresses
-    **/
-    _count?: true | AddressCountAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to average
-    **/
-    _avg?: AddressAvgAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to sum
-    **/
-    _sum?: AddressSumAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the minimum value
-    **/
-    _min?: AddressMinAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the maximum value
-    **/
-    _max?: AddressMaxAggregateInputType
-  }
-
-  export type GetAddressAggregateType<T extends AddressAggregateArgs> = {
-        [P in keyof T & keyof AggregateAddress]: P extends '_count' | 'count'
-      ? T[P] extends true
-        ? number
-        : GetScalarType<T[P], AggregateAddress[P]>
-      : GetScalarType<T[P], AggregateAddress[P]>
-  }
-
-
-
-
-  export type AddressGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: AddressWhereInput
-    orderBy?: AddressOrderByWithAggregationInput | AddressOrderByWithAggregationInput[]
-    by: AddressScalarFieldEnum[] | AddressScalarFieldEnum
-    having?: AddressScalarWhereWithAggregatesInput
-    take?: number
-    skip?: number
-    _count?: AddressCountAggregateInputType | true
-    _avg?: AddressAvgAggregateInputType
-    _sum?: AddressSumAggregateInputType
-    _min?: AddressMinAggregateInputType
-    _max?: AddressMaxAggregateInputType
-  }
-
-  export type AddressGroupByOutputType = {
-    id: number
-    name: string
-    address: string
-    lot: number
-    long: number
-    userId: number
-    _count: AddressCountAggregateOutputType | null
-    _avg: AddressAvgAggregateOutputType | null
-    _sum: AddressSumAggregateOutputType | null
-    _min: AddressMinAggregateOutputType | null
-    _max: AddressMaxAggregateOutputType | null
-  }
-
-  type GetAddressGroupByPayload<T extends AddressGroupByArgs> = Prisma.PrismaPromise<
-    Array<
-      PickEnumerable<AddressGroupByOutputType, T['by']> &
-        {
-          [P in ((keyof T) & (keyof AddressGroupByOutputType))]: P extends '_count'
-            ? T[P] extends boolean
-              ? number
-              : GetScalarType<T[P], AddressGroupByOutputType[P]>
-            : GetScalarType<T[P], AddressGroupByOutputType[P]>
-        }
-      >
-    >
-
-
-  export type AddressSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    name?: boolean
-    address?: boolean
-    lot?: boolean
-    long?: boolean
-    userId?: boolean
-    Users?: boolean | UserDefaultArgs<ExtArgs>
-    Phones?: boolean | Address$PhonesArgs<ExtArgs>
-    _count?: boolean | AddressCountOutputTypeDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["address"]>
-
-  export type AddressSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    name?: boolean
-    address?: boolean
-    lot?: boolean
-    long?: boolean
-    userId?: boolean
-    Users?: boolean | UserDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["address"]>
-
-  export type AddressSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    name?: boolean
-    address?: boolean
-    lot?: boolean
-    long?: boolean
-    userId?: boolean
-    Users?: boolean | UserDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["address"]>
-
-  export type AddressSelectScalar = {
-    id?: boolean
-    name?: boolean
-    address?: boolean
-    lot?: boolean
-    long?: boolean
-    userId?: boolean
-  }
-
-  export type AddressOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "address" | "lot" | "long" | "userId", ExtArgs["result"]["address"]>
-  export type AddressInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    Users?: boolean | UserDefaultArgs<ExtArgs>
-    Phones?: boolean | Address$PhonesArgs<ExtArgs>
-    _count?: boolean | AddressCountOutputTypeDefaultArgs<ExtArgs>
-  }
-  export type AddressIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    Users?: boolean | UserDefaultArgs<ExtArgs>
-  }
-  export type AddressIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    Users?: boolean | UserDefaultArgs<ExtArgs>
-  }
-
-  export type $AddressPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "Address"
-    objects: {
-      Users: Prisma.$UserPayload<ExtArgs>
-      Phones: Prisma.$PhonePayload<ExtArgs>[]
-    }
-    scalars: $Extensions.GetPayloadResult<{
-      id: number
-      name: string
-      address: string
-      lot: number
-      long: number
-      userId: number
-    }, ExtArgs["result"]["address"]>
-    composites: {}
-  }
-
-  type AddressGetPayload<S extends boolean | null | undefined | AddressDefaultArgs> = $Result.GetResult<Prisma.$AddressPayload, S>
-
-  type AddressCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<AddressFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: AddressCountAggregateInputType | true
-    }
-
-  export interface AddressDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Address'], meta: { name: 'Address' } }
-    /**
-     * Find zero or one Address that matches the filter.
-     * @param {AddressFindUniqueArgs} args - Arguments to find a Address
-     * @example
-     * // Get one Address
-     * const address = await prisma.address.findUnique({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUnique<T extends AddressFindUniqueArgs>(args: SelectSubset<T, AddressFindUniqueArgs<ExtArgs>>): Prisma__AddressClient<$Result.GetResult<Prisma.$AddressPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find one Address that matches the filter or throw an error with `error.code='P2025'`
-     * if no matches were found.
-     * @param {AddressFindUniqueOrThrowArgs} args - Arguments to find a Address
-     * @example
-     * // Get one Address
-     * const address = await prisma.address.findUniqueOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUniqueOrThrow<T extends AddressFindUniqueOrThrowArgs>(args: SelectSubset<T, AddressFindUniqueOrThrowArgs<ExtArgs>>): Prisma__AddressClient<$Result.GetResult<Prisma.$AddressPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find the first Address that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {AddressFindFirstArgs} args - Arguments to find a Address
-     * @example
-     * // Get one Address
-     * const address = await prisma.address.findFirst({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirst<T extends AddressFindFirstArgs>(args?: SelectSubset<T, AddressFindFirstArgs<ExtArgs>>): Prisma__AddressClient<$Result.GetResult<Prisma.$AddressPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find the first Address that matches the filter or
-     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {AddressFindFirstOrThrowArgs} args - Arguments to find a Address
-     * @example
-     * // Get one Address
-     * const address = await prisma.address.findFirstOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirstOrThrow<T extends AddressFindFirstOrThrowArgs>(args?: SelectSubset<T, AddressFindFirstOrThrowArgs<ExtArgs>>): Prisma__AddressClient<$Result.GetResult<Prisma.$AddressPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find zero or more Addresses that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {AddressFindManyArgs} args - Arguments to filter and select certain fields only.
-     * @example
-     * // Get all Addresses
-     * const addresses = await prisma.address.findMany()
-     * 
-     * // Get first 10 Addresses
-     * const addresses = await prisma.address.findMany({ take: 10 })
-     * 
-     * // Only select the `id`
-     * const addressWithIdOnly = await prisma.address.findMany({ select: { id: true } })
-     * 
-     */
-    findMany<T extends AddressFindManyArgs>(args?: SelectSubset<T, AddressFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AddressPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
-
-    /**
-     * Create a Address.
-     * @param {AddressCreateArgs} args - Arguments to create a Address.
-     * @example
-     * // Create one Address
-     * const Address = await prisma.address.create({
-     *   data: {
-     *     // ... data to create a Address
-     *   }
-     * })
-     * 
-     */
-    create<T extends AddressCreateArgs>(args: SelectSubset<T, AddressCreateArgs<ExtArgs>>): Prisma__AddressClient<$Result.GetResult<Prisma.$AddressPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Create many Addresses.
-     * @param {AddressCreateManyArgs} args - Arguments to create many Addresses.
-     * @example
-     * // Create many Addresses
-     * const address = await prisma.address.createMany({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     *     
-     */
-    createMany<T extends AddressCreateManyArgs>(args?: SelectSubset<T, AddressCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Create many Addresses and returns the data saved in the database.
-     * @param {AddressCreateManyAndReturnArgs} args - Arguments to create many Addresses.
-     * @example
-     * // Create many Addresses
-     * const address = await prisma.address.createManyAndReturn({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Create many Addresses and only return the `id`
-     * const addressWithIdOnly = await prisma.address.createManyAndReturn({
-     *   select: { id: true },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    createManyAndReturn<T extends AddressCreateManyAndReturnArgs>(args?: SelectSubset<T, AddressCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AddressPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
-
-    /**
-     * Delete a Address.
-     * @param {AddressDeleteArgs} args - Arguments to delete one Address.
-     * @example
-     * // Delete one Address
-     * const Address = await prisma.address.delete({
-     *   where: {
-     *     // ... filter to delete one Address
-     *   }
-     * })
-     * 
-     */
-    delete<T extends AddressDeleteArgs>(args: SelectSubset<T, AddressDeleteArgs<ExtArgs>>): Prisma__AddressClient<$Result.GetResult<Prisma.$AddressPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Update one Address.
-     * @param {AddressUpdateArgs} args - Arguments to update one Address.
-     * @example
-     * // Update one Address
-     * const address = await prisma.address.update({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    update<T extends AddressUpdateArgs>(args: SelectSubset<T, AddressUpdateArgs<ExtArgs>>): Prisma__AddressClient<$Result.GetResult<Prisma.$AddressPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Delete zero or more Addresses.
-     * @param {AddressDeleteManyArgs} args - Arguments to filter Addresses to delete.
-     * @example
-     * // Delete a few Addresses
-     * const { count } = await prisma.address.deleteMany({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     * 
-     */
-    deleteMany<T extends AddressDeleteManyArgs>(args?: SelectSubset<T, AddressDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more Addresses.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {AddressUpdateManyArgs} args - Arguments to update one or more rows.
-     * @example
-     * // Update many Addresses
-     * const address = await prisma.address.updateMany({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    updateMany<T extends AddressUpdateManyArgs>(args: SelectSubset<T, AddressUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more Addresses and returns the data updated in the database.
-     * @param {AddressUpdateManyAndReturnArgs} args - Arguments to update many Addresses.
-     * @example
-     * // Update many Addresses
-     * const address = await prisma.address.updateManyAndReturn({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Update zero or more Addresses and only return the `id`
-     * const addressWithIdOnly = await prisma.address.updateManyAndReturn({
-     *   select: { id: true },
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    updateManyAndReturn<T extends AddressUpdateManyAndReturnArgs>(args: SelectSubset<T, AddressUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AddressPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
-
-    /**
-     * Create or update one Address.
-     * @param {AddressUpsertArgs} args - Arguments to update or create a Address.
-     * @example
-     * // Update or create a Address
-     * const address = await prisma.address.upsert({
-     *   create: {
-     *     // ... data to create a Address
-     *   },
-     *   update: {
-     *     // ... in case it already exists, update
-     *   },
-     *   where: {
-     *     // ... the filter for the Address we want to update
-     *   }
-     * })
-     */
-    upsert<T extends AddressUpsertArgs>(args: SelectSubset<T, AddressUpsertArgs<ExtArgs>>): Prisma__AddressClient<$Result.GetResult<Prisma.$AddressPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-
-    /**
-     * Count the number of Addresses.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {AddressCountArgs} args - Arguments to filter Addresses to count.
-     * @example
-     * // Count the number of Addresses
-     * const count = await prisma.address.count({
-     *   where: {
-     *     // ... the filter for the Addresses we want to count
-     *   }
-     * })
-    **/
-    count<T extends AddressCountArgs>(
-      args?: Subset<T, AddressCountArgs>,
-    ): Prisma.PrismaPromise<
-      T extends $Utils.Record<'select', any>
-        ? T['select'] extends true
-          ? number
-          : GetScalarType<T['select'], AddressCountAggregateOutputType>
-        : number
-    >
-
-    /**
-     * Allows you to perform aggregations operations on a Address.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {AddressAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
-     * @example
-     * // Ordered by age ascending
-     * // Where email contains prisma.io
-     * // Limited to the 10 users
-     * const aggregations = await prisma.user.aggregate({
-     *   _avg: {
-     *     age: true,
-     *   },
-     *   where: {
-     *     email: {
-     *       contains: "prisma.io",
-     *     },
-     *   },
-     *   orderBy: {
-     *     age: "asc",
-     *   },
-     *   take: 10,
-     * })
-    **/
-    aggregate<T extends AddressAggregateArgs>(args: Subset<T, AddressAggregateArgs>): Prisma.PrismaPromise<GetAddressAggregateType<T>>
-
-    /**
-     * Group by Address.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {AddressGroupByArgs} args - Group by arguments.
-     * @example
-     * // Group by city, order by createdAt, get count
-     * const result = await prisma.user.groupBy({
-     *   by: ['city', 'createdAt'],
-     *   orderBy: {
-     *     createdAt: true
-     *   },
-     *   _count: {
-     *     _all: true
-     *   },
-     * })
-     * 
-    **/
-    groupBy<
-      T extends AddressGroupByArgs,
-      HasSelectOrTake extends Or<
-        Extends<'skip', Keys<T>>,
-        Extends<'take', Keys<T>>
-      >,
-      OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: AddressGroupByArgs['orderBy'] }
-        : { orderBy?: AddressGroupByArgs['orderBy'] },
-      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
-      ByFields extends MaybeTupleToUnion<T['by']>,
-      ByValid extends Has<ByFields, OrderFields>,
-      HavingFields extends GetHavingFields<T['having']>,
-      HavingValid extends Has<ByFields, HavingFields>,
-      ByEmpty extends T['by'] extends never[] ? True : False,
-      InputErrors extends ByEmpty extends True
-      ? `Error: "by" must not be empty.`
-      : HavingValid extends False
-      ? {
-          [P in HavingFields]: P extends ByFields
-            ? never
-            : P extends string
-            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-            : [
-                Error,
-                'Field ',
-                P,
-                ` in "having" needs to be provided in "by"`,
-              ]
-        }[HavingFields]
-      : 'take' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "take", you also need to provide "orderBy"'
-      : 'skip' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "skip", you also need to provide "orderBy"'
-      : ByValid extends True
-      ? {}
-      : {
-          [P in OrderFields]: P extends ByFields
-            ? never
-            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-        }[OrderFields]
-    >(args: SubsetIntersection<T, AddressGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetAddressGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-  /**
-   * Fields of the Address model
-   */
-  readonly fields: AddressFieldRefs;
-  }
-
-  /**
-   * The delegate class that acts as a "Promise-like" for Address.
-   * Why is this prefixed with `Prisma__`?
-   * Because we want to prevent naming conflicts as mentioned in
-   * https://github.com/prisma/prisma-client-js/issues/707
-   */
-  export interface Prisma__AddressClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
-    readonly [Symbol.toStringTag]: "PrismaPromise"
-    Users<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    Phones<T extends Address$PhonesArgs<ExtArgs> = {}>(args?: Subset<T, Address$PhonesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PhonePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    /**
-     * Attaches callbacks for the resolution and/or rejection of the Promise.
-     * @param onfulfilled The callback to execute when the Promise is resolved.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of which ever callback is executed.
-     */
-    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
-    /**
-     * Attaches a callback for only the rejection of the Promise.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of the callback.
-     */
-    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
-    /**
-     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
-     * resolved value cannot be modified from the callback.
-     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
-     * @returns A Promise for the completion of the callback.
-     */
-    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
-  }
-
-
-
-
-  /**
-   * Fields of the Address model
-   */
-  interface AddressFieldRefs {
-    readonly id: FieldRef<"Address", 'Int'>
-    readonly name: FieldRef<"Address", 'String'>
-    readonly address: FieldRef<"Address", 'String'>
-    readonly lot: FieldRef<"Address", 'Float'>
-    readonly long: FieldRef<"Address", 'Float'>
-    readonly userId: FieldRef<"Address", 'Int'>
-  }
-    
-
-  // Custom InputTypes
-  /**
-   * Address findUnique
-   */
-  export type AddressFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Address
-     */
-    select?: AddressSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Address
-     */
-    omit?: AddressOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: AddressInclude<ExtArgs> | null
-    /**
-     * Filter, which Address to fetch.
-     */
-    where: AddressWhereUniqueInput
-  }
-
-  /**
-   * Address findUniqueOrThrow
-   */
-  export type AddressFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Address
-     */
-    select?: AddressSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Address
-     */
-    omit?: AddressOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: AddressInclude<ExtArgs> | null
-    /**
-     * Filter, which Address to fetch.
-     */
-    where: AddressWhereUniqueInput
-  }
-
-  /**
-   * Address findFirst
-   */
-  export type AddressFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Address
-     */
-    select?: AddressSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Address
-     */
-    omit?: AddressOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: AddressInclude<ExtArgs> | null
-    /**
-     * Filter, which Address to fetch.
-     */
-    where?: AddressWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of Addresses to fetch.
-     */
-    orderBy?: AddressOrderByWithRelationInput | AddressOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for Addresses.
-     */
-    cursor?: AddressWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` Addresses from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` Addresses.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of Addresses.
-     */
-    distinct?: AddressScalarFieldEnum | AddressScalarFieldEnum[]
-  }
-
-  /**
-   * Address findFirstOrThrow
-   */
-  export type AddressFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Address
-     */
-    select?: AddressSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Address
-     */
-    omit?: AddressOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: AddressInclude<ExtArgs> | null
-    /**
-     * Filter, which Address to fetch.
-     */
-    where?: AddressWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of Addresses to fetch.
-     */
-    orderBy?: AddressOrderByWithRelationInput | AddressOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for Addresses.
-     */
-    cursor?: AddressWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` Addresses from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` Addresses.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of Addresses.
-     */
-    distinct?: AddressScalarFieldEnum | AddressScalarFieldEnum[]
-  }
-
-  /**
-   * Address findMany
-   */
-  export type AddressFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Address
-     */
-    select?: AddressSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Address
-     */
-    omit?: AddressOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: AddressInclude<ExtArgs> | null
-    /**
-     * Filter, which Addresses to fetch.
-     */
-    where?: AddressWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of Addresses to fetch.
-     */
-    orderBy?: AddressOrderByWithRelationInput | AddressOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for listing Addresses.
-     */
-    cursor?: AddressWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` Addresses from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` Addresses.
-     */
-    skip?: number
-    distinct?: AddressScalarFieldEnum | AddressScalarFieldEnum[]
-  }
-
-  /**
-   * Address create
-   */
-  export type AddressCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Address
-     */
-    select?: AddressSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Address
-     */
-    omit?: AddressOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: AddressInclude<ExtArgs> | null
-    /**
-     * The data needed to create a Address.
-     */
-    data: XOR<AddressCreateInput, AddressUncheckedCreateInput>
-  }
-
-  /**
-   * Address createMany
-   */
-  export type AddressCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to create many Addresses.
-     */
-    data: AddressCreateManyInput | AddressCreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-  /**
-   * Address createManyAndReturn
-   */
-  export type AddressCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Address
-     */
-    select?: AddressSelectCreateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the Address
-     */
-    omit?: AddressOmit<ExtArgs> | null
-    /**
-     * The data used to create many Addresses.
-     */
-    data: AddressCreateManyInput | AddressCreateManyInput[]
-    skipDuplicates?: boolean
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: AddressIncludeCreateManyAndReturn<ExtArgs> | null
-  }
-
-  /**
-   * Address update
-   */
-  export type AddressUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Address
-     */
-    select?: AddressSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Address
-     */
-    omit?: AddressOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: AddressInclude<ExtArgs> | null
-    /**
-     * The data needed to update a Address.
-     */
-    data: XOR<AddressUpdateInput, AddressUncheckedUpdateInput>
-    /**
-     * Choose, which Address to update.
-     */
-    where: AddressWhereUniqueInput
-  }
-
-  /**
-   * Address updateMany
-   */
-  export type AddressUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to update Addresses.
-     */
-    data: XOR<AddressUpdateManyMutationInput, AddressUncheckedUpdateManyInput>
-    /**
-     * Filter which Addresses to update
-     */
-    where?: AddressWhereInput
-    /**
-     * Limit how many Addresses to update.
-     */
-    limit?: number
-  }
-
-  /**
-   * Address updateManyAndReturn
-   */
-  export type AddressUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Address
-     */
-    select?: AddressSelectUpdateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the Address
-     */
-    omit?: AddressOmit<ExtArgs> | null
-    /**
-     * The data used to update Addresses.
-     */
-    data: XOR<AddressUpdateManyMutationInput, AddressUncheckedUpdateManyInput>
-    /**
-     * Filter which Addresses to update
-     */
-    where?: AddressWhereInput
-    /**
-     * Limit how many Addresses to update.
-     */
-    limit?: number
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: AddressIncludeUpdateManyAndReturn<ExtArgs> | null
-  }
-
-  /**
-   * Address upsert
-   */
-  export type AddressUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Address
-     */
-    select?: AddressSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Address
-     */
-    omit?: AddressOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: AddressInclude<ExtArgs> | null
-    /**
-     * The filter to search for the Address to update in case it exists.
-     */
-    where: AddressWhereUniqueInput
-    /**
-     * In case the Address found by the `where` argument doesn't exist, create a new Address with this data.
-     */
-    create: XOR<AddressCreateInput, AddressUncheckedCreateInput>
-    /**
-     * In case the Address was found with the provided `where` argument, update it with this data.
-     */
-    update: XOR<AddressUpdateInput, AddressUncheckedUpdateInput>
-  }
-
-  /**
-   * Address delete
-   */
-  export type AddressDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Address
-     */
-    select?: AddressSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Address
-     */
-    omit?: AddressOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: AddressInclude<ExtArgs> | null
-    /**
-     * Filter which Address to delete.
-     */
-    where: AddressWhereUniqueInput
-  }
-
-  /**
-   * Address deleteMany
-   */
-  export type AddressDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which Addresses to delete
-     */
-    where?: AddressWhereInput
-    /**
-     * Limit how many Addresses to delete.
-     */
-    limit?: number
-  }
-
-  /**
-   * Address.Phones
-   */
-  export type Address$PhonesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Phone
-     */
-    select?: PhoneSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Phone
-     */
-    omit?: PhoneOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: PhoneInclude<ExtArgs> | null
-    where?: PhoneWhereInput
-    orderBy?: PhoneOrderByWithRelationInput | PhoneOrderByWithRelationInput[]
-    cursor?: PhoneWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: PhoneScalarFieldEnum | PhoneScalarFieldEnum[]
-  }
-
-  /**
-   * Address without action
-   */
-  export type AddressDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Address
-     */
-    select?: AddressSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Address
-     */
-    omit?: AddressOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: AddressInclude<ExtArgs> | null
-  }
-
-
-  /**
    * Model Phone
    */
 
@@ -15191,6 +13885,7 @@ export namespace Prisma {
     is_active: boolean | null
     is_checked: boolean | null
     is_archived: boolean | null
+    is_deleted: boolean | null
     currencyId: number | null
     modelId: number | null
     brandId: number | null
@@ -15214,6 +13909,7 @@ export namespace Prisma {
     is_active: boolean | null
     is_checked: boolean | null
     is_archived: boolean | null
+    is_deleted: boolean | null
     currencyId: number | null
     modelId: number | null
     brandId: number | null
@@ -15239,6 +13935,7 @@ export namespace Prisma {
     is_active: number
     is_checked: number
     is_archived: number
+    is_deleted: number
     currencyId: number
     modelId: number
     brandId: number
@@ -15288,6 +13985,7 @@ export namespace Prisma {
     is_active?: true
     is_checked?: true
     is_archived?: true
+    is_deleted?: true
     currencyId?: true
     modelId?: true
     brandId?: true
@@ -15311,6 +14009,7 @@ export namespace Prisma {
     is_active?: true
     is_checked?: true
     is_archived?: true
+    is_deleted?: true
     currencyId?: true
     modelId?: true
     brandId?: true
@@ -15336,6 +14035,7 @@ export namespace Prisma {
     is_active?: true
     is_checked?: true
     is_archived?: true
+    is_deleted?: true
     currencyId?: true
     modelId?: true
     brandId?: true
@@ -15448,12 +14148,13 @@ export namespace Prisma {
     is_active: boolean
     is_checked: boolean
     is_archived: boolean
-    currencyId: number
-    modelId: number
-    brandId: number
-    colorId: number
-    addressId: number
-    userId: number
+    is_deleted: boolean
+    currencyId: number | null
+    modelId: number | null
+    brandId: number | null
+    colorId: number | null
+    addressId: number | null
+    userId: number | null
     _count: PhoneCountAggregateOutputType | null
     _avg: PhoneAvgAggregateOutputType | null
     _sum: PhoneSumAggregateOutputType | null
@@ -15492,18 +14193,18 @@ export namespace Prisma {
     is_active?: boolean
     is_checked?: boolean
     is_archived?: boolean
+    is_deleted?: boolean
     currencyId?: boolean
     modelId?: boolean
     brandId?: boolean
     colorId?: boolean
     addressId?: boolean
     userId?: boolean
-    Currency?: boolean | CurrencyDefaultArgs<ExtArgs>
-    Models?: boolean | ModelDefaultArgs<ExtArgs>
-    Brands?: boolean | BrandDefaultArgs<ExtArgs>
-    Color?: boolean | ColorDefaultArgs<ExtArgs>
-    Address?: boolean | AddressDefaultArgs<ExtArgs>
-    User?: boolean | UserDefaultArgs<ExtArgs>
+    Currency?: boolean | Phone$CurrencyArgs<ExtArgs>
+    Models?: boolean | Phone$ModelsArgs<ExtArgs>
+    Brands?: boolean | Phone$BrandsArgs<ExtArgs>
+    Color?: boolean | Phone$ColorArgs<ExtArgs>
+    User?: boolean | Phone$UserArgs<ExtArgs>
     Images?: boolean | Phone$ImagesArgs<ExtArgs>
     Reviews?: boolean | Phone$ReviewsArgs<ExtArgs>
     Archives?: boolean | Phone$ArchivesArgs<ExtArgs>
@@ -15527,18 +14228,18 @@ export namespace Prisma {
     is_active?: boolean
     is_checked?: boolean
     is_archived?: boolean
+    is_deleted?: boolean
     currencyId?: boolean
     modelId?: boolean
     brandId?: boolean
     colorId?: boolean
     addressId?: boolean
     userId?: boolean
-    Currency?: boolean | CurrencyDefaultArgs<ExtArgs>
-    Models?: boolean | ModelDefaultArgs<ExtArgs>
-    Brands?: boolean | BrandDefaultArgs<ExtArgs>
-    Color?: boolean | ColorDefaultArgs<ExtArgs>
-    Address?: boolean | AddressDefaultArgs<ExtArgs>
-    User?: boolean | UserDefaultArgs<ExtArgs>
+    Currency?: boolean | Phone$CurrencyArgs<ExtArgs>
+    Models?: boolean | Phone$ModelsArgs<ExtArgs>
+    Brands?: boolean | Phone$BrandsArgs<ExtArgs>
+    Color?: boolean | Phone$ColorArgs<ExtArgs>
+    User?: boolean | Phone$UserArgs<ExtArgs>
   }, ExtArgs["result"]["phone"]>
 
   export type PhoneSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -15558,18 +14259,18 @@ export namespace Prisma {
     is_active?: boolean
     is_checked?: boolean
     is_archived?: boolean
+    is_deleted?: boolean
     currencyId?: boolean
     modelId?: boolean
     brandId?: boolean
     colorId?: boolean
     addressId?: boolean
     userId?: boolean
-    Currency?: boolean | CurrencyDefaultArgs<ExtArgs>
-    Models?: boolean | ModelDefaultArgs<ExtArgs>
-    Brands?: boolean | BrandDefaultArgs<ExtArgs>
-    Color?: boolean | ColorDefaultArgs<ExtArgs>
-    Address?: boolean | AddressDefaultArgs<ExtArgs>
-    User?: boolean | UserDefaultArgs<ExtArgs>
+    Currency?: boolean | Phone$CurrencyArgs<ExtArgs>
+    Models?: boolean | Phone$ModelsArgs<ExtArgs>
+    Brands?: boolean | Phone$BrandsArgs<ExtArgs>
+    Color?: boolean | Phone$ColorArgs<ExtArgs>
+    User?: boolean | Phone$UserArgs<ExtArgs>
   }, ExtArgs["result"]["phone"]>
 
   export type PhoneSelectScalar = {
@@ -15589,6 +14290,7 @@ export namespace Prisma {
     is_active?: boolean
     is_checked?: boolean
     is_archived?: boolean
+    is_deleted?: boolean
     currencyId?: boolean
     modelId?: boolean
     brandId?: boolean
@@ -15597,45 +14299,41 @@ export namespace Prisma {
     userId?: boolean
   }
 
-  export type PhoneOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "description" | "ram" | "rom" | "box_with_document" | "is_new" | "posted_date" | "views" | "like_counts" | "is_negotiable" | "brand" | "model" | "is_active" | "is_checked" | "is_archived" | "currencyId" | "modelId" | "brandId" | "colorId" | "addressId" | "userId", ExtArgs["result"]["phone"]>
+  export type PhoneOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "description" | "ram" | "rom" | "box_with_document" | "is_new" | "posted_date" | "views" | "like_counts" | "is_negotiable" | "brand" | "model" | "is_active" | "is_checked" | "is_archived" | "is_deleted" | "currencyId" | "modelId" | "brandId" | "colorId" | "addressId" | "userId", ExtArgs["result"]["phone"]>
   export type PhoneInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    Currency?: boolean | CurrencyDefaultArgs<ExtArgs>
-    Models?: boolean | ModelDefaultArgs<ExtArgs>
-    Brands?: boolean | BrandDefaultArgs<ExtArgs>
-    Color?: boolean | ColorDefaultArgs<ExtArgs>
-    Address?: boolean | AddressDefaultArgs<ExtArgs>
-    User?: boolean | UserDefaultArgs<ExtArgs>
+    Currency?: boolean | Phone$CurrencyArgs<ExtArgs>
+    Models?: boolean | Phone$ModelsArgs<ExtArgs>
+    Brands?: boolean | Phone$BrandsArgs<ExtArgs>
+    Color?: boolean | Phone$ColorArgs<ExtArgs>
+    User?: boolean | Phone$UserArgs<ExtArgs>
     Images?: boolean | Phone$ImagesArgs<ExtArgs>
     Reviews?: boolean | Phone$ReviewsArgs<ExtArgs>
     Archives?: boolean | Phone$ArchivesArgs<ExtArgs>
     _count?: boolean | PhoneCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type PhoneIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    Currency?: boolean | CurrencyDefaultArgs<ExtArgs>
-    Models?: boolean | ModelDefaultArgs<ExtArgs>
-    Brands?: boolean | BrandDefaultArgs<ExtArgs>
-    Color?: boolean | ColorDefaultArgs<ExtArgs>
-    Address?: boolean | AddressDefaultArgs<ExtArgs>
-    User?: boolean | UserDefaultArgs<ExtArgs>
+    Currency?: boolean | Phone$CurrencyArgs<ExtArgs>
+    Models?: boolean | Phone$ModelsArgs<ExtArgs>
+    Brands?: boolean | Phone$BrandsArgs<ExtArgs>
+    Color?: boolean | Phone$ColorArgs<ExtArgs>
+    User?: boolean | Phone$UserArgs<ExtArgs>
   }
   export type PhoneIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    Currency?: boolean | CurrencyDefaultArgs<ExtArgs>
-    Models?: boolean | ModelDefaultArgs<ExtArgs>
-    Brands?: boolean | BrandDefaultArgs<ExtArgs>
-    Color?: boolean | ColorDefaultArgs<ExtArgs>
-    Address?: boolean | AddressDefaultArgs<ExtArgs>
-    User?: boolean | UserDefaultArgs<ExtArgs>
+    Currency?: boolean | Phone$CurrencyArgs<ExtArgs>
+    Models?: boolean | Phone$ModelsArgs<ExtArgs>
+    Brands?: boolean | Phone$BrandsArgs<ExtArgs>
+    Color?: boolean | Phone$ColorArgs<ExtArgs>
+    User?: boolean | Phone$UserArgs<ExtArgs>
   }
 
   export type $PhonePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Phone"
     objects: {
-      Currency: Prisma.$CurrencyPayload<ExtArgs>
-      Models: Prisma.$ModelPayload<ExtArgs>
-      Brands: Prisma.$BrandPayload<ExtArgs>
-      Color: Prisma.$ColorPayload<ExtArgs>
-      Address: Prisma.$AddressPayload<ExtArgs>
-      User: Prisma.$UserPayload<ExtArgs>
+      Currency: Prisma.$CurrencyPayload<ExtArgs> | null
+      Models: Prisma.$ModelPayload<ExtArgs> | null
+      Brands: Prisma.$BrandPayload<ExtArgs> | null
+      Color: Prisma.$ColorPayload<ExtArgs> | null
+      User: Prisma.$UserPayload<ExtArgs> | null
       Images: Prisma.$ImagePayload<ExtArgs>[]
       Reviews: Prisma.$ReviewPayload<ExtArgs>[]
       Archives: Prisma.$ArchivesPayload<ExtArgs>[]
@@ -15657,12 +14355,13 @@ export namespace Prisma {
       is_active: boolean
       is_checked: boolean
       is_archived: boolean
-      currencyId: number
-      modelId: number
-      brandId: number
-      colorId: number
-      addressId: number
-      userId: number
+      is_deleted: boolean
+      currencyId: number | null
+      modelId: number | null
+      brandId: number | null
+      colorId: number | null
+      addressId: number | null
+      userId: number | null
     }, ExtArgs["result"]["phone"]>
     composites: {}
   }
@@ -16057,12 +14756,11 @@ export namespace Prisma {
    */
   export interface Prisma__PhoneClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    Currency<T extends CurrencyDefaultArgs<ExtArgs> = {}>(args?: Subset<T, CurrencyDefaultArgs<ExtArgs>>): Prisma__CurrencyClient<$Result.GetResult<Prisma.$CurrencyPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    Models<T extends ModelDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ModelDefaultArgs<ExtArgs>>): Prisma__ModelClient<$Result.GetResult<Prisma.$ModelPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    Brands<T extends BrandDefaultArgs<ExtArgs> = {}>(args?: Subset<T, BrandDefaultArgs<ExtArgs>>): Prisma__BrandClient<$Result.GetResult<Prisma.$BrandPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    Color<T extends ColorDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ColorDefaultArgs<ExtArgs>>): Prisma__ColorClient<$Result.GetResult<Prisma.$ColorPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    Address<T extends AddressDefaultArgs<ExtArgs> = {}>(args?: Subset<T, AddressDefaultArgs<ExtArgs>>): Prisma__AddressClient<$Result.GetResult<Prisma.$AddressPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    User<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    Currency<T extends Phone$CurrencyArgs<ExtArgs> = {}>(args?: Subset<T, Phone$CurrencyArgs<ExtArgs>>): Prisma__CurrencyClient<$Result.GetResult<Prisma.$CurrencyPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    Models<T extends Phone$ModelsArgs<ExtArgs> = {}>(args?: Subset<T, Phone$ModelsArgs<ExtArgs>>): Prisma__ModelClient<$Result.GetResult<Prisma.$ModelPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    Brands<T extends Phone$BrandsArgs<ExtArgs> = {}>(args?: Subset<T, Phone$BrandsArgs<ExtArgs>>): Prisma__BrandClient<$Result.GetResult<Prisma.$BrandPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    Color<T extends Phone$ColorArgs<ExtArgs> = {}>(args?: Subset<T, Phone$ColorArgs<ExtArgs>>): Prisma__ColorClient<$Result.GetResult<Prisma.$ColorPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    User<T extends Phone$UserArgs<ExtArgs> = {}>(args?: Subset<T, Phone$UserArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     Images<T extends Phone$ImagesArgs<ExtArgs> = {}>(args?: Subset<T, Phone$ImagesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ImagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     Reviews<T extends Phone$ReviewsArgs<ExtArgs> = {}>(args?: Subset<T, Phone$ReviewsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ReviewPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     Archives<T extends Phone$ArchivesArgs<ExtArgs> = {}>(args?: Subset<T, Phone$ArchivesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ArchivesPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
@@ -16111,6 +14809,7 @@ export namespace Prisma {
     readonly is_active: FieldRef<"Phone", 'Boolean'>
     readonly is_checked: FieldRef<"Phone", 'Boolean'>
     readonly is_archived: FieldRef<"Phone", 'Boolean'>
+    readonly is_deleted: FieldRef<"Phone", 'Boolean'>
     readonly currencyId: FieldRef<"Phone", 'Int'>
     readonly modelId: FieldRef<"Phone", 'Int'>
     readonly brandId: FieldRef<"Phone", 'Int'>
@@ -16510,6 +15209,101 @@ export namespace Prisma {
      * Limit how many Phones to delete.
      */
     limit?: number
+  }
+
+  /**
+   * Phone.Currency
+   */
+  export type Phone$CurrencyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Currency
+     */
+    select?: CurrencySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Currency
+     */
+    omit?: CurrencyOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CurrencyInclude<ExtArgs> | null
+    where?: CurrencyWhereInput
+  }
+
+  /**
+   * Phone.Models
+   */
+  export type Phone$ModelsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Model
+     */
+    select?: ModelSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Model
+     */
+    omit?: ModelOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ModelInclude<ExtArgs> | null
+    where?: ModelWhereInput
+  }
+
+  /**
+   * Phone.Brands
+   */
+  export type Phone$BrandsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Brand
+     */
+    select?: BrandSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Brand
+     */
+    omit?: BrandOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BrandInclude<ExtArgs> | null
+    where?: BrandWhereInput
+  }
+
+  /**
+   * Phone.Color
+   */
+  export type Phone$ColorArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Color
+     */
+    select?: ColorSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Color
+     */
+    omit?: ColorOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ColorInclude<ExtArgs> | null
+    where?: ColorWhereInput
+  }
+
+  /**
+   * Phone.User
+   */
+  export type Phone$UserArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the User
+     */
+    select?: UserSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the User
+     */
+    omit?: UserOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    where?: UserWhereInput
   }
 
   /**
@@ -19937,18 +18731,6 @@ export namespace Prisma {
   export type ColorScalarFieldEnum = (typeof ColorScalarFieldEnum)[keyof typeof ColorScalarFieldEnum]
 
 
-  export const AddressScalarFieldEnum: {
-    id: 'id',
-    name: 'name',
-    address: 'address',
-    lot: 'lot',
-    long: 'long',
-    userId: 'userId'
-  };
-
-  export type AddressScalarFieldEnum = (typeof AddressScalarFieldEnum)[keyof typeof AddressScalarFieldEnum]
-
-
   export const PhoneScalarFieldEnum: {
     id: 'id',
     title: 'title',
@@ -19966,6 +18748,7 @@ export namespace Prisma {
     is_active: 'is_active',
     is_checked: 'is_checked',
     is_archived: 'is_archived',
+    is_deleted: 'is_deleted',
     currencyId: 'currencyId',
     modelId: 'modelId',
     brandId: 'brandId',
@@ -20097,20 +18880,6 @@ export namespace Prisma {
 
 
   /**
-   * Reference to a field of type 'Float'
-   */
-  export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
-    
-
-
-  /**
-   * Reference to a field of type 'Float[]'
-   */
-  export type ListFloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float[]'>
-    
-
-
-  /**
    * Reference to a field of type 'Ram[]'
    */
   export type ListEnumRamFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Ram[]'>
@@ -20149,6 +18918,20 @@ export namespace Prisma {
    * Reference to a field of type 'BigInt[]'
    */
   export type ListBigIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'BigInt[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'Float'
+   */
+  export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
+    
+
+
+  /**
+   * Reference to a field of type 'Float[]'
+   */
+  export type ListFloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float[]'>
     
   /**
    * Deep Input Types
@@ -20347,7 +19130,6 @@ export namespace Prisma {
     language?: XOR<LanguageNullableScalarRelationFilter, LanguageWhereInput> | null
     Emails?: EmailListRelationFilter
     PhoneNumbers?: PhoneNumberListRelationFilter
-    Address?: AddressListRelationFilter
     Phones?: PhoneListRelationFilter
   }
 
@@ -20376,7 +19158,6 @@ export namespace Prisma {
     language?: LanguageOrderByWithRelationInput
     Emails?: EmailOrderByRelationAggregateInput
     PhoneNumbers?: PhoneNumberOrderByRelationAggregateInput
-    Address?: AddressOrderByRelationAggregateInput
     Phones?: PhoneOrderByRelationAggregateInput
   }
 
@@ -20408,7 +19189,6 @@ export namespace Prisma {
     language?: XOR<LanguageNullableScalarRelationFilter, LanguageWhereInput> | null
     Emails?: EmailListRelationFilter
     PhoneNumbers?: PhoneNumberListRelationFilter
-    Address?: AddressListRelationFilter
     Phones?: PhoneListRelationFilter
   }, "id">
 
@@ -20761,71 +19541,6 @@ export namespace Prisma {
     name?: StringWithAggregatesFilter<"Color"> | string
   }
 
-  export type AddressWhereInput = {
-    AND?: AddressWhereInput | AddressWhereInput[]
-    OR?: AddressWhereInput[]
-    NOT?: AddressWhereInput | AddressWhereInput[]
-    id?: IntFilter<"Address"> | number
-    name?: StringFilter<"Address"> | string
-    address?: StringFilter<"Address"> | string
-    lot?: FloatFilter<"Address"> | number
-    long?: FloatFilter<"Address"> | number
-    userId?: IntFilter<"Address"> | number
-    Users?: XOR<UserScalarRelationFilter, UserWhereInput>
-    Phones?: PhoneListRelationFilter
-  }
-
-  export type AddressOrderByWithRelationInput = {
-    id?: SortOrder
-    name?: SortOrder
-    address?: SortOrder
-    lot?: SortOrder
-    long?: SortOrder
-    userId?: SortOrder
-    Users?: UserOrderByWithRelationInput
-    Phones?: PhoneOrderByRelationAggregateInput
-  }
-
-  export type AddressWhereUniqueInput = Prisma.AtLeast<{
-    id?: number
-    AND?: AddressWhereInput | AddressWhereInput[]
-    OR?: AddressWhereInput[]
-    NOT?: AddressWhereInput | AddressWhereInput[]
-    name?: StringFilter<"Address"> | string
-    address?: StringFilter<"Address"> | string
-    lot?: FloatFilter<"Address"> | number
-    long?: FloatFilter<"Address"> | number
-    userId?: IntFilter<"Address"> | number
-    Users?: XOR<UserScalarRelationFilter, UserWhereInput>
-    Phones?: PhoneListRelationFilter
-  }, "id">
-
-  export type AddressOrderByWithAggregationInput = {
-    id?: SortOrder
-    name?: SortOrder
-    address?: SortOrder
-    lot?: SortOrder
-    long?: SortOrder
-    userId?: SortOrder
-    _count?: AddressCountOrderByAggregateInput
-    _avg?: AddressAvgOrderByAggregateInput
-    _max?: AddressMaxOrderByAggregateInput
-    _min?: AddressMinOrderByAggregateInput
-    _sum?: AddressSumOrderByAggregateInput
-  }
-
-  export type AddressScalarWhereWithAggregatesInput = {
-    AND?: AddressScalarWhereWithAggregatesInput | AddressScalarWhereWithAggregatesInput[]
-    OR?: AddressScalarWhereWithAggregatesInput[]
-    NOT?: AddressScalarWhereWithAggregatesInput | AddressScalarWhereWithAggregatesInput[]
-    id?: IntWithAggregatesFilter<"Address"> | number
-    name?: StringWithAggregatesFilter<"Address"> | string
-    address?: StringWithAggregatesFilter<"Address"> | string
-    lot?: FloatWithAggregatesFilter<"Address"> | number
-    long?: FloatWithAggregatesFilter<"Address"> | number
-    userId?: IntWithAggregatesFilter<"Address"> | number
-  }
-
   export type PhoneWhereInput = {
     AND?: PhoneWhereInput | PhoneWhereInput[]
     OR?: PhoneWhereInput[]
@@ -20846,18 +19561,18 @@ export namespace Prisma {
     is_active?: BoolFilter<"Phone"> | boolean
     is_checked?: BoolFilter<"Phone"> | boolean
     is_archived?: BoolFilter<"Phone"> | boolean
-    currencyId?: IntFilter<"Phone"> | number
-    modelId?: IntFilter<"Phone"> | number
-    brandId?: IntFilter<"Phone"> | number
-    colorId?: IntFilter<"Phone"> | number
-    addressId?: IntFilter<"Phone"> | number
-    userId?: IntFilter<"Phone"> | number
-    Currency?: XOR<CurrencyScalarRelationFilter, CurrencyWhereInput>
-    Models?: XOR<ModelScalarRelationFilter, ModelWhereInput>
-    Brands?: XOR<BrandScalarRelationFilter, BrandWhereInput>
-    Color?: XOR<ColorScalarRelationFilter, ColorWhereInput>
-    Address?: XOR<AddressScalarRelationFilter, AddressWhereInput>
-    User?: XOR<UserScalarRelationFilter, UserWhereInput>
+    is_deleted?: BoolFilter<"Phone"> | boolean
+    currencyId?: IntNullableFilter<"Phone"> | number | null
+    modelId?: IntNullableFilter<"Phone"> | number | null
+    brandId?: IntNullableFilter<"Phone"> | number | null
+    colorId?: IntNullableFilter<"Phone"> | number | null
+    addressId?: IntNullableFilter<"Phone"> | number | null
+    userId?: IntNullableFilter<"Phone"> | number | null
+    Currency?: XOR<CurrencyNullableScalarRelationFilter, CurrencyWhereInput> | null
+    Models?: XOR<ModelNullableScalarRelationFilter, ModelWhereInput> | null
+    Brands?: XOR<BrandNullableScalarRelationFilter, BrandWhereInput> | null
+    Color?: XOR<ColorNullableScalarRelationFilter, ColorWhereInput> | null
+    User?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
     Images?: ImageListRelationFilter
     Reviews?: ReviewListRelationFilter
     Archives?: ArchivesListRelationFilter
@@ -20880,17 +19595,17 @@ export namespace Prisma {
     is_active?: SortOrder
     is_checked?: SortOrder
     is_archived?: SortOrder
-    currencyId?: SortOrder
-    modelId?: SortOrder
-    brandId?: SortOrder
-    colorId?: SortOrder
-    addressId?: SortOrder
-    userId?: SortOrder
+    is_deleted?: SortOrder
+    currencyId?: SortOrderInput | SortOrder
+    modelId?: SortOrderInput | SortOrder
+    brandId?: SortOrderInput | SortOrder
+    colorId?: SortOrderInput | SortOrder
+    addressId?: SortOrderInput | SortOrder
+    userId?: SortOrderInput | SortOrder
     Currency?: CurrencyOrderByWithRelationInput
     Models?: ModelOrderByWithRelationInput
     Brands?: BrandOrderByWithRelationInput
     Color?: ColorOrderByWithRelationInput
-    Address?: AddressOrderByWithRelationInput
     User?: UserOrderByWithRelationInput
     Images?: ImageOrderByRelationAggregateInput
     Reviews?: ReviewOrderByRelationAggregateInput
@@ -20917,18 +19632,18 @@ export namespace Prisma {
     is_active?: BoolFilter<"Phone"> | boolean
     is_checked?: BoolFilter<"Phone"> | boolean
     is_archived?: BoolFilter<"Phone"> | boolean
-    currencyId?: IntFilter<"Phone"> | number
-    modelId?: IntFilter<"Phone"> | number
-    brandId?: IntFilter<"Phone"> | number
-    colorId?: IntFilter<"Phone"> | number
-    addressId?: IntFilter<"Phone"> | number
-    userId?: IntFilter<"Phone"> | number
-    Currency?: XOR<CurrencyScalarRelationFilter, CurrencyWhereInput>
-    Models?: XOR<ModelScalarRelationFilter, ModelWhereInput>
-    Brands?: XOR<BrandScalarRelationFilter, BrandWhereInput>
-    Color?: XOR<ColorScalarRelationFilter, ColorWhereInput>
-    Address?: XOR<AddressScalarRelationFilter, AddressWhereInput>
-    User?: XOR<UserScalarRelationFilter, UserWhereInput>
+    is_deleted?: BoolFilter<"Phone"> | boolean
+    currencyId?: IntNullableFilter<"Phone"> | number | null
+    modelId?: IntNullableFilter<"Phone"> | number | null
+    brandId?: IntNullableFilter<"Phone"> | number | null
+    colorId?: IntNullableFilter<"Phone"> | number | null
+    addressId?: IntNullableFilter<"Phone"> | number | null
+    userId?: IntNullableFilter<"Phone"> | number | null
+    Currency?: XOR<CurrencyNullableScalarRelationFilter, CurrencyWhereInput> | null
+    Models?: XOR<ModelNullableScalarRelationFilter, ModelWhereInput> | null
+    Brands?: XOR<BrandNullableScalarRelationFilter, BrandWhereInput> | null
+    Color?: XOR<ColorNullableScalarRelationFilter, ColorWhereInput> | null
+    User?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
     Images?: ImageListRelationFilter
     Reviews?: ReviewListRelationFilter
     Archives?: ArchivesListRelationFilter
@@ -20951,12 +19666,13 @@ export namespace Prisma {
     is_active?: SortOrder
     is_checked?: SortOrder
     is_archived?: SortOrder
-    currencyId?: SortOrder
-    modelId?: SortOrder
-    brandId?: SortOrder
-    colorId?: SortOrder
-    addressId?: SortOrder
-    userId?: SortOrder
+    is_deleted?: SortOrder
+    currencyId?: SortOrderInput | SortOrder
+    modelId?: SortOrderInput | SortOrder
+    brandId?: SortOrderInput | SortOrder
+    colorId?: SortOrderInput | SortOrder
+    addressId?: SortOrderInput | SortOrder
+    userId?: SortOrderInput | SortOrder
     _count?: PhoneCountOrderByAggregateInput
     _avg?: PhoneAvgOrderByAggregateInput
     _max?: PhoneMaxOrderByAggregateInput
@@ -20984,12 +19700,13 @@ export namespace Prisma {
     is_active?: BoolWithAggregatesFilter<"Phone"> | boolean
     is_checked?: BoolWithAggregatesFilter<"Phone"> | boolean
     is_archived?: BoolWithAggregatesFilter<"Phone"> | boolean
-    currencyId?: IntWithAggregatesFilter<"Phone"> | number
-    modelId?: IntWithAggregatesFilter<"Phone"> | number
-    brandId?: IntWithAggregatesFilter<"Phone"> | number
-    colorId?: IntWithAggregatesFilter<"Phone"> | number
-    addressId?: IntWithAggregatesFilter<"Phone"> | number
-    userId?: IntWithAggregatesFilter<"Phone"> | number
+    is_deleted?: BoolWithAggregatesFilter<"Phone"> | boolean
+    currencyId?: IntNullableWithAggregatesFilter<"Phone"> | number | null
+    modelId?: IntNullableWithAggregatesFilter<"Phone"> | number | null
+    brandId?: IntNullableWithAggregatesFilter<"Phone"> | number | null
+    colorId?: IntNullableWithAggregatesFilter<"Phone"> | number | null
+    addressId?: IntNullableWithAggregatesFilter<"Phone"> | number | null
+    userId?: IntNullableWithAggregatesFilter<"Phone"> | number | null
   }
 
   export type ImageWhereInput = {
@@ -21309,7 +20026,6 @@ export namespace Prisma {
     language?: LanguageCreateNestedOneWithoutUsersInput
     Emails?: EmailCreateNestedManyWithoutUserInput
     PhoneNumbers?: PhoneNumberCreateNestedManyWithoutUserInput
-    Address?: AddressCreateNestedManyWithoutUsersInput
     Phones?: PhoneCreateNestedManyWithoutUserInput
   }
 
@@ -21334,7 +20050,6 @@ export namespace Prisma {
     languageId?: number | null
     Emails?: EmailUncheckedCreateNestedManyWithoutUserInput
     PhoneNumbers?: PhoneNumberUncheckedCreateNestedManyWithoutUserInput
-    Address?: AddressUncheckedCreateNestedManyWithoutUsersInput
     Phones?: PhoneUncheckedCreateNestedManyWithoutUserInput
   }
 
@@ -21358,7 +20073,6 @@ export namespace Prisma {
     language?: LanguageUpdateOneWithoutUsersNestedInput
     Emails?: EmailUpdateManyWithoutUserNestedInput
     PhoneNumbers?: PhoneNumberUpdateManyWithoutUserNestedInput
-    Address?: AddressUpdateManyWithoutUsersNestedInput
     Phones?: PhoneUpdateManyWithoutUserNestedInput
   }
 
@@ -21383,7 +20097,6 @@ export namespace Prisma {
     languageId?: NullableIntFieldUpdateOperationsInput | number | null
     Emails?: EmailUncheckedUpdateManyWithoutUserNestedInput
     PhoneNumbers?: PhoneNumberUncheckedUpdateManyWithoutUserNestedInput
-    Address?: AddressUncheckedUpdateManyWithoutUsersNestedInput
     Phones?: PhoneUncheckedUpdateManyWithoutUserNestedInput
   }
 
@@ -21711,69 +20424,6 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
   }
 
-  export type AddressCreateInput = {
-    name: string
-    address: string
-    lot: number
-    long: number
-    Users: UserCreateNestedOneWithoutAddressInput
-    Phones?: PhoneCreateNestedManyWithoutAddressInput
-  }
-
-  export type AddressUncheckedCreateInput = {
-    id?: number
-    name: string
-    address: string
-    lot: number
-    long: number
-    userId: number
-    Phones?: PhoneUncheckedCreateNestedManyWithoutAddressInput
-  }
-
-  export type AddressUpdateInput = {
-    name?: StringFieldUpdateOperationsInput | string
-    address?: StringFieldUpdateOperationsInput | string
-    lot?: FloatFieldUpdateOperationsInput | number
-    long?: FloatFieldUpdateOperationsInput | number
-    Users?: UserUpdateOneRequiredWithoutAddressNestedInput
-    Phones?: PhoneUpdateManyWithoutAddressNestedInput
-  }
-
-  export type AddressUncheckedUpdateInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    name?: StringFieldUpdateOperationsInput | string
-    address?: StringFieldUpdateOperationsInput | string
-    lot?: FloatFieldUpdateOperationsInput | number
-    long?: FloatFieldUpdateOperationsInput | number
-    userId?: IntFieldUpdateOperationsInput | number
-    Phones?: PhoneUncheckedUpdateManyWithoutAddressNestedInput
-  }
-
-  export type AddressCreateManyInput = {
-    id?: number
-    name: string
-    address: string
-    lot: number
-    long: number
-    userId: number
-  }
-
-  export type AddressUpdateManyMutationInput = {
-    name?: StringFieldUpdateOperationsInput | string
-    address?: StringFieldUpdateOperationsInput | string
-    lot?: FloatFieldUpdateOperationsInput | number
-    long?: FloatFieldUpdateOperationsInput | number
-  }
-
-  export type AddressUncheckedUpdateManyInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    name?: StringFieldUpdateOperationsInput | string
-    address?: StringFieldUpdateOperationsInput | string
-    lot?: FloatFieldUpdateOperationsInput | number
-    long?: FloatFieldUpdateOperationsInput | number
-    userId?: IntFieldUpdateOperationsInput | number
-  }
-
   export type PhoneCreateInput = {
     title: string
     description: string
@@ -21790,12 +20440,13 @@ export namespace Prisma {
     is_active?: boolean
     is_checked?: boolean
     is_archived?: boolean
-    Currency: CurrencyCreateNestedOneWithoutPhonesInput
-    Models: ModelCreateNestedOneWithoutPhonesInput
-    Brands: BrandCreateNestedOneWithoutPhonesInput
-    Color: ColorCreateNestedOneWithoutPhonesInput
-    Address: AddressCreateNestedOneWithoutPhonesInput
-    User: UserCreateNestedOneWithoutPhonesInput
+    is_deleted?: boolean
+    addressId?: number | null
+    Currency?: CurrencyCreateNestedOneWithoutPhonesInput
+    Models?: ModelCreateNestedOneWithoutPhonesInput
+    Brands?: BrandCreateNestedOneWithoutPhonesInput
+    Color?: ColorCreateNestedOneWithoutPhonesInput
+    User?: UserCreateNestedOneWithoutPhonesInput
     Images?: ImageCreateNestedManyWithoutPhoneInput
     Reviews?: ReviewCreateNestedManyWithoutPhoneInput
     Archives?: ArchivesCreateNestedManyWithoutPhoneInput
@@ -21818,12 +20469,13 @@ export namespace Prisma {
     is_active?: boolean
     is_checked?: boolean
     is_archived?: boolean
-    currencyId: number
-    modelId: number
-    brandId: number
-    colorId: number
-    addressId: number
-    userId: number
+    is_deleted?: boolean
+    currencyId?: number | null
+    modelId?: number | null
+    brandId?: number | null
+    colorId?: number | null
+    addressId?: number | null
+    userId?: number | null
     Images?: ImageUncheckedCreateNestedManyWithoutPhoneInput
     Reviews?: ReviewUncheckedCreateNestedManyWithoutPhoneInput
     Archives?: ArchivesUncheckedCreateNestedManyWithoutPhoneInput
@@ -21845,12 +20497,13 @@ export namespace Prisma {
     is_active?: BoolFieldUpdateOperationsInput | boolean
     is_checked?: BoolFieldUpdateOperationsInput | boolean
     is_archived?: BoolFieldUpdateOperationsInput | boolean
-    Currency?: CurrencyUpdateOneRequiredWithoutPhonesNestedInput
-    Models?: ModelUpdateOneRequiredWithoutPhonesNestedInput
-    Brands?: BrandUpdateOneRequiredWithoutPhonesNestedInput
-    Color?: ColorUpdateOneRequiredWithoutPhonesNestedInput
-    Address?: AddressUpdateOneRequiredWithoutPhonesNestedInput
-    User?: UserUpdateOneRequiredWithoutPhonesNestedInput
+    is_deleted?: BoolFieldUpdateOperationsInput | boolean
+    addressId?: NullableIntFieldUpdateOperationsInput | number | null
+    Currency?: CurrencyUpdateOneWithoutPhonesNestedInput
+    Models?: ModelUpdateOneWithoutPhonesNestedInput
+    Brands?: BrandUpdateOneWithoutPhonesNestedInput
+    Color?: ColorUpdateOneWithoutPhonesNestedInput
+    User?: UserUpdateOneWithoutPhonesNestedInput
     Images?: ImageUpdateManyWithoutPhoneNestedInput
     Reviews?: ReviewUpdateManyWithoutPhoneNestedInput
     Archives?: ArchivesUpdateManyWithoutPhoneNestedInput
@@ -21873,12 +20526,13 @@ export namespace Prisma {
     is_active?: BoolFieldUpdateOperationsInput | boolean
     is_checked?: BoolFieldUpdateOperationsInput | boolean
     is_archived?: BoolFieldUpdateOperationsInput | boolean
-    currencyId?: IntFieldUpdateOperationsInput | number
-    modelId?: IntFieldUpdateOperationsInput | number
-    brandId?: IntFieldUpdateOperationsInput | number
-    colorId?: IntFieldUpdateOperationsInput | number
-    addressId?: IntFieldUpdateOperationsInput | number
-    userId?: IntFieldUpdateOperationsInput | number
+    is_deleted?: BoolFieldUpdateOperationsInput | boolean
+    currencyId?: NullableIntFieldUpdateOperationsInput | number | null
+    modelId?: NullableIntFieldUpdateOperationsInput | number | null
+    brandId?: NullableIntFieldUpdateOperationsInput | number | null
+    colorId?: NullableIntFieldUpdateOperationsInput | number | null
+    addressId?: NullableIntFieldUpdateOperationsInput | number | null
+    userId?: NullableIntFieldUpdateOperationsInput | number | null
     Images?: ImageUncheckedUpdateManyWithoutPhoneNestedInput
     Reviews?: ReviewUncheckedUpdateManyWithoutPhoneNestedInput
     Archives?: ArchivesUncheckedUpdateManyWithoutPhoneNestedInput
@@ -21901,12 +20555,13 @@ export namespace Prisma {
     is_active?: boolean
     is_checked?: boolean
     is_archived?: boolean
-    currencyId: number
-    modelId: number
-    brandId: number
-    colorId: number
-    addressId: number
-    userId: number
+    is_deleted?: boolean
+    currencyId?: number | null
+    modelId?: number | null
+    brandId?: number | null
+    colorId?: number | null
+    addressId?: number | null
+    userId?: number | null
   }
 
   export type PhoneUpdateManyMutationInput = {
@@ -21925,6 +20580,8 @@ export namespace Prisma {
     is_active?: BoolFieldUpdateOperationsInput | boolean
     is_checked?: BoolFieldUpdateOperationsInput | boolean
     is_archived?: BoolFieldUpdateOperationsInput | boolean
+    is_deleted?: BoolFieldUpdateOperationsInput | boolean
+    addressId?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type PhoneUncheckedUpdateManyInput = {
@@ -21944,12 +20601,13 @@ export namespace Prisma {
     is_active?: BoolFieldUpdateOperationsInput | boolean
     is_checked?: BoolFieldUpdateOperationsInput | boolean
     is_archived?: BoolFieldUpdateOperationsInput | boolean
-    currencyId?: IntFieldUpdateOperationsInput | number
-    modelId?: IntFieldUpdateOperationsInput | number
-    brandId?: IntFieldUpdateOperationsInput | number
-    colorId?: IntFieldUpdateOperationsInput | number
-    addressId?: IntFieldUpdateOperationsInput | number
-    userId?: IntFieldUpdateOperationsInput | number
+    is_deleted?: BoolFieldUpdateOperationsInput | boolean
+    currencyId?: NullableIntFieldUpdateOperationsInput | number | null
+    modelId?: NullableIntFieldUpdateOperationsInput | number | null
+    brandId?: NullableIntFieldUpdateOperationsInput | number | null
+    colorId?: NullableIntFieldUpdateOperationsInput | number | null
+    addressId?: NullableIntFieldUpdateOperationsInput | number | null
+    userId?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type ImageCreateInput = {
@@ -22353,12 +21011,6 @@ export namespace Prisma {
     none?: PhoneNumberWhereInput
   }
 
-  export type AddressListRelationFilter = {
-    every?: AddressWhereInput
-    some?: AddressWhereInput
-    none?: AddressWhereInput
-  }
-
   export type PhoneListRelationFilter = {
     every?: PhoneWhereInput
     some?: PhoneWhereInput
@@ -22375,10 +21027,6 @@ export namespace Prisma {
   }
 
   export type PhoneNumberOrderByRelationAggregateInput = {
-    _count?: SortOrder
-  }
-
-  export type AddressOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -22726,74 +21374,6 @@ export namespace Prisma {
     id?: SortOrder
   }
 
-  export type FloatFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel>
-    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
-    lt?: number | FloatFieldRefInput<$PrismaModel>
-    lte?: number | FloatFieldRefInput<$PrismaModel>
-    gt?: number | FloatFieldRefInput<$PrismaModel>
-    gte?: number | FloatFieldRefInput<$PrismaModel>
-    not?: NestedFloatFilter<$PrismaModel> | number
-  }
-
-  export type AddressCountOrderByAggregateInput = {
-    id?: SortOrder
-    name?: SortOrder
-    address?: SortOrder
-    lot?: SortOrder
-    long?: SortOrder
-    userId?: SortOrder
-  }
-
-  export type AddressAvgOrderByAggregateInput = {
-    id?: SortOrder
-    lot?: SortOrder
-    long?: SortOrder
-    userId?: SortOrder
-  }
-
-  export type AddressMaxOrderByAggregateInput = {
-    id?: SortOrder
-    name?: SortOrder
-    address?: SortOrder
-    lot?: SortOrder
-    long?: SortOrder
-    userId?: SortOrder
-  }
-
-  export type AddressMinOrderByAggregateInput = {
-    id?: SortOrder
-    name?: SortOrder
-    address?: SortOrder
-    lot?: SortOrder
-    long?: SortOrder
-    userId?: SortOrder
-  }
-
-  export type AddressSumOrderByAggregateInput = {
-    id?: SortOrder
-    lot?: SortOrder
-    long?: SortOrder
-    userId?: SortOrder
-  }
-
-  export type FloatWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel>
-    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
-    lt?: number | FloatFieldRefInput<$PrismaModel>
-    lte?: number | FloatFieldRefInput<$PrismaModel>
-    gt?: number | FloatFieldRefInput<$PrismaModel>
-    gte?: number | FloatFieldRefInput<$PrismaModel>
-    not?: NestedFloatWithAggregatesFilter<$PrismaModel> | number
-    _count?: NestedIntFilter<$PrismaModel>
-    _avg?: NestedFloatFilter<$PrismaModel>
-    _sum?: NestedFloatFilter<$PrismaModel>
-    _min?: NestedFloatFilter<$PrismaModel>
-    _max?: NestedFloatFilter<$PrismaModel>
-  }
-
   export type EnumRamNullableListFilter<$PrismaModel = never> = {
     equals?: $Enums.Ram[] | ListEnumRamFieldRefInput<$PrismaModel> | null
     has?: $Enums.Ram | EnumRamFieldRefInput<$PrismaModel> | null
@@ -22821,24 +21401,29 @@ export namespace Prisma {
     not?: NestedBigIntFilter<$PrismaModel> | bigint | number
   }
 
-  export type CurrencyScalarRelationFilter = {
-    is?: CurrencyWhereInput
-    isNot?: CurrencyWhereInput
+  export type CurrencyNullableScalarRelationFilter = {
+    is?: CurrencyWhereInput | null
+    isNot?: CurrencyWhereInput | null
   }
 
-  export type ModelScalarRelationFilter = {
-    is?: ModelWhereInput
-    isNot?: ModelWhereInput
+  export type ModelNullableScalarRelationFilter = {
+    is?: ModelWhereInput | null
+    isNot?: ModelWhereInput | null
   }
 
-  export type ColorScalarRelationFilter = {
-    is?: ColorWhereInput
-    isNot?: ColorWhereInput
+  export type BrandNullableScalarRelationFilter = {
+    is?: BrandWhereInput | null
+    isNot?: BrandWhereInput | null
   }
 
-  export type AddressScalarRelationFilter = {
-    is?: AddressWhereInput
-    isNot?: AddressWhereInput
+  export type ColorNullableScalarRelationFilter = {
+    is?: ColorWhereInput | null
+    isNot?: ColorWhereInput | null
+  }
+
+  export type UserNullableScalarRelationFilter = {
+    is?: UserWhereInput | null
+    isNot?: UserWhereInput | null
   }
 
   export type ImageListRelationFilter = {
@@ -22888,6 +21473,7 @@ export namespace Prisma {
     is_active?: SortOrder
     is_checked?: SortOrder
     is_archived?: SortOrder
+    is_deleted?: SortOrder
     currencyId?: SortOrder
     modelId?: SortOrder
     brandId?: SortOrder
@@ -22923,6 +21509,7 @@ export namespace Prisma {
     is_active?: SortOrder
     is_checked?: SortOrder
     is_archived?: SortOrder
+    is_deleted?: SortOrder
     currencyId?: SortOrder
     modelId?: SortOrder
     brandId?: SortOrder
@@ -22946,6 +21533,7 @@ export namespace Prisma {
     is_active?: SortOrder
     is_checked?: SortOrder
     is_archived?: SortOrder
+    is_deleted?: SortOrder
     currencyId?: SortOrder
     modelId?: SortOrder
     brandId?: SortOrder
@@ -23265,13 +21853,6 @@ export namespace Prisma {
     connect?: PhoneNumberWhereUniqueInput | PhoneNumberWhereUniqueInput[]
   }
 
-  export type AddressCreateNestedManyWithoutUsersInput = {
-    create?: XOR<AddressCreateWithoutUsersInput, AddressUncheckedCreateWithoutUsersInput> | AddressCreateWithoutUsersInput[] | AddressUncheckedCreateWithoutUsersInput[]
-    connectOrCreate?: AddressCreateOrConnectWithoutUsersInput | AddressCreateOrConnectWithoutUsersInput[]
-    createMany?: AddressCreateManyUsersInputEnvelope
-    connect?: AddressWhereUniqueInput | AddressWhereUniqueInput[]
-  }
-
   export type PhoneCreateNestedManyWithoutUserInput = {
     create?: XOR<PhoneCreateWithoutUserInput, PhoneUncheckedCreateWithoutUserInput> | PhoneCreateWithoutUserInput[] | PhoneUncheckedCreateWithoutUserInput[]
     connectOrCreate?: PhoneCreateOrConnectWithoutUserInput | PhoneCreateOrConnectWithoutUserInput[]
@@ -23291,13 +21872,6 @@ export namespace Prisma {
     connectOrCreate?: PhoneNumberCreateOrConnectWithoutUserInput | PhoneNumberCreateOrConnectWithoutUserInput[]
     createMany?: PhoneNumberCreateManyUserInputEnvelope
     connect?: PhoneNumberWhereUniqueInput | PhoneNumberWhereUniqueInput[]
-  }
-
-  export type AddressUncheckedCreateNestedManyWithoutUsersInput = {
-    create?: XOR<AddressCreateWithoutUsersInput, AddressUncheckedCreateWithoutUsersInput> | AddressCreateWithoutUsersInput[] | AddressUncheckedCreateWithoutUsersInput[]
-    connectOrCreate?: AddressCreateOrConnectWithoutUsersInput | AddressCreateOrConnectWithoutUsersInput[]
-    createMany?: AddressCreateManyUsersInputEnvelope
-    connect?: AddressWhereUniqueInput | AddressWhereUniqueInput[]
   }
 
   export type PhoneUncheckedCreateNestedManyWithoutUserInput = {
@@ -23395,20 +21969,6 @@ export namespace Prisma {
     deleteMany?: PhoneNumberScalarWhereInput | PhoneNumberScalarWhereInput[]
   }
 
-  export type AddressUpdateManyWithoutUsersNestedInput = {
-    create?: XOR<AddressCreateWithoutUsersInput, AddressUncheckedCreateWithoutUsersInput> | AddressCreateWithoutUsersInput[] | AddressUncheckedCreateWithoutUsersInput[]
-    connectOrCreate?: AddressCreateOrConnectWithoutUsersInput | AddressCreateOrConnectWithoutUsersInput[]
-    upsert?: AddressUpsertWithWhereUniqueWithoutUsersInput | AddressUpsertWithWhereUniqueWithoutUsersInput[]
-    createMany?: AddressCreateManyUsersInputEnvelope
-    set?: AddressWhereUniqueInput | AddressWhereUniqueInput[]
-    disconnect?: AddressWhereUniqueInput | AddressWhereUniqueInput[]
-    delete?: AddressWhereUniqueInput | AddressWhereUniqueInput[]
-    connect?: AddressWhereUniqueInput | AddressWhereUniqueInput[]
-    update?: AddressUpdateWithWhereUniqueWithoutUsersInput | AddressUpdateWithWhereUniqueWithoutUsersInput[]
-    updateMany?: AddressUpdateManyWithWhereWithoutUsersInput | AddressUpdateManyWithWhereWithoutUsersInput[]
-    deleteMany?: AddressScalarWhereInput | AddressScalarWhereInput[]
-  }
-
   export type PhoneUpdateManyWithoutUserNestedInput = {
     create?: XOR<PhoneCreateWithoutUserInput, PhoneUncheckedCreateWithoutUserInput> | PhoneCreateWithoutUserInput[] | PhoneUncheckedCreateWithoutUserInput[]
     connectOrCreate?: PhoneCreateOrConnectWithoutUserInput | PhoneCreateOrConnectWithoutUserInput[]
@@ -23457,20 +22017,6 @@ export namespace Prisma {
     update?: PhoneNumberUpdateWithWhereUniqueWithoutUserInput | PhoneNumberUpdateWithWhereUniqueWithoutUserInput[]
     updateMany?: PhoneNumberUpdateManyWithWhereWithoutUserInput | PhoneNumberUpdateManyWithWhereWithoutUserInput[]
     deleteMany?: PhoneNumberScalarWhereInput | PhoneNumberScalarWhereInput[]
-  }
-
-  export type AddressUncheckedUpdateManyWithoutUsersNestedInput = {
-    create?: XOR<AddressCreateWithoutUsersInput, AddressUncheckedCreateWithoutUsersInput> | AddressCreateWithoutUsersInput[] | AddressUncheckedCreateWithoutUsersInput[]
-    connectOrCreate?: AddressCreateOrConnectWithoutUsersInput | AddressCreateOrConnectWithoutUsersInput[]
-    upsert?: AddressUpsertWithWhereUniqueWithoutUsersInput | AddressUpsertWithWhereUniqueWithoutUsersInput[]
-    createMany?: AddressCreateManyUsersInputEnvelope
-    set?: AddressWhereUniqueInput | AddressWhereUniqueInput[]
-    disconnect?: AddressWhereUniqueInput | AddressWhereUniqueInput[]
-    delete?: AddressWhereUniqueInput | AddressWhereUniqueInput[]
-    connect?: AddressWhereUniqueInput | AddressWhereUniqueInput[]
-    update?: AddressUpdateWithWhereUniqueWithoutUsersInput | AddressUpdateWithWhereUniqueWithoutUsersInput[]
-    updateMany?: AddressUpdateManyWithWhereWithoutUsersInput | AddressUpdateManyWithWhereWithoutUsersInput[]
-    deleteMany?: AddressScalarWhereInput | AddressScalarWhereInput[]
   }
 
   export type PhoneUncheckedUpdateManyWithoutUserNestedInput = {
@@ -23823,70 +22369,6 @@ export namespace Prisma {
     deleteMany?: PhoneScalarWhereInput | PhoneScalarWhereInput[]
   }
 
-  export type UserCreateNestedOneWithoutAddressInput = {
-    create?: XOR<UserCreateWithoutAddressInput, UserUncheckedCreateWithoutAddressInput>
-    connectOrCreate?: UserCreateOrConnectWithoutAddressInput
-    connect?: UserWhereUniqueInput
-  }
-
-  export type PhoneCreateNestedManyWithoutAddressInput = {
-    create?: XOR<PhoneCreateWithoutAddressInput, PhoneUncheckedCreateWithoutAddressInput> | PhoneCreateWithoutAddressInput[] | PhoneUncheckedCreateWithoutAddressInput[]
-    connectOrCreate?: PhoneCreateOrConnectWithoutAddressInput | PhoneCreateOrConnectWithoutAddressInput[]
-    createMany?: PhoneCreateManyAddressInputEnvelope
-    connect?: PhoneWhereUniqueInput | PhoneWhereUniqueInput[]
-  }
-
-  export type PhoneUncheckedCreateNestedManyWithoutAddressInput = {
-    create?: XOR<PhoneCreateWithoutAddressInput, PhoneUncheckedCreateWithoutAddressInput> | PhoneCreateWithoutAddressInput[] | PhoneUncheckedCreateWithoutAddressInput[]
-    connectOrCreate?: PhoneCreateOrConnectWithoutAddressInput | PhoneCreateOrConnectWithoutAddressInput[]
-    createMany?: PhoneCreateManyAddressInputEnvelope
-    connect?: PhoneWhereUniqueInput | PhoneWhereUniqueInput[]
-  }
-
-  export type FloatFieldUpdateOperationsInput = {
-    set?: number
-    increment?: number
-    decrement?: number
-    multiply?: number
-    divide?: number
-  }
-
-  export type UserUpdateOneRequiredWithoutAddressNestedInput = {
-    create?: XOR<UserCreateWithoutAddressInput, UserUncheckedCreateWithoutAddressInput>
-    connectOrCreate?: UserCreateOrConnectWithoutAddressInput
-    upsert?: UserUpsertWithoutAddressInput
-    connect?: UserWhereUniqueInput
-    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutAddressInput, UserUpdateWithoutAddressInput>, UserUncheckedUpdateWithoutAddressInput>
-  }
-
-  export type PhoneUpdateManyWithoutAddressNestedInput = {
-    create?: XOR<PhoneCreateWithoutAddressInput, PhoneUncheckedCreateWithoutAddressInput> | PhoneCreateWithoutAddressInput[] | PhoneUncheckedCreateWithoutAddressInput[]
-    connectOrCreate?: PhoneCreateOrConnectWithoutAddressInput | PhoneCreateOrConnectWithoutAddressInput[]
-    upsert?: PhoneUpsertWithWhereUniqueWithoutAddressInput | PhoneUpsertWithWhereUniqueWithoutAddressInput[]
-    createMany?: PhoneCreateManyAddressInputEnvelope
-    set?: PhoneWhereUniqueInput | PhoneWhereUniqueInput[]
-    disconnect?: PhoneWhereUniqueInput | PhoneWhereUniqueInput[]
-    delete?: PhoneWhereUniqueInput | PhoneWhereUniqueInput[]
-    connect?: PhoneWhereUniqueInput | PhoneWhereUniqueInput[]
-    update?: PhoneUpdateWithWhereUniqueWithoutAddressInput | PhoneUpdateWithWhereUniqueWithoutAddressInput[]
-    updateMany?: PhoneUpdateManyWithWhereWithoutAddressInput | PhoneUpdateManyWithWhereWithoutAddressInput[]
-    deleteMany?: PhoneScalarWhereInput | PhoneScalarWhereInput[]
-  }
-
-  export type PhoneUncheckedUpdateManyWithoutAddressNestedInput = {
-    create?: XOR<PhoneCreateWithoutAddressInput, PhoneUncheckedCreateWithoutAddressInput> | PhoneCreateWithoutAddressInput[] | PhoneUncheckedCreateWithoutAddressInput[]
-    connectOrCreate?: PhoneCreateOrConnectWithoutAddressInput | PhoneCreateOrConnectWithoutAddressInput[]
-    upsert?: PhoneUpsertWithWhereUniqueWithoutAddressInput | PhoneUpsertWithWhereUniqueWithoutAddressInput[]
-    createMany?: PhoneCreateManyAddressInputEnvelope
-    set?: PhoneWhereUniqueInput | PhoneWhereUniqueInput[]
-    disconnect?: PhoneWhereUniqueInput | PhoneWhereUniqueInput[]
-    delete?: PhoneWhereUniqueInput | PhoneWhereUniqueInput[]
-    connect?: PhoneWhereUniqueInput | PhoneWhereUniqueInput[]
-    update?: PhoneUpdateWithWhereUniqueWithoutAddressInput | PhoneUpdateWithWhereUniqueWithoutAddressInput[]
-    updateMany?: PhoneUpdateManyWithWhereWithoutAddressInput | PhoneUpdateManyWithWhereWithoutAddressInput[]
-    deleteMany?: PhoneScalarWhereInput | PhoneScalarWhereInput[]
-  }
-
   export type PhoneCreateramInput = {
     set: $Enums.Ram[]
   }
@@ -23917,12 +22399,6 @@ export namespace Prisma {
     create?: XOR<ColorCreateWithoutPhonesInput, ColorUncheckedCreateWithoutPhonesInput>
     connectOrCreate?: ColorCreateOrConnectWithoutPhonesInput
     connect?: ColorWhereUniqueInput
-  }
-
-  export type AddressCreateNestedOneWithoutPhonesInput = {
-    create?: XOR<AddressCreateWithoutPhonesInput, AddressUncheckedCreateWithoutPhonesInput>
-    connectOrCreate?: AddressCreateOrConnectWithoutPhonesInput
-    connect?: AddressWhereUniqueInput
   }
 
   export type UserCreateNestedOneWithoutPhonesInput = {
@@ -23991,50 +22467,52 @@ export namespace Prisma {
     divide?: bigint | number
   }
 
-  export type CurrencyUpdateOneRequiredWithoutPhonesNestedInput = {
+  export type CurrencyUpdateOneWithoutPhonesNestedInput = {
     create?: XOR<CurrencyCreateWithoutPhonesInput, CurrencyUncheckedCreateWithoutPhonesInput>
     connectOrCreate?: CurrencyCreateOrConnectWithoutPhonesInput
     upsert?: CurrencyUpsertWithoutPhonesInput
+    disconnect?: CurrencyWhereInput | boolean
+    delete?: CurrencyWhereInput | boolean
     connect?: CurrencyWhereUniqueInput
     update?: XOR<XOR<CurrencyUpdateToOneWithWhereWithoutPhonesInput, CurrencyUpdateWithoutPhonesInput>, CurrencyUncheckedUpdateWithoutPhonesInput>
   }
 
-  export type ModelUpdateOneRequiredWithoutPhonesNestedInput = {
+  export type ModelUpdateOneWithoutPhonesNestedInput = {
     create?: XOR<ModelCreateWithoutPhonesInput, ModelUncheckedCreateWithoutPhonesInput>
     connectOrCreate?: ModelCreateOrConnectWithoutPhonesInput
     upsert?: ModelUpsertWithoutPhonesInput
+    disconnect?: ModelWhereInput | boolean
+    delete?: ModelWhereInput | boolean
     connect?: ModelWhereUniqueInput
     update?: XOR<XOR<ModelUpdateToOneWithWhereWithoutPhonesInput, ModelUpdateWithoutPhonesInput>, ModelUncheckedUpdateWithoutPhonesInput>
   }
 
-  export type BrandUpdateOneRequiredWithoutPhonesNestedInput = {
+  export type BrandUpdateOneWithoutPhonesNestedInput = {
     create?: XOR<BrandCreateWithoutPhonesInput, BrandUncheckedCreateWithoutPhonesInput>
     connectOrCreate?: BrandCreateOrConnectWithoutPhonesInput
     upsert?: BrandUpsertWithoutPhonesInput
+    disconnect?: BrandWhereInput | boolean
+    delete?: BrandWhereInput | boolean
     connect?: BrandWhereUniqueInput
     update?: XOR<XOR<BrandUpdateToOneWithWhereWithoutPhonesInput, BrandUpdateWithoutPhonesInput>, BrandUncheckedUpdateWithoutPhonesInput>
   }
 
-  export type ColorUpdateOneRequiredWithoutPhonesNestedInput = {
+  export type ColorUpdateOneWithoutPhonesNestedInput = {
     create?: XOR<ColorCreateWithoutPhonesInput, ColorUncheckedCreateWithoutPhonesInput>
     connectOrCreate?: ColorCreateOrConnectWithoutPhonesInput
     upsert?: ColorUpsertWithoutPhonesInput
+    disconnect?: ColorWhereInput | boolean
+    delete?: ColorWhereInput | boolean
     connect?: ColorWhereUniqueInput
     update?: XOR<XOR<ColorUpdateToOneWithWhereWithoutPhonesInput, ColorUpdateWithoutPhonesInput>, ColorUncheckedUpdateWithoutPhonesInput>
   }
 
-  export type AddressUpdateOneRequiredWithoutPhonesNestedInput = {
-    create?: XOR<AddressCreateWithoutPhonesInput, AddressUncheckedCreateWithoutPhonesInput>
-    connectOrCreate?: AddressCreateOrConnectWithoutPhonesInput
-    upsert?: AddressUpsertWithoutPhonesInput
-    connect?: AddressWhereUniqueInput
-    update?: XOR<XOR<AddressUpdateToOneWithWhereWithoutPhonesInput, AddressUpdateWithoutPhonesInput>, AddressUncheckedUpdateWithoutPhonesInput>
-  }
-
-  export type UserUpdateOneRequiredWithoutPhonesNestedInput = {
+  export type UserUpdateOneWithoutPhonesNestedInput = {
     create?: XOR<UserCreateWithoutPhonesInput, UserUncheckedCreateWithoutPhonesInput>
     connectOrCreate?: UserCreateOrConnectWithoutPhonesInput
     upsert?: UserUpsertWithoutPhonesInput
+    disconnect?: UserWhereInput | boolean
+    delete?: UserWhereInput | boolean
     connect?: UserWhereUniqueInput
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutPhonesInput, UserUpdateWithoutPhonesInput>, UserUncheckedUpdateWithoutPhonesInput>
   }
@@ -24393,22 +22871,6 @@ export namespace Prisma {
     not?: NestedFloatNullableFilter<$PrismaModel> | number | null
   }
 
-  export type NestedFloatWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel>
-    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
-    lt?: number | FloatFieldRefInput<$PrismaModel>
-    lte?: number | FloatFieldRefInput<$PrismaModel>
-    gt?: number | FloatFieldRefInput<$PrismaModel>
-    gte?: number | FloatFieldRefInput<$PrismaModel>
-    not?: NestedFloatWithAggregatesFilter<$PrismaModel> | number
-    _count?: NestedIntFilter<$PrismaModel>
-    _avg?: NestedFloatFilter<$PrismaModel>
-    _sum?: NestedFloatFilter<$PrismaModel>
-    _min?: NestedFloatFilter<$PrismaModel>
-    _max?: NestedFloatFilter<$PrismaModel>
-  }
-
   export type NestedBigIntFilter<$PrismaModel = never> = {
     equals?: bigint | number | BigIntFieldRefInput<$PrismaModel>
     in?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
@@ -24525,7 +22987,6 @@ export namespace Prisma {
     language?: LanguageCreateNestedOneWithoutUsersInput
     Emails?: EmailCreateNestedManyWithoutUserInput
     PhoneNumbers?: PhoneNumberCreateNestedManyWithoutUserInput
-    Address?: AddressCreateNestedManyWithoutUsersInput
     Phones?: PhoneCreateNestedManyWithoutUserInput
   }
 
@@ -24549,7 +23010,6 @@ export namespace Prisma {
     languageId?: number | null
     Emails?: EmailUncheckedCreateNestedManyWithoutUserInput
     PhoneNumbers?: PhoneNumberUncheckedCreateNestedManyWithoutUserInput
-    Address?: AddressUncheckedCreateNestedManyWithoutUsersInput
     Phones?: PhoneUncheckedCreateNestedManyWithoutUserInput
   }
 
@@ -24646,7 +23106,6 @@ export namespace Prisma {
     district?: DistrictCreateNestedOneWithoutUsersInput
     Emails?: EmailCreateNestedManyWithoutUserInput
     PhoneNumbers?: PhoneNumberCreateNestedManyWithoutUserInput
-    Address?: AddressCreateNestedManyWithoutUsersInput
     Phones?: PhoneCreateNestedManyWithoutUserInput
   }
 
@@ -24670,7 +23129,6 @@ export namespace Prisma {
     districtId?: number | null
     Emails?: EmailUncheckedCreateNestedManyWithoutUserInput
     PhoneNumbers?: PhoneNumberUncheckedCreateNestedManyWithoutUserInput
-    Address?: AddressUncheckedCreateNestedManyWithoutUsersInput
     Phones?: PhoneUncheckedCreateNestedManyWithoutUserInput
   }
 
@@ -24818,33 +23276,6 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-  export type AddressCreateWithoutUsersInput = {
-    name: string
-    address: string
-    lot: number
-    long: number
-    Phones?: PhoneCreateNestedManyWithoutAddressInput
-  }
-
-  export type AddressUncheckedCreateWithoutUsersInput = {
-    id?: number
-    name: string
-    address: string
-    lot: number
-    long: number
-    Phones?: PhoneUncheckedCreateNestedManyWithoutAddressInput
-  }
-
-  export type AddressCreateOrConnectWithoutUsersInput = {
-    where: AddressWhereUniqueInput
-    create: XOR<AddressCreateWithoutUsersInput, AddressUncheckedCreateWithoutUsersInput>
-  }
-
-  export type AddressCreateManyUsersInputEnvelope = {
-    data: AddressCreateManyUsersInput | AddressCreateManyUsersInput[]
-    skipDuplicates?: boolean
-  }
-
   export type PhoneCreateWithoutUserInput = {
     title: string
     description: string
@@ -24861,11 +23292,12 @@ export namespace Prisma {
     is_active?: boolean
     is_checked?: boolean
     is_archived?: boolean
-    Currency: CurrencyCreateNestedOneWithoutPhonesInput
-    Models: ModelCreateNestedOneWithoutPhonesInput
-    Brands: BrandCreateNestedOneWithoutPhonesInput
-    Color: ColorCreateNestedOneWithoutPhonesInput
-    Address: AddressCreateNestedOneWithoutPhonesInput
+    is_deleted?: boolean
+    addressId?: number | null
+    Currency?: CurrencyCreateNestedOneWithoutPhonesInput
+    Models?: ModelCreateNestedOneWithoutPhonesInput
+    Brands?: BrandCreateNestedOneWithoutPhonesInput
+    Color?: ColorCreateNestedOneWithoutPhonesInput
     Images?: ImageCreateNestedManyWithoutPhoneInput
     Reviews?: ReviewCreateNestedManyWithoutPhoneInput
     Archives?: ArchivesCreateNestedManyWithoutPhoneInput
@@ -24888,11 +23320,12 @@ export namespace Prisma {
     is_active?: boolean
     is_checked?: boolean
     is_archived?: boolean
-    currencyId: number
-    modelId: number
-    brandId: number
-    colorId: number
-    addressId: number
+    is_deleted?: boolean
+    currencyId?: number | null
+    modelId?: number | null
+    brandId?: number | null
+    colorId?: number | null
+    addressId?: number | null
     Images?: ImageUncheckedCreateNestedManyWithoutPhoneInput
     Reviews?: ReviewUncheckedCreateNestedManyWithoutPhoneInput
     Archives?: ArchivesUncheckedCreateNestedManyWithoutPhoneInput
@@ -25064,34 +23497,6 @@ export namespace Prisma {
     userId?: IntFilter<"PhoneNumber"> | number
   }
 
-  export type AddressUpsertWithWhereUniqueWithoutUsersInput = {
-    where: AddressWhereUniqueInput
-    update: XOR<AddressUpdateWithoutUsersInput, AddressUncheckedUpdateWithoutUsersInput>
-    create: XOR<AddressCreateWithoutUsersInput, AddressUncheckedCreateWithoutUsersInput>
-  }
-
-  export type AddressUpdateWithWhereUniqueWithoutUsersInput = {
-    where: AddressWhereUniqueInput
-    data: XOR<AddressUpdateWithoutUsersInput, AddressUncheckedUpdateWithoutUsersInput>
-  }
-
-  export type AddressUpdateManyWithWhereWithoutUsersInput = {
-    where: AddressScalarWhereInput
-    data: XOR<AddressUpdateManyMutationInput, AddressUncheckedUpdateManyWithoutUsersInput>
-  }
-
-  export type AddressScalarWhereInput = {
-    AND?: AddressScalarWhereInput | AddressScalarWhereInput[]
-    OR?: AddressScalarWhereInput[]
-    NOT?: AddressScalarWhereInput | AddressScalarWhereInput[]
-    id?: IntFilter<"Address"> | number
-    name?: StringFilter<"Address"> | string
-    address?: StringFilter<"Address"> | string
-    lot?: FloatFilter<"Address"> | number
-    long?: FloatFilter<"Address"> | number
-    userId?: IntFilter<"Address"> | number
-  }
-
   export type PhoneUpsertWithWhereUniqueWithoutUserInput = {
     where: PhoneWhereUniqueInput
     update: XOR<PhoneUpdateWithoutUserInput, PhoneUncheckedUpdateWithoutUserInput>
@@ -25128,12 +23533,13 @@ export namespace Prisma {
     is_active?: BoolFilter<"Phone"> | boolean
     is_checked?: BoolFilter<"Phone"> | boolean
     is_archived?: BoolFilter<"Phone"> | boolean
-    currencyId?: IntFilter<"Phone"> | number
-    modelId?: IntFilter<"Phone"> | number
-    brandId?: IntFilter<"Phone"> | number
-    colorId?: IntFilter<"Phone"> | number
-    addressId?: IntFilter<"Phone"> | number
-    userId?: IntFilter<"Phone"> | number
+    is_deleted?: BoolFilter<"Phone"> | boolean
+    currencyId?: IntNullableFilter<"Phone"> | number | null
+    modelId?: IntNullableFilter<"Phone"> | number | null
+    brandId?: IntNullableFilter<"Phone"> | number | null
+    colorId?: IntNullableFilter<"Phone"> | number | null
+    addressId?: IntNullableFilter<"Phone"> | number | null
+    userId?: IntNullableFilter<"Phone"> | number | null
   }
 
   export type UserCreateWithoutEmailsInput = {
@@ -25155,7 +23561,6 @@ export namespace Prisma {
     district?: DistrictCreateNestedOneWithoutUsersInput
     language?: LanguageCreateNestedOneWithoutUsersInput
     PhoneNumbers?: PhoneNumberCreateNestedManyWithoutUserInput
-    Address?: AddressCreateNestedManyWithoutUsersInput
     Phones?: PhoneCreateNestedManyWithoutUserInput
   }
 
@@ -25179,7 +23584,6 @@ export namespace Prisma {
     districtId?: number | null
     languageId?: number | null
     PhoneNumbers?: PhoneNumberUncheckedCreateNestedManyWithoutUserInput
-    Address?: AddressUncheckedCreateNestedManyWithoutUsersInput
     Phones?: PhoneUncheckedCreateNestedManyWithoutUserInput
   }
 
@@ -25207,7 +23611,6 @@ export namespace Prisma {
     language?: LanguageCreateNestedOneWithoutUsersInput
     Emails?: EmailCreateNestedManyWithoutUserInput
     PhoneNumbers?: PhoneNumberCreateNestedManyWithoutUserInput
-    Address?: AddressCreateNestedManyWithoutUsersInput
     Phones?: PhoneCreateNestedManyWithoutUserInput
   }
 
@@ -25231,7 +23634,6 @@ export namespace Prisma {
     languageId?: number | null
     Emails?: EmailUncheckedCreateNestedManyWithoutUserInput
     PhoneNumbers?: PhoneNumberUncheckedCreateNestedManyWithoutUserInput
-    Address?: AddressUncheckedCreateNestedManyWithoutUsersInput
     Phones?: PhoneUncheckedCreateNestedManyWithoutUserInput
   }
 
@@ -25275,7 +23677,6 @@ export namespace Prisma {
     district?: DistrictUpdateOneWithoutUsersNestedInput
     language?: LanguageUpdateOneWithoutUsersNestedInput
     PhoneNumbers?: PhoneNumberUpdateManyWithoutUserNestedInput
-    Address?: AddressUpdateManyWithoutUsersNestedInput
     Phones?: PhoneUpdateManyWithoutUserNestedInput
   }
 
@@ -25299,7 +23700,6 @@ export namespace Prisma {
     districtId?: NullableIntFieldUpdateOperationsInput | number | null
     languageId?: NullableIntFieldUpdateOperationsInput | number | null
     PhoneNumbers?: PhoneNumberUncheckedUpdateManyWithoutUserNestedInput
-    Address?: AddressUncheckedUpdateManyWithoutUsersNestedInput
     Phones?: PhoneUncheckedUpdateManyWithoutUserNestedInput
   }
 
@@ -25338,7 +23738,6 @@ export namespace Prisma {
     district?: DistrictCreateNestedOneWithoutUsersInput
     language?: LanguageCreateNestedOneWithoutUsersInput
     Emails?: EmailCreateNestedManyWithoutUserInput
-    Address?: AddressCreateNestedManyWithoutUsersInput
     Phones?: PhoneCreateNestedManyWithoutUserInput
   }
 
@@ -25362,7 +23761,6 @@ export namespace Prisma {
     districtId?: number | null
     languageId?: number | null
     Emails?: EmailUncheckedCreateNestedManyWithoutUserInput
-    Address?: AddressUncheckedCreateNestedManyWithoutUsersInput
     Phones?: PhoneUncheckedCreateNestedManyWithoutUserInput
   }
 
@@ -25390,7 +23788,6 @@ export namespace Prisma {
     language?: LanguageCreateNestedOneWithoutUsersInput
     Emails?: EmailCreateNestedManyWithoutUserInput
     PhoneNumbers?: PhoneNumberCreateNestedManyWithoutUserInput
-    Address?: AddressCreateNestedManyWithoutUsersInput
     Phones?: PhoneCreateNestedManyWithoutUserInput
   }
 
@@ -25414,7 +23811,6 @@ export namespace Prisma {
     languageId?: number | null
     Emails?: EmailUncheckedCreateNestedManyWithoutUserInput
     PhoneNumbers?: PhoneNumberUncheckedCreateNestedManyWithoutUserInput
-    Address?: AddressUncheckedCreateNestedManyWithoutUsersInput
     Phones?: PhoneUncheckedCreateNestedManyWithoutUserInput
   }
 
@@ -25458,7 +23854,6 @@ export namespace Prisma {
     district?: DistrictUpdateOneWithoutUsersNestedInput
     language?: LanguageUpdateOneWithoutUsersNestedInput
     Emails?: EmailUpdateManyWithoutUserNestedInput
-    Address?: AddressUpdateManyWithoutUsersNestedInput
     Phones?: PhoneUpdateManyWithoutUserNestedInput
   }
 
@@ -25482,7 +23877,6 @@ export namespace Prisma {
     districtId?: NullableIntFieldUpdateOperationsInput | number | null
     languageId?: NullableIntFieldUpdateOperationsInput | number | null
     Emails?: EmailUncheckedUpdateManyWithoutUserNestedInput
-    Address?: AddressUncheckedUpdateManyWithoutUsersNestedInput
     Phones?: PhoneUncheckedUpdateManyWithoutUserNestedInput
   }
 
@@ -25518,11 +23912,12 @@ export namespace Prisma {
     is_active?: boolean
     is_checked?: boolean
     is_archived?: boolean
-    Models: ModelCreateNestedOneWithoutPhonesInput
-    Brands: BrandCreateNestedOneWithoutPhonesInput
-    Color: ColorCreateNestedOneWithoutPhonesInput
-    Address: AddressCreateNestedOneWithoutPhonesInput
-    User: UserCreateNestedOneWithoutPhonesInput
+    is_deleted?: boolean
+    addressId?: number | null
+    Models?: ModelCreateNestedOneWithoutPhonesInput
+    Brands?: BrandCreateNestedOneWithoutPhonesInput
+    Color?: ColorCreateNestedOneWithoutPhonesInput
+    User?: UserCreateNestedOneWithoutPhonesInput
     Images?: ImageCreateNestedManyWithoutPhoneInput
     Reviews?: ReviewCreateNestedManyWithoutPhoneInput
     Archives?: ArchivesCreateNestedManyWithoutPhoneInput
@@ -25545,11 +23940,12 @@ export namespace Prisma {
     is_active?: boolean
     is_checked?: boolean
     is_archived?: boolean
-    modelId: number
-    brandId: number
-    colorId: number
-    addressId: number
-    userId: number
+    is_deleted?: boolean
+    modelId?: number | null
+    brandId?: number | null
+    colorId?: number | null
+    addressId?: number | null
+    userId?: number | null
     Images?: ImageUncheckedCreateNestedManyWithoutPhoneInput
     Reviews?: ReviewUncheckedCreateNestedManyWithoutPhoneInput
     Archives?: ArchivesUncheckedCreateNestedManyWithoutPhoneInput
@@ -25618,11 +24014,12 @@ export namespace Prisma {
     is_active?: boolean
     is_checked?: boolean
     is_archived?: boolean
-    Currency: CurrencyCreateNestedOneWithoutPhonesInput
-    Models: ModelCreateNestedOneWithoutPhonesInput
-    Color: ColorCreateNestedOneWithoutPhonesInput
-    Address: AddressCreateNestedOneWithoutPhonesInput
-    User: UserCreateNestedOneWithoutPhonesInput
+    is_deleted?: boolean
+    addressId?: number | null
+    Currency?: CurrencyCreateNestedOneWithoutPhonesInput
+    Models?: ModelCreateNestedOneWithoutPhonesInput
+    Color?: ColorCreateNestedOneWithoutPhonesInput
+    User?: UserCreateNestedOneWithoutPhonesInput
     Images?: ImageCreateNestedManyWithoutPhoneInput
     Reviews?: ReviewCreateNestedManyWithoutPhoneInput
     Archives?: ArchivesCreateNestedManyWithoutPhoneInput
@@ -25645,11 +24042,12 @@ export namespace Prisma {
     is_active?: boolean
     is_checked?: boolean
     is_archived?: boolean
-    currencyId: number
-    modelId: number
-    colorId: number
-    addressId: number
-    userId: number
+    is_deleted?: boolean
+    currencyId?: number | null
+    modelId?: number | null
+    colorId?: number | null
+    addressId?: number | null
+    userId?: number | null
     Images?: ImageUncheckedCreateNestedManyWithoutPhoneInput
     Reviews?: ReviewUncheckedCreateNestedManyWithoutPhoneInput
     Archives?: ArchivesUncheckedCreateNestedManyWithoutPhoneInput
@@ -25738,11 +24136,12 @@ export namespace Prisma {
     is_active?: boolean
     is_checked?: boolean
     is_archived?: boolean
-    Currency: CurrencyCreateNestedOneWithoutPhonesInput
-    Brands: BrandCreateNestedOneWithoutPhonesInput
-    Color: ColorCreateNestedOneWithoutPhonesInput
-    Address: AddressCreateNestedOneWithoutPhonesInput
-    User: UserCreateNestedOneWithoutPhonesInput
+    is_deleted?: boolean
+    addressId?: number | null
+    Currency?: CurrencyCreateNestedOneWithoutPhonesInput
+    Brands?: BrandCreateNestedOneWithoutPhonesInput
+    Color?: ColorCreateNestedOneWithoutPhonesInput
+    User?: UserCreateNestedOneWithoutPhonesInput
     Images?: ImageCreateNestedManyWithoutPhoneInput
     Reviews?: ReviewCreateNestedManyWithoutPhoneInput
     Archives?: ArchivesCreateNestedManyWithoutPhoneInput
@@ -25765,11 +24164,12 @@ export namespace Prisma {
     is_active?: boolean
     is_checked?: boolean
     is_archived?: boolean
-    currencyId: number
-    brandId: number
-    colorId: number
-    addressId: number
-    userId: number
+    is_deleted?: boolean
+    currencyId?: number | null
+    brandId?: number | null
+    colorId?: number | null
+    addressId?: number | null
+    userId?: number | null
     Images?: ImageUncheckedCreateNestedManyWithoutPhoneInput
     Reviews?: ReviewUncheckedCreateNestedManyWithoutPhoneInput
     Archives?: ArchivesUncheckedCreateNestedManyWithoutPhoneInput
@@ -25839,11 +24239,12 @@ export namespace Prisma {
     is_active?: boolean
     is_checked?: boolean
     is_archived?: boolean
-    Currency: CurrencyCreateNestedOneWithoutPhonesInput
-    Models: ModelCreateNestedOneWithoutPhonesInput
-    Brands: BrandCreateNestedOneWithoutPhonesInput
-    Address: AddressCreateNestedOneWithoutPhonesInput
-    User: UserCreateNestedOneWithoutPhonesInput
+    is_deleted?: boolean
+    addressId?: number | null
+    Currency?: CurrencyCreateNestedOneWithoutPhonesInput
+    Models?: ModelCreateNestedOneWithoutPhonesInput
+    Brands?: BrandCreateNestedOneWithoutPhonesInput
+    User?: UserCreateNestedOneWithoutPhonesInput
     Images?: ImageCreateNestedManyWithoutPhoneInput
     Reviews?: ReviewCreateNestedManyWithoutPhoneInput
     Archives?: ArchivesCreateNestedManyWithoutPhoneInput
@@ -25866,11 +24267,12 @@ export namespace Prisma {
     is_active?: boolean
     is_checked?: boolean
     is_archived?: boolean
-    currencyId: number
-    modelId: number
-    brandId: number
-    addressId: number
-    userId: number
+    is_deleted?: boolean
+    currencyId?: number | null
+    modelId?: number | null
+    brandId?: number | null
+    addressId?: number | null
+    userId?: number | null
     Images?: ImageUncheckedCreateNestedManyWithoutPhoneInput
     Reviews?: ReviewUncheckedCreateNestedManyWithoutPhoneInput
     Archives?: ArchivesUncheckedCreateNestedManyWithoutPhoneInput
@@ -25900,195 +24302,6 @@ export namespace Prisma {
   export type PhoneUpdateManyWithWhereWithoutColorInput = {
     where: PhoneScalarWhereInput
     data: XOR<PhoneUpdateManyMutationInput, PhoneUncheckedUpdateManyWithoutColorInput>
-  }
-
-  export type UserCreateWithoutAddressInput = {
-    firstName?: string | null
-    lastName?: string | null
-    birthDate: Date | string
-    balance?: Decimal | DecimalJsLike | number | string
-    loginAttempts?: number
-    lockedUntil?: Date | string | null
-    isLocked?: boolean
-    isActive?: boolean
-    isDeleted?: boolean
-    lastSeen?: Date | string | null
-    hashedToken?: string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    mainEmail?: EmailCreateNestedOneWithoutUserInput
-    mainPhone?: PhoneNumberCreateNestedOneWithoutUserInput
-    district?: DistrictCreateNestedOneWithoutUsersInput
-    language?: LanguageCreateNestedOneWithoutUsersInput
-    Emails?: EmailCreateNestedManyWithoutUserInput
-    PhoneNumbers?: PhoneNumberCreateNestedManyWithoutUserInput
-    Phones?: PhoneCreateNestedManyWithoutUserInput
-  }
-
-  export type UserUncheckedCreateWithoutAddressInput = {
-    id?: number
-    firstName?: string | null
-    lastName?: string | null
-    birthDate: Date | string
-    balance?: Decimal | DecimalJsLike | number | string
-    loginAttempts?: number
-    lockedUntil?: Date | string | null
-    isLocked?: boolean
-    isActive?: boolean
-    isDeleted?: boolean
-    lastSeen?: Date | string | null
-    hashedToken?: string | null
-    mainEmailId?: number | null
-    mainPhoneId?: number | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    districtId?: number | null
-    languageId?: number | null
-    Emails?: EmailUncheckedCreateNestedManyWithoutUserInput
-    PhoneNumbers?: PhoneNumberUncheckedCreateNestedManyWithoutUserInput
-    Phones?: PhoneUncheckedCreateNestedManyWithoutUserInput
-  }
-
-  export type UserCreateOrConnectWithoutAddressInput = {
-    where: UserWhereUniqueInput
-    create: XOR<UserCreateWithoutAddressInput, UserUncheckedCreateWithoutAddressInput>
-  }
-
-  export type PhoneCreateWithoutAddressInput = {
-    title: string
-    description: string
-    ram?: PhoneCreateramInput | $Enums.Ram[]
-    rom?: PhoneCreateromInput | $Enums.Rom[]
-    box_with_document?: boolean
-    is_new?: boolean
-    posted_date: Date | string
-    views: bigint | number
-    like_counts: bigint | number
-    is_negotiable?: boolean
-    brand: string
-    model: string
-    is_active?: boolean
-    is_checked?: boolean
-    is_archived?: boolean
-    Currency: CurrencyCreateNestedOneWithoutPhonesInput
-    Models: ModelCreateNestedOneWithoutPhonesInput
-    Brands: BrandCreateNestedOneWithoutPhonesInput
-    Color: ColorCreateNestedOneWithoutPhonesInput
-    User: UserCreateNestedOneWithoutPhonesInput
-    Images?: ImageCreateNestedManyWithoutPhoneInput
-    Reviews?: ReviewCreateNestedManyWithoutPhoneInput
-    Archives?: ArchivesCreateNestedManyWithoutPhoneInput
-  }
-
-  export type PhoneUncheckedCreateWithoutAddressInput = {
-    id?: number
-    title: string
-    description: string
-    ram?: PhoneCreateramInput | $Enums.Ram[]
-    rom?: PhoneCreateromInput | $Enums.Rom[]
-    box_with_document?: boolean
-    is_new?: boolean
-    posted_date: Date | string
-    views: bigint | number
-    like_counts: bigint | number
-    is_negotiable?: boolean
-    brand: string
-    model: string
-    is_active?: boolean
-    is_checked?: boolean
-    is_archived?: boolean
-    currencyId: number
-    modelId: number
-    brandId: number
-    colorId: number
-    userId: number
-    Images?: ImageUncheckedCreateNestedManyWithoutPhoneInput
-    Reviews?: ReviewUncheckedCreateNestedManyWithoutPhoneInput
-    Archives?: ArchivesUncheckedCreateNestedManyWithoutPhoneInput
-  }
-
-  export type PhoneCreateOrConnectWithoutAddressInput = {
-    where: PhoneWhereUniqueInput
-    create: XOR<PhoneCreateWithoutAddressInput, PhoneUncheckedCreateWithoutAddressInput>
-  }
-
-  export type PhoneCreateManyAddressInputEnvelope = {
-    data: PhoneCreateManyAddressInput | PhoneCreateManyAddressInput[]
-    skipDuplicates?: boolean
-  }
-
-  export type UserUpsertWithoutAddressInput = {
-    update: XOR<UserUpdateWithoutAddressInput, UserUncheckedUpdateWithoutAddressInput>
-    create: XOR<UserCreateWithoutAddressInput, UserUncheckedCreateWithoutAddressInput>
-    where?: UserWhereInput
-  }
-
-  export type UserUpdateToOneWithWhereWithoutAddressInput = {
-    where?: UserWhereInput
-    data: XOR<UserUpdateWithoutAddressInput, UserUncheckedUpdateWithoutAddressInput>
-  }
-
-  export type UserUpdateWithoutAddressInput = {
-    firstName?: NullableStringFieldUpdateOperationsInput | string | null
-    lastName?: NullableStringFieldUpdateOperationsInput | string | null
-    birthDate?: DateTimeFieldUpdateOperationsInput | Date | string
-    balance?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    loginAttempts?: IntFieldUpdateOperationsInput | number
-    lockedUntil?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    isLocked?: BoolFieldUpdateOperationsInput | boolean
-    isActive?: BoolFieldUpdateOperationsInput | boolean
-    isDeleted?: BoolFieldUpdateOperationsInput | boolean
-    lastSeen?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    hashedToken?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    mainEmail?: EmailUpdateOneWithoutUserNestedInput
-    mainPhone?: PhoneNumberUpdateOneWithoutUserNestedInput
-    district?: DistrictUpdateOneWithoutUsersNestedInput
-    language?: LanguageUpdateOneWithoutUsersNestedInput
-    Emails?: EmailUpdateManyWithoutUserNestedInput
-    PhoneNumbers?: PhoneNumberUpdateManyWithoutUserNestedInput
-    Phones?: PhoneUpdateManyWithoutUserNestedInput
-  }
-
-  export type UserUncheckedUpdateWithoutAddressInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    firstName?: NullableStringFieldUpdateOperationsInput | string | null
-    lastName?: NullableStringFieldUpdateOperationsInput | string | null
-    birthDate?: DateTimeFieldUpdateOperationsInput | Date | string
-    balance?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    loginAttempts?: IntFieldUpdateOperationsInput | number
-    lockedUntil?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    isLocked?: BoolFieldUpdateOperationsInput | boolean
-    isActive?: BoolFieldUpdateOperationsInput | boolean
-    isDeleted?: BoolFieldUpdateOperationsInput | boolean
-    lastSeen?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    hashedToken?: NullableStringFieldUpdateOperationsInput | string | null
-    mainEmailId?: NullableIntFieldUpdateOperationsInput | number | null
-    mainPhoneId?: NullableIntFieldUpdateOperationsInput | number | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    districtId?: NullableIntFieldUpdateOperationsInput | number | null
-    languageId?: NullableIntFieldUpdateOperationsInput | number | null
-    Emails?: EmailUncheckedUpdateManyWithoutUserNestedInput
-    PhoneNumbers?: PhoneNumberUncheckedUpdateManyWithoutUserNestedInput
-    Phones?: PhoneUncheckedUpdateManyWithoutUserNestedInput
-  }
-
-  export type PhoneUpsertWithWhereUniqueWithoutAddressInput = {
-    where: PhoneWhereUniqueInput
-    update: XOR<PhoneUpdateWithoutAddressInput, PhoneUncheckedUpdateWithoutAddressInput>
-    create: XOR<PhoneCreateWithoutAddressInput, PhoneUncheckedCreateWithoutAddressInput>
-  }
-
-  export type PhoneUpdateWithWhereUniqueWithoutAddressInput = {
-    where: PhoneWhereUniqueInput
-    data: XOR<PhoneUpdateWithoutAddressInput, PhoneUncheckedUpdateWithoutAddressInput>
-  }
-
-  export type PhoneUpdateManyWithWhereWithoutAddressInput = {
-    where: PhoneScalarWhereInput
-    data: XOR<PhoneUpdateManyMutationInput, PhoneUncheckedUpdateManyWithoutAddressInput>
   }
 
   export type CurrencyCreateWithoutPhonesInput = {
@@ -26151,28 +24364,6 @@ export namespace Prisma {
     create: XOR<ColorCreateWithoutPhonesInput, ColorUncheckedCreateWithoutPhonesInput>
   }
 
-  export type AddressCreateWithoutPhonesInput = {
-    name: string
-    address: string
-    lot: number
-    long: number
-    Users: UserCreateNestedOneWithoutAddressInput
-  }
-
-  export type AddressUncheckedCreateWithoutPhonesInput = {
-    id?: number
-    name: string
-    address: string
-    lot: number
-    long: number
-    userId: number
-  }
-
-  export type AddressCreateOrConnectWithoutPhonesInput = {
-    where: AddressWhereUniqueInput
-    create: XOR<AddressCreateWithoutPhonesInput, AddressUncheckedCreateWithoutPhonesInput>
-  }
-
   export type UserCreateWithoutPhonesInput = {
     firstName?: string | null
     lastName?: string | null
@@ -26193,7 +24384,6 @@ export namespace Prisma {
     language?: LanguageCreateNestedOneWithoutUsersInput
     Emails?: EmailCreateNestedManyWithoutUserInput
     PhoneNumbers?: PhoneNumberCreateNestedManyWithoutUserInput
-    Address?: AddressCreateNestedManyWithoutUsersInput
   }
 
   export type UserUncheckedCreateWithoutPhonesInput = {
@@ -26217,7 +24407,6 @@ export namespace Prisma {
     languageId?: number | null
     Emails?: EmailUncheckedCreateNestedManyWithoutUserInput
     PhoneNumbers?: PhoneNumberUncheckedCreateNestedManyWithoutUserInput
-    Address?: AddressUncheckedCreateNestedManyWithoutUsersInput
   }
 
   export type UserCreateOrConnectWithoutPhonesInput = {
@@ -26366,34 +24555,6 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
   }
 
-  export type AddressUpsertWithoutPhonesInput = {
-    update: XOR<AddressUpdateWithoutPhonesInput, AddressUncheckedUpdateWithoutPhonesInput>
-    create: XOR<AddressCreateWithoutPhonesInput, AddressUncheckedCreateWithoutPhonesInput>
-    where?: AddressWhereInput
-  }
-
-  export type AddressUpdateToOneWithWhereWithoutPhonesInput = {
-    where?: AddressWhereInput
-    data: XOR<AddressUpdateWithoutPhonesInput, AddressUncheckedUpdateWithoutPhonesInput>
-  }
-
-  export type AddressUpdateWithoutPhonesInput = {
-    name?: StringFieldUpdateOperationsInput | string
-    address?: StringFieldUpdateOperationsInput | string
-    lot?: FloatFieldUpdateOperationsInput | number
-    long?: FloatFieldUpdateOperationsInput | number
-    Users?: UserUpdateOneRequiredWithoutAddressNestedInput
-  }
-
-  export type AddressUncheckedUpdateWithoutPhonesInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    name?: StringFieldUpdateOperationsInput | string
-    address?: StringFieldUpdateOperationsInput | string
-    lot?: FloatFieldUpdateOperationsInput | number
-    long?: FloatFieldUpdateOperationsInput | number
-    userId?: IntFieldUpdateOperationsInput | number
-  }
-
   export type UserUpsertWithoutPhonesInput = {
     update: XOR<UserUpdateWithoutPhonesInput, UserUncheckedUpdateWithoutPhonesInput>
     create: XOR<UserCreateWithoutPhonesInput, UserUncheckedCreateWithoutPhonesInput>
@@ -26425,7 +24586,6 @@ export namespace Prisma {
     language?: LanguageUpdateOneWithoutUsersNestedInput
     Emails?: EmailUpdateManyWithoutUserNestedInput
     PhoneNumbers?: PhoneNumberUpdateManyWithoutUserNestedInput
-    Address?: AddressUpdateManyWithoutUsersNestedInput
   }
 
   export type UserUncheckedUpdateWithoutPhonesInput = {
@@ -26449,7 +24609,6 @@ export namespace Prisma {
     languageId?: NullableIntFieldUpdateOperationsInput | number | null
     Emails?: EmailUncheckedUpdateManyWithoutUserNestedInput
     PhoneNumbers?: PhoneNumberUncheckedUpdateManyWithoutUserNestedInput
-    Address?: AddressUncheckedUpdateManyWithoutUsersNestedInput
   }
 
   export type ImageUpsertWithWhereUniqueWithoutPhoneInput = {
@@ -26543,12 +24702,13 @@ export namespace Prisma {
     is_active?: boolean
     is_checked?: boolean
     is_archived?: boolean
-    Currency: CurrencyCreateNestedOneWithoutPhonesInput
-    Models: ModelCreateNestedOneWithoutPhonesInput
-    Brands: BrandCreateNestedOneWithoutPhonesInput
-    Color: ColorCreateNestedOneWithoutPhonesInput
-    Address: AddressCreateNestedOneWithoutPhonesInput
-    User: UserCreateNestedOneWithoutPhonesInput
+    is_deleted?: boolean
+    addressId?: number | null
+    Currency?: CurrencyCreateNestedOneWithoutPhonesInput
+    Models?: ModelCreateNestedOneWithoutPhonesInput
+    Brands?: BrandCreateNestedOneWithoutPhonesInput
+    Color?: ColorCreateNestedOneWithoutPhonesInput
+    User?: UserCreateNestedOneWithoutPhonesInput
     Reviews?: ReviewCreateNestedManyWithoutPhoneInput
     Archives?: ArchivesCreateNestedManyWithoutPhoneInput
   }
@@ -26570,12 +24730,13 @@ export namespace Prisma {
     is_active?: boolean
     is_checked?: boolean
     is_archived?: boolean
-    currencyId: number
-    modelId: number
-    brandId: number
-    colorId: number
-    addressId: number
-    userId: number
+    is_deleted?: boolean
+    currencyId?: number | null
+    modelId?: number | null
+    brandId?: number | null
+    colorId?: number | null
+    addressId?: number | null
+    userId?: number | null
     Reviews?: ReviewUncheckedCreateNestedManyWithoutPhoneInput
     Archives?: ArchivesUncheckedCreateNestedManyWithoutPhoneInput
   }
@@ -26612,12 +24773,13 @@ export namespace Prisma {
     is_active?: BoolFieldUpdateOperationsInput | boolean
     is_checked?: BoolFieldUpdateOperationsInput | boolean
     is_archived?: BoolFieldUpdateOperationsInput | boolean
-    Currency?: CurrencyUpdateOneRequiredWithoutPhonesNestedInput
-    Models?: ModelUpdateOneRequiredWithoutPhonesNestedInput
-    Brands?: BrandUpdateOneRequiredWithoutPhonesNestedInput
-    Color?: ColorUpdateOneRequiredWithoutPhonesNestedInput
-    Address?: AddressUpdateOneRequiredWithoutPhonesNestedInput
-    User?: UserUpdateOneRequiredWithoutPhonesNestedInput
+    is_deleted?: BoolFieldUpdateOperationsInput | boolean
+    addressId?: NullableIntFieldUpdateOperationsInput | number | null
+    Currency?: CurrencyUpdateOneWithoutPhonesNestedInput
+    Models?: ModelUpdateOneWithoutPhonesNestedInput
+    Brands?: BrandUpdateOneWithoutPhonesNestedInput
+    Color?: ColorUpdateOneWithoutPhonesNestedInput
+    User?: UserUpdateOneWithoutPhonesNestedInput
     Reviews?: ReviewUpdateManyWithoutPhoneNestedInput
     Archives?: ArchivesUpdateManyWithoutPhoneNestedInput
   }
@@ -26639,12 +24801,13 @@ export namespace Prisma {
     is_active?: BoolFieldUpdateOperationsInput | boolean
     is_checked?: BoolFieldUpdateOperationsInput | boolean
     is_archived?: BoolFieldUpdateOperationsInput | boolean
-    currencyId?: IntFieldUpdateOperationsInput | number
-    modelId?: IntFieldUpdateOperationsInput | number
-    brandId?: IntFieldUpdateOperationsInput | number
-    colorId?: IntFieldUpdateOperationsInput | number
-    addressId?: IntFieldUpdateOperationsInput | number
-    userId?: IntFieldUpdateOperationsInput | number
+    is_deleted?: BoolFieldUpdateOperationsInput | boolean
+    currencyId?: NullableIntFieldUpdateOperationsInput | number | null
+    modelId?: NullableIntFieldUpdateOperationsInput | number | null
+    brandId?: NullableIntFieldUpdateOperationsInput | number | null
+    colorId?: NullableIntFieldUpdateOperationsInput | number | null
+    addressId?: NullableIntFieldUpdateOperationsInput | number | null
+    userId?: NullableIntFieldUpdateOperationsInput | number | null
     Reviews?: ReviewUncheckedUpdateManyWithoutPhoneNestedInput
     Archives?: ArchivesUncheckedUpdateManyWithoutPhoneNestedInput
   }
@@ -26665,12 +24828,13 @@ export namespace Prisma {
     is_active?: boolean
     is_checked?: boolean
     is_archived?: boolean
-    Currency: CurrencyCreateNestedOneWithoutPhonesInput
-    Models: ModelCreateNestedOneWithoutPhonesInput
-    Brands: BrandCreateNestedOneWithoutPhonesInput
-    Color: ColorCreateNestedOneWithoutPhonesInput
-    Address: AddressCreateNestedOneWithoutPhonesInput
-    User: UserCreateNestedOneWithoutPhonesInput
+    is_deleted?: boolean
+    addressId?: number | null
+    Currency?: CurrencyCreateNestedOneWithoutPhonesInput
+    Models?: ModelCreateNestedOneWithoutPhonesInput
+    Brands?: BrandCreateNestedOneWithoutPhonesInput
+    Color?: ColorCreateNestedOneWithoutPhonesInput
+    User?: UserCreateNestedOneWithoutPhonesInput
     Images?: ImageCreateNestedManyWithoutPhoneInput
     Archives?: ArchivesCreateNestedManyWithoutPhoneInput
   }
@@ -26692,12 +24856,13 @@ export namespace Prisma {
     is_active?: boolean
     is_checked?: boolean
     is_archived?: boolean
-    currencyId: number
-    modelId: number
-    brandId: number
-    colorId: number
-    addressId: number
-    userId: number
+    is_deleted?: boolean
+    currencyId?: number | null
+    modelId?: number | null
+    brandId?: number | null
+    colorId?: number | null
+    addressId?: number | null
+    userId?: number | null
     Images?: ImageUncheckedCreateNestedManyWithoutPhoneInput
     Archives?: ArchivesUncheckedCreateNestedManyWithoutPhoneInput
   }
@@ -26734,12 +24899,13 @@ export namespace Prisma {
     is_active?: BoolFieldUpdateOperationsInput | boolean
     is_checked?: BoolFieldUpdateOperationsInput | boolean
     is_archived?: BoolFieldUpdateOperationsInput | boolean
-    Currency?: CurrencyUpdateOneRequiredWithoutPhonesNestedInput
-    Models?: ModelUpdateOneRequiredWithoutPhonesNestedInput
-    Brands?: BrandUpdateOneRequiredWithoutPhonesNestedInput
-    Color?: ColorUpdateOneRequiredWithoutPhonesNestedInput
-    Address?: AddressUpdateOneRequiredWithoutPhonesNestedInput
-    User?: UserUpdateOneRequiredWithoutPhonesNestedInput
+    is_deleted?: BoolFieldUpdateOperationsInput | boolean
+    addressId?: NullableIntFieldUpdateOperationsInput | number | null
+    Currency?: CurrencyUpdateOneWithoutPhonesNestedInput
+    Models?: ModelUpdateOneWithoutPhonesNestedInput
+    Brands?: BrandUpdateOneWithoutPhonesNestedInput
+    Color?: ColorUpdateOneWithoutPhonesNestedInput
+    User?: UserUpdateOneWithoutPhonesNestedInput
     Images?: ImageUpdateManyWithoutPhoneNestedInput
     Archives?: ArchivesUpdateManyWithoutPhoneNestedInput
   }
@@ -26761,12 +24927,13 @@ export namespace Prisma {
     is_active?: BoolFieldUpdateOperationsInput | boolean
     is_checked?: BoolFieldUpdateOperationsInput | boolean
     is_archived?: BoolFieldUpdateOperationsInput | boolean
-    currencyId?: IntFieldUpdateOperationsInput | number
-    modelId?: IntFieldUpdateOperationsInput | number
-    brandId?: IntFieldUpdateOperationsInput | number
-    colorId?: IntFieldUpdateOperationsInput | number
-    addressId?: IntFieldUpdateOperationsInput | number
-    userId?: IntFieldUpdateOperationsInput | number
+    is_deleted?: BoolFieldUpdateOperationsInput | boolean
+    currencyId?: NullableIntFieldUpdateOperationsInput | number | null
+    modelId?: NullableIntFieldUpdateOperationsInput | number | null
+    brandId?: NullableIntFieldUpdateOperationsInput | number | null
+    colorId?: NullableIntFieldUpdateOperationsInput | number | null
+    addressId?: NullableIntFieldUpdateOperationsInput | number | null
+    userId?: NullableIntFieldUpdateOperationsInput | number | null
     Images?: ImageUncheckedUpdateManyWithoutPhoneNestedInput
     Archives?: ArchivesUncheckedUpdateManyWithoutPhoneNestedInput
   }
@@ -26787,12 +24954,13 @@ export namespace Prisma {
     is_active?: boolean
     is_checked?: boolean
     is_archived?: boolean
-    Currency: CurrencyCreateNestedOneWithoutPhonesInput
-    Models: ModelCreateNestedOneWithoutPhonesInput
-    Brands: BrandCreateNestedOneWithoutPhonesInput
-    Color: ColorCreateNestedOneWithoutPhonesInput
-    Address: AddressCreateNestedOneWithoutPhonesInput
-    User: UserCreateNestedOneWithoutPhonesInput
+    is_deleted?: boolean
+    addressId?: number | null
+    Currency?: CurrencyCreateNestedOneWithoutPhonesInput
+    Models?: ModelCreateNestedOneWithoutPhonesInput
+    Brands?: BrandCreateNestedOneWithoutPhonesInput
+    Color?: ColorCreateNestedOneWithoutPhonesInput
+    User?: UserCreateNestedOneWithoutPhonesInput
     Images?: ImageCreateNestedManyWithoutPhoneInput
     Reviews?: ReviewCreateNestedManyWithoutPhoneInput
   }
@@ -26814,12 +24982,13 @@ export namespace Prisma {
     is_active?: boolean
     is_checked?: boolean
     is_archived?: boolean
-    currencyId: number
-    modelId: number
-    brandId: number
-    colorId: number
-    addressId: number
-    userId: number
+    is_deleted?: boolean
+    currencyId?: number | null
+    modelId?: number | null
+    brandId?: number | null
+    colorId?: number | null
+    addressId?: number | null
+    userId?: number | null
     Images?: ImageUncheckedCreateNestedManyWithoutPhoneInput
     Reviews?: ReviewUncheckedCreateNestedManyWithoutPhoneInput
   }
@@ -26856,12 +25025,13 @@ export namespace Prisma {
     is_active?: BoolFieldUpdateOperationsInput | boolean
     is_checked?: BoolFieldUpdateOperationsInput | boolean
     is_archived?: BoolFieldUpdateOperationsInput | boolean
-    Currency?: CurrencyUpdateOneRequiredWithoutPhonesNestedInput
-    Models?: ModelUpdateOneRequiredWithoutPhonesNestedInput
-    Brands?: BrandUpdateOneRequiredWithoutPhonesNestedInput
-    Color?: ColorUpdateOneRequiredWithoutPhonesNestedInput
-    Address?: AddressUpdateOneRequiredWithoutPhonesNestedInput
-    User?: UserUpdateOneRequiredWithoutPhonesNestedInput
+    is_deleted?: BoolFieldUpdateOperationsInput | boolean
+    addressId?: NullableIntFieldUpdateOperationsInput | number | null
+    Currency?: CurrencyUpdateOneWithoutPhonesNestedInput
+    Models?: ModelUpdateOneWithoutPhonesNestedInput
+    Brands?: BrandUpdateOneWithoutPhonesNestedInput
+    Color?: ColorUpdateOneWithoutPhonesNestedInput
+    User?: UserUpdateOneWithoutPhonesNestedInput
     Images?: ImageUpdateManyWithoutPhoneNestedInput
     Reviews?: ReviewUpdateManyWithoutPhoneNestedInput
   }
@@ -26883,12 +25053,13 @@ export namespace Prisma {
     is_active?: BoolFieldUpdateOperationsInput | boolean
     is_checked?: BoolFieldUpdateOperationsInput | boolean
     is_archived?: BoolFieldUpdateOperationsInput | boolean
-    currencyId?: IntFieldUpdateOperationsInput | number
-    modelId?: IntFieldUpdateOperationsInput | number
-    brandId?: IntFieldUpdateOperationsInput | number
-    colorId?: IntFieldUpdateOperationsInput | number
-    addressId?: IntFieldUpdateOperationsInput | number
-    userId?: IntFieldUpdateOperationsInput | number
+    is_deleted?: BoolFieldUpdateOperationsInput | boolean
+    currencyId?: NullableIntFieldUpdateOperationsInput | number | null
+    modelId?: NullableIntFieldUpdateOperationsInput | number | null
+    brandId?: NullableIntFieldUpdateOperationsInput | number | null
+    colorId?: NullableIntFieldUpdateOperationsInput | number | null
+    addressId?: NullableIntFieldUpdateOperationsInput | number | null
+    userId?: NullableIntFieldUpdateOperationsInput | number | null
     Images?: ImageUncheckedUpdateManyWithoutPhoneNestedInput
     Reviews?: ReviewUncheckedUpdateManyWithoutPhoneNestedInput
   }
@@ -26961,7 +25132,6 @@ export namespace Prisma {
     language?: LanguageUpdateOneWithoutUsersNestedInput
     Emails?: EmailUpdateManyWithoutUserNestedInput
     PhoneNumbers?: PhoneNumberUpdateManyWithoutUserNestedInput
-    Address?: AddressUpdateManyWithoutUsersNestedInput
     Phones?: PhoneUpdateManyWithoutUserNestedInput
   }
 
@@ -26985,7 +25155,6 @@ export namespace Prisma {
     languageId?: NullableIntFieldUpdateOperationsInput | number | null
     Emails?: EmailUncheckedUpdateManyWithoutUserNestedInput
     PhoneNumbers?: PhoneNumberUncheckedUpdateManyWithoutUserNestedInput
-    Address?: AddressUncheckedUpdateManyWithoutUsersNestedInput
     Phones?: PhoneUncheckedUpdateManyWithoutUserNestedInput
   }
 
@@ -27048,7 +25217,6 @@ export namespace Prisma {
     district?: DistrictUpdateOneWithoutUsersNestedInput
     Emails?: EmailUpdateManyWithoutUserNestedInput
     PhoneNumbers?: PhoneNumberUpdateManyWithoutUserNestedInput
-    Address?: AddressUpdateManyWithoutUsersNestedInput
     Phones?: PhoneUpdateManyWithoutUserNestedInput
   }
 
@@ -27072,7 +25240,6 @@ export namespace Prisma {
     districtId?: NullableIntFieldUpdateOperationsInput | number | null
     Emails?: EmailUncheckedUpdateManyWithoutUserNestedInput
     PhoneNumbers?: PhoneNumberUncheckedUpdateManyWithoutUserNestedInput
-    Address?: AddressUncheckedUpdateManyWithoutUsersNestedInput
     Phones?: PhoneUncheckedUpdateManyWithoutUserNestedInput
   }
 
@@ -27110,14 +25277,6 @@ export namespace Prisma {
     updatedAt?: Date | string
   }
 
-  export type AddressCreateManyUsersInput = {
-    id?: number
-    name: string
-    address: string
-    lot: number
-    long: number
-  }
-
   export type PhoneCreateManyUserInput = {
     id?: number
     title: string
@@ -27135,11 +25294,12 @@ export namespace Prisma {
     is_active?: boolean
     is_checked?: boolean
     is_archived?: boolean
-    currencyId: number
-    modelId: number
-    brandId: number
-    colorId: number
-    addressId: number
+    is_deleted?: boolean
+    currencyId?: number | null
+    modelId?: number | null
+    brandId?: number | null
+    colorId?: number | null
+    addressId?: number | null
   }
 
   export type EmailUpdateWithoutUserInput = {
@@ -27186,31 +25346,6 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type AddressUpdateWithoutUsersInput = {
-    name?: StringFieldUpdateOperationsInput | string
-    address?: StringFieldUpdateOperationsInput | string
-    lot?: FloatFieldUpdateOperationsInput | number
-    long?: FloatFieldUpdateOperationsInput | number
-    Phones?: PhoneUpdateManyWithoutAddressNestedInput
-  }
-
-  export type AddressUncheckedUpdateWithoutUsersInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    name?: StringFieldUpdateOperationsInput | string
-    address?: StringFieldUpdateOperationsInput | string
-    lot?: FloatFieldUpdateOperationsInput | number
-    long?: FloatFieldUpdateOperationsInput | number
-    Phones?: PhoneUncheckedUpdateManyWithoutAddressNestedInput
-  }
-
-  export type AddressUncheckedUpdateManyWithoutUsersInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    name?: StringFieldUpdateOperationsInput | string
-    address?: StringFieldUpdateOperationsInput | string
-    lot?: FloatFieldUpdateOperationsInput | number
-    long?: FloatFieldUpdateOperationsInput | number
-  }
-
   export type PhoneUpdateWithoutUserInput = {
     title?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
@@ -27227,11 +25362,12 @@ export namespace Prisma {
     is_active?: BoolFieldUpdateOperationsInput | boolean
     is_checked?: BoolFieldUpdateOperationsInput | boolean
     is_archived?: BoolFieldUpdateOperationsInput | boolean
-    Currency?: CurrencyUpdateOneRequiredWithoutPhonesNestedInput
-    Models?: ModelUpdateOneRequiredWithoutPhonesNestedInput
-    Brands?: BrandUpdateOneRequiredWithoutPhonesNestedInput
-    Color?: ColorUpdateOneRequiredWithoutPhonesNestedInput
-    Address?: AddressUpdateOneRequiredWithoutPhonesNestedInput
+    is_deleted?: BoolFieldUpdateOperationsInput | boolean
+    addressId?: NullableIntFieldUpdateOperationsInput | number | null
+    Currency?: CurrencyUpdateOneWithoutPhonesNestedInput
+    Models?: ModelUpdateOneWithoutPhonesNestedInput
+    Brands?: BrandUpdateOneWithoutPhonesNestedInput
+    Color?: ColorUpdateOneWithoutPhonesNestedInput
     Images?: ImageUpdateManyWithoutPhoneNestedInput
     Reviews?: ReviewUpdateManyWithoutPhoneNestedInput
     Archives?: ArchivesUpdateManyWithoutPhoneNestedInput
@@ -27254,11 +25390,12 @@ export namespace Prisma {
     is_active?: BoolFieldUpdateOperationsInput | boolean
     is_checked?: BoolFieldUpdateOperationsInput | boolean
     is_archived?: BoolFieldUpdateOperationsInput | boolean
-    currencyId?: IntFieldUpdateOperationsInput | number
-    modelId?: IntFieldUpdateOperationsInput | number
-    brandId?: IntFieldUpdateOperationsInput | number
-    colorId?: IntFieldUpdateOperationsInput | number
-    addressId?: IntFieldUpdateOperationsInput | number
+    is_deleted?: BoolFieldUpdateOperationsInput | boolean
+    currencyId?: NullableIntFieldUpdateOperationsInput | number | null
+    modelId?: NullableIntFieldUpdateOperationsInput | number | null
+    brandId?: NullableIntFieldUpdateOperationsInput | number | null
+    colorId?: NullableIntFieldUpdateOperationsInput | number | null
+    addressId?: NullableIntFieldUpdateOperationsInput | number | null
     Images?: ImageUncheckedUpdateManyWithoutPhoneNestedInput
     Reviews?: ReviewUncheckedUpdateManyWithoutPhoneNestedInput
     Archives?: ArchivesUncheckedUpdateManyWithoutPhoneNestedInput
@@ -27281,11 +25418,12 @@ export namespace Prisma {
     is_active?: BoolFieldUpdateOperationsInput | boolean
     is_checked?: BoolFieldUpdateOperationsInput | boolean
     is_archived?: BoolFieldUpdateOperationsInput | boolean
-    currencyId?: IntFieldUpdateOperationsInput | number
-    modelId?: IntFieldUpdateOperationsInput | number
-    brandId?: IntFieldUpdateOperationsInput | number
-    colorId?: IntFieldUpdateOperationsInput | number
-    addressId?: IntFieldUpdateOperationsInput | number
+    is_deleted?: BoolFieldUpdateOperationsInput | boolean
+    currencyId?: NullableIntFieldUpdateOperationsInput | number | null
+    modelId?: NullableIntFieldUpdateOperationsInput | number | null
+    brandId?: NullableIntFieldUpdateOperationsInput | number | null
+    colorId?: NullableIntFieldUpdateOperationsInput | number | null
+    addressId?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type UserCreateManyMainEmailInput = {
@@ -27327,7 +25465,6 @@ export namespace Prisma {
     language?: LanguageUpdateOneWithoutUsersNestedInput
     Emails?: EmailUpdateManyWithoutUserNestedInput
     PhoneNumbers?: PhoneNumberUpdateManyWithoutUserNestedInput
-    Address?: AddressUpdateManyWithoutUsersNestedInput
     Phones?: PhoneUpdateManyWithoutUserNestedInput
   }
 
@@ -27351,7 +25488,6 @@ export namespace Prisma {
     languageId?: NullableIntFieldUpdateOperationsInput | number | null
     Emails?: EmailUncheckedUpdateManyWithoutUserNestedInput
     PhoneNumbers?: PhoneNumberUncheckedUpdateManyWithoutUserNestedInput
-    Address?: AddressUncheckedUpdateManyWithoutUsersNestedInput
     Phones?: PhoneUncheckedUpdateManyWithoutUserNestedInput
   }
 
@@ -27414,7 +25550,6 @@ export namespace Prisma {
     language?: LanguageUpdateOneWithoutUsersNestedInput
     Emails?: EmailUpdateManyWithoutUserNestedInput
     PhoneNumbers?: PhoneNumberUpdateManyWithoutUserNestedInput
-    Address?: AddressUpdateManyWithoutUsersNestedInput
     Phones?: PhoneUpdateManyWithoutUserNestedInput
   }
 
@@ -27438,7 +25573,6 @@ export namespace Prisma {
     languageId?: NullableIntFieldUpdateOperationsInput | number | null
     Emails?: EmailUncheckedUpdateManyWithoutUserNestedInput
     PhoneNumbers?: PhoneNumberUncheckedUpdateManyWithoutUserNestedInput
-    Address?: AddressUncheckedUpdateManyWithoutUsersNestedInput
     Phones?: PhoneUncheckedUpdateManyWithoutUserNestedInput
   }
 
@@ -27479,11 +25613,12 @@ export namespace Prisma {
     is_active?: boolean
     is_checked?: boolean
     is_archived?: boolean
-    modelId: number
-    brandId: number
-    colorId: number
-    addressId: number
-    userId: number
+    is_deleted?: boolean
+    modelId?: number | null
+    brandId?: number | null
+    colorId?: number | null
+    addressId?: number | null
+    userId?: number | null
   }
 
   export type PhoneUpdateWithoutCurrencyInput = {
@@ -27502,11 +25637,12 @@ export namespace Prisma {
     is_active?: BoolFieldUpdateOperationsInput | boolean
     is_checked?: BoolFieldUpdateOperationsInput | boolean
     is_archived?: BoolFieldUpdateOperationsInput | boolean
-    Models?: ModelUpdateOneRequiredWithoutPhonesNestedInput
-    Brands?: BrandUpdateOneRequiredWithoutPhonesNestedInput
-    Color?: ColorUpdateOneRequiredWithoutPhonesNestedInput
-    Address?: AddressUpdateOneRequiredWithoutPhonesNestedInput
-    User?: UserUpdateOneRequiredWithoutPhonesNestedInput
+    is_deleted?: BoolFieldUpdateOperationsInput | boolean
+    addressId?: NullableIntFieldUpdateOperationsInput | number | null
+    Models?: ModelUpdateOneWithoutPhonesNestedInput
+    Brands?: BrandUpdateOneWithoutPhonesNestedInput
+    Color?: ColorUpdateOneWithoutPhonesNestedInput
+    User?: UserUpdateOneWithoutPhonesNestedInput
     Images?: ImageUpdateManyWithoutPhoneNestedInput
     Reviews?: ReviewUpdateManyWithoutPhoneNestedInput
     Archives?: ArchivesUpdateManyWithoutPhoneNestedInput
@@ -27529,11 +25665,12 @@ export namespace Prisma {
     is_active?: BoolFieldUpdateOperationsInput | boolean
     is_checked?: BoolFieldUpdateOperationsInput | boolean
     is_archived?: BoolFieldUpdateOperationsInput | boolean
-    modelId?: IntFieldUpdateOperationsInput | number
-    brandId?: IntFieldUpdateOperationsInput | number
-    colorId?: IntFieldUpdateOperationsInput | number
-    addressId?: IntFieldUpdateOperationsInput | number
-    userId?: IntFieldUpdateOperationsInput | number
+    is_deleted?: BoolFieldUpdateOperationsInput | boolean
+    modelId?: NullableIntFieldUpdateOperationsInput | number | null
+    brandId?: NullableIntFieldUpdateOperationsInput | number | null
+    colorId?: NullableIntFieldUpdateOperationsInput | number | null
+    addressId?: NullableIntFieldUpdateOperationsInput | number | null
+    userId?: NullableIntFieldUpdateOperationsInput | number | null
     Images?: ImageUncheckedUpdateManyWithoutPhoneNestedInput
     Reviews?: ReviewUncheckedUpdateManyWithoutPhoneNestedInput
     Archives?: ArchivesUncheckedUpdateManyWithoutPhoneNestedInput
@@ -27556,11 +25693,12 @@ export namespace Prisma {
     is_active?: BoolFieldUpdateOperationsInput | boolean
     is_checked?: BoolFieldUpdateOperationsInput | boolean
     is_archived?: BoolFieldUpdateOperationsInput | boolean
-    modelId?: IntFieldUpdateOperationsInput | number
-    brandId?: IntFieldUpdateOperationsInput | number
-    colorId?: IntFieldUpdateOperationsInput | number
-    addressId?: IntFieldUpdateOperationsInput | number
-    userId?: IntFieldUpdateOperationsInput | number
+    is_deleted?: BoolFieldUpdateOperationsInput | boolean
+    modelId?: NullableIntFieldUpdateOperationsInput | number | null
+    brandId?: NullableIntFieldUpdateOperationsInput | number | null
+    colorId?: NullableIntFieldUpdateOperationsInput | number | null
+    addressId?: NullableIntFieldUpdateOperationsInput | number | null
+    userId?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type ModelCreateManyBrandInput = {
@@ -27585,11 +25723,12 @@ export namespace Prisma {
     is_active?: boolean
     is_checked?: boolean
     is_archived?: boolean
-    currencyId: number
-    modelId: number
-    colorId: number
-    addressId: number
-    userId: number
+    is_deleted?: boolean
+    currencyId?: number | null
+    modelId?: number | null
+    colorId?: number | null
+    addressId?: number | null
+    userId?: number | null
   }
 
   export type ModelUpdateWithoutBrandInput = {
@@ -27624,11 +25763,12 @@ export namespace Prisma {
     is_active?: BoolFieldUpdateOperationsInput | boolean
     is_checked?: BoolFieldUpdateOperationsInput | boolean
     is_archived?: BoolFieldUpdateOperationsInput | boolean
-    Currency?: CurrencyUpdateOneRequiredWithoutPhonesNestedInput
-    Models?: ModelUpdateOneRequiredWithoutPhonesNestedInput
-    Color?: ColorUpdateOneRequiredWithoutPhonesNestedInput
-    Address?: AddressUpdateOneRequiredWithoutPhonesNestedInput
-    User?: UserUpdateOneRequiredWithoutPhonesNestedInput
+    is_deleted?: BoolFieldUpdateOperationsInput | boolean
+    addressId?: NullableIntFieldUpdateOperationsInput | number | null
+    Currency?: CurrencyUpdateOneWithoutPhonesNestedInput
+    Models?: ModelUpdateOneWithoutPhonesNestedInput
+    Color?: ColorUpdateOneWithoutPhonesNestedInput
+    User?: UserUpdateOneWithoutPhonesNestedInput
     Images?: ImageUpdateManyWithoutPhoneNestedInput
     Reviews?: ReviewUpdateManyWithoutPhoneNestedInput
     Archives?: ArchivesUpdateManyWithoutPhoneNestedInput
@@ -27651,11 +25791,12 @@ export namespace Prisma {
     is_active?: BoolFieldUpdateOperationsInput | boolean
     is_checked?: BoolFieldUpdateOperationsInput | boolean
     is_archived?: BoolFieldUpdateOperationsInput | boolean
-    currencyId?: IntFieldUpdateOperationsInput | number
-    modelId?: IntFieldUpdateOperationsInput | number
-    colorId?: IntFieldUpdateOperationsInput | number
-    addressId?: IntFieldUpdateOperationsInput | number
-    userId?: IntFieldUpdateOperationsInput | number
+    is_deleted?: BoolFieldUpdateOperationsInput | boolean
+    currencyId?: NullableIntFieldUpdateOperationsInput | number | null
+    modelId?: NullableIntFieldUpdateOperationsInput | number | null
+    colorId?: NullableIntFieldUpdateOperationsInput | number | null
+    addressId?: NullableIntFieldUpdateOperationsInput | number | null
+    userId?: NullableIntFieldUpdateOperationsInput | number | null
     Images?: ImageUncheckedUpdateManyWithoutPhoneNestedInput
     Reviews?: ReviewUncheckedUpdateManyWithoutPhoneNestedInput
     Archives?: ArchivesUncheckedUpdateManyWithoutPhoneNestedInput
@@ -27678,11 +25819,12 @@ export namespace Prisma {
     is_active?: BoolFieldUpdateOperationsInput | boolean
     is_checked?: BoolFieldUpdateOperationsInput | boolean
     is_archived?: BoolFieldUpdateOperationsInput | boolean
-    currencyId?: IntFieldUpdateOperationsInput | number
-    modelId?: IntFieldUpdateOperationsInput | number
-    colorId?: IntFieldUpdateOperationsInput | number
-    addressId?: IntFieldUpdateOperationsInput | number
-    userId?: IntFieldUpdateOperationsInput | number
+    is_deleted?: BoolFieldUpdateOperationsInput | boolean
+    currencyId?: NullableIntFieldUpdateOperationsInput | number | null
+    modelId?: NullableIntFieldUpdateOperationsInput | number | null
+    colorId?: NullableIntFieldUpdateOperationsInput | number | null
+    addressId?: NullableIntFieldUpdateOperationsInput | number | null
+    userId?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type PhoneCreateManyModelsInput = {
@@ -27702,11 +25844,12 @@ export namespace Prisma {
     is_active?: boolean
     is_checked?: boolean
     is_archived?: boolean
-    currencyId: number
-    brandId: number
-    colorId: number
-    addressId: number
-    userId: number
+    is_deleted?: boolean
+    currencyId?: number | null
+    brandId?: number | null
+    colorId?: number | null
+    addressId?: number | null
+    userId?: number | null
   }
 
   export type PhoneUpdateWithoutModelsInput = {
@@ -27725,11 +25868,12 @@ export namespace Prisma {
     is_active?: BoolFieldUpdateOperationsInput | boolean
     is_checked?: BoolFieldUpdateOperationsInput | boolean
     is_archived?: BoolFieldUpdateOperationsInput | boolean
-    Currency?: CurrencyUpdateOneRequiredWithoutPhonesNestedInput
-    Brands?: BrandUpdateOneRequiredWithoutPhonesNestedInput
-    Color?: ColorUpdateOneRequiredWithoutPhonesNestedInput
-    Address?: AddressUpdateOneRequiredWithoutPhonesNestedInput
-    User?: UserUpdateOneRequiredWithoutPhonesNestedInput
+    is_deleted?: BoolFieldUpdateOperationsInput | boolean
+    addressId?: NullableIntFieldUpdateOperationsInput | number | null
+    Currency?: CurrencyUpdateOneWithoutPhonesNestedInput
+    Brands?: BrandUpdateOneWithoutPhonesNestedInput
+    Color?: ColorUpdateOneWithoutPhonesNestedInput
+    User?: UserUpdateOneWithoutPhonesNestedInput
     Images?: ImageUpdateManyWithoutPhoneNestedInput
     Reviews?: ReviewUpdateManyWithoutPhoneNestedInput
     Archives?: ArchivesUpdateManyWithoutPhoneNestedInput
@@ -27752,11 +25896,12 @@ export namespace Prisma {
     is_active?: BoolFieldUpdateOperationsInput | boolean
     is_checked?: BoolFieldUpdateOperationsInput | boolean
     is_archived?: BoolFieldUpdateOperationsInput | boolean
-    currencyId?: IntFieldUpdateOperationsInput | number
-    brandId?: IntFieldUpdateOperationsInput | number
-    colorId?: IntFieldUpdateOperationsInput | number
-    addressId?: IntFieldUpdateOperationsInput | number
-    userId?: IntFieldUpdateOperationsInput | number
+    is_deleted?: BoolFieldUpdateOperationsInput | boolean
+    currencyId?: NullableIntFieldUpdateOperationsInput | number | null
+    brandId?: NullableIntFieldUpdateOperationsInput | number | null
+    colorId?: NullableIntFieldUpdateOperationsInput | number | null
+    addressId?: NullableIntFieldUpdateOperationsInput | number | null
+    userId?: NullableIntFieldUpdateOperationsInput | number | null
     Images?: ImageUncheckedUpdateManyWithoutPhoneNestedInput
     Reviews?: ReviewUncheckedUpdateManyWithoutPhoneNestedInput
     Archives?: ArchivesUncheckedUpdateManyWithoutPhoneNestedInput
@@ -27779,11 +25924,12 @@ export namespace Prisma {
     is_active?: BoolFieldUpdateOperationsInput | boolean
     is_checked?: BoolFieldUpdateOperationsInput | boolean
     is_archived?: BoolFieldUpdateOperationsInput | boolean
-    currencyId?: IntFieldUpdateOperationsInput | number
-    brandId?: IntFieldUpdateOperationsInput | number
-    colorId?: IntFieldUpdateOperationsInput | number
-    addressId?: IntFieldUpdateOperationsInput | number
-    userId?: IntFieldUpdateOperationsInput | number
+    is_deleted?: BoolFieldUpdateOperationsInput | boolean
+    currencyId?: NullableIntFieldUpdateOperationsInput | number | null
+    brandId?: NullableIntFieldUpdateOperationsInput | number | null
+    colorId?: NullableIntFieldUpdateOperationsInput | number | null
+    addressId?: NullableIntFieldUpdateOperationsInput | number | null
+    userId?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type PhoneCreateManyColorInput = {
@@ -27803,11 +25949,12 @@ export namespace Prisma {
     is_active?: boolean
     is_checked?: boolean
     is_archived?: boolean
-    currencyId: number
-    modelId: number
-    brandId: number
-    addressId: number
-    userId: number
+    is_deleted?: boolean
+    currencyId?: number | null
+    modelId?: number | null
+    brandId?: number | null
+    addressId?: number | null
+    userId?: number | null
   }
 
   export type PhoneUpdateWithoutColorInput = {
@@ -27826,11 +25973,12 @@ export namespace Prisma {
     is_active?: BoolFieldUpdateOperationsInput | boolean
     is_checked?: BoolFieldUpdateOperationsInput | boolean
     is_archived?: BoolFieldUpdateOperationsInput | boolean
-    Currency?: CurrencyUpdateOneRequiredWithoutPhonesNestedInput
-    Models?: ModelUpdateOneRequiredWithoutPhonesNestedInput
-    Brands?: BrandUpdateOneRequiredWithoutPhonesNestedInput
-    Address?: AddressUpdateOneRequiredWithoutPhonesNestedInput
-    User?: UserUpdateOneRequiredWithoutPhonesNestedInput
+    is_deleted?: BoolFieldUpdateOperationsInput | boolean
+    addressId?: NullableIntFieldUpdateOperationsInput | number | null
+    Currency?: CurrencyUpdateOneWithoutPhonesNestedInput
+    Models?: ModelUpdateOneWithoutPhonesNestedInput
+    Brands?: BrandUpdateOneWithoutPhonesNestedInput
+    User?: UserUpdateOneWithoutPhonesNestedInput
     Images?: ImageUpdateManyWithoutPhoneNestedInput
     Reviews?: ReviewUpdateManyWithoutPhoneNestedInput
     Archives?: ArchivesUpdateManyWithoutPhoneNestedInput
@@ -27853,11 +26001,12 @@ export namespace Prisma {
     is_active?: BoolFieldUpdateOperationsInput | boolean
     is_checked?: BoolFieldUpdateOperationsInput | boolean
     is_archived?: BoolFieldUpdateOperationsInput | boolean
-    currencyId?: IntFieldUpdateOperationsInput | number
-    modelId?: IntFieldUpdateOperationsInput | number
-    brandId?: IntFieldUpdateOperationsInput | number
-    addressId?: IntFieldUpdateOperationsInput | number
-    userId?: IntFieldUpdateOperationsInput | number
+    is_deleted?: BoolFieldUpdateOperationsInput | boolean
+    currencyId?: NullableIntFieldUpdateOperationsInput | number | null
+    modelId?: NullableIntFieldUpdateOperationsInput | number | null
+    brandId?: NullableIntFieldUpdateOperationsInput | number | null
+    addressId?: NullableIntFieldUpdateOperationsInput | number | null
+    userId?: NullableIntFieldUpdateOperationsInput | number | null
     Images?: ImageUncheckedUpdateManyWithoutPhoneNestedInput
     Reviews?: ReviewUncheckedUpdateManyWithoutPhoneNestedInput
     Archives?: ArchivesUncheckedUpdateManyWithoutPhoneNestedInput
@@ -27880,112 +26029,12 @@ export namespace Prisma {
     is_active?: BoolFieldUpdateOperationsInput | boolean
     is_checked?: BoolFieldUpdateOperationsInput | boolean
     is_archived?: BoolFieldUpdateOperationsInput | boolean
-    currencyId?: IntFieldUpdateOperationsInput | number
-    modelId?: IntFieldUpdateOperationsInput | number
-    brandId?: IntFieldUpdateOperationsInput | number
-    addressId?: IntFieldUpdateOperationsInput | number
-    userId?: IntFieldUpdateOperationsInput | number
-  }
-
-  export type PhoneCreateManyAddressInput = {
-    id?: number
-    title: string
-    description: string
-    ram?: PhoneCreateramInput | $Enums.Ram[]
-    rom?: PhoneCreateromInput | $Enums.Rom[]
-    box_with_document?: boolean
-    is_new?: boolean
-    posted_date: Date | string
-    views: bigint | number
-    like_counts: bigint | number
-    is_negotiable?: boolean
-    brand: string
-    model: string
-    is_active?: boolean
-    is_checked?: boolean
-    is_archived?: boolean
-    currencyId: number
-    modelId: number
-    brandId: number
-    colorId: number
-    userId: number
-  }
-
-  export type PhoneUpdateWithoutAddressInput = {
-    title?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
-    ram?: PhoneUpdateramInput | $Enums.Ram[]
-    rom?: PhoneUpdateromInput | $Enums.Rom[]
-    box_with_document?: BoolFieldUpdateOperationsInput | boolean
-    is_new?: BoolFieldUpdateOperationsInput | boolean
-    posted_date?: DateTimeFieldUpdateOperationsInput | Date | string
-    views?: BigIntFieldUpdateOperationsInput | bigint | number
-    like_counts?: BigIntFieldUpdateOperationsInput | bigint | number
-    is_negotiable?: BoolFieldUpdateOperationsInput | boolean
-    brand?: StringFieldUpdateOperationsInput | string
-    model?: StringFieldUpdateOperationsInput | string
-    is_active?: BoolFieldUpdateOperationsInput | boolean
-    is_checked?: BoolFieldUpdateOperationsInput | boolean
-    is_archived?: BoolFieldUpdateOperationsInput | boolean
-    Currency?: CurrencyUpdateOneRequiredWithoutPhonesNestedInput
-    Models?: ModelUpdateOneRequiredWithoutPhonesNestedInput
-    Brands?: BrandUpdateOneRequiredWithoutPhonesNestedInput
-    Color?: ColorUpdateOneRequiredWithoutPhonesNestedInput
-    User?: UserUpdateOneRequiredWithoutPhonesNestedInput
-    Images?: ImageUpdateManyWithoutPhoneNestedInput
-    Reviews?: ReviewUpdateManyWithoutPhoneNestedInput
-    Archives?: ArchivesUpdateManyWithoutPhoneNestedInput
-  }
-
-  export type PhoneUncheckedUpdateWithoutAddressInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    title?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
-    ram?: PhoneUpdateramInput | $Enums.Ram[]
-    rom?: PhoneUpdateromInput | $Enums.Rom[]
-    box_with_document?: BoolFieldUpdateOperationsInput | boolean
-    is_new?: BoolFieldUpdateOperationsInput | boolean
-    posted_date?: DateTimeFieldUpdateOperationsInput | Date | string
-    views?: BigIntFieldUpdateOperationsInput | bigint | number
-    like_counts?: BigIntFieldUpdateOperationsInput | bigint | number
-    is_negotiable?: BoolFieldUpdateOperationsInput | boolean
-    brand?: StringFieldUpdateOperationsInput | string
-    model?: StringFieldUpdateOperationsInput | string
-    is_active?: BoolFieldUpdateOperationsInput | boolean
-    is_checked?: BoolFieldUpdateOperationsInput | boolean
-    is_archived?: BoolFieldUpdateOperationsInput | boolean
-    currencyId?: IntFieldUpdateOperationsInput | number
-    modelId?: IntFieldUpdateOperationsInput | number
-    brandId?: IntFieldUpdateOperationsInput | number
-    colorId?: IntFieldUpdateOperationsInput | number
-    userId?: IntFieldUpdateOperationsInput | number
-    Images?: ImageUncheckedUpdateManyWithoutPhoneNestedInput
-    Reviews?: ReviewUncheckedUpdateManyWithoutPhoneNestedInput
-    Archives?: ArchivesUncheckedUpdateManyWithoutPhoneNestedInput
-  }
-
-  export type PhoneUncheckedUpdateManyWithoutAddressInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    title?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
-    ram?: PhoneUpdateramInput | $Enums.Ram[]
-    rom?: PhoneUpdateromInput | $Enums.Rom[]
-    box_with_document?: BoolFieldUpdateOperationsInput | boolean
-    is_new?: BoolFieldUpdateOperationsInput | boolean
-    posted_date?: DateTimeFieldUpdateOperationsInput | Date | string
-    views?: BigIntFieldUpdateOperationsInput | bigint | number
-    like_counts?: BigIntFieldUpdateOperationsInput | bigint | number
-    is_negotiable?: BoolFieldUpdateOperationsInput | boolean
-    brand?: StringFieldUpdateOperationsInput | string
-    model?: StringFieldUpdateOperationsInput | string
-    is_active?: BoolFieldUpdateOperationsInput | boolean
-    is_checked?: BoolFieldUpdateOperationsInput | boolean
-    is_archived?: BoolFieldUpdateOperationsInput | boolean
-    currencyId?: IntFieldUpdateOperationsInput | number
-    modelId?: IntFieldUpdateOperationsInput | number
-    brandId?: IntFieldUpdateOperationsInput | number
-    colorId?: IntFieldUpdateOperationsInput | number
-    userId?: IntFieldUpdateOperationsInput | number
+    is_deleted?: BoolFieldUpdateOperationsInput | boolean
+    currencyId?: NullableIntFieldUpdateOperationsInput | number | null
+    modelId?: NullableIntFieldUpdateOperationsInput | number | null
+    brandId?: NullableIntFieldUpdateOperationsInput | number | null
+    addressId?: NullableIntFieldUpdateOperationsInput | number | null
+    userId?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type ImageCreateManyPhoneInput = {

@@ -39,6 +39,7 @@ export class DistrictService {
     if (!result) {
       throw new Error('District not found');
     }
+    return result;
   }
 
   async remove(id: number) {

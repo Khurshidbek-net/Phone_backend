@@ -200,15 +200,6 @@ exports.Prisma.ColorScalarFieldEnum = {
   name: 'name'
 };
 
-exports.Prisma.AddressScalarFieldEnum = {
-  id: 'id',
-  name: 'name',
-  address: 'address',
-  lot: 'lot',
-  long: 'long',
-  userId: 'userId'
-};
-
 exports.Prisma.PhoneScalarFieldEnum = {
   id: 'id',
   title: 'title',
@@ -226,6 +217,7 @@ exports.Prisma.PhoneScalarFieldEnum = {
   is_active: 'is_active',
   is_checked: 'is_checked',
   is_archived: 'is_archived',
+  is_deleted: 'is_deleted',
   currencyId: 'currencyId',
   modelId: 'modelId',
   brandId: 'brandId',
@@ -301,7 +293,6 @@ exports.Prisma.ModelName = {
   Brand: 'Brand',
   Model: 'Model',
   Color: 'Color',
-  Address: 'Address',
   Phone: 'Phone',
   Image: 'Image',
   Review: 'Review',
