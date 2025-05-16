@@ -81,6 +81,11 @@ model User {
 
   Emails       Email[]
   PhoneNumbers PhoneNumber[]
+  Phone        Phone[]
+  Address      Address[]
+  Payment      Payment[]
+  Chat         Chat[]
+  Messages     Messages[]
 }
 
 model Email {
@@ -166,8 +171,8 @@ model Phone {
   id                Int      @id @default(autoincrement())
   title             String
   description       String
-  ram               String   // Enum o'rniga oddiy string
-  rom               String   // Enum o'rniga oddiy string
+  ram               String // Enum o'rniga oddiy string
+  rom               String // Enum o'rniga oddiy string
   box_with_document Boolean  @default(true)
   is_new            Boolean  @default(false)
   posted_date       DateTime
@@ -191,7 +196,7 @@ model Phone {
   Models   Model?    @relation(fields: [modelId], references: [id])
   Brands   Brand?    @relation(fields: [brandId], references: [id])
   Color    Color?    @relation(fields: [colorId], references: [id])
-  User     User?    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  User     User?     @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   Images   Image[]
   Reviews  Review[]
