@@ -15,6 +15,11 @@ import { PaymentModule } from './payment/payment.module';
 import { MessagesModule } from './messages/messages.module';
 import { AdminModule } from './admin/admin.module';
 import { FileModule } from './file/file.module';
+import { CurrencyModule } from './currency/currency.module';
+import { BrandModule } from './brand/brand.module';
+import { ModelModule } from './model/model.module';
+import { ArchivesModule } from './archives/archives.module';
+import { PhoneModule } from './phone/phone.module';
 
 @Module({
   imports: [
@@ -30,6 +35,11 @@ import { FileModule } from './file/file.module';
     MessagesModule,
     AdminModule,
     FileModule,
+    CurrencyModule,
+    BrandModule,
+    ModelModule,
+    ArchivesModule,
+    PhoneModule
   ],
   controllers: [],
   providers: [
