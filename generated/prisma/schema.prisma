@@ -155,3 +155,21 @@ model Messages {
   User     User?    @relation(fields: [senderId], references: [id], onDelete: SetNull)
   Chat     Chat?    @relation(fields: [chatId], references: [id], onDelete: SetNull)
 }
+
+model Admin {
+  id              Int      @id @default(autoincrement())
+  firstname       String
+  lastname        String
+  phone_number    String
+  hashed_password String
+  email           String
+  image           String?
+  is_creator      Boolean
+  is_active       Boolean
+  refresh_token   String
+  last_login      DateTime
+  login_attempts  Int
+  locked_until    DateTime
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+}

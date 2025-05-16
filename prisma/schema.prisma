@@ -117,7 +117,7 @@ model Address {
   address   String
   lat       Float
   long      Float
-  User      User?    @relation(fields: [userId], references: [id],onDelete: Cascade)
+  User      User?    @relation(fields: [userId], references: [id], onDelete: Cascade)
   userId    Int?
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -130,7 +130,7 @@ model Payment {
   paid_date DateTime
   createdAt DateTime    @default(now())
   updatedAt DateTime    @updatedAt
-  User      User?       @relation(fields: [userId], references: [id],onDelete: SetNull)
+  User      User?       @relation(fields: [userId], references: [id], onDelete: SetNull)
   userId    Int?
 }
 
@@ -139,20 +139,37 @@ model Chat {
   productId Int?
   sellerId  Int?
   buyerId   Int?
-  User      User?      @relation(fields: [buyerId], references: [id],onDelete: SetNull)
+  User      User?      @relation(fields: [buyerId], references: [id], onDelete: SetNull)
   createdAt DateTime   @default(now())
   updatedAt DateTime   @updatedAt
   Messages  Messages[]
 }
 
 model Messages {
-  id      Int      @id @default(autoincrement())
-  message String
-  is_read Boolean
-  sent_at DateTime
-  chatId Int?
+  id       Int      @id @default(autoincrement())
+  message  String
+  is_read  Boolean
+  sent_at  DateTime
+  chatId   Int?
   senderId Int?
-  User   User? @relation(fields: [senderId], references: [id],onDelete: SetNull)
-  Chat   Chat? @relation(fields: [chatId], references: [id],onDelete: SetNull)
+  User     User?    @relation(fields: [senderId], references: [id], onDelete: SetNull)
+  Chat     Chat?    @relation(fields: [chatId], references: [id], onDelete: SetNull)
+}
 
+model Admin {
+  id              Int       @id @default(autoincrement())
+  firstname       String
+  lastname        String
+  phone_number    String    @unique
+  hashed_password String    @unique
+  email           String
+  image           String?
+  is_creator      Boolean?  @default(false)
+  is_active       Boolean   @default(false)
+  refresh_token   String?
+  last_login      DateTime?
+  login_attempts  Int?
+  locked_until    DateTime?
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
 }

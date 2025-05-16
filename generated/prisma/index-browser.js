@@ -218,6 +218,24 @@ exports.Prisma.MessagesScalarFieldEnum = {
   senderId: 'senderId'
 };
 
+exports.Prisma.AdminScalarFieldEnum = {
+  id: 'id',
+  firstname: 'firstname',
+  lastname: 'lastname',
+  phone_number: 'phone_number',
+  hashed_password: 'hashed_password',
+  email: 'email',
+  image: 'image',
+  is_creator: 'is_creator',
+  is_active: 'is_active',
+  refresh_token: 'refresh_token',
+  last_login: 'last_login',
+  login_attempts: 'login_attempts',
+  locked_until: 'locked_until',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -248,7 +266,8 @@ exports.Prisma.ModelName = {
   Address: 'Address',
   Payment: 'Payment',
   Chat: 'Chat',
-  Messages: 'Messages'
+  Messages: 'Messages',
+  Admin: 'Admin'
 };
 
 /**

@@ -13,6 +13,8 @@ import { AddressModule } from './address/address.module';
 import { ChatModule } from './chat/chat.module';
 import { PaymentModule } from './payment/payment.module';
 import { MessagesModule } from './messages/messages.module';
+import { AdminModule } from './admin/admin.module';
+import { FileModule } from './file/file.module';
 
 @Module({
   imports: [
@@ -25,7 +27,9 @@ import { MessagesModule } from './messages/messages.module';
     AddressModule,
     ChatModule,
     PaymentModule,
-    MessagesModule
+    MessagesModule,
+    AdminModule,
+    FileModule
   ],
   controllers: [],
   providers: [
