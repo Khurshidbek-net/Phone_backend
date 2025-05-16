@@ -12,7 +12,7 @@ export class AdminService {
     private readonly fileService: FileService,
   ) {}
   async create(createAdminDto: CreateAdminDto, file?: Express.Multer.File) {
-    let imageUrl: string | undefined;
+    let imageUrl: string | null = null;
     if (file) {
       const filename = await this.fileService.saveFile(file);
       const baseUrl = process.env.BASE_URL;

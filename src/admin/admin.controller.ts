@@ -8,6 +8,8 @@ import {
   Delete,
   UploadedFile,
   UseInterceptors,
+  UsePipes,
+  ValidationPipe,
 } from '@nestjs/common';
 import { AdminService } from './admin.service';
 import { CreateAdminDto } from './dto/create-admin.dto';
@@ -21,6 +23,12 @@ export class AdminController {
   constructor(private readonly adminService: AdminService) {}
 
   @Post()
+  @UsePipes(
+    new ValidationPipe({
+      whitelist: true,
+      forbidNonWhitelisted: false,
+    }),
+  )
   @ApiConsumes('multipart/form-data')
   @ApiBody({
     description: 'Admin yaratish uchun malumotlar',
@@ -37,12 +45,13 @@ export class AdminController {
           format: 'binary',
         },
       },
+      required: ['firstname', 'lastname', 'phone_number', 'email', 'password'],
     },
   })
   @UseInterceptors(FileInterceptor('image'))
   create(
-    @UploadedFile() file: Express.Multer.File,
     @Body() createAdminDto: CreateAdminDto,
+    @UploadedFile() file?: Express.Multer.File,
   ) {
     return this.adminService.create(createAdminDto, file);
   }
