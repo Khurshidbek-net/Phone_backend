@@ -29,7 +29,7 @@ import { FileModule } from './file/file.module';
     PaymentModule,
     MessagesModule,
     AdminModule,
-    FileModule
+    FileModule,
   ],
   controllers: [],
   providers: [

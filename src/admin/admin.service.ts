@@ -1,25 +1,21 @@
-import { BadRequestException, Injectable } from '@nestjs/common';
+import {
+  BadRequestException,
+  Injectable,
+  NotFoundException,
+} from '@nestjs/common';
 import { CreateAdminDto } from './dto/create-admin.dto';
 import { UpdateAdminDto } from './dto/update-admin.dto';
 import { PrismaService } from '../prisma/prisma.service';
 import * as bcrypt from 'bcrypt';
-import { FileService } from '../file/file.service';
 
 @Injectable()
 export class AdminService {
-  constructor(
-    private readonly prisma: PrismaService,
-    private readonly fileService: FileService,
-  ) {}
-  async create(createAdminDto: CreateAdminDto, file?: Express.Multer.File) {
-    let imageUrl: string | null = null;
-    if (file) {
-      const filename = await this.fileService.saveFile(file);
-      const baseUrl = process.env.BASE_URL;
-      imageUrl = `${baseUrl}/images/${filename}`;
-    }
+  constructor(private readonly prisma: PrismaService) {}
+  async create(createAdminDto: CreateAdminDto) {
+    const { password, email, image, ...data } = createAdminDto;
 
-    const { password, email, ...data } = createAdminDto;
+    const imageUrl = image || null;
+
     const admin = await this.prisma.admin.findFirst({
       where: { email },
     });
