@@ -148,6 +148,8 @@ exports.Prisma.UserScalarFieldEnum = {
   lastName: 'lastName',
   birthDate: 'birthDate',
   balance: 'balance',
+  password: 'password',
+  image: 'image',
   loginAttempts: 'loginAttempts',
   lockedUntil: 'lockedUntil',
   isLocked: 'isLocked',
@@ -243,6 +245,20 @@ exports.Prisma.ArchivesScalarFieldEnum = {
   phoneId: 'phoneId'
 };
 
+exports.Prisma.OtpScalarFieldEnum = {
+  id: 'id',
+  otp: 'otp',
+  expiration_time: 'expiration_time',
+  verificationKey: 'verificationKey',
+  verified: 'verified',
+  phone_number: 'phone_number'
+};
+
+exports.Prisma.TokenScalarFieldEnum = {
+  id: 'id',
+  token: 'token'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -273,7 +289,9 @@ exports.Prisma.ModelName = {
   Phone: 'Phone',
   Image: 'Image',
   Review: 'Review',
-  Archives: 'Archives'
+  Archives: 'Archives',
+  Otp: 'Otp',
+  Token: 'Token'
 };
 
 /**

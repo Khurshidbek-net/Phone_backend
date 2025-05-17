@@ -14,6 +14,11 @@ import { BrandModule } from './brand/brand.module';
 import { ModelModule } from './model/model.module';
 import { ArchivesModule } from './archives/archives.module';
 import { PhoneModule } from './phone/phone.module';
+import { UserModule } from './user/user.module';
+import { EmailModule } from './email/email.module';
+import { PhonoNumberModule } from './phone-number/phono-number.module';
+import { AuthModule } from './auth/auth.module';
+import { SmsModule } from './sms/sms.module';
 
 @Module({
   imports: [
@@ -27,7 +32,12 @@ import { PhoneModule } from './phone/phone.module';
     BrandModule,
     ModelModule,
     ArchivesModule,
-    PhoneModule
+    PhoneModule,
+    UserModule,
+    EmailModule,
+    PhonoNumberModule,
+    AuthModule,
+    SmsModule
   ],
   controllers: [],
   providers: [

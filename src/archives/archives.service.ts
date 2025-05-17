@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { CreateArchiveDto } from './dto/create-archive.dto';
 import { UpdateArchiveDto } from './dto/update-archive.dto';
 import { PrismaService } from '../prisma/prisma.service';
@@ -26,7 +26,7 @@ export class ArchivesService {
       },
     })
     if(!result) {
-      throw new Error('Archives not found');
+      throw new NotFoundException('Archives not found');
     }
     return result
   }

@@ -83,6 +83,16 @@ export type Review = $Result.DefaultSelection<Prisma.$ReviewPayload>
  * 
  */
 export type Archives = $Result.DefaultSelection<Prisma.$ArchivesPayload>
+/**
+ * Model Otp
+ * 
+ */
+export type Otp = $Result.DefaultSelection<Prisma.$OtpPayload>
+/**
+ * Model Token
+ * 
+ */
+export type Token = $Result.DefaultSelection<Prisma.$TokenPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -348,6 +358,26 @@ export class PrismaClient<
     * ```
     */
   get archives(): Prisma.ArchivesDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.otp`: Exposes CRUD operations for the **Otp** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Otps
+    * const otps = await prisma.otp.findMany()
+    * ```
+    */
+  get otp(): Prisma.OtpDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.token`: Exposes CRUD operations for the **Token** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Tokens
+    * const tokens = await prisma.token.findMany()
+    * ```
+    */
+  get token(): Prisma.TokenDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -801,7 +831,9 @@ export namespace Prisma {
     Phone: 'Phone',
     Image: 'Image',
     Review: 'Review',
-    Archives: 'Archives'
+    Archives: 'Archives',
+    Otp: 'Otp',
+    Token: 'Token'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -820,7 +852,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "region" | "district" | "language" | "user" | "email" | "phoneNumber" | "currency" | "brand" | "model" | "color" | "phone" | "image" | "review" | "archives"
+      modelProps: "region" | "district" | "language" | "user" | "email" | "phoneNumber" | "currency" | "brand" | "model" | "color" | "phone" | "image" | "review" | "archives" | "otp" | "token"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1860,6 +1892,154 @@ export namespace Prisma {
           }
         }
       }
+      Otp: {
+        payload: Prisma.$OtpPayload<ExtArgs>
+        fields: Prisma.OtpFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.OtpFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OtpPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.OtpFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OtpPayload>
+          }
+          findFirst: {
+            args: Prisma.OtpFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OtpPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.OtpFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OtpPayload>
+          }
+          findMany: {
+            args: Prisma.OtpFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OtpPayload>[]
+          }
+          create: {
+            args: Prisma.OtpCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OtpPayload>
+          }
+          createMany: {
+            args: Prisma.OtpCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.OtpCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OtpPayload>[]
+          }
+          delete: {
+            args: Prisma.OtpDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OtpPayload>
+          }
+          update: {
+            args: Prisma.OtpUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OtpPayload>
+          }
+          deleteMany: {
+            args: Prisma.OtpDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.OtpUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.OtpUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OtpPayload>[]
+          }
+          upsert: {
+            args: Prisma.OtpUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OtpPayload>
+          }
+          aggregate: {
+            args: Prisma.OtpAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateOtp>
+          }
+          groupBy: {
+            args: Prisma.OtpGroupByArgs<ExtArgs>
+            result: $Utils.Optional<OtpGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.OtpCountArgs<ExtArgs>
+            result: $Utils.Optional<OtpCountAggregateOutputType> | number
+          }
+        }
+      }
+      Token: {
+        payload: Prisma.$TokenPayload<ExtArgs>
+        fields: Prisma.TokenFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.TokenFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TokenPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.TokenFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TokenPayload>
+          }
+          findFirst: {
+            args: Prisma.TokenFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TokenPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.TokenFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TokenPayload>
+          }
+          findMany: {
+            args: Prisma.TokenFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TokenPayload>[]
+          }
+          create: {
+            args: Prisma.TokenCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TokenPayload>
+          }
+          createMany: {
+            args: Prisma.TokenCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.TokenCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TokenPayload>[]
+          }
+          delete: {
+            args: Prisma.TokenDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TokenPayload>
+          }
+          update: {
+            args: Prisma.TokenUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TokenPayload>
+          }
+          deleteMany: {
+            args: Prisma.TokenDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.TokenUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.TokenUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TokenPayload>[]
+          }
+          upsert: {
+            args: Prisma.TokenUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TokenPayload>
+          }
+          aggregate: {
+            args: Prisma.TokenAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateToken>
+          }
+          groupBy: {
+            args: Prisma.TokenGroupByArgs<ExtArgs>
+            result: $Utils.Optional<TokenGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.TokenCountArgs<ExtArgs>
+            result: $Utils.Optional<TokenCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -1958,6 +2138,8 @@ export namespace Prisma {
     image?: ImageOmit
     review?: ReviewOmit
     archives?: ArchivesOmit
+    otp?: OtpOmit
+    token?: TokenOmit
   }
 
   /* Types for Logging */
@@ -5783,6 +5965,8 @@ export namespace Prisma {
     lastName: string | null
     birthDate: Date | null
     balance: Decimal | null
+    password: string | null
+    image: string | null
     loginAttempts: number | null
     lockedUntil: Date | null
     isLocked: boolean | null
@@ -5804,6 +5988,8 @@ export namespace Prisma {
     lastName: string | null
     birthDate: Date | null
     balance: Decimal | null
+    password: string | null
+    image: string | null
     loginAttempts: number | null
     lockedUntil: Date | null
     isLocked: boolean | null
@@ -5825,6 +6011,8 @@ export namespace Prisma {
     lastName: number
     birthDate: number
     balance: number
+    password: number
+    image: number
     loginAttempts: number
     lockedUntil: number
     isLocked: number
@@ -5868,6 +6056,8 @@ export namespace Prisma {
     lastName?: true
     birthDate?: true
     balance?: true
+    password?: true
+    image?: true
     loginAttempts?: true
     lockedUntil?: true
     isLocked?: true
@@ -5889,6 +6079,8 @@ export namespace Prisma {
     lastName?: true
     birthDate?: true
     balance?: true
+    password?: true
+    image?: true
     loginAttempts?: true
     lockedUntil?: true
     isLocked?: true
@@ -5910,6 +6102,8 @@ export namespace Prisma {
     lastName?: true
     birthDate?: true
     balance?: true
+    password?: true
+    image?: true
     loginAttempts?: true
     lockedUntil?: true
     isLocked?: true
@@ -6014,10 +6208,12 @@ export namespace Prisma {
 
   export type UserGroupByOutputType = {
     id: number
-    firstName: string | null
+    firstName: string
     lastName: string | null
-    birthDate: Date
+    birthDate: Date | null
     balance: Decimal
+    password: string
+    image: string | null
     loginAttempts: number
     lockedUntil: Date | null
     isLocked: boolean
@@ -6058,6 +6254,8 @@ export namespace Prisma {
     lastName?: boolean
     birthDate?: boolean
     balance?: boolean
+    password?: boolean
+    image?: boolean
     loginAttempts?: boolean
     lockedUntil?: boolean
     isLocked?: boolean
@@ -6087,6 +6285,8 @@ export namespace Prisma {
     lastName?: boolean
     birthDate?: boolean
     balance?: boolean
+    password?: boolean
+    image?: boolean
     loginAttempts?: boolean
     lockedUntil?: boolean
     isLocked?: boolean
@@ -6112,6 +6312,8 @@ export namespace Prisma {
     lastName?: boolean
     birthDate?: boolean
     balance?: boolean
+    password?: boolean
+    image?: boolean
     loginAttempts?: boolean
     lockedUntil?: boolean
     isLocked?: boolean
@@ -6137,6 +6339,8 @@ export namespace Prisma {
     lastName?: boolean
     birthDate?: boolean
     balance?: boolean
+    password?: boolean
+    image?: boolean
     loginAttempts?: boolean
     lockedUntil?: boolean
     isLocked?: boolean
@@ -6152,7 +6356,7 @@ export namespace Prisma {
     languageId?: boolean
   }
 
-  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "firstName" | "lastName" | "birthDate" | "balance" | "loginAttempts" | "lockedUntil" | "isLocked" | "isActive" | "isDeleted" | "lastSeen" | "hashedToken" | "mainEmailId" | "mainPhoneId" | "createdAt" | "updatedAt" | "districtId" | "languageId", ExtArgs["result"]["user"]>
+  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "firstName" | "lastName" | "birthDate" | "balance" | "password" | "image" | "loginAttempts" | "lockedUntil" | "isLocked" | "isActive" | "isDeleted" | "lastSeen" | "hashedToken" | "mainEmailId" | "mainPhoneId" | "createdAt" | "updatedAt" | "districtId" | "languageId", ExtArgs["result"]["user"]>
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     mainEmail?: boolean | User$mainEmailArgs<ExtArgs>
     mainPhone?: boolean | User$mainPhoneArgs<ExtArgs>
@@ -6189,10 +6393,12 @@ export namespace Prisma {
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
-      firstName: string | null
+      firstName: string
       lastName: string | null
-      birthDate: Date
+      birthDate: Date | null
       balance: Prisma.Decimal
+      password: string
+      image: string | null
       loginAttempts: number
       lockedUntil: Date | null
       isLocked: boolean
@@ -6641,6 +6847,8 @@ export namespace Prisma {
     readonly lastName: FieldRef<"User", 'String'>
     readonly birthDate: FieldRef<"User", 'DateTime'>
     readonly balance: FieldRef<"User", 'Decimal'>
+    readonly password: FieldRef<"User", 'String'>
+    readonly image: FieldRef<"User", 'String'>
     readonly loginAttempts: FieldRef<"User", 'Int'>
     readonly lockedUntil: FieldRef<"User", 'DateTime'>
     readonly isLocked: FieldRef<"User", 'Boolean'>
@@ -18556,6 +18764,2038 @@ export namespace Prisma {
 
 
   /**
+   * Model Otp
+   */
+
+  export type AggregateOtp = {
+    _count: OtpCountAggregateOutputType | null
+    _avg: OtpAvgAggregateOutputType | null
+    _sum: OtpSumAggregateOutputType | null
+    _min: OtpMinAggregateOutputType | null
+    _max: OtpMaxAggregateOutputType | null
+  }
+
+  export type OtpAvgAggregateOutputType = {
+    id: number | null
+  }
+
+  export type OtpSumAggregateOutputType = {
+    id: number | null
+  }
+
+  export type OtpMinAggregateOutputType = {
+    id: number | null
+    otp: string | null
+    expiration_time: Date | null
+    verificationKey: string | null
+    verified: boolean | null
+    phone_number: string | null
+  }
+
+  export type OtpMaxAggregateOutputType = {
+    id: number | null
+    otp: string | null
+    expiration_time: Date | null
+    verificationKey: string | null
+    verified: boolean | null
+    phone_number: string | null
+  }
+
+  export type OtpCountAggregateOutputType = {
+    id: number
+    otp: number
+    expiration_time: number
+    verificationKey: number
+    verified: number
+    phone_number: number
+    _all: number
+  }
+
+
+  export type OtpAvgAggregateInputType = {
+    id?: true
+  }
+
+  export type OtpSumAggregateInputType = {
+    id?: true
+  }
+
+  export type OtpMinAggregateInputType = {
+    id?: true
+    otp?: true
+    expiration_time?: true
+    verificationKey?: true
+    verified?: true
+    phone_number?: true
+  }
+
+  export type OtpMaxAggregateInputType = {
+    id?: true
+    otp?: true
+    expiration_time?: true
+    verificationKey?: true
+    verified?: true
+    phone_number?: true
+  }
+
+  export type OtpCountAggregateInputType = {
+    id?: true
+    otp?: true
+    expiration_time?: true
+    verificationKey?: true
+    verified?: true
+    phone_number?: true
+    _all?: true
+  }
+
+  export type OtpAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Otp to aggregate.
+     */
+    where?: OtpWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Otps to fetch.
+     */
+    orderBy?: OtpOrderByWithRelationInput | OtpOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: OtpWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Otps from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Otps.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Otps
+    **/
+    _count?: true | OtpCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: OtpAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: OtpSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: OtpMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: OtpMaxAggregateInputType
+  }
+
+  export type GetOtpAggregateType<T extends OtpAggregateArgs> = {
+        [P in keyof T & keyof AggregateOtp]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateOtp[P]>
+      : GetScalarType<T[P], AggregateOtp[P]>
+  }
+
+
+
+
+  export type OtpGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: OtpWhereInput
+    orderBy?: OtpOrderByWithAggregationInput | OtpOrderByWithAggregationInput[]
+    by: OtpScalarFieldEnum[] | OtpScalarFieldEnum
+    having?: OtpScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: OtpCountAggregateInputType | true
+    _avg?: OtpAvgAggregateInputType
+    _sum?: OtpSumAggregateInputType
+    _min?: OtpMinAggregateInputType
+    _max?: OtpMaxAggregateInputType
+  }
+
+  export type OtpGroupByOutputType = {
+    id: number
+    otp: string
+    expiration_time: Date
+    verificationKey: string | null
+    verified: boolean
+    phone_number: string
+    _count: OtpCountAggregateOutputType | null
+    _avg: OtpAvgAggregateOutputType | null
+    _sum: OtpSumAggregateOutputType | null
+    _min: OtpMinAggregateOutputType | null
+    _max: OtpMaxAggregateOutputType | null
+  }
+
+  type GetOtpGroupByPayload<T extends OtpGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<OtpGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof OtpGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], OtpGroupByOutputType[P]>
+            : GetScalarType<T[P], OtpGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type OtpSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    otp?: boolean
+    expiration_time?: boolean
+    verificationKey?: boolean
+    verified?: boolean
+    phone_number?: boolean
+  }, ExtArgs["result"]["otp"]>
+
+  export type OtpSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    otp?: boolean
+    expiration_time?: boolean
+    verificationKey?: boolean
+    verified?: boolean
+    phone_number?: boolean
+  }, ExtArgs["result"]["otp"]>
+
+  export type OtpSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    otp?: boolean
+    expiration_time?: boolean
+    verificationKey?: boolean
+    verified?: boolean
+    phone_number?: boolean
+  }, ExtArgs["result"]["otp"]>
+
+  export type OtpSelectScalar = {
+    id?: boolean
+    otp?: boolean
+    expiration_time?: boolean
+    verificationKey?: boolean
+    verified?: boolean
+    phone_number?: boolean
+  }
+
+  export type OtpOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "otp" | "expiration_time" | "verificationKey" | "verified" | "phone_number", ExtArgs["result"]["otp"]>
+
+  export type $OtpPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Otp"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      otp: string
+      expiration_time: Date
+      verificationKey: string | null
+      verified: boolean
+      phone_number: string
+    }, ExtArgs["result"]["otp"]>
+    composites: {}
+  }
+
+  type OtpGetPayload<S extends boolean | null | undefined | OtpDefaultArgs> = $Result.GetResult<Prisma.$OtpPayload, S>
+
+  type OtpCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<OtpFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: OtpCountAggregateInputType | true
+    }
+
+  export interface OtpDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Otp'], meta: { name: 'Otp' } }
+    /**
+     * Find zero or one Otp that matches the filter.
+     * @param {OtpFindUniqueArgs} args - Arguments to find a Otp
+     * @example
+     * // Get one Otp
+     * const otp = await prisma.otp.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends OtpFindUniqueArgs>(args: SelectSubset<T, OtpFindUniqueArgs<ExtArgs>>): Prisma__OtpClient<$Result.GetResult<Prisma.$OtpPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Otp that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {OtpFindUniqueOrThrowArgs} args - Arguments to find a Otp
+     * @example
+     * // Get one Otp
+     * const otp = await prisma.otp.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends OtpFindUniqueOrThrowArgs>(args: SelectSubset<T, OtpFindUniqueOrThrowArgs<ExtArgs>>): Prisma__OtpClient<$Result.GetResult<Prisma.$OtpPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Otp that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {OtpFindFirstArgs} args - Arguments to find a Otp
+     * @example
+     * // Get one Otp
+     * const otp = await prisma.otp.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends OtpFindFirstArgs>(args?: SelectSubset<T, OtpFindFirstArgs<ExtArgs>>): Prisma__OtpClient<$Result.GetResult<Prisma.$OtpPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Otp that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {OtpFindFirstOrThrowArgs} args - Arguments to find a Otp
+     * @example
+     * // Get one Otp
+     * const otp = await prisma.otp.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends OtpFindFirstOrThrowArgs>(args?: SelectSubset<T, OtpFindFirstOrThrowArgs<ExtArgs>>): Prisma__OtpClient<$Result.GetResult<Prisma.$OtpPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Otps that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {OtpFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Otps
+     * const otps = await prisma.otp.findMany()
+     * 
+     * // Get first 10 Otps
+     * const otps = await prisma.otp.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const otpWithIdOnly = await prisma.otp.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends OtpFindManyArgs>(args?: SelectSubset<T, OtpFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$OtpPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Otp.
+     * @param {OtpCreateArgs} args - Arguments to create a Otp.
+     * @example
+     * // Create one Otp
+     * const Otp = await prisma.otp.create({
+     *   data: {
+     *     // ... data to create a Otp
+     *   }
+     * })
+     * 
+     */
+    create<T extends OtpCreateArgs>(args: SelectSubset<T, OtpCreateArgs<ExtArgs>>): Prisma__OtpClient<$Result.GetResult<Prisma.$OtpPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Otps.
+     * @param {OtpCreateManyArgs} args - Arguments to create many Otps.
+     * @example
+     * // Create many Otps
+     * const otp = await prisma.otp.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends OtpCreateManyArgs>(args?: SelectSubset<T, OtpCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Otps and returns the data saved in the database.
+     * @param {OtpCreateManyAndReturnArgs} args - Arguments to create many Otps.
+     * @example
+     * // Create many Otps
+     * const otp = await prisma.otp.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Otps and only return the `id`
+     * const otpWithIdOnly = await prisma.otp.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends OtpCreateManyAndReturnArgs>(args?: SelectSubset<T, OtpCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$OtpPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Otp.
+     * @param {OtpDeleteArgs} args - Arguments to delete one Otp.
+     * @example
+     * // Delete one Otp
+     * const Otp = await prisma.otp.delete({
+     *   where: {
+     *     // ... filter to delete one Otp
+     *   }
+     * })
+     * 
+     */
+    delete<T extends OtpDeleteArgs>(args: SelectSubset<T, OtpDeleteArgs<ExtArgs>>): Prisma__OtpClient<$Result.GetResult<Prisma.$OtpPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Otp.
+     * @param {OtpUpdateArgs} args - Arguments to update one Otp.
+     * @example
+     * // Update one Otp
+     * const otp = await prisma.otp.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends OtpUpdateArgs>(args: SelectSubset<T, OtpUpdateArgs<ExtArgs>>): Prisma__OtpClient<$Result.GetResult<Prisma.$OtpPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Otps.
+     * @param {OtpDeleteManyArgs} args - Arguments to filter Otps to delete.
+     * @example
+     * // Delete a few Otps
+     * const { count } = await prisma.otp.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends OtpDeleteManyArgs>(args?: SelectSubset<T, OtpDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Otps.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {OtpUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Otps
+     * const otp = await prisma.otp.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends OtpUpdateManyArgs>(args: SelectSubset<T, OtpUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Otps and returns the data updated in the database.
+     * @param {OtpUpdateManyAndReturnArgs} args - Arguments to update many Otps.
+     * @example
+     * // Update many Otps
+     * const otp = await prisma.otp.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Otps and only return the `id`
+     * const otpWithIdOnly = await prisma.otp.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends OtpUpdateManyAndReturnArgs>(args: SelectSubset<T, OtpUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$OtpPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Otp.
+     * @param {OtpUpsertArgs} args - Arguments to update or create a Otp.
+     * @example
+     * // Update or create a Otp
+     * const otp = await prisma.otp.upsert({
+     *   create: {
+     *     // ... data to create a Otp
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Otp we want to update
+     *   }
+     * })
+     */
+    upsert<T extends OtpUpsertArgs>(args: SelectSubset<T, OtpUpsertArgs<ExtArgs>>): Prisma__OtpClient<$Result.GetResult<Prisma.$OtpPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Otps.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {OtpCountArgs} args - Arguments to filter Otps to count.
+     * @example
+     * // Count the number of Otps
+     * const count = await prisma.otp.count({
+     *   where: {
+     *     // ... the filter for the Otps we want to count
+     *   }
+     * })
+    **/
+    count<T extends OtpCountArgs>(
+      args?: Subset<T, OtpCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], OtpCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Otp.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {OtpAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends OtpAggregateArgs>(args: Subset<T, OtpAggregateArgs>): Prisma.PrismaPromise<GetOtpAggregateType<T>>
+
+    /**
+     * Group by Otp.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {OtpGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends OtpGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: OtpGroupByArgs['orderBy'] }
+        : { orderBy?: OtpGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, OtpGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetOtpGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Otp model
+   */
+  readonly fields: OtpFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Otp.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__OtpClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Otp model
+   */
+  interface OtpFieldRefs {
+    readonly id: FieldRef<"Otp", 'Int'>
+    readonly otp: FieldRef<"Otp", 'String'>
+    readonly expiration_time: FieldRef<"Otp", 'DateTime'>
+    readonly verificationKey: FieldRef<"Otp", 'String'>
+    readonly verified: FieldRef<"Otp", 'Boolean'>
+    readonly phone_number: FieldRef<"Otp", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Otp findUnique
+   */
+  export type OtpFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Otp
+     */
+    select?: OtpSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Otp
+     */
+    omit?: OtpOmit<ExtArgs> | null
+    /**
+     * Filter, which Otp to fetch.
+     */
+    where: OtpWhereUniqueInput
+  }
+
+  /**
+   * Otp findUniqueOrThrow
+   */
+  export type OtpFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Otp
+     */
+    select?: OtpSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Otp
+     */
+    omit?: OtpOmit<ExtArgs> | null
+    /**
+     * Filter, which Otp to fetch.
+     */
+    where: OtpWhereUniqueInput
+  }
+
+  /**
+   * Otp findFirst
+   */
+  export type OtpFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Otp
+     */
+    select?: OtpSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Otp
+     */
+    omit?: OtpOmit<ExtArgs> | null
+    /**
+     * Filter, which Otp to fetch.
+     */
+    where?: OtpWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Otps to fetch.
+     */
+    orderBy?: OtpOrderByWithRelationInput | OtpOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Otps.
+     */
+    cursor?: OtpWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Otps from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Otps.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Otps.
+     */
+    distinct?: OtpScalarFieldEnum | OtpScalarFieldEnum[]
+  }
+
+  /**
+   * Otp findFirstOrThrow
+   */
+  export type OtpFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Otp
+     */
+    select?: OtpSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Otp
+     */
+    omit?: OtpOmit<ExtArgs> | null
+    /**
+     * Filter, which Otp to fetch.
+     */
+    where?: OtpWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Otps to fetch.
+     */
+    orderBy?: OtpOrderByWithRelationInput | OtpOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Otps.
+     */
+    cursor?: OtpWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Otps from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Otps.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Otps.
+     */
+    distinct?: OtpScalarFieldEnum | OtpScalarFieldEnum[]
+  }
+
+  /**
+   * Otp findMany
+   */
+  export type OtpFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Otp
+     */
+    select?: OtpSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Otp
+     */
+    omit?: OtpOmit<ExtArgs> | null
+    /**
+     * Filter, which Otps to fetch.
+     */
+    where?: OtpWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Otps to fetch.
+     */
+    orderBy?: OtpOrderByWithRelationInput | OtpOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Otps.
+     */
+    cursor?: OtpWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Otps from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Otps.
+     */
+    skip?: number
+    distinct?: OtpScalarFieldEnum | OtpScalarFieldEnum[]
+  }
+
+  /**
+   * Otp create
+   */
+  export type OtpCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Otp
+     */
+    select?: OtpSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Otp
+     */
+    omit?: OtpOmit<ExtArgs> | null
+    /**
+     * The data needed to create a Otp.
+     */
+    data: XOR<OtpCreateInput, OtpUncheckedCreateInput>
+  }
+
+  /**
+   * Otp createMany
+   */
+  export type OtpCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Otps.
+     */
+    data: OtpCreateManyInput | OtpCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Otp createManyAndReturn
+   */
+  export type OtpCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Otp
+     */
+    select?: OtpSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Otp
+     */
+    omit?: OtpOmit<ExtArgs> | null
+    /**
+     * The data used to create many Otps.
+     */
+    data: OtpCreateManyInput | OtpCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Otp update
+   */
+  export type OtpUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Otp
+     */
+    select?: OtpSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Otp
+     */
+    omit?: OtpOmit<ExtArgs> | null
+    /**
+     * The data needed to update a Otp.
+     */
+    data: XOR<OtpUpdateInput, OtpUncheckedUpdateInput>
+    /**
+     * Choose, which Otp to update.
+     */
+    where: OtpWhereUniqueInput
+  }
+
+  /**
+   * Otp updateMany
+   */
+  export type OtpUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Otps.
+     */
+    data: XOR<OtpUpdateManyMutationInput, OtpUncheckedUpdateManyInput>
+    /**
+     * Filter which Otps to update
+     */
+    where?: OtpWhereInput
+    /**
+     * Limit how many Otps to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Otp updateManyAndReturn
+   */
+  export type OtpUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Otp
+     */
+    select?: OtpSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Otp
+     */
+    omit?: OtpOmit<ExtArgs> | null
+    /**
+     * The data used to update Otps.
+     */
+    data: XOR<OtpUpdateManyMutationInput, OtpUncheckedUpdateManyInput>
+    /**
+     * Filter which Otps to update
+     */
+    where?: OtpWhereInput
+    /**
+     * Limit how many Otps to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Otp upsert
+   */
+  export type OtpUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Otp
+     */
+    select?: OtpSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Otp
+     */
+    omit?: OtpOmit<ExtArgs> | null
+    /**
+     * The filter to search for the Otp to update in case it exists.
+     */
+    where: OtpWhereUniqueInput
+    /**
+     * In case the Otp found by the `where` argument doesn't exist, create a new Otp with this data.
+     */
+    create: XOR<OtpCreateInput, OtpUncheckedCreateInput>
+    /**
+     * In case the Otp was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<OtpUpdateInput, OtpUncheckedUpdateInput>
+  }
+
+  /**
+   * Otp delete
+   */
+  export type OtpDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Otp
+     */
+    select?: OtpSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Otp
+     */
+    omit?: OtpOmit<ExtArgs> | null
+    /**
+     * Filter which Otp to delete.
+     */
+    where: OtpWhereUniqueInput
+  }
+
+  /**
+   * Otp deleteMany
+   */
+  export type OtpDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Otps to delete
+     */
+    where?: OtpWhereInput
+    /**
+     * Limit how many Otps to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Otp without action
+   */
+  export type OtpDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Otp
+     */
+    select?: OtpSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Otp
+     */
+    omit?: OtpOmit<ExtArgs> | null
+  }
+
+
+  /**
+   * Model Token
+   */
+
+  export type AggregateToken = {
+    _count: TokenCountAggregateOutputType | null
+    _avg: TokenAvgAggregateOutputType | null
+    _sum: TokenSumAggregateOutputType | null
+    _min: TokenMinAggregateOutputType | null
+    _max: TokenMaxAggregateOutputType | null
+  }
+
+  export type TokenAvgAggregateOutputType = {
+    id: number | null
+  }
+
+  export type TokenSumAggregateOutputType = {
+    id: number | null
+  }
+
+  export type TokenMinAggregateOutputType = {
+    id: number | null
+    token: string | null
+  }
+
+  export type TokenMaxAggregateOutputType = {
+    id: number | null
+    token: string | null
+  }
+
+  export type TokenCountAggregateOutputType = {
+    id: number
+    token: number
+    _all: number
+  }
+
+
+  export type TokenAvgAggregateInputType = {
+    id?: true
+  }
+
+  export type TokenSumAggregateInputType = {
+    id?: true
+  }
+
+  export type TokenMinAggregateInputType = {
+    id?: true
+    token?: true
+  }
+
+  export type TokenMaxAggregateInputType = {
+    id?: true
+    token?: true
+  }
+
+  export type TokenCountAggregateInputType = {
+    id?: true
+    token?: true
+    _all?: true
+  }
+
+  export type TokenAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Token to aggregate.
+     */
+    where?: TokenWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Tokens to fetch.
+     */
+    orderBy?: TokenOrderByWithRelationInput | TokenOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: TokenWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Tokens from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Tokens.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Tokens
+    **/
+    _count?: true | TokenCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: TokenAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: TokenSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: TokenMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: TokenMaxAggregateInputType
+  }
+
+  export type GetTokenAggregateType<T extends TokenAggregateArgs> = {
+        [P in keyof T & keyof AggregateToken]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateToken[P]>
+      : GetScalarType<T[P], AggregateToken[P]>
+  }
+
+
+
+
+  export type TokenGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: TokenWhereInput
+    orderBy?: TokenOrderByWithAggregationInput | TokenOrderByWithAggregationInput[]
+    by: TokenScalarFieldEnum[] | TokenScalarFieldEnum
+    having?: TokenScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: TokenCountAggregateInputType | true
+    _avg?: TokenAvgAggregateInputType
+    _sum?: TokenSumAggregateInputType
+    _min?: TokenMinAggregateInputType
+    _max?: TokenMaxAggregateInputType
+  }
+
+  export type TokenGroupByOutputType = {
+    id: number
+    token: string
+    _count: TokenCountAggregateOutputType | null
+    _avg: TokenAvgAggregateOutputType | null
+    _sum: TokenSumAggregateOutputType | null
+    _min: TokenMinAggregateOutputType | null
+    _max: TokenMaxAggregateOutputType | null
+  }
+
+  type GetTokenGroupByPayload<T extends TokenGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<TokenGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof TokenGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], TokenGroupByOutputType[P]>
+            : GetScalarType<T[P], TokenGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type TokenSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    token?: boolean
+  }, ExtArgs["result"]["token"]>
+
+  export type TokenSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    token?: boolean
+  }, ExtArgs["result"]["token"]>
+
+  export type TokenSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    token?: boolean
+  }, ExtArgs["result"]["token"]>
+
+  export type TokenSelectScalar = {
+    id?: boolean
+    token?: boolean
+  }
+
+  export type TokenOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "token", ExtArgs["result"]["token"]>
+
+  export type $TokenPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Token"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      token: string
+    }, ExtArgs["result"]["token"]>
+    composites: {}
+  }
+
+  type TokenGetPayload<S extends boolean | null | undefined | TokenDefaultArgs> = $Result.GetResult<Prisma.$TokenPayload, S>
+
+  type TokenCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<TokenFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: TokenCountAggregateInputType | true
+    }
+
+  export interface TokenDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Token'], meta: { name: 'Token' } }
+    /**
+     * Find zero or one Token that matches the filter.
+     * @param {TokenFindUniqueArgs} args - Arguments to find a Token
+     * @example
+     * // Get one Token
+     * const token = await prisma.token.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends TokenFindUniqueArgs>(args: SelectSubset<T, TokenFindUniqueArgs<ExtArgs>>): Prisma__TokenClient<$Result.GetResult<Prisma.$TokenPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Token that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {TokenFindUniqueOrThrowArgs} args - Arguments to find a Token
+     * @example
+     * // Get one Token
+     * const token = await prisma.token.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends TokenFindUniqueOrThrowArgs>(args: SelectSubset<T, TokenFindUniqueOrThrowArgs<ExtArgs>>): Prisma__TokenClient<$Result.GetResult<Prisma.$TokenPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Token that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TokenFindFirstArgs} args - Arguments to find a Token
+     * @example
+     * // Get one Token
+     * const token = await prisma.token.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends TokenFindFirstArgs>(args?: SelectSubset<T, TokenFindFirstArgs<ExtArgs>>): Prisma__TokenClient<$Result.GetResult<Prisma.$TokenPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Token that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TokenFindFirstOrThrowArgs} args - Arguments to find a Token
+     * @example
+     * // Get one Token
+     * const token = await prisma.token.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends TokenFindFirstOrThrowArgs>(args?: SelectSubset<T, TokenFindFirstOrThrowArgs<ExtArgs>>): Prisma__TokenClient<$Result.GetResult<Prisma.$TokenPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Tokens that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TokenFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Tokens
+     * const tokens = await prisma.token.findMany()
+     * 
+     * // Get first 10 Tokens
+     * const tokens = await prisma.token.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const tokenWithIdOnly = await prisma.token.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends TokenFindManyArgs>(args?: SelectSubset<T, TokenFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TokenPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Token.
+     * @param {TokenCreateArgs} args - Arguments to create a Token.
+     * @example
+     * // Create one Token
+     * const Token = await prisma.token.create({
+     *   data: {
+     *     // ... data to create a Token
+     *   }
+     * })
+     * 
+     */
+    create<T extends TokenCreateArgs>(args: SelectSubset<T, TokenCreateArgs<ExtArgs>>): Prisma__TokenClient<$Result.GetResult<Prisma.$TokenPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Tokens.
+     * @param {TokenCreateManyArgs} args - Arguments to create many Tokens.
+     * @example
+     * // Create many Tokens
+     * const token = await prisma.token.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends TokenCreateManyArgs>(args?: SelectSubset<T, TokenCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Tokens and returns the data saved in the database.
+     * @param {TokenCreateManyAndReturnArgs} args - Arguments to create many Tokens.
+     * @example
+     * // Create many Tokens
+     * const token = await prisma.token.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Tokens and only return the `id`
+     * const tokenWithIdOnly = await prisma.token.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends TokenCreateManyAndReturnArgs>(args?: SelectSubset<T, TokenCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TokenPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Token.
+     * @param {TokenDeleteArgs} args - Arguments to delete one Token.
+     * @example
+     * // Delete one Token
+     * const Token = await prisma.token.delete({
+     *   where: {
+     *     // ... filter to delete one Token
+     *   }
+     * })
+     * 
+     */
+    delete<T extends TokenDeleteArgs>(args: SelectSubset<T, TokenDeleteArgs<ExtArgs>>): Prisma__TokenClient<$Result.GetResult<Prisma.$TokenPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Token.
+     * @param {TokenUpdateArgs} args - Arguments to update one Token.
+     * @example
+     * // Update one Token
+     * const token = await prisma.token.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends TokenUpdateArgs>(args: SelectSubset<T, TokenUpdateArgs<ExtArgs>>): Prisma__TokenClient<$Result.GetResult<Prisma.$TokenPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Tokens.
+     * @param {TokenDeleteManyArgs} args - Arguments to filter Tokens to delete.
+     * @example
+     * // Delete a few Tokens
+     * const { count } = await prisma.token.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends TokenDeleteManyArgs>(args?: SelectSubset<T, TokenDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Tokens.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TokenUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Tokens
+     * const token = await prisma.token.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends TokenUpdateManyArgs>(args: SelectSubset<T, TokenUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Tokens and returns the data updated in the database.
+     * @param {TokenUpdateManyAndReturnArgs} args - Arguments to update many Tokens.
+     * @example
+     * // Update many Tokens
+     * const token = await prisma.token.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Tokens and only return the `id`
+     * const tokenWithIdOnly = await prisma.token.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends TokenUpdateManyAndReturnArgs>(args: SelectSubset<T, TokenUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TokenPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Token.
+     * @param {TokenUpsertArgs} args - Arguments to update or create a Token.
+     * @example
+     * // Update or create a Token
+     * const token = await prisma.token.upsert({
+     *   create: {
+     *     // ... data to create a Token
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Token we want to update
+     *   }
+     * })
+     */
+    upsert<T extends TokenUpsertArgs>(args: SelectSubset<T, TokenUpsertArgs<ExtArgs>>): Prisma__TokenClient<$Result.GetResult<Prisma.$TokenPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Tokens.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TokenCountArgs} args - Arguments to filter Tokens to count.
+     * @example
+     * // Count the number of Tokens
+     * const count = await prisma.token.count({
+     *   where: {
+     *     // ... the filter for the Tokens we want to count
+     *   }
+     * })
+    **/
+    count<T extends TokenCountArgs>(
+      args?: Subset<T, TokenCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], TokenCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Token.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TokenAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends TokenAggregateArgs>(args: Subset<T, TokenAggregateArgs>): Prisma.PrismaPromise<GetTokenAggregateType<T>>
+
+    /**
+     * Group by Token.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TokenGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends TokenGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: TokenGroupByArgs['orderBy'] }
+        : { orderBy?: TokenGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, TokenGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetTokenGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Token model
+   */
+  readonly fields: TokenFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Token.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__TokenClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Token model
+   */
+  interface TokenFieldRefs {
+    readonly id: FieldRef<"Token", 'Int'>
+    readonly token: FieldRef<"Token", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Token findUnique
+   */
+  export type TokenFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Token
+     */
+    select?: TokenSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Token
+     */
+    omit?: TokenOmit<ExtArgs> | null
+    /**
+     * Filter, which Token to fetch.
+     */
+    where: TokenWhereUniqueInput
+  }
+
+  /**
+   * Token findUniqueOrThrow
+   */
+  export type TokenFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Token
+     */
+    select?: TokenSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Token
+     */
+    omit?: TokenOmit<ExtArgs> | null
+    /**
+     * Filter, which Token to fetch.
+     */
+    where: TokenWhereUniqueInput
+  }
+
+  /**
+   * Token findFirst
+   */
+  export type TokenFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Token
+     */
+    select?: TokenSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Token
+     */
+    omit?: TokenOmit<ExtArgs> | null
+    /**
+     * Filter, which Token to fetch.
+     */
+    where?: TokenWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Tokens to fetch.
+     */
+    orderBy?: TokenOrderByWithRelationInput | TokenOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Tokens.
+     */
+    cursor?: TokenWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Tokens from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Tokens.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Tokens.
+     */
+    distinct?: TokenScalarFieldEnum | TokenScalarFieldEnum[]
+  }
+
+  /**
+   * Token findFirstOrThrow
+   */
+  export type TokenFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Token
+     */
+    select?: TokenSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Token
+     */
+    omit?: TokenOmit<ExtArgs> | null
+    /**
+     * Filter, which Token to fetch.
+     */
+    where?: TokenWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Tokens to fetch.
+     */
+    orderBy?: TokenOrderByWithRelationInput | TokenOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Tokens.
+     */
+    cursor?: TokenWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Tokens from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Tokens.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Tokens.
+     */
+    distinct?: TokenScalarFieldEnum | TokenScalarFieldEnum[]
+  }
+
+  /**
+   * Token findMany
+   */
+  export type TokenFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Token
+     */
+    select?: TokenSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Token
+     */
+    omit?: TokenOmit<ExtArgs> | null
+    /**
+     * Filter, which Tokens to fetch.
+     */
+    where?: TokenWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Tokens to fetch.
+     */
+    orderBy?: TokenOrderByWithRelationInput | TokenOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Tokens.
+     */
+    cursor?: TokenWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Tokens from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Tokens.
+     */
+    skip?: number
+    distinct?: TokenScalarFieldEnum | TokenScalarFieldEnum[]
+  }
+
+  /**
+   * Token create
+   */
+  export type TokenCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Token
+     */
+    select?: TokenSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Token
+     */
+    omit?: TokenOmit<ExtArgs> | null
+    /**
+     * The data needed to create a Token.
+     */
+    data: XOR<TokenCreateInput, TokenUncheckedCreateInput>
+  }
+
+  /**
+   * Token createMany
+   */
+  export type TokenCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Tokens.
+     */
+    data: TokenCreateManyInput | TokenCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Token createManyAndReturn
+   */
+  export type TokenCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Token
+     */
+    select?: TokenSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Token
+     */
+    omit?: TokenOmit<ExtArgs> | null
+    /**
+     * The data used to create many Tokens.
+     */
+    data: TokenCreateManyInput | TokenCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Token update
+   */
+  export type TokenUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Token
+     */
+    select?: TokenSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Token
+     */
+    omit?: TokenOmit<ExtArgs> | null
+    /**
+     * The data needed to update a Token.
+     */
+    data: XOR<TokenUpdateInput, TokenUncheckedUpdateInput>
+    /**
+     * Choose, which Token to update.
+     */
+    where: TokenWhereUniqueInput
+  }
+
+  /**
+   * Token updateMany
+   */
+  export type TokenUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Tokens.
+     */
+    data: XOR<TokenUpdateManyMutationInput, TokenUncheckedUpdateManyInput>
+    /**
+     * Filter which Tokens to update
+     */
+    where?: TokenWhereInput
+    /**
+     * Limit how many Tokens to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Token updateManyAndReturn
+   */
+  export type TokenUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Token
+     */
+    select?: TokenSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Token
+     */
+    omit?: TokenOmit<ExtArgs> | null
+    /**
+     * The data used to update Tokens.
+     */
+    data: XOR<TokenUpdateManyMutationInput, TokenUncheckedUpdateManyInput>
+    /**
+     * Filter which Tokens to update
+     */
+    where?: TokenWhereInput
+    /**
+     * Limit how many Tokens to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Token upsert
+   */
+  export type TokenUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Token
+     */
+    select?: TokenSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Token
+     */
+    omit?: TokenOmit<ExtArgs> | null
+    /**
+     * The filter to search for the Token to update in case it exists.
+     */
+    where: TokenWhereUniqueInput
+    /**
+     * In case the Token found by the `where` argument doesn't exist, create a new Token with this data.
+     */
+    create: XOR<TokenCreateInput, TokenUncheckedCreateInput>
+    /**
+     * In case the Token was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<TokenUpdateInput, TokenUncheckedUpdateInput>
+  }
+
+  /**
+   * Token delete
+   */
+  export type TokenDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Token
+     */
+    select?: TokenSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Token
+     */
+    omit?: TokenOmit<ExtArgs> | null
+    /**
+     * Filter which Token to delete.
+     */
+    where: TokenWhereUniqueInput
+  }
+
+  /**
+   * Token deleteMany
+   */
+  export type TokenDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Tokens to delete
+     */
+    where?: TokenWhereInput
+    /**
+     * Limit how many Tokens to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Token without action
+   */
+  export type TokenDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Token
+     */
+    select?: TokenSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Token
+     */
+    omit?: TokenOmit<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -18606,6 +20846,8 @@ export namespace Prisma {
     lastName: 'lastName',
     birthDate: 'birthDate',
     balance: 'balance',
+    password: 'password',
+    image: 'image',
     loginAttempts: 'loginAttempts',
     lockedUntil: 'lockedUntil',
     isLocked: 'isLocked',
@@ -18732,6 +20974,26 @@ export namespace Prisma {
   };
 
   export type ArchivesScalarFieldEnum = (typeof ArchivesScalarFieldEnum)[keyof typeof ArchivesScalarFieldEnum]
+
+
+  export const OtpScalarFieldEnum: {
+    id: 'id',
+    otp: 'otp',
+    expiration_time: 'expiration_time',
+    verificationKey: 'verificationKey',
+    verified: 'verified',
+    phone_number: 'phone_number'
+  };
+
+  export type OtpScalarFieldEnum = (typeof OtpScalarFieldEnum)[keyof typeof OtpScalarFieldEnum]
+
+
+  export const TokenScalarFieldEnum: {
+    id: 'id',
+    token: 'token'
+  };
+
+  export type TokenScalarFieldEnum = (typeof TokenScalarFieldEnum)[keyof typeof TokenScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -19026,10 +21288,12 @@ export namespace Prisma {
     OR?: UserWhereInput[]
     NOT?: UserWhereInput | UserWhereInput[]
     id?: IntFilter<"User"> | number
-    firstName?: StringNullableFilter<"User"> | string | null
+    firstName?: StringFilter<"User"> | string
     lastName?: StringNullableFilter<"User"> | string | null
-    birthDate?: DateTimeFilter<"User"> | Date | string
+    birthDate?: DateTimeNullableFilter<"User"> | Date | string | null
     balance?: DecimalFilter<"User"> | Decimal | DecimalJsLike | number | string
+    password?: StringFilter<"User"> | string
+    image?: StringNullableFilter<"User"> | string | null
     loginAttempts?: IntFilter<"User"> | number
     lockedUntil?: DateTimeNullableFilter<"User"> | Date | string | null
     isLocked?: BoolFilter<"User"> | boolean
@@ -19054,10 +21318,12 @@ export namespace Prisma {
 
   export type UserOrderByWithRelationInput = {
     id?: SortOrder
-    firstName?: SortOrderInput | SortOrder
+    firstName?: SortOrder
     lastName?: SortOrderInput | SortOrder
-    birthDate?: SortOrder
+    birthDate?: SortOrderInput | SortOrder
     balance?: SortOrder
+    password?: SortOrder
+    image?: SortOrderInput | SortOrder
     loginAttempts?: SortOrder
     lockedUntil?: SortOrderInput | SortOrder
     isLocked?: SortOrder
@@ -19085,10 +21351,12 @@ export namespace Prisma {
     AND?: UserWhereInput | UserWhereInput[]
     OR?: UserWhereInput[]
     NOT?: UserWhereInput | UserWhereInput[]
-    firstName?: StringNullableFilter<"User"> | string | null
+    firstName?: StringFilter<"User"> | string
     lastName?: StringNullableFilter<"User"> | string | null
-    birthDate?: DateTimeFilter<"User"> | Date | string
+    birthDate?: DateTimeNullableFilter<"User"> | Date | string | null
     balance?: DecimalFilter<"User"> | Decimal | DecimalJsLike | number | string
+    password?: StringFilter<"User"> | string
+    image?: StringNullableFilter<"User"> | string | null
     loginAttempts?: IntFilter<"User"> | number
     lockedUntil?: DateTimeNullableFilter<"User"> | Date | string | null
     isLocked?: BoolFilter<"User"> | boolean
@@ -19113,10 +21381,12 @@ export namespace Prisma {
 
   export type UserOrderByWithAggregationInput = {
     id?: SortOrder
-    firstName?: SortOrderInput | SortOrder
+    firstName?: SortOrder
     lastName?: SortOrderInput | SortOrder
-    birthDate?: SortOrder
+    birthDate?: SortOrderInput | SortOrder
     balance?: SortOrder
+    password?: SortOrder
+    image?: SortOrderInput | SortOrder
     loginAttempts?: SortOrder
     lockedUntil?: SortOrderInput | SortOrder
     isLocked?: SortOrder
@@ -19142,10 +21412,12 @@ export namespace Prisma {
     OR?: UserScalarWhereWithAggregatesInput[]
     NOT?: UserScalarWhereWithAggregatesInput | UserScalarWhereWithAggregatesInput[]
     id?: IntWithAggregatesFilter<"User"> | number
-    firstName?: StringNullableWithAggregatesFilter<"User"> | string | null
+    firstName?: StringWithAggregatesFilter<"User"> | string
     lastName?: StringNullableWithAggregatesFilter<"User"> | string | null
-    birthDate?: DateTimeWithAggregatesFilter<"User"> | Date | string
+    birthDate?: DateTimeNullableWithAggregatesFilter<"User"> | Date | string | null
     balance?: DecimalWithAggregatesFilter<"User"> | Decimal | DecimalJsLike | number | string
+    password?: StringWithAggregatesFilter<"User"> | string
+    image?: StringNullableWithAggregatesFilter<"User"> | string | null
     loginAttempts?: IntWithAggregatesFilter<"User"> | number
     lockedUntil?: DateTimeNullableWithAggregatesFilter<"User"> | Date | string | null
     isLocked?: BoolWithAggregatesFilter<"User"> | boolean
@@ -19764,6 +22036,104 @@ export namespace Prisma {
     phoneId?: IntWithAggregatesFilter<"Archives"> | number
   }
 
+  export type OtpWhereInput = {
+    AND?: OtpWhereInput | OtpWhereInput[]
+    OR?: OtpWhereInput[]
+    NOT?: OtpWhereInput | OtpWhereInput[]
+    id?: IntFilter<"Otp"> | number
+    otp?: StringFilter<"Otp"> | string
+    expiration_time?: DateTimeFilter<"Otp"> | Date | string
+    verificationKey?: StringNullableFilter<"Otp"> | string | null
+    verified?: BoolFilter<"Otp"> | boolean
+    phone_number?: StringFilter<"Otp"> | string
+  }
+
+  export type OtpOrderByWithRelationInput = {
+    id?: SortOrder
+    otp?: SortOrder
+    expiration_time?: SortOrder
+    verificationKey?: SortOrderInput | SortOrder
+    verified?: SortOrder
+    phone_number?: SortOrder
+  }
+
+  export type OtpWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    phone_number?: string
+    AND?: OtpWhereInput | OtpWhereInput[]
+    OR?: OtpWhereInput[]
+    NOT?: OtpWhereInput | OtpWhereInput[]
+    otp?: StringFilter<"Otp"> | string
+    expiration_time?: DateTimeFilter<"Otp"> | Date | string
+    verificationKey?: StringNullableFilter<"Otp"> | string | null
+    verified?: BoolFilter<"Otp"> | boolean
+  }, "id" | "phone_number">
+
+  export type OtpOrderByWithAggregationInput = {
+    id?: SortOrder
+    otp?: SortOrder
+    expiration_time?: SortOrder
+    verificationKey?: SortOrderInput | SortOrder
+    verified?: SortOrder
+    phone_number?: SortOrder
+    _count?: OtpCountOrderByAggregateInput
+    _avg?: OtpAvgOrderByAggregateInput
+    _max?: OtpMaxOrderByAggregateInput
+    _min?: OtpMinOrderByAggregateInput
+    _sum?: OtpSumOrderByAggregateInput
+  }
+
+  export type OtpScalarWhereWithAggregatesInput = {
+    AND?: OtpScalarWhereWithAggregatesInput | OtpScalarWhereWithAggregatesInput[]
+    OR?: OtpScalarWhereWithAggregatesInput[]
+    NOT?: OtpScalarWhereWithAggregatesInput | OtpScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"Otp"> | number
+    otp?: StringWithAggregatesFilter<"Otp"> | string
+    expiration_time?: DateTimeWithAggregatesFilter<"Otp"> | Date | string
+    verificationKey?: StringNullableWithAggregatesFilter<"Otp"> | string | null
+    verified?: BoolWithAggregatesFilter<"Otp"> | boolean
+    phone_number?: StringWithAggregatesFilter<"Otp"> | string
+  }
+
+  export type TokenWhereInput = {
+    AND?: TokenWhereInput | TokenWhereInput[]
+    OR?: TokenWhereInput[]
+    NOT?: TokenWhereInput | TokenWhereInput[]
+    id?: IntFilter<"Token"> | number
+    token?: StringFilter<"Token"> | string
+  }
+
+  export type TokenOrderByWithRelationInput = {
+    id?: SortOrder
+    token?: SortOrder
+  }
+
+  export type TokenWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: TokenWhereInput | TokenWhereInput[]
+    OR?: TokenWhereInput[]
+    NOT?: TokenWhereInput | TokenWhereInput[]
+    token?: StringFilter<"Token"> | string
+  }, "id">
+
+  export type TokenOrderByWithAggregationInput = {
+    id?: SortOrder
+    token?: SortOrder
+    _count?: TokenCountOrderByAggregateInput
+    _avg?: TokenAvgOrderByAggregateInput
+    _max?: TokenMaxOrderByAggregateInput
+    _min?: TokenMinOrderByAggregateInput
+    _sum?: TokenSumOrderByAggregateInput
+  }
+
+  export type TokenScalarWhereWithAggregatesInput = {
+    AND?: TokenScalarWhereWithAggregatesInput | TokenScalarWhereWithAggregatesInput[]
+    OR?: TokenScalarWhereWithAggregatesInput[]
+    NOT?: TokenScalarWhereWithAggregatesInput | TokenScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"Token"> | number
+    token?: StringWithAggregatesFilter<"Token"> | string
+  }
+
   export type RegionCreateInput = {
     name: string
     createdAt?: Date | string
@@ -19921,10 +22291,12 @@ export namespace Prisma {
   }
 
   export type UserCreateInput = {
-    firstName?: string | null
+    firstName: string
     lastName?: string | null
-    birthDate: Date | string
+    birthDate?: Date | string | null
     balance?: Decimal | DecimalJsLike | number | string
+    password: string
+    image?: string | null
     loginAttempts?: number
     lockedUntil?: Date | string | null
     isLocked?: boolean
@@ -19945,10 +22317,12 @@ export namespace Prisma {
 
   export type UserUncheckedCreateInput = {
     id?: number
-    firstName?: string | null
+    firstName: string
     lastName?: string | null
-    birthDate: Date | string
+    birthDate?: Date | string | null
     balance?: Decimal | DecimalJsLike | number | string
+    password: string
+    image?: string | null
     loginAttempts?: number
     lockedUntil?: Date | string | null
     isLocked?: boolean
@@ -19968,10 +22342,12 @@ export namespace Prisma {
   }
 
   export type UserUpdateInput = {
-    firstName?: NullableStringFieldUpdateOperationsInput | string | null
+    firstName?: StringFieldUpdateOperationsInput | string
     lastName?: NullableStringFieldUpdateOperationsInput | string | null
-    birthDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     balance?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    password?: StringFieldUpdateOperationsInput | string
+    image?: NullableStringFieldUpdateOperationsInput | string | null
     loginAttempts?: IntFieldUpdateOperationsInput | number
     lockedUntil?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isLocked?: BoolFieldUpdateOperationsInput | boolean
@@ -19992,10 +22368,12 @@ export namespace Prisma {
 
   export type UserUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
-    firstName?: NullableStringFieldUpdateOperationsInput | string | null
+    firstName?: StringFieldUpdateOperationsInput | string
     lastName?: NullableStringFieldUpdateOperationsInput | string | null
-    birthDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     balance?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    password?: StringFieldUpdateOperationsInput | string
+    image?: NullableStringFieldUpdateOperationsInput | string | null
     loginAttempts?: IntFieldUpdateOperationsInput | number
     lockedUntil?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isLocked?: BoolFieldUpdateOperationsInput | boolean
@@ -20016,10 +22394,12 @@ export namespace Prisma {
 
   export type UserCreateManyInput = {
     id?: number
-    firstName?: string | null
+    firstName: string
     lastName?: string | null
-    birthDate: Date | string
+    birthDate?: Date | string | null
     balance?: Decimal | DecimalJsLike | number | string
+    password: string
+    image?: string | null
     loginAttempts?: number
     lockedUntil?: Date | string | null
     isLocked?: boolean
@@ -20036,10 +22416,12 @@ export namespace Prisma {
   }
 
   export type UserUpdateManyMutationInput = {
-    firstName?: NullableStringFieldUpdateOperationsInput | string | null
+    firstName?: StringFieldUpdateOperationsInput | string
     lastName?: NullableStringFieldUpdateOperationsInput | string | null
-    birthDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     balance?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    password?: StringFieldUpdateOperationsInput | string
+    image?: NullableStringFieldUpdateOperationsInput | string | null
     loginAttempts?: IntFieldUpdateOperationsInput | number
     lockedUntil?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isLocked?: BoolFieldUpdateOperationsInput | boolean
@@ -20053,10 +22435,12 @@ export namespace Prisma {
 
   export type UserUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
-    firstName?: NullableStringFieldUpdateOperationsInput | string | null
+    firstName?: StringFieldUpdateOperationsInput | string
     lastName?: NullableStringFieldUpdateOperationsInput | string | null
-    birthDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     balance?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    password?: StringFieldUpdateOperationsInput | string
+    image?: NullableStringFieldUpdateOperationsInput | string | null
     loginAttempts?: IntFieldUpdateOperationsInput | number
     lockedUntil?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isLocked?: BoolFieldUpdateOperationsInput | boolean
@@ -20631,6 +23015,98 @@ export namespace Prisma {
     phoneId?: IntFieldUpdateOperationsInput | number
   }
 
+  export type OtpCreateInput = {
+    otp: string
+    expiration_time: Date | string
+    verificationKey?: string | null
+    verified?: boolean
+    phone_number: string
+  }
+
+  export type OtpUncheckedCreateInput = {
+    id?: number
+    otp: string
+    expiration_time: Date | string
+    verificationKey?: string | null
+    verified?: boolean
+    phone_number: string
+  }
+
+  export type OtpUpdateInput = {
+    otp?: StringFieldUpdateOperationsInput | string
+    expiration_time?: DateTimeFieldUpdateOperationsInput | Date | string
+    verificationKey?: NullableStringFieldUpdateOperationsInput | string | null
+    verified?: BoolFieldUpdateOperationsInput | boolean
+    phone_number?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type OtpUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    otp?: StringFieldUpdateOperationsInput | string
+    expiration_time?: DateTimeFieldUpdateOperationsInput | Date | string
+    verificationKey?: NullableStringFieldUpdateOperationsInput | string | null
+    verified?: BoolFieldUpdateOperationsInput | boolean
+    phone_number?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type OtpCreateManyInput = {
+    id?: number
+    otp: string
+    expiration_time: Date | string
+    verificationKey?: string | null
+    verified?: boolean
+    phone_number: string
+  }
+
+  export type OtpUpdateManyMutationInput = {
+    otp?: StringFieldUpdateOperationsInput | string
+    expiration_time?: DateTimeFieldUpdateOperationsInput | Date | string
+    verificationKey?: NullableStringFieldUpdateOperationsInput | string | null
+    verified?: BoolFieldUpdateOperationsInput | boolean
+    phone_number?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type OtpUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    otp?: StringFieldUpdateOperationsInput | string
+    expiration_time?: DateTimeFieldUpdateOperationsInput | Date | string
+    verificationKey?: NullableStringFieldUpdateOperationsInput | string | null
+    verified?: BoolFieldUpdateOperationsInput | boolean
+    phone_number?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type TokenCreateInput = {
+    token: string
+  }
+
+  export type TokenUncheckedCreateInput = {
+    id?: number
+    token: string
+  }
+
+  export type TokenUpdateInput = {
+    token?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type TokenUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    token?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type TokenCreateManyInput = {
+    id?: number
+    token: string
+  }
+
+  export type TokenUpdateManyMutationInput = {
+    token?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type TokenUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    token?: StringFieldUpdateOperationsInput | string
+  }
+
   export type IntFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel>
     in?: number[] | ListIntFieldRefInput<$PrismaModel>
@@ -20848,17 +23324,6 @@ export namespace Prisma {
     not?: NestedStringNullableFilter<$PrismaModel> | string | null
   }
 
-  export type DecimalFilter<$PrismaModel = never> = {
-    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
-    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
-    lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    not?: NestedDecimalFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string
-  }
-
   export type DateTimeNullableFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
     in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
@@ -20868,6 +23333,17 @@ export namespace Prisma {
     gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
+  }
+
+  export type DecimalFilter<$PrismaModel = never> = {
+    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
+    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
+    lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    not?: NestedDecimalFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string
   }
 
   export type BoolFilter<$PrismaModel = never> = {
@@ -20947,6 +23423,8 @@ export namespace Prisma {
     lastName?: SortOrder
     birthDate?: SortOrder
     balance?: SortOrder
+    password?: SortOrder
+    image?: SortOrder
     loginAttempts?: SortOrder
     lockedUntil?: SortOrder
     isLocked?: SortOrder
@@ -20978,6 +23456,8 @@ export namespace Prisma {
     lastName?: SortOrder
     birthDate?: SortOrder
     balance?: SortOrder
+    password?: SortOrder
+    image?: SortOrder
     loginAttempts?: SortOrder
     lockedUntil?: SortOrder
     isLocked?: SortOrder
@@ -20999,6 +23479,8 @@ export namespace Prisma {
     lastName?: SortOrder
     birthDate?: SortOrder
     balance?: SortOrder
+    password?: SortOrder
+    image?: SortOrder
     loginAttempts?: SortOrder
     lockedUntil?: SortOrder
     isLocked?: SortOrder
@@ -21042,6 +23524,20 @@ export namespace Prisma {
     _max?: NestedStringNullableFilter<$PrismaModel>
   }
 
+  export type DateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedDateTimeNullableFilter<$PrismaModel>
+    _max?: NestedDateTimeNullableFilter<$PrismaModel>
+  }
+
   export type DecimalWithAggregatesFilter<$PrismaModel = never> = {
     equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
     in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
@@ -21056,20 +23552,6 @@ export namespace Prisma {
     _sum?: NestedDecimalFilter<$PrismaModel>
     _min?: NestedDecimalFilter<$PrismaModel>
     _max?: NestedDecimalFilter<$PrismaModel>
-  }
-
-  export type DateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedDateTimeNullableFilter<$PrismaModel>
-    _max?: NestedDateTimeNullableFilter<$PrismaModel>
   }
 
   export type BoolWithAggregatesFilter<$PrismaModel = never> = {
@@ -21549,6 +24031,64 @@ export namespace Prisma {
     phoneId?: SortOrder
   }
 
+  export type OtpCountOrderByAggregateInput = {
+    id?: SortOrder
+    otp?: SortOrder
+    expiration_time?: SortOrder
+    verificationKey?: SortOrder
+    verified?: SortOrder
+    phone_number?: SortOrder
+  }
+
+  export type OtpAvgOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
+  export type OtpMaxOrderByAggregateInput = {
+    id?: SortOrder
+    otp?: SortOrder
+    expiration_time?: SortOrder
+    verificationKey?: SortOrder
+    verified?: SortOrder
+    phone_number?: SortOrder
+  }
+
+  export type OtpMinOrderByAggregateInput = {
+    id?: SortOrder
+    otp?: SortOrder
+    expiration_time?: SortOrder
+    verificationKey?: SortOrder
+    verified?: SortOrder
+    phone_number?: SortOrder
+  }
+
+  export type OtpSumOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
+  export type TokenCountOrderByAggregateInput = {
+    id?: SortOrder
+    token?: SortOrder
+  }
+
+  export type TokenAvgOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
+  export type TokenMaxOrderByAggregateInput = {
+    id?: SortOrder
+    token?: SortOrder
+  }
+
+  export type TokenMinOrderByAggregateInput = {
+    id?: SortOrder
+    token?: SortOrder
+  }
+
+  export type TokenSumOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
   export type DistrictCreateNestedManyWithoutRegionInput = {
     create?: XOR<DistrictCreateWithoutRegionInput, DistrictUncheckedCreateWithoutRegionInput> | DistrictCreateWithoutRegionInput[] | DistrictUncheckedCreateWithoutRegionInput[]
     connectOrCreate?: DistrictCreateOrConnectWithoutRegionInput | DistrictCreateOrConnectWithoutRegionInput[]
@@ -21775,16 +24315,16 @@ export namespace Prisma {
     set?: string | null
   }
 
+  export type NullableDateTimeFieldUpdateOperationsInput = {
+    set?: Date | string | null
+  }
+
   export type DecimalFieldUpdateOperationsInput = {
     set?: Decimal | DecimalJsLike | number | string
     increment?: Decimal | DecimalJsLike | number | string
     decrement?: Decimal | DecimalJsLike | number | string
     multiply?: Decimal | DecimalJsLike | number | string
     divide?: Decimal | DecimalJsLike | number | string
-  }
-
-  export type NullableDateTimeFieldUpdateOperationsInput = {
-    set?: Date | string | null
   }
 
   export type BoolFieldUpdateOperationsInput = {
@@ -22623,17 +25163,6 @@ export namespace Prisma {
     not?: NestedStringNullableFilter<$PrismaModel> | string | null
   }
 
-  export type NestedDecimalFilter<$PrismaModel = never> = {
-    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
-    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
-    lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    not?: NestedDecimalFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string
-  }
-
   export type NestedDateTimeNullableFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
     in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
@@ -22643,6 +25172,17 @@ export namespace Prisma {
     gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
+  }
+
+  export type NestedDecimalFilter<$PrismaModel = never> = {
+    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
+    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
+    lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    not?: NestedDecimalFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string
   }
 
   export type NestedBoolFilter<$PrismaModel = never> = {
@@ -22678,6 +25218,20 @@ export namespace Prisma {
     _max?: NestedStringNullableFilter<$PrismaModel>
   }
 
+  export type NestedDateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedDateTimeNullableFilter<$PrismaModel>
+    _max?: NestedDateTimeNullableFilter<$PrismaModel>
+  }
+
   export type NestedDecimalWithAggregatesFilter<$PrismaModel = never> = {
     equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
     in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
@@ -22692,20 +25246,6 @@ export namespace Prisma {
     _sum?: NestedDecimalFilter<$PrismaModel>
     _min?: NestedDecimalFilter<$PrismaModel>
     _max?: NestedDecimalFilter<$PrismaModel>
-  }
-
-  export type NestedDateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedDateTimeNullableFilter<$PrismaModel>
-    _max?: NestedDateTimeNullableFilter<$PrismaModel>
   }
 
   export type NestedBoolWithAggregatesFilter<$PrismaModel = never> = {
@@ -22841,10 +25381,12 @@ export namespace Prisma {
   }
 
   export type UserCreateWithoutDistrictInput = {
-    firstName?: string | null
+    firstName: string
     lastName?: string | null
-    birthDate: Date | string
+    birthDate?: Date | string | null
     balance?: Decimal | DecimalJsLike | number | string
+    password: string
+    image?: string | null
     loginAttempts?: number
     lockedUntil?: Date | string | null
     isLocked?: boolean
@@ -22864,10 +25406,12 @@ export namespace Prisma {
 
   export type UserUncheckedCreateWithoutDistrictInput = {
     id?: number
-    firstName?: string | null
+    firstName: string
     lastName?: string | null
-    birthDate: Date | string
+    birthDate?: Date | string | null
     balance?: Decimal | DecimalJsLike | number | string
+    password: string
+    image?: string | null
     loginAttempts?: number
     lockedUntil?: Date | string | null
     isLocked?: boolean
@@ -22940,10 +25484,12 @@ export namespace Prisma {
     OR?: UserScalarWhereInput[]
     NOT?: UserScalarWhereInput | UserScalarWhereInput[]
     id?: IntFilter<"User"> | number
-    firstName?: StringNullableFilter<"User"> | string | null
+    firstName?: StringFilter<"User"> | string
     lastName?: StringNullableFilter<"User"> | string | null
-    birthDate?: DateTimeFilter<"User"> | Date | string
+    birthDate?: DateTimeNullableFilter<"User"> | Date | string | null
     balance?: DecimalFilter<"User"> | Decimal | DecimalJsLike | number | string
+    password?: StringFilter<"User"> | string
+    image?: StringNullableFilter<"User"> | string | null
     loginAttempts?: IntFilter<"User"> | number
     lockedUntil?: DateTimeNullableFilter<"User"> | Date | string | null
     isLocked?: BoolFilter<"User"> | boolean
@@ -22960,10 +25506,12 @@ export namespace Prisma {
   }
 
   export type UserCreateWithoutLanguageInput = {
-    firstName?: string | null
+    firstName: string
     lastName?: string | null
-    birthDate: Date | string
+    birthDate?: Date | string | null
     balance?: Decimal | DecimalJsLike | number | string
+    password: string
+    image?: string | null
     loginAttempts?: number
     lockedUntil?: Date | string | null
     isLocked?: boolean
@@ -22983,10 +25531,12 @@ export namespace Prisma {
 
   export type UserUncheckedCreateWithoutLanguageInput = {
     id?: number
-    firstName?: string | null
+    firstName: string
     lastName?: string | null
-    birthDate: Date | string
+    birthDate?: Date | string | null
     balance?: Decimal | DecimalJsLike | number | string
+    password: string
+    image?: string | null
     loginAttempts?: number
     lockedUntil?: Date | string | null
     isLocked?: boolean
@@ -23412,10 +25962,12 @@ export namespace Prisma {
   }
 
   export type UserCreateWithoutEmailsInput = {
-    firstName?: string | null
+    firstName: string
     lastName?: string | null
-    birthDate: Date | string
+    birthDate?: Date | string | null
     balance?: Decimal | DecimalJsLike | number | string
+    password: string
+    image?: string | null
     loginAttempts?: number
     lockedUntil?: Date | string | null
     isLocked?: boolean
@@ -23435,10 +25987,12 @@ export namespace Prisma {
 
   export type UserUncheckedCreateWithoutEmailsInput = {
     id?: number
-    firstName?: string | null
+    firstName: string
     lastName?: string | null
-    birthDate: Date | string
+    birthDate?: Date | string | null
     balance?: Decimal | DecimalJsLike | number | string
+    password: string
+    image?: string | null
     loginAttempts?: number
     lockedUntil?: Date | string | null
     isLocked?: boolean
@@ -23462,10 +26016,12 @@ export namespace Prisma {
   }
 
   export type UserCreateWithoutMainEmailInput = {
-    firstName?: string | null
+    firstName: string
     lastName?: string | null
-    birthDate: Date | string
+    birthDate?: Date | string | null
     balance?: Decimal | DecimalJsLike | number | string
+    password: string
+    image?: string | null
     loginAttempts?: number
     lockedUntil?: Date | string | null
     isLocked?: boolean
@@ -23485,10 +26041,12 @@ export namespace Prisma {
 
   export type UserUncheckedCreateWithoutMainEmailInput = {
     id?: number
-    firstName?: string | null
+    firstName: string
     lastName?: string | null
-    birthDate: Date | string
+    birthDate?: Date | string | null
     balance?: Decimal | DecimalJsLike | number | string
+    password: string
+    image?: string | null
     loginAttempts?: number
     lockedUntil?: Date | string | null
     isLocked?: boolean
@@ -23528,10 +26086,12 @@ export namespace Prisma {
   }
 
   export type UserUpdateWithoutEmailsInput = {
-    firstName?: NullableStringFieldUpdateOperationsInput | string | null
+    firstName?: StringFieldUpdateOperationsInput | string
     lastName?: NullableStringFieldUpdateOperationsInput | string | null
-    birthDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     balance?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    password?: StringFieldUpdateOperationsInput | string
+    image?: NullableStringFieldUpdateOperationsInput | string | null
     loginAttempts?: IntFieldUpdateOperationsInput | number
     lockedUntil?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isLocked?: BoolFieldUpdateOperationsInput | boolean
@@ -23551,10 +26111,12 @@ export namespace Prisma {
 
   export type UserUncheckedUpdateWithoutEmailsInput = {
     id?: IntFieldUpdateOperationsInput | number
-    firstName?: NullableStringFieldUpdateOperationsInput | string | null
+    firstName?: StringFieldUpdateOperationsInput | string
     lastName?: NullableStringFieldUpdateOperationsInput | string | null
-    birthDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     balance?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    password?: StringFieldUpdateOperationsInput | string
+    image?: NullableStringFieldUpdateOperationsInput | string | null
     loginAttempts?: IntFieldUpdateOperationsInput | number
     lockedUntil?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isLocked?: BoolFieldUpdateOperationsInput | boolean
@@ -23589,10 +26151,12 @@ export namespace Prisma {
   }
 
   export type UserCreateWithoutPhoneNumbersInput = {
-    firstName?: string | null
+    firstName: string
     lastName?: string | null
-    birthDate: Date | string
+    birthDate?: Date | string | null
     balance?: Decimal | DecimalJsLike | number | string
+    password: string
+    image?: string | null
     loginAttempts?: number
     lockedUntil?: Date | string | null
     isLocked?: boolean
@@ -23612,10 +26176,12 @@ export namespace Prisma {
 
   export type UserUncheckedCreateWithoutPhoneNumbersInput = {
     id?: number
-    firstName?: string | null
+    firstName: string
     lastName?: string | null
-    birthDate: Date | string
+    birthDate?: Date | string | null
     balance?: Decimal | DecimalJsLike | number | string
+    password: string
+    image?: string | null
     loginAttempts?: number
     lockedUntil?: Date | string | null
     isLocked?: boolean
@@ -23639,10 +26205,12 @@ export namespace Prisma {
   }
 
   export type UserCreateWithoutMainPhoneInput = {
-    firstName?: string | null
+    firstName: string
     lastName?: string | null
-    birthDate: Date | string
+    birthDate?: Date | string | null
     balance?: Decimal | DecimalJsLike | number | string
+    password: string
+    image?: string | null
     loginAttempts?: number
     lockedUntil?: Date | string | null
     isLocked?: boolean
@@ -23662,10 +26230,12 @@ export namespace Prisma {
 
   export type UserUncheckedCreateWithoutMainPhoneInput = {
     id?: number
-    firstName?: string | null
+    firstName: string
     lastName?: string | null
-    birthDate: Date | string
+    birthDate?: Date | string | null
     balance?: Decimal | DecimalJsLike | number | string
+    password: string
+    image?: string | null
     loginAttempts?: number
     lockedUntil?: Date | string | null
     isLocked?: boolean
@@ -23705,10 +26275,12 @@ export namespace Prisma {
   }
 
   export type UserUpdateWithoutPhoneNumbersInput = {
-    firstName?: NullableStringFieldUpdateOperationsInput | string | null
+    firstName?: StringFieldUpdateOperationsInput | string
     lastName?: NullableStringFieldUpdateOperationsInput | string | null
-    birthDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     balance?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    password?: StringFieldUpdateOperationsInput | string
+    image?: NullableStringFieldUpdateOperationsInput | string | null
     loginAttempts?: IntFieldUpdateOperationsInput | number
     lockedUntil?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isLocked?: BoolFieldUpdateOperationsInput | boolean
@@ -23728,10 +26300,12 @@ export namespace Prisma {
 
   export type UserUncheckedUpdateWithoutPhoneNumbersInput = {
     id?: IntFieldUpdateOperationsInput | number
-    firstName?: NullableStringFieldUpdateOperationsInput | string | null
+    firstName?: StringFieldUpdateOperationsInput | string
     lastName?: NullableStringFieldUpdateOperationsInput | string | null
-    birthDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     balance?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    password?: StringFieldUpdateOperationsInput | string
+    image?: NullableStringFieldUpdateOperationsInput | string | null
     loginAttempts?: IntFieldUpdateOperationsInput | number
     lockedUntil?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isLocked?: BoolFieldUpdateOperationsInput | boolean
@@ -24226,10 +26800,12 @@ export namespace Prisma {
   }
 
   export type UserCreateWithoutPhonesInput = {
-    firstName?: string | null
+    firstName: string
     lastName?: string | null
-    birthDate: Date | string
+    birthDate?: Date | string | null
     balance?: Decimal | DecimalJsLike | number | string
+    password: string
+    image?: string | null
     loginAttempts?: number
     lockedUntil?: Date | string | null
     isLocked?: boolean
@@ -24249,10 +26825,12 @@ export namespace Prisma {
 
   export type UserUncheckedCreateWithoutPhonesInput = {
     id?: number
-    firstName?: string | null
+    firstName: string
     lastName?: string | null
-    birthDate: Date | string
+    birthDate?: Date | string | null
     balance?: Decimal | DecimalJsLike | number | string
+    password: string
+    image?: string | null
     loginAttempts?: number
     lockedUntil?: Date | string | null
     isLocked?: boolean
@@ -24428,10 +27006,12 @@ export namespace Prisma {
   }
 
   export type UserUpdateWithoutPhonesInput = {
-    firstName?: NullableStringFieldUpdateOperationsInput | string | null
+    firstName?: StringFieldUpdateOperationsInput | string
     lastName?: NullableStringFieldUpdateOperationsInput | string | null
-    birthDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     balance?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    password?: StringFieldUpdateOperationsInput | string
+    image?: NullableStringFieldUpdateOperationsInput | string | null
     loginAttempts?: IntFieldUpdateOperationsInput | number
     lockedUntil?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isLocked?: BoolFieldUpdateOperationsInput | boolean
@@ -24451,10 +27031,12 @@ export namespace Prisma {
 
   export type UserUncheckedUpdateWithoutPhonesInput = {
     id?: IntFieldUpdateOperationsInput | number
-    firstName?: NullableStringFieldUpdateOperationsInput | string | null
+    firstName?: StringFieldUpdateOperationsInput | string
     lastName?: NullableStringFieldUpdateOperationsInput | string | null
-    birthDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     balance?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    password?: StringFieldUpdateOperationsInput | string
+    image?: NullableStringFieldUpdateOperationsInput | string | null
     loginAttempts?: IntFieldUpdateOperationsInput | number
     lockedUntil?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isLocked?: BoolFieldUpdateOperationsInput | boolean
@@ -24944,10 +27526,12 @@ export namespace Prisma {
 
   export type UserCreateManyDistrictInput = {
     id?: number
-    firstName?: string | null
+    firstName: string
     lastName?: string | null
-    birthDate: Date | string
+    birthDate?: Date | string | null
     balance?: Decimal | DecimalJsLike | number | string
+    password: string
+    image?: string | null
     loginAttempts?: number
     lockedUntil?: Date | string | null
     isLocked?: boolean
@@ -24963,10 +27547,12 @@ export namespace Prisma {
   }
 
   export type UserUpdateWithoutDistrictInput = {
-    firstName?: NullableStringFieldUpdateOperationsInput | string | null
+    firstName?: StringFieldUpdateOperationsInput | string
     lastName?: NullableStringFieldUpdateOperationsInput | string | null
-    birthDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     balance?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    password?: StringFieldUpdateOperationsInput | string
+    image?: NullableStringFieldUpdateOperationsInput | string | null
     loginAttempts?: IntFieldUpdateOperationsInput | number
     lockedUntil?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isLocked?: BoolFieldUpdateOperationsInput | boolean
@@ -24986,10 +27572,12 @@ export namespace Prisma {
 
   export type UserUncheckedUpdateWithoutDistrictInput = {
     id?: IntFieldUpdateOperationsInput | number
-    firstName?: NullableStringFieldUpdateOperationsInput | string | null
+    firstName?: StringFieldUpdateOperationsInput | string
     lastName?: NullableStringFieldUpdateOperationsInput | string | null
-    birthDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     balance?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    password?: StringFieldUpdateOperationsInput | string
+    image?: NullableStringFieldUpdateOperationsInput | string | null
     loginAttempts?: IntFieldUpdateOperationsInput | number
     lockedUntil?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isLocked?: BoolFieldUpdateOperationsInput | boolean
@@ -25009,10 +27597,12 @@ export namespace Prisma {
 
   export type UserUncheckedUpdateManyWithoutDistrictInput = {
     id?: IntFieldUpdateOperationsInput | number
-    firstName?: NullableStringFieldUpdateOperationsInput | string | null
+    firstName?: StringFieldUpdateOperationsInput | string
     lastName?: NullableStringFieldUpdateOperationsInput | string | null
-    birthDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     balance?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    password?: StringFieldUpdateOperationsInput | string
+    image?: NullableStringFieldUpdateOperationsInput | string | null
     loginAttempts?: IntFieldUpdateOperationsInput | number
     lockedUntil?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isLocked?: BoolFieldUpdateOperationsInput | boolean
@@ -25029,10 +27619,12 @@ export namespace Prisma {
 
   export type UserCreateManyLanguageInput = {
     id?: number
-    firstName?: string | null
+    firstName: string
     lastName?: string | null
-    birthDate: Date | string
+    birthDate?: Date | string | null
     balance?: Decimal | DecimalJsLike | number | string
+    password: string
+    image?: string | null
     loginAttempts?: number
     lockedUntil?: Date | string | null
     isLocked?: boolean
@@ -25048,10 +27640,12 @@ export namespace Prisma {
   }
 
   export type UserUpdateWithoutLanguageInput = {
-    firstName?: NullableStringFieldUpdateOperationsInput | string | null
+    firstName?: StringFieldUpdateOperationsInput | string
     lastName?: NullableStringFieldUpdateOperationsInput | string | null
-    birthDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     balance?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    password?: StringFieldUpdateOperationsInput | string
+    image?: NullableStringFieldUpdateOperationsInput | string | null
     loginAttempts?: IntFieldUpdateOperationsInput | number
     lockedUntil?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isLocked?: BoolFieldUpdateOperationsInput | boolean
@@ -25071,10 +27665,12 @@ export namespace Prisma {
 
   export type UserUncheckedUpdateWithoutLanguageInput = {
     id?: IntFieldUpdateOperationsInput | number
-    firstName?: NullableStringFieldUpdateOperationsInput | string | null
+    firstName?: StringFieldUpdateOperationsInput | string
     lastName?: NullableStringFieldUpdateOperationsInput | string | null
-    birthDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     balance?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    password?: StringFieldUpdateOperationsInput | string
+    image?: NullableStringFieldUpdateOperationsInput | string | null
     loginAttempts?: IntFieldUpdateOperationsInput | number
     lockedUntil?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isLocked?: BoolFieldUpdateOperationsInput | boolean
@@ -25094,10 +27690,12 @@ export namespace Prisma {
 
   export type UserUncheckedUpdateManyWithoutLanguageInput = {
     id?: IntFieldUpdateOperationsInput | number
-    firstName?: NullableStringFieldUpdateOperationsInput | string | null
+    firstName?: StringFieldUpdateOperationsInput | string
     lastName?: NullableStringFieldUpdateOperationsInput | string | null
-    birthDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     balance?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    password?: StringFieldUpdateOperationsInput | string
+    image?: NullableStringFieldUpdateOperationsInput | string | null
     loginAttempts?: IntFieldUpdateOperationsInput | number
     lockedUntil?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isLocked?: BoolFieldUpdateOperationsInput | boolean
@@ -25273,10 +27871,12 @@ export namespace Prisma {
 
   export type UserCreateManyMainEmailInput = {
     id?: number
-    firstName?: string | null
+    firstName: string
     lastName?: string | null
-    birthDate: Date | string
+    birthDate?: Date | string | null
     balance?: Decimal | DecimalJsLike | number | string
+    password: string
+    image?: string | null
     loginAttempts?: number
     lockedUntil?: Date | string | null
     isLocked?: boolean
@@ -25292,10 +27892,12 @@ export namespace Prisma {
   }
 
   export type UserUpdateWithoutMainEmailInput = {
-    firstName?: NullableStringFieldUpdateOperationsInput | string | null
+    firstName?: StringFieldUpdateOperationsInput | string
     lastName?: NullableStringFieldUpdateOperationsInput | string | null
-    birthDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     balance?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    password?: StringFieldUpdateOperationsInput | string
+    image?: NullableStringFieldUpdateOperationsInput | string | null
     loginAttempts?: IntFieldUpdateOperationsInput | number
     lockedUntil?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isLocked?: BoolFieldUpdateOperationsInput | boolean
@@ -25315,10 +27917,12 @@ export namespace Prisma {
 
   export type UserUncheckedUpdateWithoutMainEmailInput = {
     id?: IntFieldUpdateOperationsInput | number
-    firstName?: NullableStringFieldUpdateOperationsInput | string | null
+    firstName?: StringFieldUpdateOperationsInput | string
     lastName?: NullableStringFieldUpdateOperationsInput | string | null
-    birthDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     balance?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    password?: StringFieldUpdateOperationsInput | string
+    image?: NullableStringFieldUpdateOperationsInput | string | null
     loginAttempts?: IntFieldUpdateOperationsInput | number
     lockedUntil?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isLocked?: BoolFieldUpdateOperationsInput | boolean
@@ -25338,10 +27942,12 @@ export namespace Prisma {
 
   export type UserUncheckedUpdateManyWithoutMainEmailInput = {
     id?: IntFieldUpdateOperationsInput | number
-    firstName?: NullableStringFieldUpdateOperationsInput | string | null
+    firstName?: StringFieldUpdateOperationsInput | string
     lastName?: NullableStringFieldUpdateOperationsInput | string | null
-    birthDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     balance?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    password?: StringFieldUpdateOperationsInput | string
+    image?: NullableStringFieldUpdateOperationsInput | string | null
     loginAttempts?: IntFieldUpdateOperationsInput | number
     lockedUntil?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isLocked?: BoolFieldUpdateOperationsInput | boolean
@@ -25358,10 +27964,12 @@ export namespace Prisma {
 
   export type UserCreateManyMainPhoneInput = {
     id?: number
-    firstName?: string | null
+    firstName: string
     lastName?: string | null
-    birthDate: Date | string
+    birthDate?: Date | string | null
     balance?: Decimal | DecimalJsLike | number | string
+    password: string
+    image?: string | null
     loginAttempts?: number
     lockedUntil?: Date | string | null
     isLocked?: boolean
@@ -25377,10 +27985,12 @@ export namespace Prisma {
   }
 
   export type UserUpdateWithoutMainPhoneInput = {
-    firstName?: NullableStringFieldUpdateOperationsInput | string | null
+    firstName?: StringFieldUpdateOperationsInput | string
     lastName?: NullableStringFieldUpdateOperationsInput | string | null
-    birthDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     balance?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    password?: StringFieldUpdateOperationsInput | string
+    image?: NullableStringFieldUpdateOperationsInput | string | null
     loginAttempts?: IntFieldUpdateOperationsInput | number
     lockedUntil?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isLocked?: BoolFieldUpdateOperationsInput | boolean
@@ -25400,10 +28010,12 @@ export namespace Prisma {
 
   export type UserUncheckedUpdateWithoutMainPhoneInput = {
     id?: IntFieldUpdateOperationsInput | number
-    firstName?: NullableStringFieldUpdateOperationsInput | string | null
+    firstName?: StringFieldUpdateOperationsInput | string
     lastName?: NullableStringFieldUpdateOperationsInput | string | null
-    birthDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     balance?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    password?: StringFieldUpdateOperationsInput | string
+    image?: NullableStringFieldUpdateOperationsInput | string | null
     loginAttempts?: IntFieldUpdateOperationsInput | number
     lockedUntil?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isLocked?: BoolFieldUpdateOperationsInput | boolean
@@ -25423,10 +28035,12 @@ export namespace Prisma {
 
   export type UserUncheckedUpdateManyWithoutMainPhoneInput = {
     id?: IntFieldUpdateOperationsInput | number
-    firstName?: NullableStringFieldUpdateOperationsInput | string | null
+    firstName?: StringFieldUpdateOperationsInput | string
     lastName?: NullableStringFieldUpdateOperationsInput | string | null
-    birthDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     balance?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    password?: StringFieldUpdateOperationsInput | string
+    image?: NullableStringFieldUpdateOperationsInput | string | null
     loginAttempts?: IntFieldUpdateOperationsInput | number
     lockedUntil?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isLocked?: BoolFieldUpdateOperationsInput | boolean

@@ -1,21 +1,25 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
-import { WINSTON_MODULE_NEST_PROVIDER, WinstonLogger, WinstonModule } from 'nest-winston';
-import { winstonConfig } from './logging/winston.logger';
-import { AllExceptionsFilter } from './logging/error.handling';
+import { WINSTON_MODULE_NEST_PROVIDER } from 'nest-winston';
 import { ValidationPipe } from '@nestjs/common';
+import * as cookieParser from 'cookie-parser';
+import { join } from 'path';
+import { NestExpressApplication } from '@nestjs/platform-express';
 
 async function bootstrap() {
   try {
     const PORT = process.env.PORT || 3001;
 
-    const app = await NestFactory.create(AppModule, {
+    const app = await NestFactory.create<NestExpressApplication>(AppModule, {
       bufferLogs: true,
     });
 
+    app.useStaticAssets(join(__dirname, '..', 'uploads'), {
+      prefix: '/uploads/',
+    });
     app.useLogger(app.get(WINSTON_MODULE_NEST_PROVIDER));
-
+    app.use(cookieParser());
     app.useGlobalPipes(new ValidationPipe({
       whitelist: true, 
       forbidNonWhitelisted: true, 

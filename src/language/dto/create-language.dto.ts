@@ -7,8 +7,4 @@ export class CreateLanguageDto {
   @IsString()
   
   name: string;
-  @ApiProperty()
-  @IsNotEmpty()
-  @IsString()
-  icon: string;
 }
