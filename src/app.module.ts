@@ -9,6 +9,12 @@ import { PrismaModule } from './prisma/prisma.module';
 import { RegionModule } from './region/region.module';
 import { DistrictModule } from './district/district.module';
 import { LanguageModule } from './language/language.module';
+import { AddressModule } from './address/address.module';
+import { ChatModule } from './chat/chat.module';
+import { PaymentModule } from './payment/payment.module';
+import { MessagesModule } from './messages/messages.module';
+import { AdminModule } from './admin/admin.module';
+import { FileModule } from './file/file.module';
 import { CurrencyModule } from './currency/currency.module';
 import { BrandModule } from './brand/brand.module';
 import { ModelModule } from './model/model.module';
@@ -19,6 +25,7 @@ import { EmailModule } from './email/email.module';
 import { PhonoNumberModule } from './phone-number/phono-number.module';
 import { AuthModule } from './auth/auth.module';
 import { SmsModule } from './sms/sms.module';
+import { ColorModule } from './color/color.module';
 
 @Module({
   imports: [
@@ -28,6 +35,12 @@ import { SmsModule } from './sms/sms.module';
     RegionModule,
     DistrictModule,
     LanguageModule,
+    AddressModule,
+    ChatModule,
+    PaymentModule,
+    MessagesModule,
+    AdminModule,
+    FileModule,
     CurrencyModule,
     BrandModule,
     ModelModule,
@@ -37,7 +50,8 @@ import { SmsModule } from './sms/sms.module';
     EmailModule,
     PhonoNumberModule,
     AuthModule,
-    SmsModule
+    SmsModule,
+    ColorModule
   ],
   controllers: [],
   providers: [

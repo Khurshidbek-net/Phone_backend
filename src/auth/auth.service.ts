@@ -270,8 +270,6 @@ export class AuthService {
     };
   }
 
-
-
   async verifyOtp(verifyDto: VerifyDto) {
     const { otp, phone } = verifyDto;
     const current_time = new Date();
@@ -319,8 +317,6 @@ export class AuthService {
     };
   }
   
-  
-
   async cleanupUnverifiedUsers() {
     const now = new Date();
 
@@ -346,6 +342,5 @@ export class AuthService {
       ]);
     }
   }
-  
 
 }

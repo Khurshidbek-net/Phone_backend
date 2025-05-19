@@ -10,7 +10,7 @@ export class SmsService {
   async sendSMS(phone_number: string, otp: string) {
     const data = new FormData();
     data.append("mobile_phone", phone_number);
-    data.append("message", "Bu Eskiz dan test");
+    data.append("message", `Assalamu alaykum, hurmatli foydalanuvchi, sizning "Phono" platformasidagi tasdiqlash kodingiz: ${otp}`);
     data.append("from", "4546");
 
     const config = {

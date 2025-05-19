@@ -1,3 +1,6 @@
+-- CreateEnum
+CREATE TYPE "PaymentType" AS ENUM ('PAYME', 'CLICK', 'PAYNET');
+
 -- CreateTable
 CREATE TABLE "Region" (
     "id" SERIAL NOT NULL,
@@ -185,6 +188,78 @@ CREATE TABLE "Token" (
     CONSTRAINT "Token_pkey" PRIMARY KEY ("id")
 );
 
+-- CreateTable
+CREATE TABLE "Address" (
+    "id" SERIAL NOT NULL,
+    "name" TEXT NOT NULL,
+    "address" TEXT NOT NULL,
+    "lat" DOUBLE PRECISION NOT NULL,
+    "long" DOUBLE PRECISION NOT NULL,
+    "userId" INTEGER,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
+
+    CONSTRAINT "Address_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
+CREATE TABLE "Payment" (
+    "id" SERIAL NOT NULL,
+    "type" "PaymentType" NOT NULL,
+    "amount" DECIMAL(65,30) NOT NULL,
+    "paid_date" TIMESTAMP(3) NOT NULL,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
+    "userId" INTEGER,
+
+    CONSTRAINT "Payment_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
+CREATE TABLE "Chat" (
+    "id" SERIAL NOT NULL,
+    "productId" INTEGER,
+    "sellerId" INTEGER,
+    "buyerId" INTEGER,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
+
+    CONSTRAINT "Chat_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
+CREATE TABLE "Messages" (
+    "id" SERIAL NOT NULL,
+    "message" TEXT NOT NULL,
+    "is_read" BOOLEAN NOT NULL,
+    "sent_at" TIMESTAMP(3) NOT NULL,
+    "chatId" INTEGER,
+    "senderId" INTEGER,
+
+    CONSTRAINT "Messages_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
+CREATE TABLE "Admin" (
+    "id" SERIAL NOT NULL,
+    "firstname" TEXT NOT NULL,
+    "lastname" TEXT NOT NULL,
+    "phone_number" TEXT NOT NULL,
+    "hashed_password" TEXT NOT NULL,
+    "email" TEXT NOT NULL,
+    "image" TEXT,
+    "is_creator" BOOLEAN DEFAULT false,
+    "is_active" BOOLEAN NOT NULL DEFAULT false,
+    "refresh_token" TEXT,
+    "last_login" TIMESTAMP(3),
+    "login_attempts" INTEGER,
+    "locked_until" TIMESTAMP(3),
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
+
+    CONSTRAINT "Admin_pkey" PRIMARY KEY ("id")
+);
+
 -- CreateIndex
 CREATE UNIQUE INDEX "Region_name_key" ON "Region"("name");
 
@@ -202,6 +277,12 @@ CREATE UNIQUE INDEX "PhoneNumber_phone_key" ON "PhoneNumber"("phone");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "Otp_phone_number_key" ON "Otp"("phone_number");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "Admin_phone_number_key" ON "Admin"("phone_number");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "Admin_hashed_password_key" ON "Admin"("hashed_password");
 
 -- AddForeignKey
 ALTER TABLE "District" ADD CONSTRAINT "District_regionId_fkey" FOREIGN KEY ("regionId") REFERENCES "Region"("id") ON DELETE CASCADE ON UPDATE CASCADE;
@@ -250,3 +331,18 @@ ALTER TABLE "Review" ADD CONSTRAINT "Review_phoneId_fkey" FOREIGN KEY ("phoneId"
 
 -- AddForeignKey
 ALTER TABLE "Archives" ADD CONSTRAINT "Archives_phoneId_fkey" FOREIGN KEY ("phoneId") REFERENCES "Phone"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "Address" ADD CONSTRAINT "Address_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "Payment" ADD CONSTRAINT "Payment_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE SET NULL ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "Chat" ADD CONSTRAINT "Chat_buyerId_fkey" FOREIGN KEY ("buyerId") REFERENCES "User"("id") ON DELETE SET NULL ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "Messages" ADD CONSTRAINT "Messages_senderId_fkey" FOREIGN KEY ("senderId") REFERENCES "User"("id") ON DELETE SET NULL ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "Messages" ADD CONSTRAINT "Messages_chatId_fkey" FOREIGN KEY ("chatId") REFERENCES "Chat"("id") ON DELETE SET NULL ON UPDATE CASCADE;
