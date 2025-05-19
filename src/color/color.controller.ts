@@ -17,11 +17,6 @@ export class ColorController {
     return this.colorService.findAll();
   }
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.colorService.findOne(+id);
-  }
-
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateColorDto: UpdateColorDto) {
     return this.colorService.update(+id, updateColorDto);

@@ -19,15 +19,13 @@ import { EmailModule } from './email/email.module';
 import { PhonoNumberModule } from './phone-number/phono-number.module';
 import { AuthModule } from './auth/auth.module';
 import { SmsModule } from './sms/sms.module';
-import { AddressModule } from './address/address.module';
-import { AdminModule } from './admin/admin.module';
-import { ChatModule } from './chat/chat.module';
 import { ColorModule } from './color/color.module';
-import { FileModule } from './file/file.module';
-import { ImageModule } from './image/image.module';
-import { MessagesModule } from './messages/messages.module';
+import { AddressModule } from './address/address.module';
+import { ChatModule } from './chat/chat.module';
 import { PaymentModule } from './payment/payment.module';
-import { ReviewModule } from './review/review.module';
+import { MessagesModule } from './messages/messages.module';
+import { AdminModule } from './admin/admin.module';
+import { FileModule } from './file/file.module';
 
 @Module({
   imports: [
@@ -53,15 +51,7 @@ import { ReviewModule } from './review/review.module';
     PhonoNumberModule,
     AuthModule,
     SmsModule,
-    AddressModule,
-    AdminModule,
-    ChatModule,
     ColorModule,
-    FileModule,
-    ImageModule,
-    MessagesModule,
-    PaymentModule,
-    ReviewModule,
   ],
   controllers: [],
   providers: [

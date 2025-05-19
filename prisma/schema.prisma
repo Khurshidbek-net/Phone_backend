@@ -87,7 +87,7 @@ model User {
   
   Address      Address[]
   Messages     Messages[]
-  Favourites   Favourites[]
+  
   buyerChats   Chat[]        @relation("BuyerChats")
   sellerChats  Chat[]        @relation("SellerChats")
 
@@ -148,6 +148,7 @@ model Model {
 model Color {
   id   Int    @id @default(autoincrement())
   name String
+  code String
 
   Phones Phone[]
 }
@@ -158,14 +159,15 @@ model Phone {
   description       String
   ram               String // Enum o'rniga oddiy string
   rom               String // Enum o'rniga oddiy string
+  price             Decimal
   box_with_document Boolean  @default(true)
   is_new            Boolean  @default(false)
-  posted_date       DateTime
-  views             BigInt?  @default(0)
-  like_counts       BigInt?  @default(0)
+  posted_date       DateTime @default(now())
+  views             BigInt?
+  like_counts       BigInt?
   is_negotiable     Boolean  @default(false)
-  brand             String
-  model             String
+  brand             String?
+  model             String?
   is_active         Boolean  @default(true)
   is_checked        Boolean  @default(false)
   is_archived       Boolean  @default(false)
@@ -192,7 +194,7 @@ model Phone {
   Reviews    Review[]
   Archives   Archives[]
   Chats      Chat[]
-  Favourites Favourites[]
+  
 }
 
 model Image {
@@ -220,7 +222,6 @@ model Archives {
 
   Phone Phone @relation(fields: [phoneId], references: [id])
 }
-
 
 model Otp {
   id              Int      @id @default(autoincrement())
@@ -310,14 +311,5 @@ model Admin {
   locked_until    DateTime?
   createdAt       DateTime  @default(now())
   updatedAt       DateTime  @updatedAt
-}
-
-model Favourites {
-  id Int @id @default(autoincrement())
-
-  User    User?  @relation(fields: [userId], references: [id])
-  userId  Int?
-  Phone   Phone? @relation(fields: [phoneId], references: [id])
-  phoneId Int?
 }
 

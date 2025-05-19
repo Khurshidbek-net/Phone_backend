@@ -1,5 +1,5 @@
 import { ApiProperty } from "@nestjs/swagger";
-import { IsBoolean, IsDate, IsEnum, IsInt, IsNotEmpty, IsNumber, IsOptional, IsString } from "class-validator";
+import { IsBoolean, IsInt, IsNotEmpty, IsOptional, IsString } from "class-validator";
 
 export class CreatePhoneDto {
     @ApiProperty()
@@ -11,6 +11,10 @@ export class CreatePhoneDto {
     @IsString()
     @IsNotEmpty()
     description: string;
+
+    @ApiProperty()
+    @IsNotEmpty()
+    price: number;
 
     @ApiProperty()
     @IsString()
@@ -33,66 +37,32 @@ export class CreatePhoneDto {
     is_new: boolean;
 
     @ApiProperty()
-    @IsDate()
-    @IsNotEmpty()
-    posted_date: Date;
-
-    @ApiProperty()
-    @IsNumber()
-    @IsNotEmpty()
-    views: bigint;
-
-    @ApiProperty()
-    @IsNumber()
-    @IsNotEmpty()
-    like_counts: bigint;
-
-    @ApiProperty()
     @IsBoolean()
     @IsNotEmpty()
     is_negotiable: boolean;
 
-    @ApiProperty()
+    @ApiProperty({required: false})
     @IsString()
-    @IsNotEmpty()
-    brand: string;
+    @IsOptional()
+    brand?: string;
 
-    @ApiProperty()
+    @ApiProperty({required: false})
     @IsString()
-    @IsNotEmpty()
-    model: string;
+    @IsOptional()
+    model?: string;
 
-    @ApiProperty()
-    @IsBoolean()
-    @IsNotEmpty()
-    is_active: boolean;
-
-    @ApiProperty()
-    @IsBoolean()
-    @IsNotEmpty()
-    is_checked: boolean;
-
-    @ApiProperty()
-    @IsBoolean()
-    @IsNotEmpty()
-    is_archived: boolean;
-
-    @ApiProperty()
-    @IsBoolean()
-    @IsNotEmpty()
-    is_deleted: boolean;
 
     @ApiProperty()
     @IsInt()
     @IsOptional()
-    currencyId?: number;
+    currencyId: number;
 
-    @ApiProperty()
+    @ApiProperty({required: false})
     @IsInt()
     @IsOptional()
     modelId?: number;
 
-    @ApiProperty()
+    @ApiProperty({required: false})
     @IsInt()
     @IsOptional()
     brandId?: number;
@@ -100,7 +70,7 @@ export class CreatePhoneDto {
     @ApiProperty()
     @IsInt()
     @IsOptional()
-    colorId?: number;
+    colorId: number;
 
     // @ApiProperty()
     // @IsInt()
@@ -110,5 +80,5 @@ export class CreatePhoneDto {
     @ApiProperty()
     @IsInt()
     @IsOptional()
-    userId?: number;
+    userId: number;
 }

@@ -92,6 +92,7 @@ export class UserService {
         mainEmail: true,
         mainPhone: true,
         language: true,
+        Phone: true
       },
     });
   }
