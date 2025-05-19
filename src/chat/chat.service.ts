@@ -16,6 +16,7 @@ export class ChatService {
       include: {
         Messages: true,
         Phone: true,
+
       },
     });
   }

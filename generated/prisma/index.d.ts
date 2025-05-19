@@ -2942,7 +2942,7 @@ export namespace Prisma {
   /**
    * UserCountOutputType without action
    */
-  export type UserCountOutputTypeCountPhonesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type UserCountOutputTypeCountPhoneArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: PhoneWhereInput
   }
 
@@ -8104,9 +8104,9 @@ export namespace Prisma {
   }
 
   /**
-   * User.Phones
+   * User.Phone
    */
-  export type User$PhonesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type User$PhoneArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the Phone
      */
@@ -29175,6 +29175,20 @@ export namespace Prisma {
    */
   export type ListEnumPaymentTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'PaymentType[]'>
     
+
+
+  /**
+   * Reference to a field of type 'PaymentType'
+   */
+  export type EnumPaymentTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'PaymentType'>
+    
+
+
+  /**
+   * Reference to a field of type 'PaymentType[]'
+   */
+  export type ListEnumPaymentTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'PaymentType[]'>
+    
   /**
    * Deep Input Types
    */
@@ -34451,9 +34465,9 @@ export namespace Prisma {
     connect?: ColorWhereUniqueInput
   }
 
-  export type UserCreateNestedOneWithoutPhonesInput = {
-    create?: XOR<UserCreateWithoutPhonesInput, UserUncheckedCreateWithoutPhonesInput>
-    connectOrCreate?: UserCreateOrConnectWithoutPhonesInput
+  export type UserCreateNestedOneWithoutPhoneInput = {
+    create?: XOR<UserCreateWithoutPhoneInput, UserUncheckedCreateWithoutPhoneInput>
+    connectOrCreate?: UserCreateOrConnectWithoutPhoneInput
     connect?: UserWhereUniqueInput
   }
 
@@ -34581,10 +34595,10 @@ export namespace Prisma {
     update?: XOR<XOR<ColorUpdateToOneWithWhereWithoutPhonesInput, ColorUpdateWithoutPhonesInput>, ColorUncheckedUpdateWithoutPhonesInput>
   }
 
-  export type UserUpdateOneWithoutPhonesNestedInput = {
-    create?: XOR<UserCreateWithoutPhonesInput, UserUncheckedCreateWithoutPhonesInput>
-    connectOrCreate?: UserCreateOrConnectWithoutPhonesInput
-    upsert?: UserUpsertWithoutPhonesInput
+  export type UserUpdateOneWithoutPhoneNestedInput = {
+    create?: XOR<UserCreateWithoutPhoneInput, UserUncheckedCreateWithoutPhoneInput>
+    connectOrCreate?: UserCreateOrConnectWithoutPhoneInput
+    upsert?: UserUpsertWithoutPhoneInput
     disconnect?: UserWhereInput | boolean
     delete?: UserWhereInput | boolean
     connect?: UserWhereUniqueInput
@@ -37286,7 +37300,7 @@ export namespace Prisma {
     sellerChats?: ChatCreateNestedManyWithoutSellerInput
   }
 
-  export type UserUncheckedCreateWithoutPhonesInput = {
+  export type UserUncheckedCreateWithoutPhoneInput = {
     id?: number
     firstName: string
     lastName?: string | null
@@ -37317,7 +37331,7 @@ export namespace Prisma {
     sellerChats?: ChatUncheckedCreateNestedManyWithoutSellerInput
   }
 
-  export type UserCreateOrConnectWithoutPhonesInput = {
+  export type UserCreateOrConnectWithoutPhoneInput = {
     where: UserWhereUniqueInput
     create: XOR<UserCreateWithoutPhonesInput, UserUncheckedCreateWithoutPhonesInput>
   }
@@ -37535,15 +37549,15 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
   }
 
-  export type UserUpsertWithoutPhonesInput = {
-    update: XOR<UserUpdateWithoutPhonesInput, UserUncheckedUpdateWithoutPhonesInput>
-    create: XOR<UserCreateWithoutPhonesInput, UserUncheckedCreateWithoutPhonesInput>
+  export type UserUpsertWithoutPhoneInput = {
+    update: XOR<UserUpdateWithoutPhoneInput, UserUncheckedUpdateWithoutPhoneInput>
+    create: XOR<UserCreateWithoutPhoneInput, UserUncheckedCreateWithoutPhoneInput>
     where?: UserWhereInput
   }
 
-  export type UserUpdateToOneWithWhereWithoutPhonesInput = {
+  export type UserUpdateToOneWithWhereWithoutPhoneInput = {
     where?: UserWhereInput
-    data: XOR<UserUpdateWithoutPhonesInput, UserUncheckedUpdateWithoutPhonesInput>
+    data: XOR<UserUpdateWithoutPhoneInput, UserUncheckedUpdateWithoutPhoneInput>
   }
 
   export type UserUpdateWithoutPhonesInput = {
@@ -37576,7 +37590,7 @@ export namespace Prisma {
     sellerChats?: ChatUpdateManyWithoutSellerNestedInput
   }
 
-  export type UserUncheckedUpdateWithoutPhonesInput = {
+  export type UserUncheckedUpdateWithoutPhoneInput = {
     id?: IntFieldUpdateOperationsInput | number
     firstName?: StringFieldUpdateOperationsInput | string
     lastName?: NullableStringFieldUpdateOperationsInput | string | null

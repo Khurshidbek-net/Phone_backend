@@ -83,13 +83,18 @@ model User {
 
   Emails       Email[]
   PhoneNumbers PhoneNumber[]
-  Phones       Phone[]
+
+  
   Address      Address[]
-  Payments     Payment[]
   Messages     Messages[]
   Favourites   Favourites[]
   buyerChats   Chat[]        @relation("BuyerChats")
   sellerChats  Chat[]        @relation("SellerChats")
+
+  Phone        Phone[]
+  
+  Payment      Payment[]
+  
 }
 
 model Email {
@@ -178,7 +183,10 @@ model Phone {
   Brands   Brand?    @relation(fields: [brandId], references: [id])
   Color    Color?    @relation(fields: [colorId], references: [id])
   User     User?     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
   Address  Address?  @relation(fields: [addressId], references: [id])
+
+
 
   Images     Image[]
   Reviews    Review[]
@@ -213,6 +221,7 @@ model Archives {
   Phone Phone @relation(fields: [phoneId], references: [id])
 }
 
+
 model Otp {
   id              Int      @id @default(autoincrement())
   otp             String
@@ -238,6 +247,7 @@ model Address {
   User      User?    @relation(fields: [userId], references: [id])
   userId    Int?
   Phones    Phone[]
+
 }
 
 model Payment {
@@ -250,10 +260,13 @@ model Payment {
 
   User   User? @relation(fields: [userId], references: [id])
   userId Int?
+
+
 }
 
 model Chat {
   id        Int        @id @default(autoincrement())
+
   sellerId  Int?
   buyerId   Int?
   seller    User?      @relation("SellerChats", fields: [sellerId], references: [id], onDelete: SetNull)
@@ -264,6 +277,8 @@ model Chat {
 
   Phone   Phone? @relation(fields: [phoneId], references: [id])
   phoneId Int?
+  productId Int?
+  
 }
 
 model Messages {
@@ -271,10 +286,12 @@ model Messages {
   message  String
   is_read  Boolean
   sent_at  DateTime
+
   senderId Int?
   User     User?    @relation(fields: [senderId], references: [id])
   Chat     Chat?    @relation(fields: [chatId], references: [id])
   chatId   Int?
+
 }
 
 model Admin {
@@ -303,3 +320,4 @@ model Favourites {
   Phone   Phone? @relation(fields: [phoneId], references: [id])
   phoneId Int?
 }
+
