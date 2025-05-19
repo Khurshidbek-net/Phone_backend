@@ -224,7 +224,8 @@ exports.Prisma.PhoneScalarFieldEnum = {
   modelId: 'modelId',
   brandId: 'brandId',
   colorId: 'colorId',
-  userId: 'userId'
+  userId: 'userId',
+  addressId: 'addressId'
 };
 
 exports.Prisma.ImageScalarFieldEnum = {
@@ -259,6 +260,69 @@ exports.Prisma.TokenScalarFieldEnum = {
   token: 'token'
 };
 
+exports.Prisma.AddressScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  address: 'address',
+  lat: 'lat',
+  long: 'long',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  userId: 'userId'
+};
+
+exports.Prisma.PaymentScalarFieldEnum = {
+  id: 'id',
+  type: 'type',
+  amount: 'amount',
+  paid_date: 'paid_date',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  userId: 'userId'
+};
+
+exports.Prisma.ChatScalarFieldEnum = {
+  id: 'id',
+  sellerId: 'sellerId',
+  buyerId: 'buyerId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  phoneId: 'phoneId'
+};
+
+exports.Prisma.MessagesScalarFieldEnum = {
+  id: 'id',
+  message: 'message',
+  is_read: 'is_read',
+  sent_at: 'sent_at',
+  senderId: 'senderId',
+  chatId: 'chatId'
+};
+
+exports.Prisma.AdminScalarFieldEnum = {
+  id: 'id',
+  firstname: 'firstname',
+  lastname: 'lastname',
+  phone_number: 'phone_number',
+  hashed_password: 'hashed_password',
+  email: 'email',
+  image: 'image',
+  is_creator: 'is_creator',
+  is_active: 'is_active',
+  refresh_token: 'refresh_token',
+  last_login: 'last_login',
+  login_attempts: 'login_attempts',
+  locked_until: 'locked_until',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.FavouritesScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  phoneId: 'phoneId'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -273,7 +337,11 @@ exports.Prisma.NullsOrder = {
   first: 'first',
   last: 'last'
 };
-
+exports.PaymentType = exports.$Enums.PaymentType = {
+  PAYME: 'PAYME',
+  CLICK: 'CLICK',
+  PAYNET: 'PAYNET'
+};
 
 exports.Prisma.ModelName = {
   Region: 'Region',
@@ -291,7 +359,13 @@ exports.Prisma.ModelName = {
   Review: 'Review',
   Archives: 'Archives',
   Otp: 'Otp',
-  Token: 'Token'
+  Token: 'Token',
+  Address: 'Address',
+  Payment: 'Payment',
+  Chat: 'Chat',
+  Messages: 'Messages',
+  Admin: 'Admin',
+  Favourites: 'Favourites'
 };
 
 /**

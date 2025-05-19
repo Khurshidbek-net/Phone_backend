@@ -19,6 +19,15 @@ import { EmailModule } from './email/email.module';
 import { PhonoNumberModule } from './phone-number/phono-number.module';
 import { AuthModule } from './auth/auth.module';
 import { SmsModule } from './sms/sms.module';
+import { AddressModule } from './address/address.module';
+import { AdminModule } from './admin/admin.module';
+import { ChatModule } from './chat/chat.module';
+import { ColorModule } from './color/color.module';
+import { FileModule } from './file/file.module';
+import { ImageModule } from './image/image.module';
+import { MessagesModule } from './messages/messages.module';
+import { PaymentModule } from './payment/payment.module';
+import { ReviewModule } from './review/review.module';
 
 @Module({
   imports: [
@@ -37,7 +46,16 @@ import { SmsModule } from './sms/sms.module';
     EmailModule,
     PhonoNumberModule,
     AuthModule,
-    SmsModule
+    SmsModule,
+    AddressModule,
+    AdminModule,
+    ChatModule,
+    ColorModule,
+    FileModule,
+    ImageModule,
+    MessagesModule,
+    PaymentModule,
+    ReviewModule,
   ],
   controllers: [],
   providers: [
@@ -45,7 +63,7 @@ import { SmsModule } from './sms/sms.module';
       provide: APP_FILTER,
       useClass: AllExceptionsFilter,
     },
-    PrismaService
+    PrismaService,
   ],
 })
 export class AppModule {}

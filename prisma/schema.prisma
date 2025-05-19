@@ -14,6 +14,12 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+enum PaymentType {
+  PAYME
+  CLICK
+  PAYNET
+}
+
 model Region {
   id        Int      @id @default(autoincrement())
   name      String   @unique
@@ -78,6 +84,12 @@ model User {
   Emails       Email[]
   PhoneNumbers PhoneNumber[]
   Phones       Phone[]
+  Address      Address[]
+  Payments     Payment[]
+  Messages     Messages[]
+  Favourites   Favourites[]
+  buyerChats   Chat[]        @relation("BuyerChats")
+  sellerChats  Chat[]        @relation("SellerChats")
 }
 
 model Email {
@@ -103,30 +115,6 @@ model PhoneNumber {
 
   User User[] @relation("MainPhone")
 }
-
-// enum Ram {
-//   GB_4   @map("4GB")
-//   GB_6   @map("6GB")
-//   GB_8   @map("8GB")
-//   GB_12  @map("12GB")
-//   GB_16  @map("16GB")
-//   GB_24  @map("24GB")
-//   GB_32  @map("32GB")
-//   GB_64  @map("64GB")
-//   GB_128 @map("128GB")
-// }
-
-// enum Rom {
-//   GB_4   @map("4GB")
-//   GB_6   @map("6GB")
-//   GB_8   @map("8GB")
-//   GB_12  @map("12GB")
-//   GB_16  @map("16GB")
-//   GB_24  @map("24GB")
-//   GB_32  @map("32GB")
-//   GB_64  @map("64GB")
-//   GB_128 @map("128GB")
-// }
 
 model Currency {
   id   Int    @id @default(autoincrement())
@@ -168,8 +156,8 @@ model Phone {
   box_with_document Boolean  @default(true)
   is_new            Boolean  @default(false)
   posted_date       DateTime
-  views             BigInt
-  like_counts       BigInt
+  views             BigInt?  @default(0)
+  like_counts       BigInt?  @default(0)
   is_negotiable     Boolean  @default(false)
   brand             String
   model             String
@@ -183,22 +171,25 @@ model Phone {
   brandId    Int?
   colorId    Int?
   userId     Int?
+  addressId  Int?
 
   Currency Currency? @relation(fields: [currencyId], references: [id])
   Models   Model?    @relation(fields: [modelId], references: [id])
   Brands   Brand?    @relation(fields: [brandId], references: [id])
   Color    Color?    @relation(fields: [colorId], references: [id])
   User     User?     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  Address  Address?  @relation(fields: [addressId], references: [id])
 
-  Images   Image[]
-  Reviews  Review[]
-  Archives Archives[]
+  Images     Image[]
+  Reviews    Review[]
+  Archives   Archives[]
+  Chats      Chat[]
+  Favourites Favourites[]
 }
 
 model Image {
-  id  Int    @id @default(autoincrement())
-  url String
-
+  id      Int    @id @default(autoincrement())
+  url     String
   phoneId Int
 
   Phone Phone @relation(fields: [phoneId], references: [id])
@@ -234,4 +225,81 @@ model Otp {
 model Token {
   id    Int    @id @default(autoincrement())
   token String
+}
+
+model Address {
+  id        Int      @id @default(autoincrement())
+  name      String
+  address   String
+  lat       Float
+  long      Float
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  User      User?    @relation(fields: [userId], references: [id])
+  userId    Int?
+  Phones    Phone[]
+}
+
+model Payment {
+  id        Int         @id @default(autoincrement())
+  type      PaymentType
+  amount    Decimal
+  paid_date DateTime
+  createdAt DateTime    @default(now())
+  updatedAt DateTime    @updatedAt
+
+  User   User? @relation(fields: [userId], references: [id])
+  userId Int?
+}
+
+model Chat {
+  id        Int        @id @default(autoincrement())
+  sellerId  Int?
+  buyerId   Int?
+  seller    User?      @relation("SellerChats", fields: [sellerId], references: [id], onDelete: SetNull)
+  buyer     User?      @relation("BuyerChats", fields: [buyerId], references: [id], onDelete: SetNull)
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+  Messages  Messages[]
+
+  Phone   Phone? @relation(fields: [phoneId], references: [id])
+  phoneId Int?
+}
+
+model Messages {
+  id       Int      @id @default(autoincrement())
+  message  String
+  is_read  Boolean
+  sent_at  DateTime
+  senderId Int?
+  User     User?    @relation(fields: [senderId], references: [id])
+  Chat     Chat?    @relation(fields: [chatId], references: [id])
+  chatId   Int?
+}
+
+model Admin {
+  id              Int       @id @default(autoincrement())
+  firstname       String
+  lastname        String
+  phone_number    String    @unique
+  hashed_password String    @unique
+  email           String
+  image           String?
+  is_creator      Boolean?  @default(false)
+  is_active       Boolean   @default(false)
+  refresh_token   String?
+  last_login      DateTime?
+  login_attempts  Int?
+  locked_until    DateTime?
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+}
+
+model Favourites {
+  id Int @id @default(autoincrement())
+
+  User    User?  @relation(fields: [userId], references: [id])
+  userId  Int?
+  Phone   Phone? @relation(fields: [phoneId], references: [id])
+  phoneId Int?
 }
