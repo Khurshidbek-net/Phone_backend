@@ -26,9 +26,21 @@ import { PaymentModule } from './payment/payment.module';
 import { MessagesModule } from './messages/messages.module';
 import { AdminModule } from './admin/admin.module';
 import { FileModule } from './file/file.module';
+import { AdminAuthModule } from './admin_auth/admin_auth.module';
+import { BotModule } from './bot/bot.module';
+import { TelegrafModule } from 'nestjs-telegraf';
+import { MailModule } from './mail/mail.module';
 
 @Module({
   imports: [
+    TelegrafModule.forRootAsync({
+      // botName: process.env.BOT_NAME,
+      useFactory: () => ({
+        token: process.env.BOT_TOKEN || '12345',
+        middlewares: [],
+        include: [BotModule],
+      }),
+    }),
     ConfigModule.forRoot({ envFilePath: '.env', isGlobal: true }),
     WinstonModule.forRoot(winstonConfig),
     PrismaModule,
@@ -52,6 +64,9 @@ import { FileModule } from './file/file.module';
     AuthModule,
     SmsModule,
     ColorModule,
+    AdminAuthModule,
+    BotModule,
+    MailModule
   ],
   controllers: [],
   providers: [

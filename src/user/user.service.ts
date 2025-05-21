@@ -1,4 +1,10 @@
-import { ConflictException, ForbiddenException, Injectable, NotFoundException } from '@nestjs/common';
+import {
+  BadRequestException,
+  ConflictException,
+  ForbiddenException,
+  Injectable,
+  NotFoundException,
+} from '@nestjs/common';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { PrismaService } from '../prisma/prisma.service';
@@ -8,15 +14,9 @@ import * as bcrypt from 'bcrypt';
 
 @Injectable()
 export class UserService {
-  constructor(
-    private readonly prisma: PrismaService,
-  ) { }
+  constructor(private readonly prisma: PrismaService) {}
   async create(dto: CreateUserDto) {
-    const {
-      email,
-      phoneNumber,
-      password,
-    } = dto;
+    const { email, phoneNumber, password } = dto;
 
     // Step 1: Validate email
     if (email) {
@@ -31,8 +31,8 @@ export class UserService {
       const existingPhone = await this.prisma.phoneNumber.findUnique({
         where: { phone: phoneNumber },
       });
-      if (existingPhone) throw new ConflictException('Phone number already in use.');
-      
+      if (existingPhone)
+        throw new ConflictException('Phone number already in use.');
     }
 
     // Step 3: Hash password
@@ -43,7 +43,9 @@ export class UserService {
       data: {
         firstName: dto.name,
         password: hashedPassword,
-      }
+        isActive: dto.isActive,
+        activation_link: dto.activation_link || null,
+      },
     });
 
     let emailRecord: Email | null = null;
@@ -92,11 +94,11 @@ export class UserService {
         mainEmail: true,
         mainPhone: true,
         language: true,
-        Phone: true
+        Phone: true,
       },
     });
   }
-  
+
   async findOne(id: number) {
     return await this.prisma.user.findFirst({
       where: {
@@ -112,6 +114,34 @@ export class UserService {
         language: true,
       },
     });
+  }
+
+  async activate(link: string) {
+    if (!link) {
+      throw new NotFoundException('Activation link not found');
+    }
+
+    const user = await this.prisma.user.findUnique({
+      where: {
+        activation_link: link,
+        isActive: false,
+      },
+    });
+
+    if (!user) {
+      throw new BadRequestException('User already activated');
+    }
+
+    const updatedUser = await this.prisma.user.update({
+      where: { activation_link: link },
+      data: { isActive: true },
+    });
+
+    const response = {
+      message: 'User activated successfully',
+      isActive: updatedUser.isActive,
+    };
+    return response;
   }
 
   async update(id: number, updateUserDto: UpdateUserDto) {
@@ -142,14 +172,15 @@ export class UserService {
       data: { isDeleted: true, isActive: false },
     });
   }
-  
+
   async setMainEmail(userId: number, emailId: number) {
     const email = await this.prisma.email.findUnique({
       where: { id: emailId },
     });
 
     if (!email) throw new NotFoundException('Email not found');
-    if (email.userId !== userId) throw new ForbiddenException('Email does not belong to user');
+    if (email.userId !== userId)
+      throw new ForbiddenException('Email does not belong to user');
 
     return this.prisma.user.update({
       where: { id: userId },
@@ -163,14 +194,15 @@ export class UserService {
     });
 
     if (!phone) throw new NotFoundException('Phone number not found');
-    if (phone.userId !== userId) throw new ForbiddenException('Phone number does not belong to user');
+    if (phone.userId !== userId)
+      throw new ForbiddenException('Phone number does not belong to user');
 
     return this.prisma.user.update({
       where: { id: userId },
       data: { mainPhoneId: phoneId },
       include: { mainPhone: true },
     });
-  } 
+  }
 
   async findUserByPhone(phone: string) {
     const phoneRecord = await this.prisma.phoneNumber.findUnique({
@@ -214,15 +246,12 @@ export class UserService {
     }
 
     return emailRecord.user;
-  } 
-  
+  }
+
   async findUserByEmailOrPhone(email: string, phone: string) {
     const user = await this.prisma.user.findFirst({
       where: {
-        OR: [
-          { mainEmail: { email } },
-          { mainPhone: { phone } },
-        ],
+        OR: [{ mainEmail: { email } }, { mainPhone: { phone } }],
       },
       include: {
         mainEmail: true,
@@ -236,13 +265,11 @@ export class UserService {
   }
 
   async updateRefreshToken(id: number, hashedRefreshToken: string | null) {
-    const updatedRealtor = await this.prisma.user.update(
-      {
-        where: { id },
-        data: { hashedToken: hashedRefreshToken }
-      }
-    );
+    const updatedRealtor = await this.prisma.user.update({
+      where: { id },
+      data: { hashedToken: hashedRefreshToken },
+    });
 
-    return updatedRealtor
+    return updatedRealtor;
   }
 }

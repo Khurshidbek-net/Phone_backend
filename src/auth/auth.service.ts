@@ -1,4 +1,12 @@
-import { BadRequestException, ConflictException, ForbiddenException, Injectable, InternalServerErrorException, NotFoundException, ServiceUnavailableException } from '@nestjs/common';
+import {
+  BadRequestException,
+  ConflictException,
+  ForbiddenException,
+  Injectable,
+  InternalServerErrorException,
+  NotFoundException,
+  ServiceUnavailableException,
+} from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service';
 import { CreateUserDto } from '../user/dto/create-user.dto';
 import { UserService } from '../user/user.service';
@@ -13,10 +21,10 @@ import { decode, encode } from '../helpers/crypto';
 import { AddMinutesToDate } from '../helpers/addMinutes';
 import * as otpGenerator from 'otp-generator';
 import { SmsService } from '../sms/sms.service';
-import * as uuid from 'uuid'
+import * as uuid from 'uuid';
 import { PhoneDto } from './dto/phone-user.dto';
 import { VerifyDto } from './dto/verify-otp.dto';
-
+import { MailService } from '../mail/mail.service';
 
 @Injectable()
 export class AuthService {
@@ -24,9 +32,9 @@ export class AuthService {
     private readonly userService: UserService,
     private readonly prisma: PrismaService,
     private readonly jwtService: JwtService,
-    private readonly smsService: SmsService
-
-  ) { }
+    private readonly smsService: SmsService,
+    private readonly mailService: MailService,
+  ) {}
 
   async signUp(createUserDto: CreateUserDto) {
     if (createUserDto.phoneNumber) {
@@ -36,19 +44,47 @@ export class AuthService {
       });
       return await this.newOtp({ phone: createUserDto.phoneNumber });
     }
+    if (createUserDto.email) {
+      const activation_link = uuid.v4();
+
+      const user = await this.userService.create({
+        ...createUserDto,
+        isActive: false,
+        activation_link,
+      });
+
+      try {
+        await this.mailService.sendMail(user, createUserDto.email);
+      } catch (error) {
+        console.log(error);
+        throw new InternalServerErrorException(
+          'Emailga xat yuborishda xatolik',
+        );
+      }
+      const response = {
+        message:
+          "Tabriklayman tizimga qo'shildingiz. Akkauntni faollashtirish uchun emailga xat yuborildi",
+        user,
+      };
+      return response;
+    }
 
     if (!createUserDto.phoneNumber && createUserDto.email) {
       return this.userService.create(createUserDto);
     }
 
-    throw new BadRequestException('Phone number or email is required for signup.');
+    throw new BadRequestException(
+      'Phone number or email is required for signup.',
+    );
   }
-
 
   async signIn(signInDto: SignInDto, res: Response): Promise<ResponseFields> {
     const { email, phoneNumber, password } = signInDto;
 
-    const user = await this.userService.findUserByEmailOrPhone(email!, phoneNumber!);
+    const user = await this.userService.findUserByEmailOrPhone(
+      email!,
+      phoneNumber!,
+    );
     if (!user) {
       throw new ConflictException('Invalid credentials');
     }
@@ -56,12 +92,14 @@ export class AuthService {
     const now = new Date();
 
     if (user.lockedUntil && user.lockedUntil > now) {
-      const waitTime = Math.ceil((user.lockedUntil.getTime() - now.getTime()) / 1000);
+      const waitTime = Math.ceil(
+        (user.lockedUntil.getTime() - now.getTime()) / 1000,
+      );
       const minutes = Math.floor(waitTime / 60);
       const seconds = waitTime % 60;
 
       throw new ConflictException(
-        `Account locked. Try again after: ${minutes}:${seconds.toString().padStart(2, '0')} minutes`
+        `Account locked. Try again after: ${minutes}:${seconds.toString().padStart(2, '0')} minutes`,
       );
     }
 
@@ -82,14 +120,16 @@ export class AuthService {
         where: { id: user.id },
         data: {
           loginAttempts: newAttempts,
-          lockedUntil: isLocked ? new Date(now.getTime() + lockMinutes * 60000) : null,
+          lockedUntil: isLocked
+            ? new Date(now.getTime() + lockMinutes * 60000)
+            : null,
         },
       });
 
       throw new ConflictException(
         isLocked
           ? `Too many failed attempts. Account locked for ${lockMinutes} minutes.`
-          : `Invalid credentials. Attempt ${newAttempts} of ${maxAttempts}`
+          : `Invalid credentials. Attempt ${newAttempts} of ${maxAttempts}`,
       );
     }
 
@@ -105,32 +145,32 @@ export class AuthService {
       },
     });
 
-
     const payload = {
       id: user.id,
       email: user.mainEmail?.email,
       phoneNumber: user.mainPhone?.phone,
-    }
+    };
 
     const tokens = await this.getTokens(payload);
 
     const hashedRefreshToken = await bcrypt.hash(tokens.refresh_token, 11);
-    const updatedUser = await this.userService.updateRefreshToken(user.id, hashedRefreshToken)
+    const updatedUser = await this.userService.updateRefreshToken(
+      user.id,
+      hashedRefreshToken,
+    );
 
     if (!updatedUser)
-      throw new InternalServerErrorException("Cannot save token")
+      throw new InternalServerErrorException('Cannot save token');
 
-    res.cookie("refresh_token", tokens.refresh_token, {
+    res.cookie('refresh_token', tokens.refresh_token, {
       maxAge: +process.env.refresh_token_ms!,
       httpOnly: true,
     });
 
-
-
     const response = {
       id: user.id,
-      access_token: tokens.access_token
-    }
+      access_token: tokens.access_token,
+    };
 
     return response;
   }
@@ -140,96 +180,93 @@ export class AuthService {
       where: {
         id: userId,
         hashedToken: {
-          not: null
+          not: null,
         },
       },
       data: {
-        hashedToken: null
-      }
-    })
+        hashedToken: null,
+      },
+    });
 
     if (user.count === 0) {
-      throw new ForbiddenException("No active session found")
+      throw new ForbiddenException('No active session found');
     }
 
-    res.clearCookie("refresh_token")
+    res.clearCookie('refresh_token');
     return true;
   }
 
-  async refreshToken(userId: number, refreshToken: string, res: Response): Promise<ResponseFields> {
+  async refreshToken(
+    userId: number,
+    refreshToken: string,
+    res: Response,
+  ): Promise<ResponseFields> {
     const decodedToken = await this.jwtService.decode(refreshToken);
 
-    const isValid = await this.jwtService.verifyAsync(refreshToken, { secret: process.env.refresh_key })
+    const isValid = await this.jwtService.verifyAsync(refreshToken, {
+      secret: process.env.refresh_key,
+    });
 
     if (!isValid) {
-      throw new BadRequestException("Invalid refresh token")
+      throw new BadRequestException('Invalid refresh token');
     }
 
     if (userId != decodedToken['id']) {
-      throw new BadRequestException("Invalid refresh token")
+      throw new BadRequestException('Invalid refresh token');
     }
 
     const user = await this.userService.findOne(userId);
 
     if (!user || !user.hashedToken) {
-      throw new BadRequestException('Invalid refresh token')
+      throw new BadRequestException('Invalid refresh token');
     }
 
-    const tokenMatch = await bcrypt.compare(
-      refreshToken,
-      user.hashedToken
-    );
+    const tokenMatch = await bcrypt.compare(refreshToken, user.hashedToken);
 
-
-
-    if (!tokenMatch)
-      throw new ForbiddenException('Forbidden');
+    if (!tokenMatch) throw new ForbiddenException('Forbidden');
 
     const payload = {
       id: user.id,
       email: user.mainEmail?.email,
       phoneNumber: user.mainPhone?.phone,
-    }
+    };
 
     const tokens = await this.getTokens(payload);
 
     const hashedRefreshToken = await bcrypt.hash(tokens.refresh_token, 11);
     await this.userService.updateRefreshToken(user.id, hashedRefreshToken);
 
-    res.cookie("refresh_token", tokens.refresh_token, {
+    res.cookie('refresh_token', tokens.refresh_token, {
       maxAge: +process.env.refresh_token_ms!,
-      httpOnly: true
+      httpOnly: true,
     });
 
     const response = {
       id: user.id,
-      access_token: tokens.access_token
-    }
+      access_token: tokens.access_token,
+    };
 
     return response;
   }
 
   async getTokens(payload: JwtPayload): Promise<Tokens> {
-
     const [access_token, refresh_token] = await Promise.all([
       this.jwtService.signAsync(payload, {
         secret: process.env.access_key,
-        expiresIn: process.env.access_time
+        expiresIn: process.env.access_time,
       }),
 
       this.jwtService.signAsync(payload, {
         secret: process.env.refresh_key,
-        expiresIn: process.env.refresh_time
-      })
-    ])
+        expiresIn: process.env.refresh_time,
+      }),
+    ]);
 
     return {
       access_token,
-      refresh_token
-    }
+      refresh_token,
+    };
   }
-
-
 
   // ============================== OTP ==============================
   async newOtp(phoneUserDto: PhoneDto) {
@@ -243,7 +280,7 @@ export class AuthService {
 
     const response = await this.smsService.sendSMS(phone, otp);
     if (!response || response.status !== 200) {
-      throw new ServiceUnavailableException("Failed to send OTP.");
+      throw new ServiceUnavailableException('Failed to send OTP.');
     }
 
     const now = new Date();
@@ -281,19 +318,19 @@ export class AuthService {
     });
 
     if (!otpRecord) {
-      throw new NotFoundException("OTP not found");
+      throw new NotFoundException('OTP not found');
     }
 
     if (otpRecord.verified) {
-      throw new BadRequestException("OTP already used");
+      throw new BadRequestException('OTP already used');
     }
 
     if (otpRecord.expiration_time < current_time) {
-      throw new BadRequestException("OTP expired");
+      throw new BadRequestException('OTP expired');
     }
 
     if (otpRecord.otp !== otp) {
-      throw new BadRequestException("OTP mismatch");
+      throw new BadRequestException('OTP mismatch');
     }
 
     await this.prisma.$transaction([
@@ -313,10 +350,10 @@ export class AuthService {
     ]);
 
     return {
-      message: "✅ Phone number verified and user activated.",
+      message: '✅ Phone number verified and user activated.',
     };
   }
-  
+
   async cleanupUnverifiedUsers() {
     const now = new Date();
 
@@ -342,5 +379,4 @@ export class AuthService {
       ]);
     }
   }
-
 }

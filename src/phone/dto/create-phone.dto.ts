@@ -72,10 +72,10 @@ export class CreatePhoneDto {
     @IsOptional()
     colorId: number;
 
-    // @ApiProperty()
-    // @IsInt()
-    // @IsOptional()
-    // addressId: number;
+    @ApiProperty()
+    @IsInt()
+    @IsOptional()
+    addressId: number;
 
     @ApiProperty()
     @IsInt()

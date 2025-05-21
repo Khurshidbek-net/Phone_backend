@@ -1,4 +1,16 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, ParseIntPipe, UseGuards, UploadedFile, UseInterceptors } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+  ParseIntPipe,
+  UseGuards,
+  UploadedFile,
+  UseInterceptors,
+} from '@nestjs/common';
 import { UserService } from './user.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
@@ -12,7 +24,7 @@ import { diskStorage } from 'multer';
 
 @Controller('user')
 export class UserController {
-  constructor(private readonly userService: UserService) { }
+  constructor(private readonly userService: UserService) {}
 
   @Post()
   create(@Body() createUserDto: CreateUserDto) {
@@ -22,6 +34,11 @@ export class UserController {
   @Get()
   findAll() {
     return this.userService.findAll();
+  }
+
+  @Get('activate/:link')
+  activate(@Param('link') link: string) {
+    return this.userService.activate(link);
   }
 
   @Get(':id')

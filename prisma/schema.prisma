@@ -51,20 +51,21 @@ model Language {
 }
 
 model User {
-  id            Int       @id @default(autoincrement())
-  firstName     String
-  lastName      String?
-  birthDate     DateTime?
-  balance       Decimal   @default(0)
-  password      String
-  image         String?
-  loginAttempts Int       @default(0)
-  lockedUntil   DateTime?
-  isLocked      Boolean   @default(false)
-  isActive      Boolean   @default(false)
-  isDeleted     Boolean   @default(false)
-  lastSeen      DateTime?
-  hashedToken   String?
+  id              Int       @id @default(autoincrement())
+  firstName       String
+  lastName        String?
+  birthDate       DateTime?
+  balance         Decimal   @default(0)
+  password        String
+  image           String?
+  loginAttempts   Int       @default(0)
+  lockedUntil     DateTime?
+  isLocked        Boolean   @default(false)
+  isActive        Boolean   @default(false)
+  isDeleted       Boolean   @default(false)
+  lastSeen        DateTime?
+  hashedToken     String?
+  activation_link String?   @unique
 
   mainEmailId Int?
   mainEmail   Email? @relation("MainEmail", fields: [mainEmailId], references: [id], onDelete: SetNull)
@@ -84,17 +85,15 @@ model User {
   Emails       Email[]
   PhoneNumbers PhoneNumber[]
 
-  
-  Address      Address[]
-  Messages     Messages[]
-  
-  buyerChats   Chat[]        @relation("BuyerChats")
-  sellerChats  Chat[]        @relation("SellerChats")
+  Address  Address[]
+  Messages Messages[]
 
-  Phone        Phone[]
-  
-  Payment      Payment[]
-  
+  buyerChats  Chat[] @relation("BuyerChats")
+  sellerChats Chat[] @relation("SellerChats")
+
+  Phone Phone[]
+
+  Payment Payment[]
 }
 
 model Email {
@@ -186,15 +185,12 @@ model Phone {
   Color    Color?    @relation(fields: [colorId], references: [id])
   User     User?     @relation(fields: [userId], references: [id], onDelete: Cascade)
 
-  Address  Address?  @relation(fields: [addressId], references: [id])
+  Address Address? @relation(fields: [addressId], references: [id])
 
-
-
-  Images     Image[]
-  Reviews    Review[]
-  Archives   Archives[]
-  Chats      Chat[]
-  
+  Images   Image[]
+  Reviews  Review[]
+  Archives Archives[]
+  Chats    Chat[]
 }
 
 model Image {
@@ -248,7 +244,6 @@ model Address {
   User      User?    @relation(fields: [userId], references: [id])
   userId    Int?
   Phones    Phone[]
-
 }
 
 model Payment {
@@ -261,12 +256,10 @@ model Payment {
 
   User   User? @relation(fields: [userId], references: [id])
   userId Int?
-
-
 }
 
 model Chat {
-  id        Int        @id @default(autoincrement())
+  id Int @id @default(autoincrement())
 
   sellerId  Int?
   buyerId   Int?
@@ -276,23 +269,21 @@ model Chat {
   updatedAt DateTime   @updatedAt
   Messages  Messages[]
 
-  Phone   Phone? @relation(fields: [phoneId], references: [id])
-  phoneId Int?
+  Phone     Phone? @relation(fields: [phoneId], references: [id])
+  phoneId   Int?
   productId Int?
-  
 }
 
 model Messages {
-  id       Int      @id @default(autoincrement())
-  message  String
-  is_read  Boolean
-  sent_at  DateTime
+  id      Int      @id @default(autoincrement())
+  message String
+  is_read Boolean
+  sent_at DateTime
 
   senderId Int?
-  User     User?    @relation(fields: [senderId], references: [id])
-  Chat     Chat?    @relation(fields: [chatId], references: [id])
+  User     User? @relation(fields: [senderId], references: [id])
+  Chat     Chat? @relation(fields: [chatId], references: [id])
   chatId   Int?
-
 }
 
 model Admin {
@@ -301,15 +292,15 @@ model Admin {
   lastname        String
   phone_number    String    @unique
   hashed_password String    @unique
-  email           String
+  email           String    @unique
   image           String?
   is_creator      Boolean?  @default(false)
-  is_active       Boolean   @default(false)
+  is_active       Boolean   @default(true)
+  is_deleted      Boolean?  @default(false)
   refresh_token   String?
   last_login      DateTime?
-  login_attempts  Int?
+  login_attempts  Int       @default(0)
   locked_until    DateTime?
   createdAt       DateTime  @default(now())
   updatedAt       DateTime  @updatedAt
 }
-
