@@ -22,8 +22,10 @@ export class CreateAddressDto {
   @IsNumber()
   long: number;
 
+
   @ApiProperty()
   @IsNotEmpty()
   @IsNumber()
   userId: number;
+
 }

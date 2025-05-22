@@ -7,8 +7,9 @@ export class ChatService {
   constructor(
     private readonly prisma: PrismaService,
     private readonly phoneService: PhoneService
-  ) {}
+  ) { }
 
+  // Get one chat with messages and phone
   async findOne(chatId: number) {
     return this.prisma.chat.findUnique({
       where: { id: chatId },
@@ -21,7 +22,9 @@ export class ChatService {
     });
   }
 
+  // Get all chats where user is involved (as sender or phone owner)
   async findUserChats(userId: number) {
+    // Chats where user is the sender
     const senderChats = await this.prisma.chat.findMany({
       where: { senderId: userId },
       include: {
@@ -33,18 +36,18 @@ export class ChatService {
       }
     });
 
-    // Then get chats where user is the phone owner
-    // This assumes there's a way to find phones owned by this user
+    // Phones owned by the user
     const userPhones = await this.prisma.phone.findMany({
-      where: { userId } // Adjust based on your actual schema
+      where: { userId }
     });
 
     const phoneIds = userPhones.map(phone => phone.id);
 
+    // Chats where user owns the phone but is not the sender
     const receiverChats = await this.prisma.chat.findMany({
       where: {
         phoneId: { in: phoneIds },
-        senderId: { not: userId } // Exclude chats where user is also sender
+        senderId: { not: userId }
       },
       include: {
         messages: {
@@ -55,11 +58,9 @@ export class ChatService {
       }
     });
 
-    // Combine and return all chats
     return [...senderChats, ...receiverChats];
   }
 
-  // Get phone with owner details
   async getPhoneWithOwner(phoneId: number) {
     return this.prisma.phone.findUnique({
       where: { id: phoneId },
@@ -69,9 +70,7 @@ export class ChatService {
     });
   }
 
-  // Create or open a chat between a sender and a product
   async openChat(senderId: number, phoneId: number) {
-    // Check if chat already exists
     let chat = await this.prisma.chat.findFirst({
       where: {
         senderId: senderId,
@@ -101,5 +100,4 @@ export class ChatService {
 
     return chat;
   }
-
 }

@@ -48,6 +48,7 @@ CREATE TABLE "User" (
     "isDeleted" BOOLEAN NOT NULL DEFAULT false,
     "lastSeen" TIMESTAMP(3),
     "hashedToken" TEXT,
+    "activation_link" TEXT,
     "mainEmailId" INTEGER,
     "mainPhoneId" INTEGER,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -109,6 +110,7 @@ CREATE TABLE "Model" (
 CREATE TABLE "Color" (
     "id" SERIAL NOT NULL,
     "name" TEXT NOT NULL,
+    "code" TEXT NOT NULL,
 
     CONSTRAINT "Color_pkey" PRIMARY KEY ("id")
 );
@@ -120,14 +122,15 @@ CREATE TABLE "Phone" (
     "description" TEXT NOT NULL,
     "ram" TEXT NOT NULL,
     "rom" TEXT NOT NULL,
+    "price" DECIMAL(65,30) NOT NULL,
     "box_with_document" BOOLEAN NOT NULL DEFAULT true,
     "is_new" BOOLEAN NOT NULL DEFAULT false,
-    "posted_date" TIMESTAMP(3) NOT NULL,
-    "views" BIGINT NOT NULL,
-    "like_counts" BIGINT NOT NULL,
+    "posted_date" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "views" BIGINT,
+    "like_counts" BIGINT,
     "is_negotiable" BOOLEAN NOT NULL DEFAULT false,
-    "brand" TEXT NOT NULL,
-    "model" TEXT NOT NULL,
+    "brand" TEXT,
+    "model" TEXT,
     "is_active" BOOLEAN NOT NULL DEFAULT true,
     "is_checked" BOOLEAN NOT NULL DEFAULT false,
     "is_archived" BOOLEAN NOT NULL DEFAULT false,
@@ -137,6 +140,7 @@ CREATE TABLE "Phone" (
     "brandId" INTEGER,
     "colorId" INTEGER,
     "userId" INTEGER,
+    "addressId" INTEGER,
 
     CONSTRAINT "Phone_pkey" PRIMARY KEY ("id")
 );
@@ -195,9 +199,9 @@ CREATE TABLE "Address" (
     "address" TEXT NOT NULL,
     "lat" DOUBLE PRECISION NOT NULL,
     "long" DOUBLE PRECISION NOT NULL,
-    "userId" INTEGER,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
+    "userId" INTEGER,
 
     CONSTRAINT "Address_pkey" PRIMARY KEY ("id")
 );
@@ -218,25 +222,24 @@ CREATE TABLE "Payment" (
 -- CreateTable
 CREATE TABLE "Chat" (
     "id" SERIAL NOT NULL,
-    "productId" INTEGER,
-    "sellerId" INTEGER,
-    "buyerId" INTEGER,
+    "senderId" INTEGER,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
+    "phoneId" INTEGER NOT NULL,
 
     CONSTRAINT "Chat_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
-CREATE TABLE "Messages" (
+CREATE TABLE "Message" (
     "id" SERIAL NOT NULL,
     "message" TEXT NOT NULL,
-    "is_read" BOOLEAN NOT NULL,
-    "sent_at" TIMESTAMP(3) NOT NULL,
-    "chatId" INTEGER,
-    "senderId" INTEGER,
+    "isRead" BOOLEAN NOT NULL DEFAULT false,
+    "sentAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "chatId" INTEGER NOT NULL,
+    "senderId" INTEGER NOT NULL,
 
-    CONSTRAINT "Messages_pkey" PRIMARY KEY ("id")
+    CONSTRAINT "Message_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
@@ -249,10 +252,11 @@ CREATE TABLE "Admin" (
     "email" TEXT NOT NULL,
     "image" TEXT,
     "is_creator" BOOLEAN DEFAULT false,
-    "is_active" BOOLEAN NOT NULL DEFAULT false,
+    "is_active" BOOLEAN NOT NULL DEFAULT true,
+    "is_deleted" BOOLEAN DEFAULT false,
     "refresh_token" TEXT,
     "last_login" TIMESTAMP(3),
-    "login_attempts" INTEGER,
+    "login_attempts" INTEGER NOT NULL DEFAULT 0,
     "locked_until" TIMESTAMP(3),
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
@@ -270,6 +274,9 @@ CREATE UNIQUE INDEX "District_name_key" ON "District"("name");
 CREATE UNIQUE INDEX "Language_name_key" ON "Language"("name");
 
 -- CreateIndex
+CREATE UNIQUE INDEX "User_activation_link_key" ON "User"("activation_link");
+
+-- CreateIndex
 CREATE UNIQUE INDEX "Email_email_key" ON "Email"("email");
 
 -- CreateIndex
@@ -283,6 +290,9 @@ CREATE UNIQUE INDEX "Admin_phone_number_key" ON "Admin"("phone_number");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "Admin_hashed_password_key" ON "Admin"("hashed_password");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "Admin_email_key" ON "Admin"("email");
 
 -- AddForeignKey
 ALTER TABLE "District" ADD CONSTRAINT "District_regionId_fkey" FOREIGN KEY ("regionId") REFERENCES "Region"("id") ON DELETE CASCADE ON UPDATE CASCADE;
@@ -324,6 +334,9 @@ ALTER TABLE "Phone" ADD CONSTRAINT "Phone_colorId_fkey" FOREIGN KEY ("colorId") 
 ALTER TABLE "Phone" ADD CONSTRAINT "Phone_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
+ALTER TABLE "Phone" ADD CONSTRAINT "Phone_addressId_fkey" FOREIGN KEY ("addressId") REFERENCES "Address"("id") ON DELETE SET NULL ON UPDATE CASCADE;
+
+-- AddForeignKey
 ALTER TABLE "Image" ADD CONSTRAINT "Image_phoneId_fkey" FOREIGN KEY ("phoneId") REFERENCES "Phone"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
@@ -333,16 +346,19 @@ ALTER TABLE "Review" ADD CONSTRAINT "Review_phoneId_fkey" FOREIGN KEY ("phoneId"
 ALTER TABLE "Archives" ADD CONSTRAINT "Archives_phoneId_fkey" FOREIGN KEY ("phoneId") REFERENCES "Phone"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "Address" ADD CONSTRAINT "Address_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE "Address" ADD CONSTRAINT "Address_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE SET NULL ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "Payment" ADD CONSTRAINT "Payment_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE SET NULL ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "Chat" ADD CONSTRAINT "Chat_buyerId_fkey" FOREIGN KEY ("buyerId") REFERENCES "User"("id") ON DELETE SET NULL ON UPDATE CASCADE;
+ALTER TABLE "Chat" ADD CONSTRAINT "Chat_senderId_fkey" FOREIGN KEY ("senderId") REFERENCES "User"("id") ON DELETE SET NULL ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "Messages" ADD CONSTRAINT "Messages_senderId_fkey" FOREIGN KEY ("senderId") REFERENCES "User"("id") ON DELETE SET NULL ON UPDATE CASCADE;
+ALTER TABLE "Chat" ADD CONSTRAINT "Chat_phoneId_fkey" FOREIGN KEY ("phoneId") REFERENCES "Phone"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "Messages" ADD CONSTRAINT "Messages_chatId_fkey" FOREIGN KEY ("chatId") REFERENCES "Chat"("id") ON DELETE SET NULL ON UPDATE CASCADE;
+ALTER TABLE "Message" ADD CONSTRAINT "Message_chatId_fkey" FOREIGN KEY ("chatId") REFERENCES "Chat"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "Message" ADD CONSTRAINT "Message_senderId_fkey" FOREIGN KEY ("senderId") REFERENCES "User"("id") ON DELETE CASCADE ON UPDATE CASCADE;

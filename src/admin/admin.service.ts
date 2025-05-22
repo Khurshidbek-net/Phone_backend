@@ -16,13 +16,13 @@ export class AdminService {
 
     const imageUrl = image || null;
 
-    const admin = await this.prisma.admin.findFirst({
+    const admin = await this.prisma.admin.findUnique({
       where: { email },
     });
     if (admin) {
       throw new BadRequestException('Bunday admin mavjud');
     }
-    const admin2 = await this.prisma.admin.findFirst({
+    const admin2 = await this.prisma.admin.findUnique({
       where: { phone_number: data.phone_number },
     });
     if (admin2) {
@@ -39,6 +39,18 @@ export class AdminService {
 
   async findAll() {
     return await this.prisma.admin.findMany();
+  }
+
+  findOneByEmail(email: string) {
+    return this.prisma.admin.findUnique({ where: { email } });
+  }
+
+  async updateRefreshToken(id: number, hashed_refresh_token: string | null) {
+    const updatedAdmin = await this.prisma.admin.update({
+      where: { id },
+      data: { refresh_token: hashed_refresh_token, last_login: new Date() },
+    });
+    return updatedAdmin;
   }
 
   async findOne(id: number) {
@@ -62,7 +74,10 @@ export class AdminService {
 
   async remove(id: number) {
     await this.findOne(id);
-    await this.prisma.admin.delete({ where: { id } });
+    await this.prisma.admin.update({
+      where: { id },
+      data: { is_deleted: true },
+    });
     return { message: 'Admin deleted successfully' };
   }
 }

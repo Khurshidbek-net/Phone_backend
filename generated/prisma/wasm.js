@@ -157,6 +157,7 @@ exports.Prisma.UserScalarFieldEnum = {
   isDeleted: 'isDeleted',
   lastSeen: 'lastSeen',
   hashedToken: 'hashedToken',
+  activation_link: 'activation_link',
   mainEmailId: 'mainEmailId',
   mainPhoneId: 'mainPhoneId',
   createdAt: 'createdAt',
@@ -226,7 +227,8 @@ exports.Prisma.PhoneScalarFieldEnum = {
   modelId: 'modelId',
   brandId: 'brandId',
   colorId: 'colorId',
-  userId: 'userId'
+  userId: 'userId',
+  addressId: 'addressId'
 };
 
 exports.Prisma.ImageScalarFieldEnum = {
@@ -267,9 +269,9 @@ exports.Prisma.AddressScalarFieldEnum = {
   address: 'address',
   lat: 'lat',
   long: 'long',
-  userId: 'userId',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  updatedAt: 'updatedAt',
+  userId: 'userId'
 };
 
 exports.Prisma.PaymentScalarFieldEnum = {
@@ -309,6 +311,7 @@ exports.Prisma.AdminScalarFieldEnum = {
   image: 'image',
   is_creator: 'is_creator',
   is_active: 'is_active',
+  is_deleted: 'is_deleted',
   refresh_token: 'refresh_token',
   last_login: 'last_login',
   login_attempts: 'login_attempts',

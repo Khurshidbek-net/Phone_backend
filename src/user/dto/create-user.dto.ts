@@ -2,22 +2,20 @@ import { IsOptional, IsString, IsNumber, MinLength, IsNotEmpty, IsDateString, Is
 import { ApiProperty } from '@nestjs/swagger';
 
 export class CreateUserDto {
-
   @ApiProperty()
   @IsString()
   @MinLength(3)
   @MaxLength(50)
   name: string;
 
-
   @ApiProperty({ description: 'Either email or phone number is required' })
   @IsEmail()
-  @ValidateIf(o => !o.phoneNumber)
+  @ValidateIf((o) => !o.phoneNumber)
   email?: string;
 
   @ApiProperty()
   @IsPhoneNumber('UZ')
-  @ValidateIf(o => !o.email)
+  @ValidateIf((o) => !o.email)
   phoneNumber?: string;
 
   @ApiProperty()
@@ -27,6 +25,10 @@ export class CreateUserDto {
 
   @IsOptional()
   @IsBoolean()
-  isActive?: boolean
+  isActive?: boolean;
+
+  @IsOptional()
+  @IsString()
+  activation_link?: string;
 }
 

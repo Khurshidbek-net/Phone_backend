@@ -22,9 +22,8 @@ export class UserSelfGuard extends AuthGuard('jwt') {
     if (!user)
       throw new ForbiddenException('User not found');
 
-    console.log(user.id)
     const paramId = parseInt(request.params.id, 10);
-    console.log(paramId)
+
 
     if (user.id !== paramId)
       throw new ForbiddenException('You are not authorized');

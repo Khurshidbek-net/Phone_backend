@@ -7,8 +7,12 @@ import * as fs from 'fs';
 export class FileService {
   async saveFile(file: any): Promise<string> {
     try {
-      const fileName = uuid.v4() + path.extname(file.originalname);
-      const filePath = path.join(process.cwd(), 'public', 'images');
+      let ext = path.extname(file.originalname).toLowerCase();
+      if (ext === '.jfif') {
+        ext = '.jpg';
+      }
+      const fileName = uuid.v4() + ext;
+      const filePath = path.join(process.cwd(), 'uploads', 'admins');
 
       if (!fs.existsSync(filePath)) {
         fs.mkdirSync(filePath, { recursive: true });
@@ -17,9 +21,38 @@ export class FileService {
       fs.writeFileSync(path.join(filePath, fileName), file.buffer);
 
       const baseUrl = process.env.BASE_URL;
-      return `${baseUrl}/images/${fileName}`;
+      return `${baseUrl}/admins/${fileName}`;
     } catch (error) {
       throw new InternalServerErrorException('Filega yozishda xatolik');
+    }
+  }
+
+  async saveMultipleFiles(files: Express.Multer.File[]): Promise<string[]> {
+    try {
+      const folder = 'products';
+      const filePath = path.join(process.cwd(), 'uploads', folder);
+
+      if (!fs.existsSync(filePath)) {
+        fs.mkdirSync(filePath, { recursive: true });
+      }
+
+      const baseUrl = process.env.BASE_URL;
+      const urls: string[] = [];
+
+      for (const file of files) {
+        let ext = path.extname(file.originalname).toLowerCase();
+        if (ext === '.jfif') {
+          ext = '.jpg';
+        }
+        const fileName = uuid.v4() + ext;
+
+        fs.writeFileSync(path.join(filePath, fileName), file.buffer);
+        urls.push(`${baseUrl}/${folder}/${fileName}`);
+      }
+
+      return urls;
+    } catch (err) {
+      throw new InternalServerErrorException('Fayllarni saqlashda xatolik');
     }
   }
 }

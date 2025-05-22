@@ -3134,6 +3134,37 @@ export namespace Prisma {
 
 
   /**
+   * Count Type AddressCountOutputType
+   */
+
+  export type AddressCountOutputType = {
+    Phones: number
+  }
+
+  export type AddressCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    Phones?: boolean | AddressCountOutputTypeCountPhonesArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * AddressCountOutputType without action
+   */
+  export type AddressCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AddressCountOutputType
+     */
+    select?: AddressCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * AddressCountOutputType without action
+   */
+  export type AddressCountOutputTypeCountPhonesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: PhoneWhereInput
+  }
+
+
+  /**
    * Count Type ChatCountOutputType
    */
 
@@ -6523,6 +6554,7 @@ export namespace Prisma {
     isDeleted: boolean | null
     lastSeen: Date | null
     hashedToken: string | null
+    activation_link: string | null
     mainEmailId: number | null
     mainPhoneId: number | null
     createdAt: Date | null
@@ -6546,6 +6578,7 @@ export namespace Prisma {
     isDeleted: boolean | null
     lastSeen: Date | null
     hashedToken: string | null
+    activation_link: string | null
     mainEmailId: number | null
     mainPhoneId: number | null
     createdAt: Date | null
@@ -6569,6 +6602,7 @@ export namespace Prisma {
     isDeleted: number
     lastSeen: number
     hashedToken: number
+    activation_link: number
     mainEmailId: number
     mainPhoneId: number
     createdAt: number
@@ -6614,6 +6648,7 @@ export namespace Prisma {
     isDeleted?: true
     lastSeen?: true
     hashedToken?: true
+    activation_link?: true
     mainEmailId?: true
     mainPhoneId?: true
     createdAt?: true
@@ -6637,6 +6672,7 @@ export namespace Prisma {
     isDeleted?: true
     lastSeen?: true
     hashedToken?: true
+    activation_link?: true
     mainEmailId?: true
     mainPhoneId?: true
     createdAt?: true
@@ -6660,6 +6696,7 @@ export namespace Prisma {
     isDeleted?: true
     lastSeen?: true
     hashedToken?: true
+    activation_link?: true
     mainEmailId?: true
     mainPhoneId?: true
     createdAt?: true
@@ -6770,6 +6807,7 @@ export namespace Prisma {
     isDeleted: boolean
     lastSeen: Date | null
     hashedToken: string | null
+    activation_link: string | null
     mainEmailId: number | null
     mainPhoneId: number | null
     createdAt: Date
@@ -6812,6 +6850,7 @@ export namespace Prisma {
     isDeleted?: boolean
     lastSeen?: boolean
     hashedToken?: boolean
+    activation_link?: boolean
     mainEmailId?: boolean
     mainPhoneId?: boolean
     createdAt?: boolean
@@ -6847,6 +6886,7 @@ export namespace Prisma {
     isDeleted?: boolean
     lastSeen?: boolean
     hashedToken?: boolean
+    activation_link?: boolean
     mainEmailId?: boolean
     mainPhoneId?: boolean
     createdAt?: boolean
@@ -6874,6 +6914,7 @@ export namespace Prisma {
     isDeleted?: boolean
     lastSeen?: boolean
     hashedToken?: boolean
+    activation_link?: boolean
     mainEmailId?: boolean
     mainPhoneId?: boolean
     createdAt?: boolean
@@ -6901,6 +6942,7 @@ export namespace Prisma {
     isDeleted?: boolean
     lastSeen?: boolean
     hashedToken?: boolean
+    activation_link?: boolean
     mainEmailId?: boolean
     mainPhoneId?: boolean
     createdAt?: boolean
@@ -6909,7 +6951,7 @@ export namespace Prisma {
     languageId?: boolean
   }
 
-  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "firstName" | "lastName" | "birthDate" | "balance" | "password" | "image" | "loginAttempts" | "lockedUntil" | "isLocked" | "isActive" | "isDeleted" | "lastSeen" | "hashedToken" | "mainEmailId" | "mainPhoneId" | "createdAt" | "updatedAt" | "districtId" | "languageId", ExtArgs["result"]["user"]>
+  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "firstName" | "lastName" | "birthDate" | "balance" | "password" | "image" | "loginAttempts" | "lockedUntil" | "isLocked" | "isActive" | "isDeleted" | "lastSeen" | "hashedToken" | "activation_link" | "mainEmailId" | "mainPhoneId" | "createdAt" | "updatedAt" | "districtId" | "languageId", ExtArgs["result"]["user"]>
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     mainEmail?: boolean | User$mainEmailArgs<ExtArgs>
     mainPhone?: boolean | User$mainPhoneArgs<ExtArgs>
@@ -6967,6 +7009,7 @@ export namespace Prisma {
       isDeleted: boolean
       lastSeen: Date | null
       hashedToken: string | null
+      activation_link: string | null
       mainEmailId: number | null
       mainPhoneId: number | null
       createdAt: Date
@@ -7421,6 +7464,7 @@ export namespace Prisma {
     readonly isDeleted: FieldRef<"User", 'Boolean'>
     readonly lastSeen: FieldRef<"User", 'DateTime'>
     readonly hashedToken: FieldRef<"User", 'String'>
+    readonly activation_link: FieldRef<"User", 'String'>
     readonly mainEmailId: FieldRef<"User", 'Int'>
     readonly mainPhoneId: FieldRef<"User", 'Int'>
     readonly createdAt: FieldRef<"User", 'DateTime'>
@@ -14695,6 +14739,7 @@ export namespace Prisma {
     brandId: number | null
     colorId: number | null
     userId: number | null
+    addressId: number | null
   }
 
   export type PhoneSumAggregateOutputType = {
@@ -14707,6 +14752,7 @@ export namespace Prisma {
     brandId: number | null
     colorId: number | null
     userId: number | null
+    addressId: number | null
   }
 
   export type PhoneMinAggregateOutputType = {
@@ -14733,6 +14779,7 @@ export namespace Prisma {
     brandId: number | null
     colorId: number | null
     userId: number | null
+    addressId: number | null
   }
 
   export type PhoneMaxAggregateOutputType = {
@@ -14759,6 +14806,7 @@ export namespace Prisma {
     brandId: number | null
     colorId: number | null
     userId: number | null
+    addressId: number | null
   }
 
   export type PhoneCountAggregateOutputType = {
@@ -14785,6 +14833,7 @@ export namespace Prisma {
     brandId: number
     colorId: number
     userId: number
+    addressId: number
     _all: number
   }
 
@@ -14799,6 +14848,7 @@ export namespace Prisma {
     brandId?: true
     colorId?: true
     userId?: true
+    addressId?: true
   }
 
   export type PhoneSumAggregateInputType = {
@@ -14811,6 +14861,7 @@ export namespace Prisma {
     brandId?: true
     colorId?: true
     userId?: true
+    addressId?: true
   }
 
   export type PhoneMinAggregateInputType = {
@@ -14837,6 +14888,7 @@ export namespace Prisma {
     brandId?: true
     colorId?: true
     userId?: true
+    addressId?: true
   }
 
   export type PhoneMaxAggregateInputType = {
@@ -14863,6 +14915,7 @@ export namespace Prisma {
     brandId?: true
     colorId?: true
     userId?: true
+    addressId?: true
   }
 
   export type PhoneCountAggregateInputType = {
@@ -14889,6 +14942,7 @@ export namespace Prisma {
     brandId?: true
     colorId?: true
     userId?: true
+    addressId?: true
     _all?: true
   }
 
@@ -15002,6 +15056,7 @@ export namespace Prisma {
     brandId: number | null
     colorId: number | null
     userId: number | null
+    addressId: number | null
     _count: PhoneCountAggregateOutputType | null
     _avg: PhoneAvgAggregateOutputType | null
     _sum: PhoneSumAggregateOutputType | null
@@ -15047,11 +15102,13 @@ export namespace Prisma {
     brandId?: boolean
     colorId?: boolean
     userId?: boolean
+    addressId?: boolean
     Currency?: boolean | Phone$CurrencyArgs<ExtArgs>
     Models?: boolean | Phone$ModelsArgs<ExtArgs>
     Brands?: boolean | Phone$BrandsArgs<ExtArgs>
     Color?: boolean | Phone$ColorArgs<ExtArgs>
     User?: boolean | Phone$UserArgs<ExtArgs>
+    Address?: boolean | Phone$AddressArgs<ExtArgs>
     Images?: boolean | Phone$ImagesArgs<ExtArgs>
     Reviews?: boolean | Phone$ReviewsArgs<ExtArgs>
     Archives?: boolean | Phone$ArchivesArgs<ExtArgs>
@@ -15083,11 +15140,13 @@ export namespace Prisma {
     brandId?: boolean
     colorId?: boolean
     userId?: boolean
+    addressId?: boolean
     Currency?: boolean | Phone$CurrencyArgs<ExtArgs>
     Models?: boolean | Phone$ModelsArgs<ExtArgs>
     Brands?: boolean | Phone$BrandsArgs<ExtArgs>
     Color?: boolean | Phone$ColorArgs<ExtArgs>
     User?: boolean | Phone$UserArgs<ExtArgs>
+    Address?: boolean | Phone$AddressArgs<ExtArgs>
   }, ExtArgs["result"]["phone"]>
 
   export type PhoneSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -15114,11 +15173,13 @@ export namespace Prisma {
     brandId?: boolean
     colorId?: boolean
     userId?: boolean
+    addressId?: boolean
     Currency?: boolean | Phone$CurrencyArgs<ExtArgs>
     Models?: boolean | Phone$ModelsArgs<ExtArgs>
     Brands?: boolean | Phone$BrandsArgs<ExtArgs>
     Color?: boolean | Phone$ColorArgs<ExtArgs>
     User?: boolean | Phone$UserArgs<ExtArgs>
+    Address?: boolean | Phone$AddressArgs<ExtArgs>
   }, ExtArgs["result"]["phone"]>
 
   export type PhoneSelectScalar = {
@@ -15145,15 +15206,17 @@ export namespace Prisma {
     brandId?: boolean
     colorId?: boolean
     userId?: boolean
+    addressId?: boolean
   }
 
-  export type PhoneOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "description" | "ram" | "rom" | "price" | "box_with_document" | "is_new" | "posted_date" | "views" | "like_counts" | "is_negotiable" | "brand" | "model" | "is_active" | "is_checked" | "is_archived" | "is_deleted" | "currencyId" | "modelId" | "brandId" | "colorId" | "userId", ExtArgs["result"]["phone"]>
+  export type PhoneOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "description" | "ram" | "rom" | "price" | "box_with_document" | "is_new" | "posted_date" | "views" | "like_counts" | "is_negotiable" | "brand" | "model" | "is_active" | "is_checked" | "is_archived" | "is_deleted" | "currencyId" | "modelId" | "brandId" | "colorId" | "userId" | "addressId", ExtArgs["result"]["phone"]>
   export type PhoneInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     Currency?: boolean | Phone$CurrencyArgs<ExtArgs>
     Models?: boolean | Phone$ModelsArgs<ExtArgs>
     Brands?: boolean | Phone$BrandsArgs<ExtArgs>
     Color?: boolean | Phone$ColorArgs<ExtArgs>
     User?: boolean | Phone$UserArgs<ExtArgs>
+    Address?: boolean | Phone$AddressArgs<ExtArgs>
     Images?: boolean | Phone$ImagesArgs<ExtArgs>
     Reviews?: boolean | Phone$ReviewsArgs<ExtArgs>
     Archives?: boolean | Phone$ArchivesArgs<ExtArgs>
@@ -15166,6 +15229,7 @@ export namespace Prisma {
     Brands?: boolean | Phone$BrandsArgs<ExtArgs>
     Color?: boolean | Phone$ColorArgs<ExtArgs>
     User?: boolean | Phone$UserArgs<ExtArgs>
+    Address?: boolean | Phone$AddressArgs<ExtArgs>
   }
   export type PhoneIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     Currency?: boolean | Phone$CurrencyArgs<ExtArgs>
@@ -15173,6 +15237,7 @@ export namespace Prisma {
     Brands?: boolean | Phone$BrandsArgs<ExtArgs>
     Color?: boolean | Phone$ColorArgs<ExtArgs>
     User?: boolean | Phone$UserArgs<ExtArgs>
+    Address?: boolean | Phone$AddressArgs<ExtArgs>
   }
 
   export type $PhonePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -15183,6 +15248,7 @@ export namespace Prisma {
       Brands: Prisma.$BrandPayload<ExtArgs> | null
       Color: Prisma.$ColorPayload<ExtArgs> | null
       User: Prisma.$UserPayload<ExtArgs> | null
+      Address: Prisma.$AddressPayload<ExtArgs> | null
       Images: Prisma.$ImagePayload<ExtArgs>[]
       Reviews: Prisma.$ReviewPayload<ExtArgs>[]
       Archives: Prisma.$ArchivesPayload<ExtArgs>[]
@@ -15212,6 +15278,7 @@ export namespace Prisma {
       brandId: number | null
       colorId: number | null
       userId: number | null
+      addressId: number | null
     }, ExtArgs["result"]["phone"]>
     composites: {}
   }
@@ -15611,6 +15678,7 @@ export namespace Prisma {
     Brands<T extends Phone$BrandsArgs<ExtArgs> = {}>(args?: Subset<T, Phone$BrandsArgs<ExtArgs>>): Prisma__BrandClient<$Result.GetResult<Prisma.$BrandPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     Color<T extends Phone$ColorArgs<ExtArgs> = {}>(args?: Subset<T, Phone$ColorArgs<ExtArgs>>): Prisma__ColorClient<$Result.GetResult<Prisma.$ColorPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     User<T extends Phone$UserArgs<ExtArgs> = {}>(args?: Subset<T, Phone$UserArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    Address<T extends Phone$AddressArgs<ExtArgs> = {}>(args?: Subset<T, Phone$AddressArgs<ExtArgs>>): Prisma__AddressClient<$Result.GetResult<Prisma.$AddressPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     Images<T extends Phone$ImagesArgs<ExtArgs> = {}>(args?: Subset<T, Phone$ImagesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ImagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     Reviews<T extends Phone$ReviewsArgs<ExtArgs> = {}>(args?: Subset<T, Phone$ReviewsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ReviewPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     Archives<T extends Phone$ArchivesArgs<ExtArgs> = {}>(args?: Subset<T, Phone$ArchivesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ArchivesPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
@@ -15667,6 +15735,7 @@ export namespace Prisma {
     readonly brandId: FieldRef<"Phone", 'Int'>
     readonly colorId: FieldRef<"Phone", 'Int'>
     readonly userId: FieldRef<"Phone", 'Int'>
+    readonly addressId: FieldRef<"Phone", 'Int'>
   }
     
 
@@ -16155,6 +16224,25 @@ export namespace Prisma {
      */
     include?: UserInclude<ExtArgs> | null
     where?: UserWhereInput
+  }
+
+  /**
+   * Phone.Address
+   */
+  export type Phone$AddressArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Address
+     */
+    select?: AddressSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Address
+     */
+    omit?: AddressOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AddressInclude<ExtArgs> | null
+    where?: AddressWhereInput
   }
 
   /**
@@ -21546,9 +21634,9 @@ export namespace Prisma {
     address: string | null
     lat: number | null
     long: number | null
-    userId: number | null
     createdAt: Date | null
     updatedAt: Date | null
+    userId: number | null
   }
 
   export type AddressMaxAggregateOutputType = {
@@ -21557,9 +21645,9 @@ export namespace Prisma {
     address: string | null
     lat: number | null
     long: number | null
-    userId: number | null
     createdAt: Date | null
     updatedAt: Date | null
+    userId: number | null
   }
 
   export type AddressCountAggregateOutputType = {
@@ -21568,9 +21656,9 @@ export namespace Prisma {
     address: number
     lat: number
     long: number
-    userId: number
     createdAt: number
     updatedAt: number
+    userId: number
     _all: number
   }
 
@@ -21595,9 +21683,9 @@ export namespace Prisma {
     address?: true
     lat?: true
     long?: true
-    userId?: true
     createdAt?: true
     updatedAt?: true
+    userId?: true
   }
 
   export type AddressMaxAggregateInputType = {
@@ -21606,9 +21694,9 @@ export namespace Prisma {
     address?: true
     lat?: true
     long?: true
-    userId?: true
     createdAt?: true
     updatedAt?: true
+    userId?: true
   }
 
   export type AddressCountAggregateInputType = {
@@ -21617,9 +21705,9 @@ export namespace Prisma {
     address?: true
     lat?: true
     long?: true
-    userId?: true
     createdAt?: true
     updatedAt?: true
+    userId?: true
     _all?: true
   }
 
@@ -21715,9 +21803,9 @@ export namespace Prisma {
     address: string
     lat: number
     long: number
-    userId: number | null
     createdAt: Date
     updatedAt: Date
+    userId: number | null
     _count: AddressCountAggregateOutputType | null
     _avg: AddressAvgAggregateOutputType | null
     _sum: AddressSumAggregateOutputType | null
@@ -21745,10 +21833,12 @@ export namespace Prisma {
     address?: boolean
     lat?: boolean
     long?: boolean
-    userId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    userId?: boolean
     User?: boolean | Address$UserArgs<ExtArgs>
+    Phones?: boolean | Address$PhonesArgs<ExtArgs>
+    _count?: boolean | AddressCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["address"]>
 
   export type AddressSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -21757,9 +21847,9 @@ export namespace Prisma {
     address?: boolean
     lat?: boolean
     long?: boolean
-    userId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    userId?: boolean
     User?: boolean | Address$UserArgs<ExtArgs>
   }, ExtArgs["result"]["address"]>
 
@@ -21769,9 +21859,9 @@ export namespace Prisma {
     address?: boolean
     lat?: boolean
     long?: boolean
-    userId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    userId?: boolean
     User?: boolean | Address$UserArgs<ExtArgs>
   }, ExtArgs["result"]["address"]>
 
@@ -21781,14 +21871,16 @@ export namespace Prisma {
     address?: boolean
     lat?: boolean
     long?: boolean
-    userId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    userId?: boolean
   }
 
-  export type AddressOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "address" | "lat" | "long" | "userId" | "createdAt" | "updatedAt", ExtArgs["result"]["address"]>
+  export type AddressOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "address" | "lat" | "long" | "createdAt" | "updatedAt" | "userId", ExtArgs["result"]["address"]>
   export type AddressInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     User?: boolean | Address$UserArgs<ExtArgs>
+    Phones?: boolean | Address$PhonesArgs<ExtArgs>
+    _count?: boolean | AddressCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type AddressIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     User?: boolean | Address$UserArgs<ExtArgs>
@@ -21801,6 +21893,7 @@ export namespace Prisma {
     name: "Address"
     objects: {
       User: Prisma.$UserPayload<ExtArgs> | null
+      Phones: Prisma.$PhonePayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -21808,9 +21901,9 @@ export namespace Prisma {
       address: string
       lat: number
       long: number
-      userId: number | null
       createdAt: Date
       updatedAt: Date
+      userId: number | null
     }, ExtArgs["result"]["address"]>
     composites: {}
   }
@@ -22206,6 +22299,7 @@ export namespace Prisma {
   export interface Prisma__AddressClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     User<T extends Address$UserArgs<ExtArgs> = {}>(args?: Subset<T, Address$UserArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    Phones<T extends Address$PhonesArgs<ExtArgs> = {}>(args?: Subset<T, Address$PhonesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PhonePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -22240,9 +22334,9 @@ export namespace Prisma {
     readonly address: FieldRef<"Address", 'String'>
     readonly lat: FieldRef<"Address", 'Float'>
     readonly long: FieldRef<"Address", 'Float'>
-    readonly userId: FieldRef<"Address", 'Int'>
     readonly createdAt: FieldRef<"Address", 'DateTime'>
     readonly updatedAt: FieldRef<"Address", 'DateTime'>
+    readonly userId: FieldRef<"Address", 'Int'>
   }
     
 
@@ -22655,6 +22749,30 @@ export namespace Prisma {
      */
     include?: UserInclude<ExtArgs> | null
     where?: UserWhereInput
+  }
+
+  /**
+   * Address.Phones
+   */
+  export type Address$PhonesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Phone
+     */
+    select?: PhoneSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Phone
+     */
+    omit?: PhoneOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PhoneInclude<ExtArgs> | null
+    where?: PhoneWhereInput
+    orderBy?: PhoneOrderByWithRelationInput | PhoneOrderByWithRelationInput[]
+    cursor?: PhoneWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: PhoneScalarFieldEnum | PhoneScalarFieldEnum[]
   }
 
   /**
@@ -26131,6 +26249,7 @@ export namespace Prisma {
     image: string | null
     is_creator: boolean | null
     is_active: boolean | null
+    is_deleted: boolean | null
     refresh_token: string | null
     last_login: Date | null
     login_attempts: number | null
@@ -26149,6 +26268,7 @@ export namespace Prisma {
     image: string | null
     is_creator: boolean | null
     is_active: boolean | null
+    is_deleted: boolean | null
     refresh_token: string | null
     last_login: Date | null
     login_attempts: number | null
@@ -26167,6 +26287,7 @@ export namespace Prisma {
     image: number
     is_creator: number
     is_active: number
+    is_deleted: number
     refresh_token: number
     last_login: number
     login_attempts: number
@@ -26197,6 +26318,7 @@ export namespace Prisma {
     image?: true
     is_creator?: true
     is_active?: true
+    is_deleted?: true
     refresh_token?: true
     last_login?: true
     login_attempts?: true
@@ -26215,6 +26337,7 @@ export namespace Prisma {
     image?: true
     is_creator?: true
     is_active?: true
+    is_deleted?: true
     refresh_token?: true
     last_login?: true
     login_attempts?: true
@@ -26233,6 +26356,7 @@ export namespace Prisma {
     image?: true
     is_creator?: true
     is_active?: true
+    is_deleted?: true
     refresh_token?: true
     last_login?: true
     login_attempts?: true
@@ -26338,9 +26462,10 @@ export namespace Prisma {
     image: string | null
     is_creator: boolean | null
     is_active: boolean
+    is_deleted: boolean | null
     refresh_token: string | null
     last_login: Date | null
-    login_attempts: number | null
+    login_attempts: number
     locked_until: Date | null
     createdAt: Date
     updatedAt: Date
@@ -26375,6 +26500,7 @@ export namespace Prisma {
     image?: boolean
     is_creator?: boolean
     is_active?: boolean
+    is_deleted?: boolean
     refresh_token?: boolean
     last_login?: boolean
     login_attempts?: boolean
@@ -26393,6 +26519,7 @@ export namespace Prisma {
     image?: boolean
     is_creator?: boolean
     is_active?: boolean
+    is_deleted?: boolean
     refresh_token?: boolean
     last_login?: boolean
     login_attempts?: boolean
@@ -26411,6 +26538,7 @@ export namespace Prisma {
     image?: boolean
     is_creator?: boolean
     is_active?: boolean
+    is_deleted?: boolean
     refresh_token?: boolean
     last_login?: boolean
     login_attempts?: boolean
@@ -26429,6 +26557,7 @@ export namespace Prisma {
     image?: boolean
     is_creator?: boolean
     is_active?: boolean
+    is_deleted?: boolean
     refresh_token?: boolean
     last_login?: boolean
     login_attempts?: boolean
@@ -26437,7 +26566,7 @@ export namespace Prisma {
     updatedAt?: boolean
   }
 
-  export type AdminOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "firstname" | "lastname" | "phone_number" | "hashed_password" | "email" | "image" | "is_creator" | "is_active" | "refresh_token" | "last_login" | "login_attempts" | "locked_until" | "createdAt" | "updatedAt", ExtArgs["result"]["admin"]>
+  export type AdminOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "firstname" | "lastname" | "phone_number" | "hashed_password" | "email" | "image" | "is_creator" | "is_active" | "is_deleted" | "refresh_token" | "last_login" | "login_attempts" | "locked_until" | "createdAt" | "updatedAt", ExtArgs["result"]["admin"]>
 
   export type $AdminPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Admin"
@@ -26452,9 +26581,10 @@ export namespace Prisma {
       image: string | null
       is_creator: boolean | null
       is_active: boolean
+      is_deleted: boolean | null
       refresh_token: string | null
       last_login: Date | null
-      login_attempts: number | null
+      login_attempts: number
       locked_until: Date | null
       createdAt: Date
       updatedAt: Date
@@ -26890,6 +27020,7 @@ export namespace Prisma {
     readonly image: FieldRef<"Admin", 'String'>
     readonly is_creator: FieldRef<"Admin", 'Boolean'>
     readonly is_active: FieldRef<"Admin", 'Boolean'>
+    readonly is_deleted: FieldRef<"Admin", 'Boolean'>
     readonly refresh_token: FieldRef<"Admin", 'String'>
     readonly last_login: FieldRef<"Admin", 'DateTime'>
     readonly login_attempts: FieldRef<"Admin", 'Int'>
@@ -27322,6 +27453,7 @@ export namespace Prisma {
     isDeleted: 'isDeleted',
     lastSeen: 'lastSeen',
     hashedToken: 'hashedToken',
+    activation_link: 'activation_link',
     mainEmailId: 'mainEmailId',
     mainPhoneId: 'mainPhoneId',
     createdAt: 'createdAt',
@@ -27412,7 +27544,8 @@ export namespace Prisma {
     modelId: 'modelId',
     brandId: 'brandId',
     colorId: 'colorId',
-    userId: 'userId'
+    userId: 'userId',
+    addressId: 'addressId'
   };
 
   export type PhoneScalarFieldEnum = (typeof PhoneScalarFieldEnum)[keyof typeof PhoneScalarFieldEnum]
@@ -27471,9 +27604,9 @@ export namespace Prisma {
     address: 'address',
     lat: 'lat',
     long: 'long',
-    userId: 'userId',
     createdAt: 'createdAt',
-    updatedAt: 'updatedAt'
+    updatedAt: 'updatedAt',
+    userId: 'userId'
   };
 
   export type AddressScalarFieldEnum = (typeof AddressScalarFieldEnum)[keyof typeof AddressScalarFieldEnum]
@@ -27525,6 +27658,7 @@ export namespace Prisma {
     image: 'image',
     is_creator: 'is_creator',
     is_active: 'is_active',
+    is_deleted: 'is_deleted',
     refresh_token: 'refresh_token',
     last_login: 'last_login',
     login_attempts: 'login_attempts',
@@ -27855,6 +27989,7 @@ export namespace Prisma {
     isDeleted?: BoolFilter<"User"> | boolean
     lastSeen?: DateTimeNullableFilter<"User"> | Date | string | null
     hashedToken?: StringNullableFilter<"User"> | string | null
+    activation_link?: StringNullableFilter<"User"> | string | null
     mainEmailId?: IntNullableFilter<"User"> | number | null
     mainPhoneId?: IntNullableFilter<"User"> | number | null
     createdAt?: DateTimeFilter<"User"> | Date | string
@@ -27889,6 +28024,7 @@ export namespace Prisma {
     isDeleted?: SortOrder
     lastSeen?: SortOrderInput | SortOrder
     hashedToken?: SortOrderInput | SortOrder
+    activation_link?: SortOrderInput | SortOrder
     mainEmailId?: SortOrderInput | SortOrder
     mainPhoneId?: SortOrderInput | SortOrder
     createdAt?: SortOrder
@@ -27910,6 +28046,7 @@ export namespace Prisma {
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
     id?: number
+    activation_link?: string
     AND?: UserWhereInput | UserWhereInput[]
     OR?: UserWhereInput[]
     NOT?: UserWhereInput | UserWhereInput[]
@@ -27943,7 +28080,7 @@ export namespace Prisma {
     Payment?: PaymentListRelationFilter
     Chat?: ChatListRelationFilter
     Messages?: MessageListRelationFilter
-  }, "id">
+  }, "id" | "activation_link">
 
   export type UserOrderByWithAggregationInput = {
     id?: SortOrder
@@ -27960,6 +28097,7 @@ export namespace Prisma {
     isDeleted?: SortOrder
     lastSeen?: SortOrderInput | SortOrder
     hashedToken?: SortOrderInput | SortOrder
+    activation_link?: SortOrderInput | SortOrder
     mainEmailId?: SortOrderInput | SortOrder
     mainPhoneId?: SortOrderInput | SortOrder
     createdAt?: SortOrder
@@ -27991,6 +28129,7 @@ export namespace Prisma {
     isDeleted?: BoolWithAggregatesFilter<"User"> | boolean
     lastSeen?: DateTimeNullableWithAggregatesFilter<"User"> | Date | string | null
     hashedToken?: StringNullableWithAggregatesFilter<"User"> | string | null
+    activation_link?: StringNullableWithAggregatesFilter<"User"> | string | null
     mainEmailId?: IntNullableWithAggregatesFilter<"User"> | number | null
     mainPhoneId?: IntNullableWithAggregatesFilter<"User"> | number | null
     createdAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
@@ -28330,11 +28469,13 @@ export namespace Prisma {
     brandId?: IntNullableFilter<"Phone"> | number | null
     colorId?: IntNullableFilter<"Phone"> | number | null
     userId?: IntNullableFilter<"Phone"> | number | null
+    addressId?: IntNullableFilter<"Phone"> | number | null
     Currency?: XOR<CurrencyNullableScalarRelationFilter, CurrencyWhereInput> | null
     Models?: XOR<ModelNullableScalarRelationFilter, ModelWhereInput> | null
     Brands?: XOR<BrandNullableScalarRelationFilter, BrandWhereInput> | null
     Color?: XOR<ColorNullableScalarRelationFilter, ColorWhereInput> | null
     User?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
+    Address?: XOR<AddressNullableScalarRelationFilter, AddressWhereInput> | null
     Images?: ImageListRelationFilter
     Reviews?: ReviewListRelationFilter
     Archives?: ArchivesListRelationFilter
@@ -28365,11 +28506,13 @@ export namespace Prisma {
     brandId?: SortOrderInput | SortOrder
     colorId?: SortOrderInput | SortOrder
     userId?: SortOrderInput | SortOrder
+    addressId?: SortOrderInput | SortOrder
     Currency?: CurrencyOrderByWithRelationInput
     Models?: ModelOrderByWithRelationInput
     Brands?: BrandOrderByWithRelationInput
     Color?: ColorOrderByWithRelationInput
     User?: UserOrderByWithRelationInput
+    Address?: AddressOrderByWithRelationInput
     Images?: ImageOrderByRelationAggregateInput
     Reviews?: ReviewOrderByRelationAggregateInput
     Archives?: ArchivesOrderByRelationAggregateInput
@@ -28403,11 +28546,13 @@ export namespace Prisma {
     brandId?: IntNullableFilter<"Phone"> | number | null
     colorId?: IntNullableFilter<"Phone"> | number | null
     userId?: IntNullableFilter<"Phone"> | number | null
+    addressId?: IntNullableFilter<"Phone"> | number | null
     Currency?: XOR<CurrencyNullableScalarRelationFilter, CurrencyWhereInput> | null
     Models?: XOR<ModelNullableScalarRelationFilter, ModelWhereInput> | null
     Brands?: XOR<BrandNullableScalarRelationFilter, BrandWhereInput> | null
     Color?: XOR<ColorNullableScalarRelationFilter, ColorWhereInput> | null
     User?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
+    Address?: XOR<AddressNullableScalarRelationFilter, AddressWhereInput> | null
     Images?: ImageListRelationFilter
     Reviews?: ReviewListRelationFilter
     Archives?: ArchivesListRelationFilter
@@ -28438,6 +28583,7 @@ export namespace Prisma {
     brandId?: SortOrderInput | SortOrder
     colorId?: SortOrderInput | SortOrder
     userId?: SortOrderInput | SortOrder
+    addressId?: SortOrderInput | SortOrder
     _count?: PhoneCountOrderByAggregateInput
     _avg?: PhoneAvgOrderByAggregateInput
     _max?: PhoneMaxOrderByAggregateInput
@@ -28472,6 +28618,7 @@ export namespace Prisma {
     brandId?: IntNullableWithAggregatesFilter<"Phone"> | number | null
     colorId?: IntNullableWithAggregatesFilter<"Phone"> | number | null
     userId?: IntNullableWithAggregatesFilter<"Phone"> | number | null
+    addressId?: IntNullableWithAggregatesFilter<"Phone"> | number | null
   }
 
   export type ImageWhereInput = {
@@ -28722,10 +28869,11 @@ export namespace Prisma {
     address?: StringFilter<"Address"> | string
     lat?: FloatFilter<"Address"> | number
     long?: FloatFilter<"Address"> | number
-    userId?: IntNullableFilter<"Address"> | number | null
     createdAt?: DateTimeFilter<"Address"> | Date | string
     updatedAt?: DateTimeFilter<"Address"> | Date | string
+    userId?: IntNullableFilter<"Address"> | number | null
     User?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
+    Phones?: PhoneListRelationFilter
   }
 
   export type AddressOrderByWithRelationInput = {
@@ -28734,10 +28882,11 @@ export namespace Prisma {
     address?: SortOrder
     lat?: SortOrder
     long?: SortOrder
-    userId?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    userId?: SortOrderInput | SortOrder
     User?: UserOrderByWithRelationInput
+    Phones?: PhoneOrderByRelationAggregateInput
   }
 
   export type AddressWhereUniqueInput = Prisma.AtLeast<{
@@ -28749,10 +28898,11 @@ export namespace Prisma {
     address?: StringFilter<"Address"> | string
     lat?: FloatFilter<"Address"> | number
     long?: FloatFilter<"Address"> | number
-    userId?: IntNullableFilter<"Address"> | number | null
     createdAt?: DateTimeFilter<"Address"> | Date | string
     updatedAt?: DateTimeFilter<"Address"> | Date | string
+    userId?: IntNullableFilter<"Address"> | number | null
     User?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
+    Phones?: PhoneListRelationFilter
   }, "id">
 
   export type AddressOrderByWithAggregationInput = {
@@ -28761,9 +28911,9 @@ export namespace Prisma {
     address?: SortOrder
     lat?: SortOrder
     long?: SortOrder
-    userId?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    userId?: SortOrderInput | SortOrder
     _count?: AddressCountOrderByAggregateInput
     _avg?: AddressAvgOrderByAggregateInput
     _max?: AddressMaxOrderByAggregateInput
@@ -28780,9 +28930,9 @@ export namespace Prisma {
     address?: StringWithAggregatesFilter<"Address"> | string
     lat?: FloatWithAggregatesFilter<"Address"> | number
     long?: FloatWithAggregatesFilter<"Address"> | number
-    userId?: IntNullableWithAggregatesFilter<"Address"> | number | null
     createdAt?: DateTimeWithAggregatesFilter<"Address"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Address"> | Date | string
+    userId?: IntNullableWithAggregatesFilter<"Address"> | number | null
   }
 
   export type PaymentWhereInput = {
@@ -28993,9 +29143,10 @@ export namespace Prisma {
     image?: StringNullableFilter<"Admin"> | string | null
     is_creator?: BoolNullableFilter<"Admin"> | boolean | null
     is_active?: BoolFilter<"Admin"> | boolean
+    is_deleted?: BoolNullableFilter<"Admin"> | boolean | null
     refresh_token?: StringNullableFilter<"Admin"> | string | null
     last_login?: DateTimeNullableFilter<"Admin"> | Date | string | null
-    login_attempts?: IntNullableFilter<"Admin"> | number | null
+    login_attempts?: IntFilter<"Admin"> | number
     locked_until?: DateTimeNullableFilter<"Admin"> | Date | string | null
     createdAt?: DateTimeFilter<"Admin"> | Date | string
     updatedAt?: DateTimeFilter<"Admin"> | Date | string
@@ -29011,9 +29162,10 @@ export namespace Prisma {
     image?: SortOrderInput | SortOrder
     is_creator?: SortOrderInput | SortOrder
     is_active?: SortOrder
+    is_deleted?: SortOrderInput | SortOrder
     refresh_token?: SortOrderInput | SortOrder
     last_login?: SortOrderInput | SortOrder
-    login_attempts?: SortOrderInput | SortOrder
+    login_attempts?: SortOrder
     locked_until?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -29023,22 +29175,23 @@ export namespace Prisma {
     id?: number
     phone_number?: string
     hashed_password?: string
+    email?: string
     AND?: AdminWhereInput | AdminWhereInput[]
     OR?: AdminWhereInput[]
     NOT?: AdminWhereInput | AdminWhereInput[]
     firstname?: StringFilter<"Admin"> | string
     lastname?: StringFilter<"Admin"> | string
-    email?: StringFilter<"Admin"> | string
     image?: StringNullableFilter<"Admin"> | string | null
     is_creator?: BoolNullableFilter<"Admin"> | boolean | null
     is_active?: BoolFilter<"Admin"> | boolean
+    is_deleted?: BoolNullableFilter<"Admin"> | boolean | null
     refresh_token?: StringNullableFilter<"Admin"> | string | null
     last_login?: DateTimeNullableFilter<"Admin"> | Date | string | null
-    login_attempts?: IntNullableFilter<"Admin"> | number | null
+    login_attempts?: IntFilter<"Admin"> | number
     locked_until?: DateTimeNullableFilter<"Admin"> | Date | string | null
     createdAt?: DateTimeFilter<"Admin"> | Date | string
     updatedAt?: DateTimeFilter<"Admin"> | Date | string
-  }, "id" | "phone_number" | "hashed_password">
+  }, "id" | "phone_number" | "hashed_password" | "email">
 
   export type AdminOrderByWithAggregationInput = {
     id?: SortOrder
@@ -29050,9 +29203,10 @@ export namespace Prisma {
     image?: SortOrderInput | SortOrder
     is_creator?: SortOrderInput | SortOrder
     is_active?: SortOrder
+    is_deleted?: SortOrderInput | SortOrder
     refresh_token?: SortOrderInput | SortOrder
     last_login?: SortOrderInput | SortOrder
-    login_attempts?: SortOrderInput | SortOrder
+    login_attempts?: SortOrder
     locked_until?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -29076,9 +29230,10 @@ export namespace Prisma {
     image?: StringNullableWithAggregatesFilter<"Admin"> | string | null
     is_creator?: BoolNullableWithAggregatesFilter<"Admin"> | boolean | null
     is_active?: BoolWithAggregatesFilter<"Admin"> | boolean
+    is_deleted?: BoolNullableWithAggregatesFilter<"Admin"> | boolean | null
     refresh_token?: StringNullableWithAggregatesFilter<"Admin"> | string | null
     last_login?: DateTimeNullableWithAggregatesFilter<"Admin"> | Date | string | null
-    login_attempts?: IntNullableWithAggregatesFilter<"Admin"> | number | null
+    login_attempts?: IntWithAggregatesFilter<"Admin"> | number
     locked_until?: DateTimeNullableWithAggregatesFilter<"Admin"> | Date | string | null
     createdAt?: DateTimeWithAggregatesFilter<"Admin"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Admin"> | Date | string
@@ -29254,6 +29409,7 @@ export namespace Prisma {
     isDeleted?: boolean
     lastSeen?: Date | string | null
     hashedToken?: string | null
+    activation_link?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     mainEmail?: EmailCreateNestedOneWithoutUserInput
@@ -29284,6 +29440,7 @@ export namespace Prisma {
     isDeleted?: boolean
     lastSeen?: Date | string | null
     hashedToken?: string | null
+    activation_link?: string | null
     mainEmailId?: number | null
     mainPhoneId?: number | null
     createdAt?: Date | string
@@ -29313,6 +29470,7 @@ export namespace Prisma {
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
     lastSeen?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     hashedToken?: NullableStringFieldUpdateOperationsInput | string | null
+    activation_link?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     mainEmail?: EmailUpdateOneWithoutUserNestedInput
@@ -29343,6 +29501,7 @@ export namespace Prisma {
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
     lastSeen?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     hashedToken?: NullableStringFieldUpdateOperationsInput | string | null
+    activation_link?: NullableStringFieldUpdateOperationsInput | string | null
     mainEmailId?: NullableIntFieldUpdateOperationsInput | number | null
     mainPhoneId?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -29373,6 +29532,7 @@ export namespace Prisma {
     isDeleted?: boolean
     lastSeen?: Date | string | null
     hashedToken?: string | null
+    activation_link?: string | null
     mainEmailId?: number | null
     mainPhoneId?: number | null
     createdAt?: Date | string
@@ -29395,6 +29555,7 @@ export namespace Prisma {
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
     lastSeen?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     hashedToken?: NullableStringFieldUpdateOperationsInput | string | null
+    activation_link?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -29414,6 +29575,7 @@ export namespace Prisma {
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
     lastSeen?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     hashedToken?: NullableStringFieldUpdateOperationsInput | string | null
+    activation_link?: NullableStringFieldUpdateOperationsInput | string | null
     mainEmailId?: NullableIntFieldUpdateOperationsInput | number | null
     mainPhoneId?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -29718,6 +29880,7 @@ export namespace Prisma {
     Brands?: BrandCreateNestedOneWithoutPhonesInput
     Color?: ColorCreateNestedOneWithoutPhonesInput
     User?: UserCreateNestedOneWithoutPhoneInput
+    Address?: AddressCreateNestedOneWithoutPhonesInput
     Images?: ImageCreateNestedManyWithoutPhoneInput
     Reviews?: ReviewCreateNestedManyWithoutPhoneInput
     Archives?: ArchivesCreateNestedManyWithoutPhoneInput
@@ -29748,6 +29911,7 @@ export namespace Prisma {
     brandId?: number | null
     colorId?: number | null
     userId?: number | null
+    addressId?: number | null
     Images?: ImageUncheckedCreateNestedManyWithoutPhoneInput
     Reviews?: ReviewUncheckedCreateNestedManyWithoutPhoneInput
     Archives?: ArchivesUncheckedCreateNestedManyWithoutPhoneInput
@@ -29777,6 +29941,7 @@ export namespace Prisma {
     Brands?: BrandUpdateOneWithoutPhonesNestedInput
     Color?: ColorUpdateOneWithoutPhonesNestedInput
     User?: UserUpdateOneWithoutPhoneNestedInput
+    Address?: AddressUpdateOneWithoutPhonesNestedInput
     Images?: ImageUpdateManyWithoutPhoneNestedInput
     Reviews?: ReviewUpdateManyWithoutPhoneNestedInput
     Archives?: ArchivesUpdateManyWithoutPhoneNestedInput
@@ -29807,6 +29972,7 @@ export namespace Prisma {
     brandId?: NullableIntFieldUpdateOperationsInput | number | null
     colorId?: NullableIntFieldUpdateOperationsInput | number | null
     userId?: NullableIntFieldUpdateOperationsInput | number | null
+    addressId?: NullableIntFieldUpdateOperationsInput | number | null
     Images?: ImageUncheckedUpdateManyWithoutPhoneNestedInput
     Reviews?: ReviewUncheckedUpdateManyWithoutPhoneNestedInput
     Archives?: ArchivesUncheckedUpdateManyWithoutPhoneNestedInput
@@ -29837,6 +30003,7 @@ export namespace Prisma {
     brandId?: number | null
     colorId?: number | null
     userId?: number | null
+    addressId?: number | null
   }
 
   export type PhoneUpdateManyMutationInput = {
@@ -29883,6 +30050,7 @@ export namespace Prisma {
     brandId?: NullableIntFieldUpdateOperationsInput | number | null
     colorId?: NullableIntFieldUpdateOperationsInput | number | null
     userId?: NullableIntFieldUpdateOperationsInput | number | null
+    addressId?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type ImageCreateInput = {
@@ -30099,6 +30267,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     User?: UserCreateNestedOneWithoutAddressInput
+    Phones?: PhoneCreateNestedManyWithoutAddressInput
   }
 
   export type AddressUncheckedCreateInput = {
@@ -30107,9 +30276,10 @@ export namespace Prisma {
     address: string
     lat: number
     long: number
-    userId?: number | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    userId?: number | null
+    Phones?: PhoneUncheckedCreateNestedManyWithoutAddressInput
   }
 
   export type AddressUpdateInput = {
@@ -30120,6 +30290,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     User?: UserUpdateOneWithoutAddressNestedInput
+    Phones?: PhoneUpdateManyWithoutAddressNestedInput
   }
 
   export type AddressUncheckedUpdateInput = {
@@ -30128,9 +30299,10 @@ export namespace Prisma {
     address?: StringFieldUpdateOperationsInput | string
     lat?: FloatFieldUpdateOperationsInput | number
     long?: FloatFieldUpdateOperationsInput | number
-    userId?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    userId?: NullableIntFieldUpdateOperationsInput | number | null
+    Phones?: PhoneUncheckedUpdateManyWithoutAddressNestedInput
   }
 
   export type AddressCreateManyInput = {
@@ -30139,9 +30311,9 @@ export namespace Prisma {
     address: string
     lat: number
     long: number
-    userId?: number | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    userId?: number | null
   }
 
   export type AddressUpdateManyMutationInput = {
@@ -30159,9 +30331,9 @@ export namespace Prisma {
     address?: StringFieldUpdateOperationsInput | string
     lat?: FloatFieldUpdateOperationsInput | number
     long?: FloatFieldUpdateOperationsInput | number
-    userId?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    userId?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type PaymentCreateInput = {
@@ -30352,9 +30524,10 @@ export namespace Prisma {
     image?: string | null
     is_creator?: boolean | null
     is_active?: boolean
+    is_deleted?: boolean | null
     refresh_token?: string | null
     last_login?: Date | string | null
-    login_attempts?: number | null
+    login_attempts?: number
     locked_until?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -30370,9 +30543,10 @@ export namespace Prisma {
     image?: string | null
     is_creator?: boolean | null
     is_active?: boolean
+    is_deleted?: boolean | null
     refresh_token?: string | null
     last_login?: Date | string | null
-    login_attempts?: number | null
+    login_attempts?: number
     locked_until?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -30387,9 +30561,10 @@ export namespace Prisma {
     image?: NullableStringFieldUpdateOperationsInput | string | null
     is_creator?: NullableBoolFieldUpdateOperationsInput | boolean | null
     is_active?: BoolFieldUpdateOperationsInput | boolean
+    is_deleted?: NullableBoolFieldUpdateOperationsInput | boolean | null
     refresh_token?: NullableStringFieldUpdateOperationsInput | string | null
     last_login?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    login_attempts?: NullableIntFieldUpdateOperationsInput | number | null
+    login_attempts?: IntFieldUpdateOperationsInput | number
     locked_until?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -30405,9 +30580,10 @@ export namespace Prisma {
     image?: NullableStringFieldUpdateOperationsInput | string | null
     is_creator?: NullableBoolFieldUpdateOperationsInput | boolean | null
     is_active?: BoolFieldUpdateOperationsInput | boolean
+    is_deleted?: NullableBoolFieldUpdateOperationsInput | boolean | null
     refresh_token?: NullableStringFieldUpdateOperationsInput | string | null
     last_login?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    login_attempts?: NullableIntFieldUpdateOperationsInput | number | null
+    login_attempts?: IntFieldUpdateOperationsInput | number
     locked_until?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -30423,9 +30599,10 @@ export namespace Prisma {
     image?: string | null
     is_creator?: boolean | null
     is_active?: boolean
+    is_deleted?: boolean | null
     refresh_token?: string | null
     last_login?: Date | string | null
-    login_attempts?: number | null
+    login_attempts?: number
     locked_until?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -30440,9 +30617,10 @@ export namespace Prisma {
     image?: NullableStringFieldUpdateOperationsInput | string | null
     is_creator?: NullableBoolFieldUpdateOperationsInput | boolean | null
     is_active?: BoolFieldUpdateOperationsInput | boolean
+    is_deleted?: NullableBoolFieldUpdateOperationsInput | boolean | null
     refresh_token?: NullableStringFieldUpdateOperationsInput | string | null
     last_login?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    login_attempts?: NullableIntFieldUpdateOperationsInput | number | null
+    login_attempts?: IntFieldUpdateOperationsInput | number
     locked_until?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -30458,9 +30636,10 @@ export namespace Prisma {
     image?: NullableStringFieldUpdateOperationsInput | string | null
     is_creator?: NullableBoolFieldUpdateOperationsInput | boolean | null
     is_active?: BoolFieldUpdateOperationsInput | boolean
+    is_deleted?: NullableBoolFieldUpdateOperationsInput | boolean | null
     refresh_token?: NullableStringFieldUpdateOperationsInput | string | null
     last_login?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    login_attempts?: NullableIntFieldUpdateOperationsInput | number | null
+    login_attempts?: IntFieldUpdateOperationsInput | number
     locked_until?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -30831,6 +31010,7 @@ export namespace Prisma {
     isDeleted?: SortOrder
     lastSeen?: SortOrder
     hashedToken?: SortOrder
+    activation_link?: SortOrder
     mainEmailId?: SortOrder
     mainPhoneId?: SortOrder
     createdAt?: SortOrder
@@ -30864,6 +31044,7 @@ export namespace Prisma {
     isDeleted?: SortOrder
     lastSeen?: SortOrder
     hashedToken?: SortOrder
+    activation_link?: SortOrder
     mainEmailId?: SortOrder
     mainPhoneId?: SortOrder
     createdAt?: SortOrder
@@ -30887,6 +31068,7 @@ export namespace Prisma {
     isDeleted?: SortOrder
     lastSeen?: SortOrder
     hashedToken?: SortOrder
+    activation_link?: SortOrder
     mainEmailId?: SortOrder
     mainPhoneId?: SortOrder
     createdAt?: SortOrder
@@ -31201,6 +31383,11 @@ export namespace Prisma {
     isNot?: UserWhereInput | null
   }
 
+  export type AddressNullableScalarRelationFilter = {
+    is?: AddressWhereInput | null
+    isNot?: AddressWhereInput | null
+  }
+
   export type ImageListRelationFilter = {
     every?: ImageWhereInput
     some?: ImageWhereInput
@@ -31255,6 +31442,7 @@ export namespace Prisma {
     brandId?: SortOrder
     colorId?: SortOrder
     userId?: SortOrder
+    addressId?: SortOrder
   }
 
   export type PhoneAvgOrderByAggregateInput = {
@@ -31267,6 +31455,7 @@ export namespace Prisma {
     brandId?: SortOrder
     colorId?: SortOrder
     userId?: SortOrder
+    addressId?: SortOrder
   }
 
   export type PhoneMaxOrderByAggregateInput = {
@@ -31293,6 +31482,7 @@ export namespace Prisma {
     brandId?: SortOrder
     colorId?: SortOrder
     userId?: SortOrder
+    addressId?: SortOrder
   }
 
   export type PhoneMinOrderByAggregateInput = {
@@ -31319,6 +31509,7 @@ export namespace Prisma {
     brandId?: SortOrder
     colorId?: SortOrder
     userId?: SortOrder
+    addressId?: SortOrder
   }
 
   export type PhoneSumOrderByAggregateInput = {
@@ -31331,6 +31522,7 @@ export namespace Prisma {
     brandId?: SortOrder
     colorId?: SortOrder
     userId?: SortOrder
+    addressId?: SortOrder
   }
 
   export type BigIntNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -31513,9 +31705,9 @@ export namespace Prisma {
     address?: SortOrder
     lat?: SortOrder
     long?: SortOrder
-    userId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    userId?: SortOrder
   }
 
   export type AddressAvgOrderByAggregateInput = {
@@ -31531,9 +31723,9 @@ export namespace Prisma {
     address?: SortOrder
     lat?: SortOrder
     long?: SortOrder
-    userId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    userId?: SortOrder
   }
 
   export type AddressMinOrderByAggregateInput = {
@@ -31542,9 +31734,9 @@ export namespace Prisma {
     address?: SortOrder
     lat?: SortOrder
     long?: SortOrder
-    userId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    userId?: SortOrder
   }
 
   export type AddressSumOrderByAggregateInput = {
@@ -31724,6 +31916,7 @@ export namespace Prisma {
     image?: SortOrder
     is_creator?: SortOrder
     is_active?: SortOrder
+    is_deleted?: SortOrder
     refresh_token?: SortOrder
     last_login?: SortOrder
     login_attempts?: SortOrder
@@ -31747,6 +31940,7 @@ export namespace Prisma {
     image?: SortOrder
     is_creator?: SortOrder
     is_active?: SortOrder
+    is_deleted?: SortOrder
     refresh_token?: SortOrder
     last_login?: SortOrder
     login_attempts?: SortOrder
@@ -31765,6 +31959,7 @@ export namespace Prisma {
     image?: SortOrder
     is_creator?: SortOrder
     is_active?: SortOrder
+    is_deleted?: SortOrder
     refresh_token?: SortOrder
     last_login?: SortOrder
     login_attempts?: SortOrder
@@ -32694,6 +32889,12 @@ export namespace Prisma {
     connect?: UserWhereUniqueInput
   }
 
+  export type AddressCreateNestedOneWithoutPhonesInput = {
+    create?: XOR<AddressCreateWithoutPhonesInput, AddressUncheckedCreateWithoutPhonesInput>
+    connectOrCreate?: AddressCreateOrConnectWithoutPhonesInput
+    connect?: AddressWhereUniqueInput
+  }
+
   export type ImageCreateNestedManyWithoutPhoneInput = {
     create?: XOR<ImageCreateWithoutPhoneInput, ImageUncheckedCreateWithoutPhoneInput> | ImageCreateWithoutPhoneInput[] | ImageUncheckedCreateWithoutPhoneInput[]
     connectOrCreate?: ImageCreateOrConnectWithoutPhoneInput | ImageCreateOrConnectWithoutPhoneInput[]
@@ -32806,6 +33007,16 @@ export namespace Prisma {
     delete?: UserWhereInput | boolean
     connect?: UserWhereUniqueInput
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutPhoneInput, UserUpdateWithoutPhoneInput>, UserUncheckedUpdateWithoutPhoneInput>
+  }
+
+  export type AddressUpdateOneWithoutPhonesNestedInput = {
+    create?: XOR<AddressCreateWithoutPhonesInput, AddressUncheckedCreateWithoutPhonesInput>
+    connectOrCreate?: AddressCreateOrConnectWithoutPhonesInput
+    upsert?: AddressUpsertWithoutPhonesInput
+    disconnect?: AddressWhereInput | boolean
+    delete?: AddressWhereInput | boolean
+    connect?: AddressWhereUniqueInput
+    update?: XOR<XOR<AddressUpdateToOneWithWhereWithoutPhonesInput, AddressUpdateWithoutPhonesInput>, AddressUncheckedUpdateWithoutPhonesInput>
   }
 
   export type ImageUpdateManyWithoutPhoneNestedInput = {
@@ -32968,6 +33179,20 @@ export namespace Prisma {
     connect?: UserWhereUniqueInput
   }
 
+  export type PhoneCreateNestedManyWithoutAddressInput = {
+    create?: XOR<PhoneCreateWithoutAddressInput, PhoneUncheckedCreateWithoutAddressInput> | PhoneCreateWithoutAddressInput[] | PhoneUncheckedCreateWithoutAddressInput[]
+    connectOrCreate?: PhoneCreateOrConnectWithoutAddressInput | PhoneCreateOrConnectWithoutAddressInput[]
+    createMany?: PhoneCreateManyAddressInputEnvelope
+    connect?: PhoneWhereUniqueInput | PhoneWhereUniqueInput[]
+  }
+
+  export type PhoneUncheckedCreateNestedManyWithoutAddressInput = {
+    create?: XOR<PhoneCreateWithoutAddressInput, PhoneUncheckedCreateWithoutAddressInput> | PhoneCreateWithoutAddressInput[] | PhoneUncheckedCreateWithoutAddressInput[]
+    connectOrCreate?: PhoneCreateOrConnectWithoutAddressInput | PhoneCreateOrConnectWithoutAddressInput[]
+    createMany?: PhoneCreateManyAddressInputEnvelope
+    connect?: PhoneWhereUniqueInput | PhoneWhereUniqueInput[]
+  }
+
   export type FloatFieldUpdateOperationsInput = {
     set?: number
     increment?: number
@@ -32984,6 +33209,34 @@ export namespace Prisma {
     delete?: UserWhereInput | boolean
     connect?: UserWhereUniqueInput
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutAddressInput, UserUpdateWithoutAddressInput>, UserUncheckedUpdateWithoutAddressInput>
+  }
+
+  export type PhoneUpdateManyWithoutAddressNestedInput = {
+    create?: XOR<PhoneCreateWithoutAddressInput, PhoneUncheckedCreateWithoutAddressInput> | PhoneCreateWithoutAddressInput[] | PhoneUncheckedCreateWithoutAddressInput[]
+    connectOrCreate?: PhoneCreateOrConnectWithoutAddressInput | PhoneCreateOrConnectWithoutAddressInput[]
+    upsert?: PhoneUpsertWithWhereUniqueWithoutAddressInput | PhoneUpsertWithWhereUniqueWithoutAddressInput[]
+    createMany?: PhoneCreateManyAddressInputEnvelope
+    set?: PhoneWhereUniqueInput | PhoneWhereUniqueInput[]
+    disconnect?: PhoneWhereUniqueInput | PhoneWhereUniqueInput[]
+    delete?: PhoneWhereUniqueInput | PhoneWhereUniqueInput[]
+    connect?: PhoneWhereUniqueInput | PhoneWhereUniqueInput[]
+    update?: PhoneUpdateWithWhereUniqueWithoutAddressInput | PhoneUpdateWithWhereUniqueWithoutAddressInput[]
+    updateMany?: PhoneUpdateManyWithWhereWithoutAddressInput | PhoneUpdateManyWithWhereWithoutAddressInput[]
+    deleteMany?: PhoneScalarWhereInput | PhoneScalarWhereInput[]
+  }
+
+  export type PhoneUncheckedUpdateManyWithoutAddressNestedInput = {
+    create?: XOR<PhoneCreateWithoutAddressInput, PhoneUncheckedCreateWithoutAddressInput> | PhoneCreateWithoutAddressInput[] | PhoneUncheckedCreateWithoutAddressInput[]
+    connectOrCreate?: PhoneCreateOrConnectWithoutAddressInput | PhoneCreateOrConnectWithoutAddressInput[]
+    upsert?: PhoneUpsertWithWhereUniqueWithoutAddressInput | PhoneUpsertWithWhereUniqueWithoutAddressInput[]
+    createMany?: PhoneCreateManyAddressInputEnvelope
+    set?: PhoneWhereUniqueInput | PhoneWhereUniqueInput[]
+    disconnect?: PhoneWhereUniqueInput | PhoneWhereUniqueInput[]
+    delete?: PhoneWhereUniqueInput | PhoneWhereUniqueInput[]
+    connect?: PhoneWhereUniqueInput | PhoneWhereUniqueInput[]
+    update?: PhoneUpdateWithWhereUniqueWithoutAddressInput | PhoneUpdateWithWhereUniqueWithoutAddressInput[]
+    updateMany?: PhoneUpdateManyWithWhereWithoutAddressInput | PhoneUpdateManyWithWhereWithoutAddressInput[]
+    deleteMany?: PhoneScalarWhereInput | PhoneScalarWhereInput[]
   }
 
   export type UserCreateNestedOneWithoutPaymentInput = {
@@ -33495,6 +33748,7 @@ export namespace Prisma {
     isDeleted?: boolean
     lastSeen?: Date | string | null
     hashedToken?: string | null
+    activation_link?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     mainEmail?: EmailCreateNestedOneWithoutUserInput
@@ -33524,6 +33778,7 @@ export namespace Prisma {
     isDeleted?: boolean
     lastSeen?: Date | string | null
     hashedToken?: string | null
+    activation_link?: string | null
     mainEmailId?: number | null
     mainPhoneId?: number | null
     createdAt?: Date | string
@@ -33606,6 +33861,7 @@ export namespace Prisma {
     isDeleted?: BoolFilter<"User"> | boolean
     lastSeen?: DateTimeNullableFilter<"User"> | Date | string | null
     hashedToken?: StringNullableFilter<"User"> | string | null
+    activation_link?: StringNullableFilter<"User"> | string | null
     mainEmailId?: IntNullableFilter<"User"> | number | null
     mainPhoneId?: IntNullableFilter<"User"> | number | null
     createdAt?: DateTimeFilter<"User"> | Date | string
@@ -33628,6 +33884,7 @@ export namespace Prisma {
     isDeleted?: boolean
     lastSeen?: Date | string | null
     hashedToken?: string | null
+    activation_link?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     mainEmail?: EmailCreateNestedOneWithoutUserInput
@@ -33657,6 +33914,7 @@ export namespace Prisma {
     isDeleted?: boolean
     lastSeen?: Date | string | null
     hashedToken?: string | null
+    activation_link?: string | null
     mainEmailId?: number | null
     mainPhoneId?: number | null
     createdAt?: Date | string
@@ -33837,6 +34095,7 @@ export namespace Prisma {
     Models?: ModelCreateNestedOneWithoutPhonesInput
     Brands?: BrandCreateNestedOneWithoutPhonesInput
     Color?: ColorCreateNestedOneWithoutPhonesInput
+    Address?: AddressCreateNestedOneWithoutPhonesInput
     Images?: ImageCreateNestedManyWithoutPhoneInput
     Reviews?: ReviewCreateNestedManyWithoutPhoneInput
     Archives?: ArchivesCreateNestedManyWithoutPhoneInput
@@ -33866,6 +34125,7 @@ export namespace Prisma {
     modelId?: number | null
     brandId?: number | null
     colorId?: number | null
+    addressId?: number | null
     Images?: ImageUncheckedCreateNestedManyWithoutPhoneInput
     Reviews?: ReviewUncheckedCreateNestedManyWithoutPhoneInput
     Archives?: ArchivesUncheckedCreateNestedManyWithoutPhoneInput
@@ -33889,6 +34149,7 @@ export namespace Prisma {
     long: number
     createdAt?: Date | string
     updatedAt?: Date | string
+    Phones?: PhoneCreateNestedManyWithoutAddressInput
   }
 
   export type AddressUncheckedCreateWithoutUserInput = {
@@ -33899,6 +34160,7 @@ export namespace Prisma {
     long: number
     createdAt?: Date | string
     updatedAt?: Date | string
+    Phones?: PhoneUncheckedCreateNestedManyWithoutAddressInput
   }
 
   export type AddressCreateOrConnectWithoutUserInput = {
@@ -34187,6 +34449,7 @@ export namespace Prisma {
     brandId?: IntNullableFilter<"Phone"> | number | null
     colorId?: IntNullableFilter<"Phone"> | number | null
     userId?: IntNullableFilter<"Phone"> | number | null
+    addressId?: IntNullableFilter<"Phone"> | number | null
   }
 
   export type AddressUpsertWithWhereUniqueWithoutUserInput = {
@@ -34214,9 +34477,9 @@ export namespace Prisma {
     address?: StringFilter<"Address"> | string
     lat?: FloatFilter<"Address"> | number
     long?: FloatFilter<"Address"> | number
-    userId?: IntNullableFilter<"Address"> | number | null
     createdAt?: DateTimeFilter<"Address"> | Date | string
     updatedAt?: DateTimeFilter<"Address"> | Date | string
+    userId?: IntNullableFilter<"Address"> | number | null
   }
 
   export type PaymentUpsertWithWhereUniqueWithoutUserInput = {
@@ -34317,6 +34580,7 @@ export namespace Prisma {
     isDeleted?: boolean
     lastSeen?: Date | string | null
     hashedToken?: string | null
+    activation_link?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     mainEmail?: EmailCreateNestedOneWithoutUserInput
@@ -34346,6 +34610,7 @@ export namespace Prisma {
     isDeleted?: boolean
     lastSeen?: Date | string | null
     hashedToken?: string | null
+    activation_link?: string | null
     mainEmailId?: number | null
     mainPhoneId?: number | null
     createdAt?: Date | string
@@ -34379,6 +34644,7 @@ export namespace Prisma {
     isDeleted?: boolean
     lastSeen?: Date | string | null
     hashedToken?: string | null
+    activation_link?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     mainPhone?: PhoneNumberCreateNestedOneWithoutUserInput
@@ -34408,6 +34674,7 @@ export namespace Prisma {
     isDeleted?: boolean
     lastSeen?: Date | string | null
     hashedToken?: string | null
+    activation_link?: string | null
     mainPhoneId?: number | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -34457,6 +34724,7 @@ export namespace Prisma {
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
     lastSeen?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     hashedToken?: NullableStringFieldUpdateOperationsInput | string | null
+    activation_link?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     mainEmail?: EmailUpdateOneWithoutUserNestedInput
@@ -34486,6 +34754,7 @@ export namespace Prisma {
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
     lastSeen?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     hashedToken?: NullableStringFieldUpdateOperationsInput | string | null
+    activation_link?: NullableStringFieldUpdateOperationsInput | string | null
     mainEmailId?: NullableIntFieldUpdateOperationsInput | number | null
     mainPhoneId?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -34530,6 +34799,7 @@ export namespace Prisma {
     isDeleted?: boolean
     lastSeen?: Date | string | null
     hashedToken?: string | null
+    activation_link?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     mainEmail?: EmailCreateNestedOneWithoutUserInput
@@ -34559,6 +34829,7 @@ export namespace Prisma {
     isDeleted?: boolean
     lastSeen?: Date | string | null
     hashedToken?: string | null
+    activation_link?: string | null
     mainEmailId?: number | null
     mainPhoneId?: number | null
     createdAt?: Date | string
@@ -34592,6 +34863,7 @@ export namespace Prisma {
     isDeleted?: boolean
     lastSeen?: Date | string | null
     hashedToken?: string | null
+    activation_link?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     mainEmail?: EmailCreateNestedOneWithoutUserInput
@@ -34621,6 +34893,7 @@ export namespace Prisma {
     isDeleted?: boolean
     lastSeen?: Date | string | null
     hashedToken?: string | null
+    activation_link?: string | null
     mainEmailId?: number | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -34670,6 +34943,7 @@ export namespace Prisma {
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
     lastSeen?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     hashedToken?: NullableStringFieldUpdateOperationsInput | string | null
+    activation_link?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     mainEmail?: EmailUpdateOneWithoutUserNestedInput
@@ -34699,6 +34973,7 @@ export namespace Prisma {
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
     lastSeen?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     hashedToken?: NullableStringFieldUpdateOperationsInput | string | null
+    activation_link?: NullableStringFieldUpdateOperationsInput | string | null
     mainEmailId?: NullableIntFieldUpdateOperationsInput | number | null
     mainPhoneId?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -34751,6 +35026,7 @@ export namespace Prisma {
     Brands?: BrandCreateNestedOneWithoutPhonesInput
     Color?: ColorCreateNestedOneWithoutPhonesInput
     User?: UserCreateNestedOneWithoutPhoneInput
+    Address?: AddressCreateNestedOneWithoutPhonesInput
     Images?: ImageCreateNestedManyWithoutPhoneInput
     Reviews?: ReviewCreateNestedManyWithoutPhoneInput
     Archives?: ArchivesCreateNestedManyWithoutPhoneInput
@@ -34780,6 +35056,7 @@ export namespace Prisma {
     brandId?: number | null
     colorId?: number | null
     userId?: number | null
+    addressId?: number | null
     Images?: ImageUncheckedCreateNestedManyWithoutPhoneInput
     Reviews?: ReviewUncheckedCreateNestedManyWithoutPhoneInput
     Archives?: ArchivesUncheckedCreateNestedManyWithoutPhoneInput
@@ -34855,6 +35132,7 @@ export namespace Prisma {
     Models?: ModelCreateNestedOneWithoutPhonesInput
     Color?: ColorCreateNestedOneWithoutPhonesInput
     User?: UserCreateNestedOneWithoutPhoneInput
+    Address?: AddressCreateNestedOneWithoutPhonesInput
     Images?: ImageCreateNestedManyWithoutPhoneInput
     Reviews?: ReviewCreateNestedManyWithoutPhoneInput
     Archives?: ArchivesCreateNestedManyWithoutPhoneInput
@@ -34884,6 +35162,7 @@ export namespace Prisma {
     modelId?: number | null
     colorId?: number | null
     userId?: number | null
+    addressId?: number | null
     Images?: ImageUncheckedCreateNestedManyWithoutPhoneInput
     Reviews?: ReviewUncheckedCreateNestedManyWithoutPhoneInput
     Archives?: ArchivesUncheckedCreateNestedManyWithoutPhoneInput
@@ -34979,6 +35258,7 @@ export namespace Prisma {
     Brands?: BrandCreateNestedOneWithoutPhonesInput
     Color?: ColorCreateNestedOneWithoutPhonesInput
     User?: UserCreateNestedOneWithoutPhoneInput
+    Address?: AddressCreateNestedOneWithoutPhonesInput
     Images?: ImageCreateNestedManyWithoutPhoneInput
     Reviews?: ReviewCreateNestedManyWithoutPhoneInput
     Archives?: ArchivesCreateNestedManyWithoutPhoneInput
@@ -35008,6 +35288,7 @@ export namespace Prisma {
     brandId?: number | null
     colorId?: number | null
     userId?: number | null
+    addressId?: number | null
     Images?: ImageUncheckedCreateNestedManyWithoutPhoneInput
     Reviews?: ReviewUncheckedCreateNestedManyWithoutPhoneInput
     Archives?: ArchivesUncheckedCreateNestedManyWithoutPhoneInput
@@ -35084,6 +35365,7 @@ export namespace Prisma {
     Models?: ModelCreateNestedOneWithoutPhonesInput
     Brands?: BrandCreateNestedOneWithoutPhonesInput
     User?: UserCreateNestedOneWithoutPhoneInput
+    Address?: AddressCreateNestedOneWithoutPhonesInput
     Images?: ImageCreateNestedManyWithoutPhoneInput
     Reviews?: ReviewCreateNestedManyWithoutPhoneInput
     Archives?: ArchivesCreateNestedManyWithoutPhoneInput
@@ -35113,6 +35395,7 @@ export namespace Prisma {
     modelId?: number | null
     brandId?: number | null
     userId?: number | null
+    addressId?: number | null
     Images?: ImageUncheckedCreateNestedManyWithoutPhoneInput
     Reviews?: ReviewUncheckedCreateNestedManyWithoutPhoneInput
     Archives?: ArchivesUncheckedCreateNestedManyWithoutPhoneInput
@@ -35221,6 +35504,7 @@ export namespace Prisma {
     isDeleted?: boolean
     lastSeen?: Date | string | null
     hashedToken?: string | null
+    activation_link?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     mainEmail?: EmailCreateNestedOneWithoutUserInput
@@ -35250,6 +35534,7 @@ export namespace Prisma {
     isDeleted?: boolean
     lastSeen?: Date | string | null
     hashedToken?: string | null
+    activation_link?: string | null
     mainEmailId?: number | null
     mainPhoneId?: number | null
     createdAt?: Date | string
@@ -35267,6 +35552,32 @@ export namespace Prisma {
   export type UserCreateOrConnectWithoutPhoneInput = {
     where: UserWhereUniqueInput
     create: XOR<UserCreateWithoutPhoneInput, UserUncheckedCreateWithoutPhoneInput>
+  }
+
+  export type AddressCreateWithoutPhonesInput = {
+    name: string
+    address: string
+    lat: number
+    long: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    User?: UserCreateNestedOneWithoutAddressInput
+  }
+
+  export type AddressUncheckedCreateWithoutPhonesInput = {
+    id?: number
+    name: string
+    address: string
+    lat: number
+    long: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    userId?: number | null
+  }
+
+  export type AddressCreateOrConnectWithoutPhonesInput = {
+    where: AddressWhereUniqueInput
+    create: XOR<AddressCreateWithoutPhonesInput, AddressUncheckedCreateWithoutPhonesInput>
   }
 
   export type ImageCreateWithoutPhoneInput = {
@@ -35462,6 +35773,7 @@ export namespace Prisma {
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
     lastSeen?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     hashedToken?: NullableStringFieldUpdateOperationsInput | string | null
+    activation_link?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     mainEmail?: EmailUpdateOneWithoutUserNestedInput
@@ -35491,6 +35803,7 @@ export namespace Prisma {
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
     lastSeen?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     hashedToken?: NullableStringFieldUpdateOperationsInput | string | null
+    activation_link?: NullableStringFieldUpdateOperationsInput | string | null
     mainEmailId?: NullableIntFieldUpdateOperationsInput | number | null
     mainPhoneId?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -35503,6 +35816,38 @@ export namespace Prisma {
     Payment?: PaymentUncheckedUpdateManyWithoutUserNestedInput
     Chat?: ChatUncheckedUpdateManyWithoutUserNestedInput
     Messages?: MessageUncheckedUpdateManyWithoutSenderNestedInput
+  }
+
+  export type AddressUpsertWithoutPhonesInput = {
+    update: XOR<AddressUpdateWithoutPhonesInput, AddressUncheckedUpdateWithoutPhonesInput>
+    create: XOR<AddressCreateWithoutPhonesInput, AddressUncheckedCreateWithoutPhonesInput>
+    where?: AddressWhereInput
+  }
+
+  export type AddressUpdateToOneWithWhereWithoutPhonesInput = {
+    where?: AddressWhereInput
+    data: XOR<AddressUpdateWithoutPhonesInput, AddressUncheckedUpdateWithoutPhonesInput>
+  }
+
+  export type AddressUpdateWithoutPhonesInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    address?: StringFieldUpdateOperationsInput | string
+    lat?: FloatFieldUpdateOperationsInput | number
+    long?: FloatFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    User?: UserUpdateOneWithoutAddressNestedInput
+  }
+
+  export type AddressUncheckedUpdateWithoutPhonesInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    address?: StringFieldUpdateOperationsInput | string
+    lat?: FloatFieldUpdateOperationsInput | number
+    long?: FloatFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    userId?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type ImageUpsertWithWhereUniqueWithoutPhoneInput = {
@@ -35619,6 +35964,7 @@ export namespace Prisma {
     Brands?: BrandCreateNestedOneWithoutPhonesInput
     Color?: ColorCreateNestedOneWithoutPhonesInput
     User?: UserCreateNestedOneWithoutPhoneInput
+    Address?: AddressCreateNestedOneWithoutPhonesInput
     Reviews?: ReviewCreateNestedManyWithoutPhoneInput
     Archives?: ArchivesCreateNestedManyWithoutPhoneInput
     Chats?: ChatCreateNestedManyWithoutPhoneInput
@@ -35648,6 +35994,7 @@ export namespace Prisma {
     brandId?: number | null
     colorId?: number | null
     userId?: number | null
+    addressId?: number | null
     Reviews?: ReviewUncheckedCreateNestedManyWithoutPhoneInput
     Archives?: ArchivesUncheckedCreateNestedManyWithoutPhoneInput
     Chats?: ChatUncheckedCreateNestedManyWithoutPhoneInput
@@ -35692,6 +36039,7 @@ export namespace Prisma {
     Brands?: BrandUpdateOneWithoutPhonesNestedInput
     Color?: ColorUpdateOneWithoutPhonesNestedInput
     User?: UserUpdateOneWithoutPhoneNestedInput
+    Address?: AddressUpdateOneWithoutPhonesNestedInput
     Reviews?: ReviewUpdateManyWithoutPhoneNestedInput
     Archives?: ArchivesUpdateManyWithoutPhoneNestedInput
     Chats?: ChatUpdateManyWithoutPhoneNestedInput
@@ -35721,6 +36069,7 @@ export namespace Prisma {
     brandId?: NullableIntFieldUpdateOperationsInput | number | null
     colorId?: NullableIntFieldUpdateOperationsInput | number | null
     userId?: NullableIntFieldUpdateOperationsInput | number | null
+    addressId?: NullableIntFieldUpdateOperationsInput | number | null
     Reviews?: ReviewUncheckedUpdateManyWithoutPhoneNestedInput
     Archives?: ArchivesUncheckedUpdateManyWithoutPhoneNestedInput
     Chats?: ChatUncheckedUpdateManyWithoutPhoneNestedInput
@@ -35749,6 +36098,7 @@ export namespace Prisma {
     Brands?: BrandCreateNestedOneWithoutPhonesInput
     Color?: ColorCreateNestedOneWithoutPhonesInput
     User?: UserCreateNestedOneWithoutPhoneInput
+    Address?: AddressCreateNestedOneWithoutPhonesInput
     Images?: ImageCreateNestedManyWithoutPhoneInput
     Archives?: ArchivesCreateNestedManyWithoutPhoneInput
     Chats?: ChatCreateNestedManyWithoutPhoneInput
@@ -35778,6 +36128,7 @@ export namespace Prisma {
     brandId?: number | null
     colorId?: number | null
     userId?: number | null
+    addressId?: number | null
     Images?: ImageUncheckedCreateNestedManyWithoutPhoneInput
     Archives?: ArchivesUncheckedCreateNestedManyWithoutPhoneInput
     Chats?: ChatUncheckedCreateNestedManyWithoutPhoneInput
@@ -35822,6 +36173,7 @@ export namespace Prisma {
     Brands?: BrandUpdateOneWithoutPhonesNestedInput
     Color?: ColorUpdateOneWithoutPhonesNestedInput
     User?: UserUpdateOneWithoutPhoneNestedInput
+    Address?: AddressUpdateOneWithoutPhonesNestedInput
     Images?: ImageUpdateManyWithoutPhoneNestedInput
     Archives?: ArchivesUpdateManyWithoutPhoneNestedInput
     Chats?: ChatUpdateManyWithoutPhoneNestedInput
@@ -35851,6 +36203,7 @@ export namespace Prisma {
     brandId?: NullableIntFieldUpdateOperationsInput | number | null
     colorId?: NullableIntFieldUpdateOperationsInput | number | null
     userId?: NullableIntFieldUpdateOperationsInput | number | null
+    addressId?: NullableIntFieldUpdateOperationsInput | number | null
     Images?: ImageUncheckedUpdateManyWithoutPhoneNestedInput
     Archives?: ArchivesUncheckedUpdateManyWithoutPhoneNestedInput
     Chats?: ChatUncheckedUpdateManyWithoutPhoneNestedInput
@@ -35879,6 +36232,7 @@ export namespace Prisma {
     Brands?: BrandCreateNestedOneWithoutPhonesInput
     Color?: ColorCreateNestedOneWithoutPhonesInput
     User?: UserCreateNestedOneWithoutPhoneInput
+    Address?: AddressCreateNestedOneWithoutPhonesInput
     Images?: ImageCreateNestedManyWithoutPhoneInput
     Reviews?: ReviewCreateNestedManyWithoutPhoneInput
     Chats?: ChatCreateNestedManyWithoutPhoneInput
@@ -35908,6 +36262,7 @@ export namespace Prisma {
     brandId?: number | null
     colorId?: number | null
     userId?: number | null
+    addressId?: number | null
     Images?: ImageUncheckedCreateNestedManyWithoutPhoneInput
     Reviews?: ReviewUncheckedCreateNestedManyWithoutPhoneInput
     Chats?: ChatUncheckedCreateNestedManyWithoutPhoneInput
@@ -35952,6 +36307,7 @@ export namespace Prisma {
     Brands?: BrandUpdateOneWithoutPhonesNestedInput
     Color?: ColorUpdateOneWithoutPhonesNestedInput
     User?: UserUpdateOneWithoutPhoneNestedInput
+    Address?: AddressUpdateOneWithoutPhonesNestedInput
     Images?: ImageUpdateManyWithoutPhoneNestedInput
     Reviews?: ReviewUpdateManyWithoutPhoneNestedInput
     Chats?: ChatUpdateManyWithoutPhoneNestedInput
@@ -35981,6 +36337,7 @@ export namespace Prisma {
     brandId?: NullableIntFieldUpdateOperationsInput | number | null
     colorId?: NullableIntFieldUpdateOperationsInput | number | null
     userId?: NullableIntFieldUpdateOperationsInput | number | null
+    addressId?: NullableIntFieldUpdateOperationsInput | number | null
     Images?: ImageUncheckedUpdateManyWithoutPhoneNestedInput
     Reviews?: ReviewUncheckedUpdateManyWithoutPhoneNestedInput
     Chats?: ChatUncheckedUpdateManyWithoutPhoneNestedInput
@@ -36000,6 +36357,7 @@ export namespace Prisma {
     isDeleted?: boolean
     lastSeen?: Date | string | null
     hashedToken?: string | null
+    activation_link?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     mainEmail?: EmailCreateNestedOneWithoutUserInput
@@ -36029,6 +36387,7 @@ export namespace Prisma {
     isDeleted?: boolean
     lastSeen?: Date | string | null
     hashedToken?: string | null
+    activation_link?: string | null
     mainEmailId?: number | null
     mainPhoneId?: number | null
     createdAt?: Date | string
@@ -36046,6 +36405,75 @@ export namespace Prisma {
   export type UserCreateOrConnectWithoutAddressInput = {
     where: UserWhereUniqueInput
     create: XOR<UserCreateWithoutAddressInput, UserUncheckedCreateWithoutAddressInput>
+  }
+
+  export type PhoneCreateWithoutAddressInput = {
+    title: string
+    description: string
+    ram: string
+    rom: string
+    price: Decimal | DecimalJsLike | number | string
+    box_with_document?: boolean
+    is_new?: boolean
+    posted_date?: Date | string
+    views?: bigint | number | null
+    like_counts?: bigint | number | null
+    is_negotiable?: boolean
+    brand?: string | null
+    model?: string | null
+    is_active?: boolean
+    is_checked?: boolean
+    is_archived?: boolean
+    is_deleted?: boolean
+    Currency?: CurrencyCreateNestedOneWithoutPhonesInput
+    Models?: ModelCreateNestedOneWithoutPhonesInput
+    Brands?: BrandCreateNestedOneWithoutPhonesInput
+    Color?: ColorCreateNestedOneWithoutPhonesInput
+    User?: UserCreateNestedOneWithoutPhoneInput
+    Images?: ImageCreateNestedManyWithoutPhoneInput
+    Reviews?: ReviewCreateNestedManyWithoutPhoneInput
+    Archives?: ArchivesCreateNestedManyWithoutPhoneInput
+    Chats?: ChatCreateNestedManyWithoutPhoneInput
+  }
+
+  export type PhoneUncheckedCreateWithoutAddressInput = {
+    id?: number
+    title: string
+    description: string
+    ram: string
+    rom: string
+    price: Decimal | DecimalJsLike | number | string
+    box_with_document?: boolean
+    is_new?: boolean
+    posted_date?: Date | string
+    views?: bigint | number | null
+    like_counts?: bigint | number | null
+    is_negotiable?: boolean
+    brand?: string | null
+    model?: string | null
+    is_active?: boolean
+    is_checked?: boolean
+    is_archived?: boolean
+    is_deleted?: boolean
+    currencyId?: number | null
+    modelId?: number | null
+    brandId?: number | null
+    colorId?: number | null
+    userId?: number | null
+    Images?: ImageUncheckedCreateNestedManyWithoutPhoneInput
+    Reviews?: ReviewUncheckedCreateNestedManyWithoutPhoneInput
+    Archives?: ArchivesUncheckedCreateNestedManyWithoutPhoneInput
+    Chats?: ChatUncheckedCreateNestedManyWithoutPhoneInput
+  }
+
+  export type PhoneCreateOrConnectWithoutAddressInput = {
+    where: PhoneWhereUniqueInput
+    create: XOR<PhoneCreateWithoutAddressInput, PhoneUncheckedCreateWithoutAddressInput>
+  }
+
+  export type PhoneCreateManyAddressInputEnvelope = {
+    data: PhoneCreateManyAddressInput | PhoneCreateManyAddressInput[]
+    skipDuplicates?: boolean
   }
 
   export type UserUpsertWithoutAddressInput = {
@@ -36073,6 +36501,7 @@ export namespace Prisma {
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
     lastSeen?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     hashedToken?: NullableStringFieldUpdateOperationsInput | string | null
+    activation_link?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     mainEmail?: EmailUpdateOneWithoutUserNestedInput
@@ -36102,6 +36531,7 @@ export namespace Prisma {
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
     lastSeen?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     hashedToken?: NullableStringFieldUpdateOperationsInput | string | null
+    activation_link?: NullableStringFieldUpdateOperationsInput | string | null
     mainEmailId?: NullableIntFieldUpdateOperationsInput | number | null
     mainPhoneId?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -36114,6 +36544,22 @@ export namespace Prisma {
     Payment?: PaymentUncheckedUpdateManyWithoutUserNestedInput
     Chat?: ChatUncheckedUpdateManyWithoutUserNestedInput
     Messages?: MessageUncheckedUpdateManyWithoutSenderNestedInput
+  }
+
+  export type PhoneUpsertWithWhereUniqueWithoutAddressInput = {
+    where: PhoneWhereUniqueInput
+    update: XOR<PhoneUpdateWithoutAddressInput, PhoneUncheckedUpdateWithoutAddressInput>
+    create: XOR<PhoneCreateWithoutAddressInput, PhoneUncheckedCreateWithoutAddressInput>
+  }
+
+  export type PhoneUpdateWithWhereUniqueWithoutAddressInput = {
+    where: PhoneWhereUniqueInput
+    data: XOR<PhoneUpdateWithoutAddressInput, PhoneUncheckedUpdateWithoutAddressInput>
+  }
+
+  export type PhoneUpdateManyWithWhereWithoutAddressInput = {
+    where: PhoneScalarWhereInput
+    data: XOR<PhoneUpdateManyMutationInput, PhoneUncheckedUpdateManyWithoutAddressInput>
   }
 
   export type UserCreateWithoutPaymentInput = {
@@ -36130,6 +36576,7 @@ export namespace Prisma {
     isDeleted?: boolean
     lastSeen?: Date | string | null
     hashedToken?: string | null
+    activation_link?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     mainEmail?: EmailCreateNestedOneWithoutUserInput
@@ -36159,6 +36606,7 @@ export namespace Prisma {
     isDeleted?: boolean
     lastSeen?: Date | string | null
     hashedToken?: string | null
+    activation_link?: string | null
     mainEmailId?: number | null
     mainPhoneId?: number | null
     createdAt?: Date | string
@@ -36203,6 +36651,7 @@ export namespace Prisma {
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
     lastSeen?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     hashedToken?: NullableStringFieldUpdateOperationsInput | string | null
+    activation_link?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     mainEmail?: EmailUpdateOneWithoutUserNestedInput
@@ -36232,6 +36681,7 @@ export namespace Prisma {
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
     lastSeen?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     hashedToken?: NullableStringFieldUpdateOperationsInput | string | null
+    activation_link?: NullableStringFieldUpdateOperationsInput | string | null
     mainEmailId?: NullableIntFieldUpdateOperationsInput | number | null
     mainPhoneId?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -36260,6 +36710,7 @@ export namespace Prisma {
     isDeleted?: boolean
     lastSeen?: Date | string | null
     hashedToken?: string | null
+    activation_link?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     mainEmail?: EmailCreateNestedOneWithoutUserInput
@@ -36289,6 +36740,7 @@ export namespace Prisma {
     isDeleted?: boolean
     lastSeen?: Date | string | null
     hashedToken?: string | null
+    activation_link?: string | null
     mainEmailId?: number | null
     mainPhoneId?: number | null
     createdAt?: Date | string
@@ -36331,6 +36783,7 @@ export namespace Prisma {
     Brands?: BrandCreateNestedOneWithoutPhonesInput
     Color?: ColorCreateNestedOneWithoutPhonesInput
     User?: UserCreateNestedOneWithoutPhoneInput
+    Address?: AddressCreateNestedOneWithoutPhonesInput
     Images?: ImageCreateNestedManyWithoutPhoneInput
     Reviews?: ReviewCreateNestedManyWithoutPhoneInput
     Archives?: ArchivesCreateNestedManyWithoutPhoneInput
@@ -36360,6 +36813,7 @@ export namespace Prisma {
     brandId?: number | null
     colorId?: number | null
     userId?: number | null
+    addressId?: number | null
     Images?: ImageUncheckedCreateNestedManyWithoutPhoneInput
     Reviews?: ReviewUncheckedCreateNestedManyWithoutPhoneInput
     Archives?: ArchivesUncheckedCreateNestedManyWithoutPhoneInput
@@ -36420,6 +36874,7 @@ export namespace Prisma {
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
     lastSeen?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     hashedToken?: NullableStringFieldUpdateOperationsInput | string | null
+    activation_link?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     mainEmail?: EmailUpdateOneWithoutUserNestedInput
@@ -36449,6 +36904,7 @@ export namespace Prisma {
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
     lastSeen?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     hashedToken?: NullableStringFieldUpdateOperationsInput | string | null
+    activation_link?: NullableStringFieldUpdateOperationsInput | string | null
     mainEmailId?: NullableIntFieldUpdateOperationsInput | number | null
     mainPhoneId?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -36497,6 +36953,7 @@ export namespace Prisma {
     Brands?: BrandUpdateOneWithoutPhonesNestedInput
     Color?: ColorUpdateOneWithoutPhonesNestedInput
     User?: UserUpdateOneWithoutPhoneNestedInput
+    Address?: AddressUpdateOneWithoutPhonesNestedInput
     Images?: ImageUpdateManyWithoutPhoneNestedInput
     Reviews?: ReviewUpdateManyWithoutPhoneNestedInput
     Archives?: ArchivesUpdateManyWithoutPhoneNestedInput
@@ -36526,6 +36983,7 @@ export namespace Prisma {
     brandId?: NullableIntFieldUpdateOperationsInput | number | null
     colorId?: NullableIntFieldUpdateOperationsInput | number | null
     userId?: NullableIntFieldUpdateOperationsInput | number | null
+    addressId?: NullableIntFieldUpdateOperationsInput | number | null
     Images?: ImageUncheckedUpdateManyWithoutPhoneNestedInput
     Reviews?: ReviewUncheckedUpdateManyWithoutPhoneNestedInput
     Archives?: ArchivesUncheckedUpdateManyWithoutPhoneNestedInput
@@ -36581,6 +37039,7 @@ export namespace Prisma {
     isDeleted?: boolean
     lastSeen?: Date | string | null
     hashedToken?: string | null
+    activation_link?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     mainEmail?: EmailCreateNestedOneWithoutUserInput
@@ -36610,6 +37069,7 @@ export namespace Prisma {
     isDeleted?: boolean
     lastSeen?: Date | string | null
     hashedToken?: string | null
+    activation_link?: string | null
     mainEmailId?: number | null
     mainPhoneId?: number | null
     createdAt?: Date | string
@@ -36680,6 +37140,7 @@ export namespace Prisma {
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
     lastSeen?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     hashedToken?: NullableStringFieldUpdateOperationsInput | string | null
+    activation_link?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     mainEmail?: EmailUpdateOneWithoutUserNestedInput
@@ -36709,6 +37170,7 @@ export namespace Prisma {
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
     lastSeen?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     hashedToken?: NullableStringFieldUpdateOperationsInput | string | null
+    activation_link?: NullableStringFieldUpdateOperationsInput | string | null
     mainEmailId?: NullableIntFieldUpdateOperationsInput | number | null
     mainPhoneId?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -36767,6 +37229,7 @@ export namespace Prisma {
     isDeleted?: boolean
     lastSeen?: Date | string | null
     hashedToken?: string | null
+    activation_link?: string | null
     mainEmailId?: number | null
     mainPhoneId?: number | null
     createdAt?: Date | string
@@ -36788,6 +37251,7 @@ export namespace Prisma {
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
     lastSeen?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     hashedToken?: NullableStringFieldUpdateOperationsInput | string | null
+    activation_link?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     mainEmail?: EmailUpdateOneWithoutUserNestedInput
@@ -36817,6 +37281,7 @@ export namespace Prisma {
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
     lastSeen?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     hashedToken?: NullableStringFieldUpdateOperationsInput | string | null
+    activation_link?: NullableStringFieldUpdateOperationsInput | string | null
     mainEmailId?: NullableIntFieldUpdateOperationsInput | number | null
     mainPhoneId?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -36846,6 +37311,7 @@ export namespace Prisma {
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
     lastSeen?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     hashedToken?: NullableStringFieldUpdateOperationsInput | string | null
+    activation_link?: NullableStringFieldUpdateOperationsInput | string | null
     mainEmailId?: NullableIntFieldUpdateOperationsInput | number | null
     mainPhoneId?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -36868,6 +37334,7 @@ export namespace Prisma {
     isDeleted?: boolean
     lastSeen?: Date | string | null
     hashedToken?: string | null
+    activation_link?: string | null
     mainEmailId?: number | null
     mainPhoneId?: number | null
     createdAt?: Date | string
@@ -36889,6 +37356,7 @@ export namespace Prisma {
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
     lastSeen?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     hashedToken?: NullableStringFieldUpdateOperationsInput | string | null
+    activation_link?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     mainEmail?: EmailUpdateOneWithoutUserNestedInput
@@ -36918,6 +37386,7 @@ export namespace Prisma {
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
     lastSeen?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     hashedToken?: NullableStringFieldUpdateOperationsInput | string | null
+    activation_link?: NullableStringFieldUpdateOperationsInput | string | null
     mainEmailId?: NullableIntFieldUpdateOperationsInput | number | null
     mainPhoneId?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -36947,6 +37416,7 @@ export namespace Prisma {
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
     lastSeen?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     hashedToken?: NullableStringFieldUpdateOperationsInput | string | null
+    activation_link?: NullableStringFieldUpdateOperationsInput | string | null
     mainEmailId?: NullableIntFieldUpdateOperationsInput | number | null
     mainPhoneId?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -36991,6 +37461,7 @@ export namespace Prisma {
     modelId?: number | null
     brandId?: number | null
     colorId?: number | null
+    addressId?: number | null
   }
 
   export type AddressCreateManyUserInput = {
@@ -37093,6 +37564,7 @@ export namespace Prisma {
     Models?: ModelUpdateOneWithoutPhonesNestedInput
     Brands?: BrandUpdateOneWithoutPhonesNestedInput
     Color?: ColorUpdateOneWithoutPhonesNestedInput
+    Address?: AddressUpdateOneWithoutPhonesNestedInput
     Images?: ImageUpdateManyWithoutPhoneNestedInput
     Reviews?: ReviewUpdateManyWithoutPhoneNestedInput
     Archives?: ArchivesUpdateManyWithoutPhoneNestedInput
@@ -37122,6 +37594,7 @@ export namespace Prisma {
     modelId?: NullableIntFieldUpdateOperationsInput | number | null
     brandId?: NullableIntFieldUpdateOperationsInput | number | null
     colorId?: NullableIntFieldUpdateOperationsInput | number | null
+    addressId?: NullableIntFieldUpdateOperationsInput | number | null
     Images?: ImageUncheckedUpdateManyWithoutPhoneNestedInput
     Reviews?: ReviewUncheckedUpdateManyWithoutPhoneNestedInput
     Archives?: ArchivesUncheckedUpdateManyWithoutPhoneNestedInput
@@ -37151,6 +37624,7 @@ export namespace Prisma {
     modelId?: NullableIntFieldUpdateOperationsInput | number | null
     brandId?: NullableIntFieldUpdateOperationsInput | number | null
     colorId?: NullableIntFieldUpdateOperationsInput | number | null
+    addressId?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type AddressUpdateWithoutUserInput = {
@@ -37160,6 +37634,7 @@ export namespace Prisma {
     long?: FloatFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    Phones?: PhoneUpdateManyWithoutAddressNestedInput
   }
 
   export type AddressUncheckedUpdateWithoutUserInput = {
@@ -37170,6 +37645,7 @@ export namespace Prisma {
     long?: FloatFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    Phones?: PhoneUncheckedUpdateManyWithoutAddressNestedInput
   }
 
   export type AddressUncheckedUpdateManyWithoutUserInput = {
@@ -37268,6 +37744,7 @@ export namespace Prisma {
     isDeleted?: boolean
     lastSeen?: Date | string | null
     hashedToken?: string | null
+    activation_link?: string | null
     mainPhoneId?: number | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -37289,6 +37766,7 @@ export namespace Prisma {
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
     lastSeen?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     hashedToken?: NullableStringFieldUpdateOperationsInput | string | null
+    activation_link?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     mainPhone?: PhoneNumberUpdateOneWithoutUserNestedInput
@@ -37318,6 +37796,7 @@ export namespace Prisma {
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
     lastSeen?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     hashedToken?: NullableStringFieldUpdateOperationsInput | string | null
+    activation_link?: NullableStringFieldUpdateOperationsInput | string | null
     mainPhoneId?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -37347,6 +37826,7 @@ export namespace Prisma {
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
     lastSeen?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     hashedToken?: NullableStringFieldUpdateOperationsInput | string | null
+    activation_link?: NullableStringFieldUpdateOperationsInput | string | null
     mainPhoneId?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -37369,6 +37849,7 @@ export namespace Prisma {
     isDeleted?: boolean
     lastSeen?: Date | string | null
     hashedToken?: string | null
+    activation_link?: string | null
     mainEmailId?: number | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -37390,6 +37871,7 @@ export namespace Prisma {
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
     lastSeen?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     hashedToken?: NullableStringFieldUpdateOperationsInput | string | null
+    activation_link?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     mainEmail?: EmailUpdateOneWithoutUserNestedInput
@@ -37419,6 +37901,7 @@ export namespace Prisma {
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
     lastSeen?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     hashedToken?: NullableStringFieldUpdateOperationsInput | string | null
+    activation_link?: NullableStringFieldUpdateOperationsInput | string | null
     mainEmailId?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -37448,6 +37931,7 @@ export namespace Prisma {
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
     lastSeen?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     hashedToken?: NullableStringFieldUpdateOperationsInput | string | null
+    activation_link?: NullableStringFieldUpdateOperationsInput | string | null
     mainEmailId?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -37478,6 +37962,7 @@ export namespace Prisma {
     brandId?: number | null
     colorId?: number | null
     userId?: number | null
+    addressId?: number | null
   }
 
   export type PhoneUpdateWithoutCurrencyInput = {
@@ -37502,6 +37987,7 @@ export namespace Prisma {
     Brands?: BrandUpdateOneWithoutPhonesNestedInput
     Color?: ColorUpdateOneWithoutPhonesNestedInput
     User?: UserUpdateOneWithoutPhoneNestedInput
+    Address?: AddressUpdateOneWithoutPhonesNestedInput
     Images?: ImageUpdateManyWithoutPhoneNestedInput
     Reviews?: ReviewUpdateManyWithoutPhoneNestedInput
     Archives?: ArchivesUpdateManyWithoutPhoneNestedInput
@@ -37531,6 +38017,7 @@ export namespace Prisma {
     brandId?: NullableIntFieldUpdateOperationsInput | number | null
     colorId?: NullableIntFieldUpdateOperationsInput | number | null
     userId?: NullableIntFieldUpdateOperationsInput | number | null
+    addressId?: NullableIntFieldUpdateOperationsInput | number | null
     Images?: ImageUncheckedUpdateManyWithoutPhoneNestedInput
     Reviews?: ReviewUncheckedUpdateManyWithoutPhoneNestedInput
     Archives?: ArchivesUncheckedUpdateManyWithoutPhoneNestedInput
@@ -37560,6 +38047,7 @@ export namespace Prisma {
     brandId?: NullableIntFieldUpdateOperationsInput | number | null
     colorId?: NullableIntFieldUpdateOperationsInput | number | null
     userId?: NullableIntFieldUpdateOperationsInput | number | null
+    addressId?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type ModelCreateManyBrandInput = {
@@ -37590,6 +38078,7 @@ export namespace Prisma {
     modelId?: number | null
     colorId?: number | null
     userId?: number | null
+    addressId?: number | null
   }
 
   export type ModelUpdateWithoutBrandInput = {
@@ -37630,6 +38119,7 @@ export namespace Prisma {
     Models?: ModelUpdateOneWithoutPhonesNestedInput
     Color?: ColorUpdateOneWithoutPhonesNestedInput
     User?: UserUpdateOneWithoutPhoneNestedInput
+    Address?: AddressUpdateOneWithoutPhonesNestedInput
     Images?: ImageUpdateManyWithoutPhoneNestedInput
     Reviews?: ReviewUpdateManyWithoutPhoneNestedInput
     Archives?: ArchivesUpdateManyWithoutPhoneNestedInput
@@ -37659,6 +38149,7 @@ export namespace Prisma {
     modelId?: NullableIntFieldUpdateOperationsInput | number | null
     colorId?: NullableIntFieldUpdateOperationsInput | number | null
     userId?: NullableIntFieldUpdateOperationsInput | number | null
+    addressId?: NullableIntFieldUpdateOperationsInput | number | null
     Images?: ImageUncheckedUpdateManyWithoutPhoneNestedInput
     Reviews?: ReviewUncheckedUpdateManyWithoutPhoneNestedInput
     Archives?: ArchivesUncheckedUpdateManyWithoutPhoneNestedInput
@@ -37688,6 +38179,7 @@ export namespace Prisma {
     modelId?: NullableIntFieldUpdateOperationsInput | number | null
     colorId?: NullableIntFieldUpdateOperationsInput | number | null
     userId?: NullableIntFieldUpdateOperationsInput | number | null
+    addressId?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type PhoneCreateManyModelsInput = {
@@ -37713,6 +38205,7 @@ export namespace Prisma {
     brandId?: number | null
     colorId?: number | null
     userId?: number | null
+    addressId?: number | null
   }
 
   export type PhoneUpdateWithoutModelsInput = {
@@ -37737,6 +38230,7 @@ export namespace Prisma {
     Brands?: BrandUpdateOneWithoutPhonesNestedInput
     Color?: ColorUpdateOneWithoutPhonesNestedInput
     User?: UserUpdateOneWithoutPhoneNestedInput
+    Address?: AddressUpdateOneWithoutPhonesNestedInput
     Images?: ImageUpdateManyWithoutPhoneNestedInput
     Reviews?: ReviewUpdateManyWithoutPhoneNestedInput
     Archives?: ArchivesUpdateManyWithoutPhoneNestedInput
@@ -37766,6 +38260,7 @@ export namespace Prisma {
     brandId?: NullableIntFieldUpdateOperationsInput | number | null
     colorId?: NullableIntFieldUpdateOperationsInput | number | null
     userId?: NullableIntFieldUpdateOperationsInput | number | null
+    addressId?: NullableIntFieldUpdateOperationsInput | number | null
     Images?: ImageUncheckedUpdateManyWithoutPhoneNestedInput
     Reviews?: ReviewUncheckedUpdateManyWithoutPhoneNestedInput
     Archives?: ArchivesUncheckedUpdateManyWithoutPhoneNestedInput
@@ -37795,6 +38290,7 @@ export namespace Prisma {
     brandId?: NullableIntFieldUpdateOperationsInput | number | null
     colorId?: NullableIntFieldUpdateOperationsInput | number | null
     userId?: NullableIntFieldUpdateOperationsInput | number | null
+    addressId?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type PhoneCreateManyColorInput = {
@@ -37820,6 +38316,7 @@ export namespace Prisma {
     modelId?: number | null
     brandId?: number | null
     userId?: number | null
+    addressId?: number | null
   }
 
   export type PhoneUpdateWithoutColorInput = {
@@ -37844,6 +38341,7 @@ export namespace Prisma {
     Models?: ModelUpdateOneWithoutPhonesNestedInput
     Brands?: BrandUpdateOneWithoutPhonesNestedInput
     User?: UserUpdateOneWithoutPhoneNestedInput
+    Address?: AddressUpdateOneWithoutPhonesNestedInput
     Images?: ImageUpdateManyWithoutPhoneNestedInput
     Reviews?: ReviewUpdateManyWithoutPhoneNestedInput
     Archives?: ArchivesUpdateManyWithoutPhoneNestedInput
@@ -37873,6 +38371,7 @@ export namespace Prisma {
     modelId?: NullableIntFieldUpdateOperationsInput | number | null
     brandId?: NullableIntFieldUpdateOperationsInput | number | null
     userId?: NullableIntFieldUpdateOperationsInput | number | null
+    addressId?: NullableIntFieldUpdateOperationsInput | number | null
     Images?: ImageUncheckedUpdateManyWithoutPhoneNestedInput
     Reviews?: ReviewUncheckedUpdateManyWithoutPhoneNestedInput
     Archives?: ArchivesUncheckedUpdateManyWithoutPhoneNestedInput
@@ -37902,6 +38401,7 @@ export namespace Prisma {
     modelId?: NullableIntFieldUpdateOperationsInput | number | null
     brandId?: NullableIntFieldUpdateOperationsInput | number | null
     userId?: NullableIntFieldUpdateOperationsInput | number | null
+    addressId?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type ImageCreateManyPhoneInput = {
@@ -37988,6 +38488,117 @@ export namespace Prisma {
     senderId?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PhoneCreateManyAddressInput = {
+    id?: number
+    title: string
+    description: string
+    ram: string
+    rom: string
+    price: Decimal | DecimalJsLike | number | string
+    box_with_document?: boolean
+    is_new?: boolean
+    posted_date?: Date | string
+    views?: bigint | number | null
+    like_counts?: bigint | number | null
+    is_negotiable?: boolean
+    brand?: string | null
+    model?: string | null
+    is_active?: boolean
+    is_checked?: boolean
+    is_archived?: boolean
+    is_deleted?: boolean
+    currencyId?: number | null
+    modelId?: number | null
+    brandId?: number | null
+    colorId?: number | null
+    userId?: number | null
+  }
+
+  export type PhoneUpdateWithoutAddressInput = {
+    title?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    ram?: StringFieldUpdateOperationsInput | string
+    rom?: StringFieldUpdateOperationsInput | string
+    price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    box_with_document?: BoolFieldUpdateOperationsInput | boolean
+    is_new?: BoolFieldUpdateOperationsInput | boolean
+    posted_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    views?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    like_counts?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    is_negotiable?: BoolFieldUpdateOperationsInput | boolean
+    brand?: NullableStringFieldUpdateOperationsInput | string | null
+    model?: NullableStringFieldUpdateOperationsInput | string | null
+    is_active?: BoolFieldUpdateOperationsInput | boolean
+    is_checked?: BoolFieldUpdateOperationsInput | boolean
+    is_archived?: BoolFieldUpdateOperationsInput | boolean
+    is_deleted?: BoolFieldUpdateOperationsInput | boolean
+    Currency?: CurrencyUpdateOneWithoutPhonesNestedInput
+    Models?: ModelUpdateOneWithoutPhonesNestedInput
+    Brands?: BrandUpdateOneWithoutPhonesNestedInput
+    Color?: ColorUpdateOneWithoutPhonesNestedInput
+    User?: UserUpdateOneWithoutPhoneNestedInput
+    Images?: ImageUpdateManyWithoutPhoneNestedInput
+    Reviews?: ReviewUpdateManyWithoutPhoneNestedInput
+    Archives?: ArchivesUpdateManyWithoutPhoneNestedInput
+    Chats?: ChatUpdateManyWithoutPhoneNestedInput
+  }
+
+  export type PhoneUncheckedUpdateWithoutAddressInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    title?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    ram?: StringFieldUpdateOperationsInput | string
+    rom?: StringFieldUpdateOperationsInput | string
+    price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    box_with_document?: BoolFieldUpdateOperationsInput | boolean
+    is_new?: BoolFieldUpdateOperationsInput | boolean
+    posted_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    views?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    like_counts?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    is_negotiable?: BoolFieldUpdateOperationsInput | boolean
+    brand?: NullableStringFieldUpdateOperationsInput | string | null
+    model?: NullableStringFieldUpdateOperationsInput | string | null
+    is_active?: BoolFieldUpdateOperationsInput | boolean
+    is_checked?: BoolFieldUpdateOperationsInput | boolean
+    is_archived?: BoolFieldUpdateOperationsInput | boolean
+    is_deleted?: BoolFieldUpdateOperationsInput | boolean
+    currencyId?: NullableIntFieldUpdateOperationsInput | number | null
+    modelId?: NullableIntFieldUpdateOperationsInput | number | null
+    brandId?: NullableIntFieldUpdateOperationsInput | number | null
+    colorId?: NullableIntFieldUpdateOperationsInput | number | null
+    userId?: NullableIntFieldUpdateOperationsInput | number | null
+    Images?: ImageUncheckedUpdateManyWithoutPhoneNestedInput
+    Reviews?: ReviewUncheckedUpdateManyWithoutPhoneNestedInput
+    Archives?: ArchivesUncheckedUpdateManyWithoutPhoneNestedInput
+    Chats?: ChatUncheckedUpdateManyWithoutPhoneNestedInput
+  }
+
+  export type PhoneUncheckedUpdateManyWithoutAddressInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    title?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    ram?: StringFieldUpdateOperationsInput | string
+    rom?: StringFieldUpdateOperationsInput | string
+    price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    box_with_document?: BoolFieldUpdateOperationsInput | boolean
+    is_new?: BoolFieldUpdateOperationsInput | boolean
+    posted_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    views?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    like_counts?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    is_negotiable?: BoolFieldUpdateOperationsInput | boolean
+    brand?: NullableStringFieldUpdateOperationsInput | string | null
+    model?: NullableStringFieldUpdateOperationsInput | string | null
+    is_active?: BoolFieldUpdateOperationsInput | boolean
+    is_checked?: BoolFieldUpdateOperationsInput | boolean
+    is_archived?: BoolFieldUpdateOperationsInput | boolean
+    is_deleted?: BoolFieldUpdateOperationsInput | boolean
+    currencyId?: NullableIntFieldUpdateOperationsInput | number | null
+    modelId?: NullableIntFieldUpdateOperationsInput | number | null
+    brandId?: NullableIntFieldUpdateOperationsInput | number | null
+    colorId?: NullableIntFieldUpdateOperationsInput | number | null
+    userId?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type MessageCreateManyChatInput = {
