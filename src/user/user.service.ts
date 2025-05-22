@@ -38,7 +38,6 @@ export class UserService {
     // Step 3: Hash password
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    // Step 4: Create user without email/phone
     const user = await this.prisma.user.create({
       data: {
         firstName: dto.name,
@@ -92,7 +91,8 @@ export class UserService {
         mainEmail: true,
         mainPhone: true,
         language: true,
-        Phone: true
+        Phone: true,
+        Address: true
       },
     });
   }

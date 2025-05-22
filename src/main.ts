@@ -21,8 +21,8 @@ async function bootstrap() {
     app.useLogger(app.get(WINSTON_MODULE_NEST_PROVIDER));
     app.use(cookieParser());
     app.useGlobalPipes(new ValidationPipe({
-      whitelist: true, 
-      forbidNonWhitelisted: true, 
+      whitelist: true,
+      forbidNonWhitelisted: true,
       transform: true,
       transformOptions: {
         enableImplicitConversion: true,
@@ -42,6 +42,9 @@ async function bootstrap() {
       })
       .build();
 
+    app.enableCors({
+      origin: '*',
+    });
     const document = SwaggerModule.createDocument(app, config);
     SwaggerModule.setup('api/docs', app, document);
 

@@ -7,45 +7,41 @@ import { PrismaService } from '../prisma/prisma.service';
 export class MessagesService {
   constructor(private readonly prisma: PrismaService) {}
 
-  async create(createMessageDto: CreateMessageDto) {
-    return await this.prisma.messages.create({ data: createMessageDto });
+  async createMessage(createMessageDto: CreateMessageDto) {
+    return this.prisma.message.create({
+      data: {
+        message: createMessageDto.content || createMessageDto.content, // Support both field names
+        chatId: createMessageDto.chatId,
+        senderId: createMessageDto.senderId,
+        isRead: false
+      }
+    });
   }
 
-  async findAll() {
-    return await this.prisma.messages.findMany({
-      include: {
-        User: true,
-        Chat: true,
+  // Mark messages as read for a specific user in a chat
+  async markMessagesAsRead(chatId: number, userId: number) {
+    return this.prisma.message.updateMany({
+      where: {
+        chatId: chatId,
+        senderId: { not: userId }, // Only mark messages from other users as read
+        isRead: false
       },
+      data: {
+        isRead: true
+      }
     });
   }
 
-  async findOne(id: number) {
-    const result = await this.prisma.messages.findUnique({
-      where: { id },
-      include: {
-        User: true,
-        Chat: true,
-      },
+  // Get unread message count for a user in a chat
+  async getUnreadCount(chatId: number, userId: number) {
+    const count = await this.prisma.message.count({
+      where: {
+        chatId: chatId,
+        senderId: { not: userId }, // Only count messages from other users
+        isRead: false
+      }
     });
-    if (!result) {
-      throw new Error('Message not found');
-    }
-    return result;
+    return count;
   }
-
-  async update(id: number, updateMessageDto: UpdateMessageDto) {
-    await this.findOne(id);
-    const result = await this.prisma.messages.update({
-      where: { id },
-      data: updateMessageDto,
-    });
-    return result;
-  }
-
-  async remove(id: number) {
-    await this.findOne(id);
-    await this.prisma.messages.delete({ where: { id } });
-    return { message: 'Message deleted successfully' };
-  }
+  
 }

@@ -3,13 +3,9 @@ import {
   Get,
   Post,
   Body,
-  Patch,
   Param,
-  Delete,
 } from '@nestjs/common';
 import { ChatService } from './chat.service';
-import { CreateChatDto } from './dto/create-chat.dto';
-import { UpdateChatDto } from './dto/update-chat.dto';
 import { ApiTags } from '@nestjs/swagger';
 
 @ApiTags('Chat')
@@ -17,28 +13,18 @@ import { ApiTags } from '@nestjs/swagger';
 export class ChatController {
   constructor(private readonly chatService: ChatService) {}
 
-  @Post()
-  create(@Body() createChatDto: CreateChatDto) {
-    return this.chatService.create(createChatDto);
+  @Post('open-chat')
+  async openChat(@Body() body: { clientId: number; productId: number }) {
+    return this.chatService.openChat(body.clientId, body.productId);
   }
 
-  @Get()
-  findAll() {
-    return this.chatService.findAll();
+  @Get("user/:id")
+  async getUserChats(@Param('id') id: number) {
+    return this.chatService.getPhoneWithOwner(id);
   }
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.chatService.findOne(+id);
-  }
-
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateChatDto: UpdateChatDto) {
-    return this.chatService.update(+id, updateChatDto);
-  }
-
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.chatService.remove(+id);
-  }
+  // @Get("client/:id")
+  // async getClientChats(@Param('id') id: number) {
+  //   return this.chatService.getUserChats(id);
+  // }
 }

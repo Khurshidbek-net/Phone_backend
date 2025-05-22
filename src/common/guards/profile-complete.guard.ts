@@ -9,6 +9,8 @@ export class ProfileCompleteGuard implements CanActivate {
     const request = context.switchToHttp().getRequest();
     const userId = request.user?.id;
 
+    console.log(userId)
+
     if (!userId) {
       throw new ForbiddenException('User not authenticated');
     }

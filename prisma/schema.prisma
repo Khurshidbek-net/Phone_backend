@@ -87,7 +87,7 @@ model User {
   Address      Address[]
   Payment      Payment[]
   Chat         Chat[]
-  Messages     Messages[]
+  Messages     Message[]
 }
 
 model Email {
@@ -181,6 +181,7 @@ model Phone {
   Images   Image[]
   Reviews  Review[]
   Archives Archives[]
+  Chats    Chat[]
 }
 
 model Image {
@@ -248,25 +249,25 @@ model Payment {
 }
 
 model Chat {
-  id        Int        @id @default(autoincrement())
-  productId Int?
-  sellerId  Int?
-  buyerId   Int?
-  User      User?      @relation(fields: [buyerId], references: [id], onDelete: SetNull)
-  createdAt DateTime   @default(now())
-  updatedAt DateTime   @updatedAt
-  Messages  Messages[]
+  id        Int       @id @default(autoincrement())
+  senderId  Int? // initiator of the chat
+  User      User?     @relation(fields: [senderId], references: [id], onDelete: SetNull)
+  Phone     Phone     @relation(fields: [phoneId], references: [id])
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  messages  Message[]
+  phoneId   Int       
 }
 
-model Messages {
+model Message {
   id       Int      @id @default(autoincrement())
   message  String
-  is_read  Boolean
-  sent_at  DateTime
-  chatId   Int?
-  senderId Int?
-  User     User?    @relation(fields: [senderId], references: [id], onDelete: SetNull)
-  Chat     Chat?    @relation(fields: [chatId], references: [id], onDelete: SetNull)
+  isRead   Boolean  @default(false)
+  sentAt   DateTime @default(now())
+  chatId   Int
+  senderId Int
+  chat     Chat     @relation(fields: [chatId], references: [id], onDelete: Cascade)
+  sender   User     @relation(fields: [senderId], references: [id], onDelete: Cascade)
 }
 
 model Admin {

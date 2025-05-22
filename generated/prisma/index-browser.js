@@ -284,18 +284,17 @@ exports.Prisma.PaymentScalarFieldEnum = {
 
 exports.Prisma.ChatScalarFieldEnum = {
   id: 'id',
-  productId: 'productId',
-  sellerId: 'sellerId',
-  buyerId: 'buyerId',
+  senderId: 'senderId',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  updatedAt: 'updatedAt',
+  phoneId: 'phoneId'
 };
 
-exports.Prisma.MessagesScalarFieldEnum = {
+exports.Prisma.MessageScalarFieldEnum = {
   id: 'id',
   message: 'message',
-  is_read: 'is_read',
-  sent_at: 'sent_at',
+  isRead: 'isRead',
+  sentAt: 'sentAt',
   chatId: 'chatId',
   senderId: 'senderId'
 };
@@ -358,7 +357,7 @@ exports.Prisma.ModelName = {
   Address: 'Address',
   Payment: 'Payment',
   Chat: 'Chat',
-  Messages: 'Messages',
+  Message: 'Message',
   Admin: 'Admin'
 };
 
