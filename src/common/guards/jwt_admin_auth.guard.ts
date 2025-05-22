@@ -14,7 +14,7 @@ export class JwtAdminAuthGuard implements CanActivate {
   canActivate(context: ExecutionContext): boolean {
     const req = context.switchToHttp().getRequest();
     const authHeader = req.headers.authorization;
-
+    console.log(req.headers.authorization);
     if (!authHeader) {
       throw new UnauthorizedException({ message: 'Token berilmagan' });
     }
@@ -27,7 +27,7 @@ export class JwtAdminAuthGuard implements CanActivate {
 
     try {
       let decoded = this.jwtService.verify(token, {
-        secret: process.env.ADMIN_ACCESS_TOKEN_KEY,
+        secret: process.env.ADMIN_ACCESS_KEY,
       });
 
       if (decoded) {

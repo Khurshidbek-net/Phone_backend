@@ -26247,6 +26247,7 @@ export namespace Prisma {
     hashed_password: string | null
     email: string | null
     image: string | null
+    activation_link: string | null
     is_creator: boolean | null
     is_active: boolean | null
     is_deleted: boolean | null
@@ -26266,6 +26267,7 @@ export namespace Prisma {
     hashed_password: string | null
     email: string | null
     image: string | null
+    activation_link: string | null
     is_creator: boolean | null
     is_active: boolean | null
     is_deleted: boolean | null
@@ -26285,6 +26287,7 @@ export namespace Prisma {
     hashed_password: number
     email: number
     image: number
+    activation_link: number
     is_creator: number
     is_active: number
     is_deleted: number
@@ -26316,6 +26319,7 @@ export namespace Prisma {
     hashed_password?: true
     email?: true
     image?: true
+    activation_link?: true
     is_creator?: true
     is_active?: true
     is_deleted?: true
@@ -26335,6 +26339,7 @@ export namespace Prisma {
     hashed_password?: true
     email?: true
     image?: true
+    activation_link?: true
     is_creator?: true
     is_active?: true
     is_deleted?: true
@@ -26354,6 +26359,7 @@ export namespace Prisma {
     hashed_password?: true
     email?: true
     image?: true
+    activation_link?: true
     is_creator?: true
     is_active?: true
     is_deleted?: true
@@ -26460,6 +26466,7 @@ export namespace Prisma {
     hashed_password: string
     email: string
     image: string | null
+    activation_link: string | null
     is_creator: boolean | null
     is_active: boolean
     is_deleted: boolean | null
@@ -26498,6 +26505,7 @@ export namespace Prisma {
     hashed_password?: boolean
     email?: boolean
     image?: boolean
+    activation_link?: boolean
     is_creator?: boolean
     is_active?: boolean
     is_deleted?: boolean
@@ -26517,6 +26525,7 @@ export namespace Prisma {
     hashed_password?: boolean
     email?: boolean
     image?: boolean
+    activation_link?: boolean
     is_creator?: boolean
     is_active?: boolean
     is_deleted?: boolean
@@ -26536,6 +26545,7 @@ export namespace Prisma {
     hashed_password?: boolean
     email?: boolean
     image?: boolean
+    activation_link?: boolean
     is_creator?: boolean
     is_active?: boolean
     is_deleted?: boolean
@@ -26555,6 +26565,7 @@ export namespace Prisma {
     hashed_password?: boolean
     email?: boolean
     image?: boolean
+    activation_link?: boolean
     is_creator?: boolean
     is_active?: boolean
     is_deleted?: boolean
@@ -26566,7 +26577,7 @@ export namespace Prisma {
     updatedAt?: boolean
   }
 
-  export type AdminOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "firstname" | "lastname" | "phone_number" | "hashed_password" | "email" | "image" | "is_creator" | "is_active" | "is_deleted" | "refresh_token" | "last_login" | "login_attempts" | "locked_until" | "createdAt" | "updatedAt", ExtArgs["result"]["admin"]>
+  export type AdminOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "firstname" | "lastname" | "phone_number" | "hashed_password" | "email" | "image" | "activation_link" | "is_creator" | "is_active" | "is_deleted" | "refresh_token" | "last_login" | "login_attempts" | "locked_until" | "createdAt" | "updatedAt", ExtArgs["result"]["admin"]>
 
   export type $AdminPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Admin"
@@ -26579,6 +26590,7 @@ export namespace Prisma {
       hashed_password: string
       email: string
       image: string | null
+      activation_link: string | null
       is_creator: boolean | null
       is_active: boolean
       is_deleted: boolean | null
@@ -27018,6 +27030,7 @@ export namespace Prisma {
     readonly hashed_password: FieldRef<"Admin", 'String'>
     readonly email: FieldRef<"Admin", 'String'>
     readonly image: FieldRef<"Admin", 'String'>
+    readonly activation_link: FieldRef<"Admin", 'String'>
     readonly is_creator: FieldRef<"Admin", 'Boolean'>
     readonly is_active: FieldRef<"Admin", 'Boolean'>
     readonly is_deleted: FieldRef<"Admin", 'Boolean'>
@@ -27656,6 +27669,7 @@ export namespace Prisma {
     hashed_password: 'hashed_password',
     email: 'email',
     image: 'image',
+    activation_link: 'activation_link',
     is_creator: 'is_creator',
     is_active: 'is_active',
     is_deleted: 'is_deleted',
@@ -29141,6 +29155,7 @@ export namespace Prisma {
     hashed_password?: StringFilter<"Admin"> | string
     email?: StringFilter<"Admin"> | string
     image?: StringNullableFilter<"Admin"> | string | null
+    activation_link?: StringNullableFilter<"Admin"> | string | null
     is_creator?: BoolNullableFilter<"Admin"> | boolean | null
     is_active?: BoolFilter<"Admin"> | boolean
     is_deleted?: BoolNullableFilter<"Admin"> | boolean | null
@@ -29160,6 +29175,7 @@ export namespace Prisma {
     hashed_password?: SortOrder
     email?: SortOrder
     image?: SortOrderInput | SortOrder
+    activation_link?: SortOrderInput | SortOrder
     is_creator?: SortOrderInput | SortOrder
     is_active?: SortOrder
     is_deleted?: SortOrderInput | SortOrder
@@ -29176,6 +29192,7 @@ export namespace Prisma {
     phone_number?: string
     hashed_password?: string
     email?: string
+    activation_link?: string
     AND?: AdminWhereInput | AdminWhereInput[]
     OR?: AdminWhereInput[]
     NOT?: AdminWhereInput | AdminWhereInput[]
@@ -29191,7 +29208,7 @@ export namespace Prisma {
     locked_until?: DateTimeNullableFilter<"Admin"> | Date | string | null
     createdAt?: DateTimeFilter<"Admin"> | Date | string
     updatedAt?: DateTimeFilter<"Admin"> | Date | string
-  }, "id" | "phone_number" | "hashed_password" | "email">
+  }, "id" | "phone_number" | "hashed_password" | "email" | "activation_link">
 
   export type AdminOrderByWithAggregationInput = {
     id?: SortOrder
@@ -29201,6 +29218,7 @@ export namespace Prisma {
     hashed_password?: SortOrder
     email?: SortOrder
     image?: SortOrderInput | SortOrder
+    activation_link?: SortOrderInput | SortOrder
     is_creator?: SortOrderInput | SortOrder
     is_active?: SortOrder
     is_deleted?: SortOrderInput | SortOrder
@@ -29228,6 +29246,7 @@ export namespace Prisma {
     hashed_password?: StringWithAggregatesFilter<"Admin"> | string
     email?: StringWithAggregatesFilter<"Admin"> | string
     image?: StringNullableWithAggregatesFilter<"Admin"> | string | null
+    activation_link?: StringNullableWithAggregatesFilter<"Admin"> | string | null
     is_creator?: BoolNullableWithAggregatesFilter<"Admin"> | boolean | null
     is_active?: BoolWithAggregatesFilter<"Admin"> | boolean
     is_deleted?: BoolNullableWithAggregatesFilter<"Admin"> | boolean | null
@@ -30522,6 +30541,7 @@ export namespace Prisma {
     hashed_password: string
     email: string
     image?: string | null
+    activation_link?: string | null
     is_creator?: boolean | null
     is_active?: boolean
     is_deleted?: boolean | null
@@ -30541,6 +30561,7 @@ export namespace Prisma {
     hashed_password: string
     email: string
     image?: string | null
+    activation_link?: string | null
     is_creator?: boolean | null
     is_active?: boolean
     is_deleted?: boolean | null
@@ -30559,6 +30580,7 @@ export namespace Prisma {
     hashed_password?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     image?: NullableStringFieldUpdateOperationsInput | string | null
+    activation_link?: NullableStringFieldUpdateOperationsInput | string | null
     is_creator?: NullableBoolFieldUpdateOperationsInput | boolean | null
     is_active?: BoolFieldUpdateOperationsInput | boolean
     is_deleted?: NullableBoolFieldUpdateOperationsInput | boolean | null
@@ -30578,6 +30600,7 @@ export namespace Prisma {
     hashed_password?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     image?: NullableStringFieldUpdateOperationsInput | string | null
+    activation_link?: NullableStringFieldUpdateOperationsInput | string | null
     is_creator?: NullableBoolFieldUpdateOperationsInput | boolean | null
     is_active?: BoolFieldUpdateOperationsInput | boolean
     is_deleted?: NullableBoolFieldUpdateOperationsInput | boolean | null
@@ -30597,6 +30620,7 @@ export namespace Prisma {
     hashed_password: string
     email: string
     image?: string | null
+    activation_link?: string | null
     is_creator?: boolean | null
     is_active?: boolean
     is_deleted?: boolean | null
@@ -30615,6 +30639,7 @@ export namespace Prisma {
     hashed_password?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     image?: NullableStringFieldUpdateOperationsInput | string | null
+    activation_link?: NullableStringFieldUpdateOperationsInput | string | null
     is_creator?: NullableBoolFieldUpdateOperationsInput | boolean | null
     is_active?: BoolFieldUpdateOperationsInput | boolean
     is_deleted?: NullableBoolFieldUpdateOperationsInput | boolean | null
@@ -30634,6 +30659,7 @@ export namespace Prisma {
     hashed_password?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     image?: NullableStringFieldUpdateOperationsInput | string | null
+    activation_link?: NullableStringFieldUpdateOperationsInput | string | null
     is_creator?: NullableBoolFieldUpdateOperationsInput | boolean | null
     is_active?: BoolFieldUpdateOperationsInput | boolean
     is_deleted?: NullableBoolFieldUpdateOperationsInput | boolean | null
@@ -31914,6 +31940,7 @@ export namespace Prisma {
     hashed_password?: SortOrder
     email?: SortOrder
     image?: SortOrder
+    activation_link?: SortOrder
     is_creator?: SortOrder
     is_active?: SortOrder
     is_deleted?: SortOrder
@@ -31938,6 +31965,7 @@ export namespace Prisma {
     hashed_password?: SortOrder
     email?: SortOrder
     image?: SortOrder
+    activation_link?: SortOrder
     is_creator?: SortOrder
     is_active?: SortOrder
     is_deleted?: SortOrder
@@ -31957,6 +31985,7 @@ export namespace Prisma {
     hashed_password?: SortOrder
     email?: SortOrder
     image?: SortOrder
+    activation_link?: SortOrder
     is_creator?: SortOrder
     is_active?: SortOrder
     is_deleted?: SortOrder

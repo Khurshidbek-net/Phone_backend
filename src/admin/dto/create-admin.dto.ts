@@ -44,8 +44,9 @@ export class CreateAdminDto {
   })
   @MinLength(5, { message: "Parol kamida 5 ta belgidan iborat bo'lishi kerak" })
   password: string;
-  
+
   @ApiProperty()
   @IsOptional()
-  image?: any;
+  @IsString()
+  image?: string;
 }

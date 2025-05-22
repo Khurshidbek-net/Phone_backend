@@ -15,6 +15,7 @@ export class AdminCreatorGuard implements CanActivate {
         message: "Sizda bunday huquq yo'q",
       });
     }
+    console.log(req.user.is_creator);
     return true;
   }
 }

@@ -30,6 +30,7 @@ import { AdminAuthModule } from './admin_auth/admin_auth.module';
 import { BotModule } from './bot/bot.module';
 import { TelegrafModule } from 'nestjs-telegraf';
 import { MailModule } from './mail/mail.module';
+import { ImageModule } from './image/image.module';
 
 @Module({
   imports: [
@@ -66,7 +67,9 @@ import { MailModule } from './mail/mail.module';
     ColorModule,
     AdminAuthModule,
     BotModule,
-    MailModule
+    MailModule,
+    ImageModule
+  
   ],
   controllers: [],
   providers: [

@@ -309,6 +309,7 @@ exports.Prisma.AdminScalarFieldEnum = {
   hashed_password: 'hashed_password',
   email: 'email',
   image: 'image',
+  activation_link: 'activation_link',
   is_creator: 'is_creator',
   is_active: 'is_active',
   is_deleted: 'is_deleted',

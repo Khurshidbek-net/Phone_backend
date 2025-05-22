@@ -32,12 +32,12 @@ export class AdminAuthService {
 
     const [accessToken, refreshToken] = await Promise.all([
       this.jwtService.signAsync(payload, {
-        secret: process.env.ADMIN_ACCESS_TOKEN_KEY,
-        expiresIn: process.env.ACCESS_TOKEN_TIME,
+        secret: process.env.ADMIN_ACCESS_KEY,
+        expiresIn: process.env.access_time,
       }),
       this.jwtService.signAsync(payload, {
-        secret: process.env.ADMIN_REFRESH_TOKEN_KEY,
-        expiresIn: process.env.REFRESH_TOKEN_TIME,
+        secret: process.env.ADMIN_REFRESH_KEY,
+        expiresIn: process.env.refresh_time,
       }),
     ]);
     return {
@@ -109,7 +109,7 @@ export class AdminAuthService {
       throw new InternalServerErrorException('Tokenni saqlashda xatolik');
     }
     res.cookie('refresh_token', tokens.refresh_token, {
-      maxAge: Number(process.env.COOKIE_TIME),
+      maxAge: Number(process.env.refresh_token_ms),
       httpOnly: true,
     });
     const response = {
@@ -164,9 +164,10 @@ export class AdminAuthService {
     await this.adminService.updateRefreshToken(admin.id, hashed_refresh_token);
 
     res.cookie('refresh_token', tokens.refresh_token, {
-      maxAge: Number(process.env.COOKIE_TIME), // 15 * 24 * 60 * 60 * 1000
+      maxAge: Number(process.env.tokenTime), // 15 * 24 * 60 * 60 * 1000
       httpOnly: true,
     });
+    console.log(process.env.tokenTime);
     const response = {
       message: 'access token refreshed',
       admin: admin.id,

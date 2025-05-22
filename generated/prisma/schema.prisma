@@ -283,8 +283,9 @@ model Admin {
   hashed_password String    @unique
   email           String    @unique
   image           String?
+  activation_link String?   @unique
   is_creator      Boolean?  @default(false)
-  is_active       Boolean   @default(true)
+  is_active       Boolean   @default(false)
   is_deleted      Boolean?  @default(false)
   refresh_token   String?
   last_login      DateTime?

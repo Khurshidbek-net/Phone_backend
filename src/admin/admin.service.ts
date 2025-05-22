@@ -1,16 +1,22 @@
 import {
   BadRequestException,
   Injectable,
+  InternalServerErrorException,
   NotFoundException,
 } from '@nestjs/common';
 import { CreateAdminDto } from './dto/create-admin.dto';
 import { UpdateAdminDto } from './dto/update-admin.dto';
 import { PrismaService } from '../prisma/prisma.service';
 import * as bcrypt from 'bcrypt';
+import * as uuid from 'uuid';
+import { MailService } from '../mail/mail.service';
 
 @Injectable()
 export class AdminService {
-  constructor(private readonly prisma: PrismaService) {}
+  constructor(
+    private readonly prisma: PrismaService,
+    private readonly mailService: MailService,
+  ) {}
   async create(createAdminDto: CreateAdminDto) {
     const { password, email, image, ...data } = createAdminDto;
 
@@ -30,11 +36,30 @@ export class AdminService {
     }
     const hashed_password = await bcrypt.hash(password, 7);
 
+    const activation_link = uuid.v4();
+
     const newAdmin = await this.prisma.admin.create({
-      data: { ...data, hashed_password, email, image: imageUrl },
+      data: {
+        ...data,
+        hashed_password,
+        email,
+        image: imageUrl,
+        activation_link,
+      },
     });
 
-    return { message: 'Added successfuly', newAdmin };
+    try {
+      await this.mailService.sendMailAdmin(newAdmin, createAdminDto.email);
+    } catch (error) {
+      console.log(error);
+      throw new InternalServerErrorException('Emailga xat yuborishda xatolik');
+    }
+
+    return {
+      message:
+        'Admin yaratildi, akkauntni faollashtirish uchun emailga xabar yuborildi',
+      newAdmin,
+    };
   }
 
   async findAll() {
@@ -61,6 +86,34 @@ export class AdminService {
       throw new Error('Admin not found');
     }
     return result;
+  }
+
+  async activate(link: string) {
+    if (!link) {
+      throw new NotFoundException('Activation link not found');
+    }
+
+    const admin = await this.prisma.admin.findUnique({
+      where: {
+        activation_link: link,
+        is_active: false,
+      },
+    });
+
+    if (!admin) {
+      throw new BadRequestException('Admin already activated');
+    }
+
+    const updatedadmin = await this.prisma.admin.update({
+      where: { id: admin.id },
+      data: { is_active: true },
+    });
+
+    const response = {
+      message: 'Admin activated successfully',
+      isActive: updatedadmin.is_active,
+    };
+    return response;
   }
 
   async update(id: number, updateAdminDto: UpdateAdminDto) {
