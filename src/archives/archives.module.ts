@@ -7,5 +7,6 @@ import { PrismaModule } from '../prisma/prisma.module';
   imports: [PrismaModule],
   controllers: [ArchivesController],
   providers: [ArchivesService],
+  exports: [ArchivesService],
 })
 export class ArchivesModule {}

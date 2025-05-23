@@ -21,6 +21,7 @@ import { UserSelfGuard } from '../common/guards/user-self.guard';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { extname } from 'path';
 import { diskStorage } from 'multer';
+import { JwtAdminAuthGuard } from '../common/guards/jwt_admin_auth.guard';
 
 @Controller('user')
 export class UserController {
@@ -31,6 +32,7 @@ export class UserController {
     return this.userService.create(createUserDto);
   }
 
+  @UseGuards(JwtAdminAuthGuard)
   @Get()
   findAll() {
     return this.userService.findAll();
@@ -108,6 +110,7 @@ export class UserController {
     return await this.userService.updateProfileImage(id, file.filename);
   }
 
+  @UseGuards(JwtAdminAuthGuard)
   @Delete(':id')
   remove(@Param('id') id: string) {
     return this.userService.remove(+id);

@@ -10,7 +10,7 @@ export class PhoneService {
     private readonly prisma: PrismaService,
     @Inject(forwardRef(() => BotService))
     private readonly botService: BotService,
-  ) { }
+  ) {}
   async create(createPhoneDto: CreatePhoneDto) {
     const phone = await this.prisma.phone.create({
       data: {
@@ -87,11 +87,13 @@ export class PhoneService {
   }
 
   async remove(id: number) {
-    await this.findOne(id);
+    const phone = await this.findOne(id);
+
     await this.prisma.phone.update({
       where: { id },
-      data: { is_deleted: true },
+      data: { is_deleted: true, is_archived: true },
     });
+
     return { message: 'Phone deleted successfully' };
   }
 }

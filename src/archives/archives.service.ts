@@ -44,7 +44,7 @@ export class ArchivesService {
 
   async remove(id: number) {
     await this.findOne(id)
-    await this.prisma.model.delete({
+    await this.prisma.archives.delete({
       where: { id }
     })
     return { message: 'Archives deleted successfully '};

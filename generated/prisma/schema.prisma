@@ -206,8 +206,8 @@ model Review {
 }
 
 model Archives {
-  id         Int      @id @default(autoincrement())
-  archivedAt DateTime
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
 
   phoneId Int
 

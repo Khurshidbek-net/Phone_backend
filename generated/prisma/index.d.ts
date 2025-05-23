@@ -18524,19 +18524,19 @@ export namespace Prisma {
 
   export type ArchivesMinAggregateOutputType = {
     id: number | null
-    archivedAt: Date | null
+    createdAt: Date | null
     phoneId: number | null
   }
 
   export type ArchivesMaxAggregateOutputType = {
     id: number | null
-    archivedAt: Date | null
+    createdAt: Date | null
     phoneId: number | null
   }
 
   export type ArchivesCountAggregateOutputType = {
     id: number
-    archivedAt: number
+    createdAt: number
     phoneId: number
     _all: number
   }
@@ -18554,19 +18554,19 @@ export namespace Prisma {
 
   export type ArchivesMinAggregateInputType = {
     id?: true
-    archivedAt?: true
+    createdAt?: true
     phoneId?: true
   }
 
   export type ArchivesMaxAggregateInputType = {
     id?: true
-    archivedAt?: true
+    createdAt?: true
     phoneId?: true
   }
 
   export type ArchivesCountAggregateInputType = {
     id?: true
-    archivedAt?: true
+    createdAt?: true
     phoneId?: true
     _all?: true
   }
@@ -18659,7 +18659,7 @@ export namespace Prisma {
 
   export type ArchivesGroupByOutputType = {
     id: number
-    archivedAt: Date
+    createdAt: Date
     phoneId: number
     _count: ArchivesCountAggregateOutputType | null
     _avg: ArchivesAvgAggregateOutputType | null
@@ -18684,32 +18684,32 @@ export namespace Prisma {
 
   export type ArchivesSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    archivedAt?: boolean
+    createdAt?: boolean
     phoneId?: boolean
     Phone?: boolean | PhoneDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["archives"]>
 
   export type ArchivesSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    archivedAt?: boolean
+    createdAt?: boolean
     phoneId?: boolean
     Phone?: boolean | PhoneDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["archives"]>
 
   export type ArchivesSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    archivedAt?: boolean
+    createdAt?: boolean
     phoneId?: boolean
     Phone?: boolean | PhoneDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["archives"]>
 
   export type ArchivesSelectScalar = {
     id?: boolean
-    archivedAt?: boolean
+    createdAt?: boolean
     phoneId?: boolean
   }
 
-  export type ArchivesOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "archivedAt" | "phoneId", ExtArgs["result"]["archives"]>
+  export type ArchivesOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "createdAt" | "phoneId", ExtArgs["result"]["archives"]>
   export type ArchivesInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     Phone?: boolean | PhoneDefaultArgs<ExtArgs>
   }
@@ -18727,7 +18727,7 @@ export namespace Prisma {
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
-      archivedAt: Date
+      createdAt: Date
       phoneId: number
     }, ExtArgs["result"]["archives"]>
     composites: {}
@@ -19154,7 +19154,7 @@ export namespace Prisma {
    */
   interface ArchivesFieldRefs {
     readonly id: FieldRef<"Archives", 'Int'>
-    readonly archivedAt: FieldRef<"Archives", 'DateTime'>
+    readonly createdAt: FieldRef<"Archives", 'DateTime'>
     readonly phoneId: FieldRef<"Archives", 'Int'>
   }
     
@@ -27584,7 +27584,7 @@ export namespace Prisma {
 
   export const ArchivesScalarFieldEnum: {
     id: 'id',
-    archivedAt: 'archivedAt',
+    createdAt: 'createdAt',
     phoneId: 'phoneId'
   };
 
@@ -28734,14 +28734,14 @@ export namespace Prisma {
     OR?: ArchivesWhereInput[]
     NOT?: ArchivesWhereInput | ArchivesWhereInput[]
     id?: IntFilter<"Archives"> | number
-    archivedAt?: DateTimeFilter<"Archives"> | Date | string
+    createdAt?: DateTimeFilter<"Archives"> | Date | string
     phoneId?: IntFilter<"Archives"> | number
     Phone?: XOR<PhoneScalarRelationFilter, PhoneWhereInput>
   }
 
   export type ArchivesOrderByWithRelationInput = {
     id?: SortOrder
-    archivedAt?: SortOrder
+    createdAt?: SortOrder
     phoneId?: SortOrder
     Phone?: PhoneOrderByWithRelationInput
   }
@@ -28751,14 +28751,14 @@ export namespace Prisma {
     AND?: ArchivesWhereInput | ArchivesWhereInput[]
     OR?: ArchivesWhereInput[]
     NOT?: ArchivesWhereInput | ArchivesWhereInput[]
-    archivedAt?: DateTimeFilter<"Archives"> | Date | string
+    createdAt?: DateTimeFilter<"Archives"> | Date | string
     phoneId?: IntFilter<"Archives"> | number
     Phone?: XOR<PhoneScalarRelationFilter, PhoneWhereInput>
   }, "id">
 
   export type ArchivesOrderByWithAggregationInput = {
     id?: SortOrder
-    archivedAt?: SortOrder
+    createdAt?: SortOrder
     phoneId?: SortOrder
     _count?: ArchivesCountOrderByAggregateInput
     _avg?: ArchivesAvgOrderByAggregateInput
@@ -28772,7 +28772,7 @@ export namespace Prisma {
     OR?: ArchivesScalarWhereWithAggregatesInput[]
     NOT?: ArchivesScalarWhereWithAggregatesInput | ArchivesScalarWhereWithAggregatesInput[]
     id?: IntWithAggregatesFilter<"Archives"> | number
-    archivedAt?: DateTimeWithAggregatesFilter<"Archives"> | Date | string
+    createdAt?: DateTimeWithAggregatesFilter<"Archives"> | Date | string
     phoneId?: IntWithAggregatesFilter<"Archives"> | number
   }
 
@@ -30149,40 +30149,40 @@ export namespace Prisma {
   }
 
   export type ArchivesCreateInput = {
-    archivedAt: Date | string
+    createdAt?: Date | string
     Phone: PhoneCreateNestedOneWithoutArchivesInput
   }
 
   export type ArchivesUncheckedCreateInput = {
     id?: number
-    archivedAt: Date | string
+    createdAt?: Date | string
     phoneId: number
   }
 
   export type ArchivesUpdateInput = {
-    archivedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     Phone?: PhoneUpdateOneRequiredWithoutArchivesNestedInput
   }
 
   export type ArchivesUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
-    archivedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     phoneId?: IntFieldUpdateOperationsInput | number
   }
 
   export type ArchivesCreateManyInput = {
     id?: number
-    archivedAt: Date | string
+    createdAt?: Date | string
     phoneId: number
   }
 
   export type ArchivesUpdateManyMutationInput = {
-    archivedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type ArchivesUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
-    archivedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     phoneId?: IntFieldUpdateOperationsInput | number
   }
 
@@ -31630,7 +31630,7 @@ export namespace Prisma {
 
   export type ArchivesCountOrderByAggregateInput = {
     id?: SortOrder
-    archivedAt?: SortOrder
+    createdAt?: SortOrder
     phoneId?: SortOrder
   }
 
@@ -31641,13 +31641,13 @@ export namespace Prisma {
 
   export type ArchivesMaxOrderByAggregateInput = {
     id?: SortOrder
-    archivedAt?: SortOrder
+    createdAt?: SortOrder
     phoneId?: SortOrder
   }
 
   export type ArchivesMinOrderByAggregateInput = {
     id?: SortOrder
-    archivedAt?: SortOrder
+    createdAt?: SortOrder
     phoneId?: SortOrder
   }
 
@@ -35648,12 +35648,12 @@ export namespace Prisma {
   }
 
   export type ArchivesCreateWithoutPhoneInput = {
-    archivedAt: Date | string
+    createdAt?: Date | string
   }
 
   export type ArchivesUncheckedCreateWithoutPhoneInput = {
     id?: number
-    archivedAt: Date | string
+    createdAt?: Date | string
   }
 
   export type ArchivesCreateOrConnectWithoutPhoneInput = {
@@ -35950,7 +35950,7 @@ export namespace Prisma {
     OR?: ArchivesScalarWhereInput[]
     NOT?: ArchivesScalarWhereInput | ArchivesScalarWhereInput[]
     id?: IntFilter<"Archives"> | number
-    archivedAt?: DateTimeFilter<"Archives"> | Date | string
+    createdAt?: DateTimeFilter<"Archives"> | Date | string
     phoneId?: IntFilter<"Archives"> | number
   }
 
@@ -38445,7 +38445,7 @@ export namespace Prisma {
 
   export type ArchivesCreateManyPhoneInput = {
     id?: number
-    archivedAt: Date | string
+    createdAt?: Date | string
   }
 
   export type ChatCreateManyPhoneInput = {
@@ -38484,17 +38484,17 @@ export namespace Prisma {
   }
 
   export type ArchivesUpdateWithoutPhoneInput = {
-    archivedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type ArchivesUncheckedUpdateWithoutPhoneInput = {
     id?: IntFieldUpdateOperationsInput | number
-    archivedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type ArchivesUncheckedUpdateManyWithoutPhoneInput = {
     id?: IntFieldUpdateOperationsInput | number
-    archivedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type ChatUpdateWithoutPhoneInput = {

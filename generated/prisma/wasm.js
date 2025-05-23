@@ -245,7 +245,7 @@ exports.Prisma.ReviewScalarFieldEnum = {
 
 exports.Prisma.ArchivesScalarFieldEnum = {
   id: 'id',
-  archivedAt: 'archivedAt',
+  createdAt: 'createdAt',
   phoneId: 'phoneId'
 };
 

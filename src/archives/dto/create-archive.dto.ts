@@ -7,8 +7,4 @@ export class CreateArchiveDto {
     @IsNotEmpty()
     phoneId: number;
 
-    @ApiProperty()
-    @IsDate()
-    @IsNotEmpty()
-    archivedAt: Date;
 }
