@@ -31,6 +31,7 @@ import { BotModule } from './bot/bot.module';
 import { TelegrafModule } from 'nestjs-telegraf';
 import { MailModule } from './mail/mail.module';
 import { ImageModule } from './image/image.module';
+import { ReviewModule } from './review/review.module';
 
 @Module({
   imports: [
@@ -68,7 +69,8 @@ import { ImageModule } from './image/image.module';
     AdminAuthModule,
     BotModule,
     MailModule,
-    ImageModule
+    ImageModule,
+    ReviewModule
   
   ],
   controllers: [],

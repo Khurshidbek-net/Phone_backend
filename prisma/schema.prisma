@@ -197,9 +197,9 @@ model Image {
 }
 
 model Review {
-  id   Int      @id @default(autoincrement())
-  date DateTime
-
+  id      Int       @id @default(autoincrement())
+  date    DateTime? @default(now())
+  review  String
   phoneId Int
 
   Phone Phone @relation(fields: [phoneId], references: [id])

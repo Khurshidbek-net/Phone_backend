@@ -240,6 +240,7 @@ exports.Prisma.ImageScalarFieldEnum = {
 exports.Prisma.ReviewScalarFieldEnum = {
   id: 'id',
   date: 'date',
+  review: 'review',
   phoneId: 'phoneId'
 };
 

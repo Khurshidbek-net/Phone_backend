@@ -17455,18 +17455,21 @@ export namespace Prisma {
   export type ReviewMinAggregateOutputType = {
     id: number | null
     date: Date | null
+    review: string | null
     phoneId: number | null
   }
 
   export type ReviewMaxAggregateOutputType = {
     id: number | null
     date: Date | null
+    review: string | null
     phoneId: number | null
   }
 
   export type ReviewCountAggregateOutputType = {
     id: number
     date: number
+    review: number
     phoneId: number
     _all: number
   }
@@ -17485,18 +17488,21 @@ export namespace Prisma {
   export type ReviewMinAggregateInputType = {
     id?: true
     date?: true
+    review?: true
     phoneId?: true
   }
 
   export type ReviewMaxAggregateInputType = {
     id?: true
     date?: true
+    review?: true
     phoneId?: true
   }
 
   export type ReviewCountAggregateInputType = {
     id?: true
     date?: true
+    review?: true
     phoneId?: true
     _all?: true
   }
@@ -17589,7 +17595,8 @@ export namespace Prisma {
 
   export type ReviewGroupByOutputType = {
     id: number
-    date: Date
+    date: Date | null
+    review: string
     phoneId: number
     _count: ReviewCountAggregateOutputType | null
     _avg: ReviewAvgAggregateOutputType | null
@@ -17615,6 +17622,7 @@ export namespace Prisma {
   export type ReviewSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     date?: boolean
+    review?: boolean
     phoneId?: boolean
     Phone?: boolean | PhoneDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["review"]>
@@ -17622,6 +17630,7 @@ export namespace Prisma {
   export type ReviewSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     date?: boolean
+    review?: boolean
     phoneId?: boolean
     Phone?: boolean | PhoneDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["review"]>
@@ -17629,6 +17638,7 @@ export namespace Prisma {
   export type ReviewSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     date?: boolean
+    review?: boolean
     phoneId?: boolean
     Phone?: boolean | PhoneDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["review"]>
@@ -17636,10 +17646,11 @@ export namespace Prisma {
   export type ReviewSelectScalar = {
     id?: boolean
     date?: boolean
+    review?: boolean
     phoneId?: boolean
   }
 
-  export type ReviewOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "date" | "phoneId", ExtArgs["result"]["review"]>
+  export type ReviewOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "date" | "review" | "phoneId", ExtArgs["result"]["review"]>
   export type ReviewInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     Phone?: boolean | PhoneDefaultArgs<ExtArgs>
   }
@@ -17657,7 +17668,8 @@ export namespace Prisma {
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
-      date: Date
+      date: Date | null
+      review: string
       phoneId: number
     }, ExtArgs["result"]["review"]>
     composites: {}
@@ -18085,6 +18097,7 @@ export namespace Prisma {
   interface ReviewFieldRefs {
     readonly id: FieldRef<"Review", 'Int'>
     readonly date: FieldRef<"Review", 'DateTime'>
+    readonly review: FieldRef<"Review", 'String'>
     readonly phoneId: FieldRef<"Review", 'Int'>
   }
     
@@ -27576,6 +27589,7 @@ export namespace Prisma {
   export const ReviewScalarFieldEnum: {
     id: 'id',
     date: 'date',
+    review: 'review',
     phoneId: 'phoneId'
   };
 
@@ -28687,14 +28701,16 @@ export namespace Prisma {
     OR?: ReviewWhereInput[]
     NOT?: ReviewWhereInput | ReviewWhereInput[]
     id?: IntFilter<"Review"> | number
-    date?: DateTimeFilter<"Review"> | Date | string
+    date?: DateTimeNullableFilter<"Review"> | Date | string | null
+    review?: StringFilter<"Review"> | string
     phoneId?: IntFilter<"Review"> | number
     Phone?: XOR<PhoneScalarRelationFilter, PhoneWhereInput>
   }
 
   export type ReviewOrderByWithRelationInput = {
     id?: SortOrder
-    date?: SortOrder
+    date?: SortOrderInput | SortOrder
+    review?: SortOrder
     phoneId?: SortOrder
     Phone?: PhoneOrderByWithRelationInput
   }
@@ -28704,14 +28720,16 @@ export namespace Prisma {
     AND?: ReviewWhereInput | ReviewWhereInput[]
     OR?: ReviewWhereInput[]
     NOT?: ReviewWhereInput | ReviewWhereInput[]
-    date?: DateTimeFilter<"Review"> | Date | string
+    date?: DateTimeNullableFilter<"Review"> | Date | string | null
+    review?: StringFilter<"Review"> | string
     phoneId?: IntFilter<"Review"> | number
     Phone?: XOR<PhoneScalarRelationFilter, PhoneWhereInput>
   }, "id">
 
   export type ReviewOrderByWithAggregationInput = {
     id?: SortOrder
-    date?: SortOrder
+    date?: SortOrderInput | SortOrder
+    review?: SortOrder
     phoneId?: SortOrder
     _count?: ReviewCountOrderByAggregateInput
     _avg?: ReviewAvgOrderByAggregateInput
@@ -28725,7 +28743,8 @@ export namespace Prisma {
     OR?: ReviewScalarWhereWithAggregatesInput[]
     NOT?: ReviewScalarWhereWithAggregatesInput | ReviewScalarWhereWithAggregatesInput[]
     id?: IntWithAggregatesFilter<"Review"> | number
-    date?: DateTimeWithAggregatesFilter<"Review"> | Date | string
+    date?: DateTimeNullableWithAggregatesFilter<"Review"> | Date | string | null
+    review?: StringWithAggregatesFilter<"Review"> | string
     phoneId?: IntWithAggregatesFilter<"Review"> | number
   }
 
@@ -30111,40 +30130,47 @@ export namespace Prisma {
   }
 
   export type ReviewCreateInput = {
-    date: Date | string
+    date?: Date | string | null
+    review: string
     Phone: PhoneCreateNestedOneWithoutReviewsInput
   }
 
   export type ReviewUncheckedCreateInput = {
     id?: number
-    date: Date | string
+    date?: Date | string | null
+    review: string
     phoneId: number
   }
 
   export type ReviewUpdateInput = {
-    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    review?: StringFieldUpdateOperationsInput | string
     Phone?: PhoneUpdateOneRequiredWithoutReviewsNestedInput
   }
 
   export type ReviewUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
-    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    review?: StringFieldUpdateOperationsInput | string
     phoneId?: IntFieldUpdateOperationsInput | number
   }
 
   export type ReviewCreateManyInput = {
     id?: number
-    date: Date | string
+    date?: Date | string | null
+    review: string
     phoneId: number
   }
 
   export type ReviewUpdateManyMutationInput = {
-    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    review?: StringFieldUpdateOperationsInput | string
   }
 
   export type ReviewUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
-    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    review?: StringFieldUpdateOperationsInput | string
     phoneId?: IntFieldUpdateOperationsInput | number
   }
 
@@ -31603,6 +31629,7 @@ export namespace Prisma {
   export type ReviewCountOrderByAggregateInput = {
     id?: SortOrder
     date?: SortOrder
+    review?: SortOrder
     phoneId?: SortOrder
   }
 
@@ -31614,12 +31641,14 @@ export namespace Prisma {
   export type ReviewMaxOrderByAggregateInput = {
     id?: SortOrder
     date?: SortOrder
+    review?: SortOrder
     phoneId?: SortOrder
   }
 
   export type ReviewMinOrderByAggregateInput = {
     id?: SortOrder
     date?: SortOrder
+    review?: SortOrder
     phoneId?: SortOrder
   }
 
@@ -35629,12 +35658,14 @@ export namespace Prisma {
   }
 
   export type ReviewCreateWithoutPhoneInput = {
-    date: Date | string
+    date?: Date | string | null
+    review: string
   }
 
   export type ReviewUncheckedCreateWithoutPhoneInput = {
     id?: number
-    date: Date | string
+    date?: Date | string | null
+    review: string
   }
 
   export type ReviewCreateOrConnectWithoutPhoneInput = {
@@ -35925,7 +35956,8 @@ export namespace Prisma {
     OR?: ReviewScalarWhereInput[]
     NOT?: ReviewScalarWhereInput | ReviewScalarWhereInput[]
     id?: IntFilter<"Review"> | number
-    date?: DateTimeFilter<"Review"> | Date | string
+    date?: DateTimeNullableFilter<"Review"> | Date | string | null
+    review?: StringFilter<"Review"> | string
     phoneId?: IntFilter<"Review"> | number
   }
 
@@ -38440,7 +38472,8 @@ export namespace Prisma {
 
   export type ReviewCreateManyPhoneInput = {
     id?: number
-    date: Date | string
+    date?: Date | string | null
+    review: string
   }
 
   export type ArchivesCreateManyPhoneInput = {
@@ -38470,17 +38503,20 @@ export namespace Prisma {
   }
 
   export type ReviewUpdateWithoutPhoneInput = {
-    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    review?: StringFieldUpdateOperationsInput | string
   }
 
   export type ReviewUncheckedUpdateWithoutPhoneInput = {
     id?: IntFieldUpdateOperationsInput | number
-    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    review?: StringFieldUpdateOperationsInput | string
   }
 
   export type ReviewUncheckedUpdateManyWithoutPhoneInput = {
     id?: IntFieldUpdateOperationsInput | number
-    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    review?: StringFieldUpdateOperationsInput | string
   }
 
   export type ArchivesUpdateWithoutPhoneInput = {
