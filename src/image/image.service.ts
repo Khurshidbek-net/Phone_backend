@@ -39,12 +39,20 @@ export class ImageService {
   }
 
   async findOne(id: number) {
-    const result = await this.prisma.region.findUnique({ where: { id } });
+    const result = await this.prisma.image.findUnique({ where: { id } });
     if (!result) {
       throw new Error('Rasm Topilmadi');
     }
     return result;
   }
+
+  // async findImagesByPhoneId(id: number) {
+  //   const result = await this.prisma.image.findMany({ where: { phoneId: id } });
+  //   if (!result) {
+  //     throw new Error('Rasm Topilmadi');
+  //   }
+  //   return result;
+  // }
 
   async update(id: number, updateImageDto: UpdateImageDto) {
     return await this.prisma.color.update({

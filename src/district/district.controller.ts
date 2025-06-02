@@ -10,7 +10,7 @@ import { JwtAdminAuthGuard } from '../common/guards/jwt_admin_auth.guard';
 export class DistrictController {
   constructor(private readonly districtService: DistrictService) {}
 
-  @UseGuards(JwtAdminAuthGuard)
+  // @UseGuards(JwtAdminAuthGuard)
   @Post()
   create(@Body() createDistrictDto: CreateDistrictDto) {
     return this.districtService.create(createDistrictDto);
@@ -26,7 +26,7 @@ export class DistrictController {
     return this.districtService.findOne(+id);
   }
 
-  @UseGuards(JwtAdminAuthGuard)
+  // @UseGuards(JwtAdminAuthGuard)
   @Patch(':id')
   update(
     @Param('id') id: string,
@@ -35,7 +35,7 @@ export class DistrictController {
     return this.districtService.update(+id, updateDistrictDto);
   }
 
-  @UseGuards(JwtAdminAuthGuard)
+  // @UseGuards(JwtAdminAuthGuard)
   @Delete(':id')
   remove(@Param('id') id: string) {
     return this.districtService.remove(+id);

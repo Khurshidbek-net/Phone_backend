@@ -19,7 +19,7 @@ import { JwtAdminAuthGuard } from '../common/guards/jwt_admin_auth.guard';
 export class BrandController {
   constructor(private readonly brandService: BrandService) {}
 
-  @UseGuards(JwtAdminAuthGuard)
+  // @UseGuards(JwtAdminAuthGuard)
   @Post()
   create(@Body() createBrandDto: CreateBrandDto) {
     return this.brandService.create(createBrandDto);
@@ -35,13 +35,13 @@ export class BrandController {
     return this.brandService.findOne(+id);
   }
 
-  @UseGuards(JwtAdminAuthGuard)
+  // @UseGuards(JwtAdminAuthGuard)
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateBrandDto: UpdateBrandDto) {
     return this.brandService.update(+id, updateBrandDto);
   }
 
-  @UseGuards(JwtAdminAuthGuard)
+  // @UseGuards(JwtAdminAuthGuard)
   @Delete(':id')
   remove(@Param('id') id: string) {
     return this.brandService.remove(+id);

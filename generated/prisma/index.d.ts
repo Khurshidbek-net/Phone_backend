@@ -2708,10 +2708,12 @@ export namespace Prisma {
 
   export type RegionCountOutputType = {
     Districts: number
+    Phone: number
   }
 
   export type RegionCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     Districts?: boolean | RegionCountOutputTypeCountDistrictsArgs
+    Phone?: boolean | RegionCountOutputTypeCountPhoneArgs
   }
 
   // Custom InputTypes
@@ -2732,6 +2734,13 @@ export namespace Prisma {
     where?: DistrictWhereInput
   }
 
+  /**
+   * RegionCountOutputType without action
+   */
+  export type RegionCountOutputTypeCountPhoneArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: PhoneWhereInput
+  }
+
 
   /**
    * Count Type DistrictCountOutputType
@@ -2739,10 +2748,12 @@ export namespace Prisma {
 
   export type DistrictCountOutputType = {
     Users: number
+    Phone: number
   }
 
   export type DistrictCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     Users?: boolean | DistrictCountOutputTypeCountUsersArgs
+    Phone?: boolean | DistrictCountOutputTypeCountPhoneArgs
   }
 
   // Custom InputTypes
@@ -2761,6 +2772,13 @@ export namespace Prisma {
    */
   export type DistrictCountOutputTypeCountUsersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: UserWhereInput
+  }
+
+  /**
+   * DistrictCountOutputType without action
+   */
+  export type DistrictCountOutputTypeCountPhoneArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: PhoneWhereInput
   }
 
 
@@ -3390,6 +3408,7 @@ export namespace Prisma {
     createdAt?: boolean
     updatedAt?: boolean
     Districts?: boolean | Region$DistrictsArgs<ExtArgs>
+    Phone?: boolean | Region$PhoneArgs<ExtArgs>
     _count?: boolean | RegionCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["region"]>
 
@@ -3417,6 +3436,7 @@ export namespace Prisma {
   export type RegionOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "createdAt" | "updatedAt", ExtArgs["result"]["region"]>
   export type RegionInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     Districts?: boolean | Region$DistrictsArgs<ExtArgs>
+    Phone?: boolean | Region$PhoneArgs<ExtArgs>
     _count?: boolean | RegionCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type RegionIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -3426,6 +3446,7 @@ export namespace Prisma {
     name: "Region"
     objects: {
       Districts: Prisma.$DistrictPayload<ExtArgs>[]
+      Phone: Prisma.$PhonePayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -3827,6 +3848,7 @@ export namespace Prisma {
   export interface Prisma__RegionClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     Districts<T extends Region$DistrictsArgs<ExtArgs> = {}>(args?: Subset<T, Region$DistrictsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DistrictPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    Phone<T extends Region$PhoneArgs<ExtArgs> = {}>(args?: Subset<T, Region$PhoneArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PhonePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -4272,6 +4294,30 @@ export namespace Prisma {
   }
 
   /**
+   * Region.Phone
+   */
+  export type Region$PhoneArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Phone
+     */
+    select?: PhoneSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Phone
+     */
+    omit?: PhoneOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PhoneInclude<ExtArgs> | null
+    where?: PhoneWhereInput
+    orderBy?: PhoneOrderByWithRelationInput | PhoneOrderByWithRelationInput[]
+    cursor?: PhoneWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: PhoneScalarFieldEnum | PhoneScalarFieldEnum[]
+  }
+
+  /**
    * Region without action
    */
   export type RegionDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -4494,6 +4540,7 @@ export namespace Prisma {
     updatedAt?: boolean
     Region?: boolean | RegionDefaultArgs<ExtArgs>
     Users?: boolean | District$UsersArgs<ExtArgs>
+    Phone?: boolean | District$PhoneArgs<ExtArgs>
     _count?: boolean | DistrictCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["district"]>
 
@@ -4527,6 +4574,7 @@ export namespace Prisma {
   export type DistrictInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     Region?: boolean | RegionDefaultArgs<ExtArgs>
     Users?: boolean | District$UsersArgs<ExtArgs>
+    Phone?: boolean | District$PhoneArgs<ExtArgs>
     _count?: boolean | DistrictCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type DistrictIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -4541,6 +4589,7 @@ export namespace Prisma {
     objects: {
       Region: Prisma.$RegionPayload<ExtArgs>
       Users: Prisma.$UserPayload<ExtArgs>[]
+      Phone: Prisma.$PhonePayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -4944,6 +4993,7 @@ export namespace Prisma {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     Region<T extends RegionDefaultArgs<ExtArgs> = {}>(args?: Subset<T, RegionDefaultArgs<ExtArgs>>): Prisma__RegionClient<$Result.GetResult<Prisma.$RegionPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     Users<T extends District$UsersArgs<ExtArgs> = {}>(args?: Subset<T, District$UsersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    Phone<T extends District$PhoneArgs<ExtArgs> = {}>(args?: Subset<T, District$PhoneArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PhonePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -5395,6 +5445,30 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: UserScalarFieldEnum | UserScalarFieldEnum[]
+  }
+
+  /**
+   * District.Phone
+   */
+  export type District$PhoneArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Phone
+     */
+    select?: PhoneSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Phone
+     */
+    omit?: PhoneOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PhoneInclude<ExtArgs> | null
+    where?: PhoneWhereInput
+    orderBy?: PhoneOrderByWithRelationInput | PhoneOrderByWithRelationInput[]
+    cursor?: PhoneWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: PhoneScalarFieldEnum | PhoneScalarFieldEnum[]
   }
 
   /**
@@ -14732,6 +14806,7 @@ export namespace Prisma {
   export type PhoneAvgAggregateOutputType = {
     id: number | null
     price: Decimal | null
+    year: number | null
     views: number | null
     like_counts: number | null
     currencyId: number | null
@@ -14740,11 +14815,14 @@ export namespace Prisma {
     colorId: number | null
     userId: number | null
     addressId: number | null
+    regionId: number | null
+    districtId: number | null
   }
 
   export type PhoneSumAggregateOutputType = {
     id: number | null
     price: Decimal | null
+    year: number | null
     views: bigint | null
     like_counts: bigint | null
     currencyId: number | null
@@ -14753,6 +14831,8 @@ export namespace Prisma {
     colorId: number | null
     userId: number | null
     addressId: number | null
+    regionId: number | null
+    districtId: number | null
   }
 
   export type PhoneMinAggregateOutputType = {
@@ -14762,6 +14842,7 @@ export namespace Prisma {
     ram: string | null
     rom: string | null
     price: Decimal | null
+    year: number | null
     box_with_document: boolean | null
     is_new: boolean | null
     posted_date: Date | null
@@ -14780,6 +14861,8 @@ export namespace Prisma {
     colorId: number | null
     userId: number | null
     addressId: number | null
+    regionId: number | null
+    districtId: number | null
   }
 
   export type PhoneMaxAggregateOutputType = {
@@ -14789,6 +14872,7 @@ export namespace Prisma {
     ram: string | null
     rom: string | null
     price: Decimal | null
+    year: number | null
     box_with_document: boolean | null
     is_new: boolean | null
     posted_date: Date | null
@@ -14807,6 +14891,8 @@ export namespace Prisma {
     colorId: number | null
     userId: number | null
     addressId: number | null
+    regionId: number | null
+    districtId: number | null
   }
 
   export type PhoneCountAggregateOutputType = {
@@ -14816,6 +14902,7 @@ export namespace Prisma {
     ram: number
     rom: number
     price: number
+    year: number
     box_with_document: number
     is_new: number
     posted_date: number
@@ -14834,6 +14921,8 @@ export namespace Prisma {
     colorId: number
     userId: number
     addressId: number
+    regionId: number
+    districtId: number
     _all: number
   }
 
@@ -14841,6 +14930,7 @@ export namespace Prisma {
   export type PhoneAvgAggregateInputType = {
     id?: true
     price?: true
+    year?: true
     views?: true
     like_counts?: true
     currencyId?: true
@@ -14849,11 +14939,14 @@ export namespace Prisma {
     colorId?: true
     userId?: true
     addressId?: true
+    regionId?: true
+    districtId?: true
   }
 
   export type PhoneSumAggregateInputType = {
     id?: true
     price?: true
+    year?: true
     views?: true
     like_counts?: true
     currencyId?: true
@@ -14862,6 +14955,8 @@ export namespace Prisma {
     colorId?: true
     userId?: true
     addressId?: true
+    regionId?: true
+    districtId?: true
   }
 
   export type PhoneMinAggregateInputType = {
@@ -14871,6 +14966,7 @@ export namespace Prisma {
     ram?: true
     rom?: true
     price?: true
+    year?: true
     box_with_document?: true
     is_new?: true
     posted_date?: true
@@ -14889,6 +14985,8 @@ export namespace Prisma {
     colorId?: true
     userId?: true
     addressId?: true
+    regionId?: true
+    districtId?: true
   }
 
   export type PhoneMaxAggregateInputType = {
@@ -14898,6 +14996,7 @@ export namespace Prisma {
     ram?: true
     rom?: true
     price?: true
+    year?: true
     box_with_document?: true
     is_new?: true
     posted_date?: true
@@ -14916,6 +15015,8 @@ export namespace Prisma {
     colorId?: true
     userId?: true
     addressId?: true
+    regionId?: true
+    districtId?: true
   }
 
   export type PhoneCountAggregateInputType = {
@@ -14925,6 +15026,7 @@ export namespace Prisma {
     ram?: true
     rom?: true
     price?: true
+    year?: true
     box_with_document?: true
     is_new?: true
     posted_date?: true
@@ -14943,6 +15045,8 @@ export namespace Prisma {
     colorId?: true
     userId?: true
     addressId?: true
+    regionId?: true
+    districtId?: true
     _all?: true
   }
 
@@ -15039,6 +15143,7 @@ export namespace Prisma {
     ram: string
     rom: string
     price: Decimal
+    year: number
     box_with_document: boolean
     is_new: boolean
     posted_date: Date
@@ -15057,6 +15162,8 @@ export namespace Prisma {
     colorId: number | null
     userId: number | null
     addressId: number | null
+    regionId: number | null
+    districtId: number | null
     _count: PhoneCountAggregateOutputType | null
     _avg: PhoneAvgAggregateOutputType | null
     _sum: PhoneSumAggregateOutputType | null
@@ -15085,6 +15192,7 @@ export namespace Prisma {
     ram?: boolean
     rom?: boolean
     price?: boolean
+    year?: boolean
     box_with_document?: boolean
     is_new?: boolean
     posted_date?: boolean
@@ -15103,6 +15211,8 @@ export namespace Prisma {
     colorId?: boolean
     userId?: boolean
     addressId?: boolean
+    regionId?: boolean
+    districtId?: boolean
     Currency?: boolean | Phone$CurrencyArgs<ExtArgs>
     Models?: boolean | Phone$ModelsArgs<ExtArgs>
     Brands?: boolean | Phone$BrandsArgs<ExtArgs>
@@ -15113,6 +15223,8 @@ export namespace Prisma {
     Reviews?: boolean | Phone$ReviewsArgs<ExtArgs>
     Archives?: boolean | Phone$ArchivesArgs<ExtArgs>
     Chats?: boolean | Phone$ChatsArgs<ExtArgs>
+    Region?: boolean | Phone$RegionArgs<ExtArgs>
+    District?: boolean | Phone$DistrictArgs<ExtArgs>
     _count?: boolean | PhoneCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["phone"]>
 
@@ -15123,6 +15235,7 @@ export namespace Prisma {
     ram?: boolean
     rom?: boolean
     price?: boolean
+    year?: boolean
     box_with_document?: boolean
     is_new?: boolean
     posted_date?: boolean
@@ -15141,12 +15254,16 @@ export namespace Prisma {
     colorId?: boolean
     userId?: boolean
     addressId?: boolean
+    regionId?: boolean
+    districtId?: boolean
     Currency?: boolean | Phone$CurrencyArgs<ExtArgs>
     Models?: boolean | Phone$ModelsArgs<ExtArgs>
     Brands?: boolean | Phone$BrandsArgs<ExtArgs>
     Color?: boolean | Phone$ColorArgs<ExtArgs>
     User?: boolean | Phone$UserArgs<ExtArgs>
     Address?: boolean | Phone$AddressArgs<ExtArgs>
+    Region?: boolean | Phone$RegionArgs<ExtArgs>
+    District?: boolean | Phone$DistrictArgs<ExtArgs>
   }, ExtArgs["result"]["phone"]>
 
   export type PhoneSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -15156,6 +15273,7 @@ export namespace Prisma {
     ram?: boolean
     rom?: boolean
     price?: boolean
+    year?: boolean
     box_with_document?: boolean
     is_new?: boolean
     posted_date?: boolean
@@ -15174,12 +15292,16 @@ export namespace Prisma {
     colorId?: boolean
     userId?: boolean
     addressId?: boolean
+    regionId?: boolean
+    districtId?: boolean
     Currency?: boolean | Phone$CurrencyArgs<ExtArgs>
     Models?: boolean | Phone$ModelsArgs<ExtArgs>
     Brands?: boolean | Phone$BrandsArgs<ExtArgs>
     Color?: boolean | Phone$ColorArgs<ExtArgs>
     User?: boolean | Phone$UserArgs<ExtArgs>
     Address?: boolean | Phone$AddressArgs<ExtArgs>
+    Region?: boolean | Phone$RegionArgs<ExtArgs>
+    District?: boolean | Phone$DistrictArgs<ExtArgs>
   }, ExtArgs["result"]["phone"]>
 
   export type PhoneSelectScalar = {
@@ -15189,6 +15311,7 @@ export namespace Prisma {
     ram?: boolean
     rom?: boolean
     price?: boolean
+    year?: boolean
     box_with_document?: boolean
     is_new?: boolean
     posted_date?: boolean
@@ -15207,9 +15330,11 @@ export namespace Prisma {
     colorId?: boolean
     userId?: boolean
     addressId?: boolean
+    regionId?: boolean
+    districtId?: boolean
   }
 
-  export type PhoneOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "description" | "ram" | "rom" | "price" | "box_with_document" | "is_new" | "posted_date" | "views" | "like_counts" | "is_negotiable" | "brand" | "model" | "is_active" | "is_checked" | "is_archived" | "is_deleted" | "currencyId" | "modelId" | "brandId" | "colorId" | "userId" | "addressId", ExtArgs["result"]["phone"]>
+  export type PhoneOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "description" | "ram" | "rom" | "price" | "year" | "box_with_document" | "is_new" | "posted_date" | "views" | "like_counts" | "is_negotiable" | "brand" | "model" | "is_active" | "is_checked" | "is_archived" | "is_deleted" | "currencyId" | "modelId" | "brandId" | "colorId" | "userId" | "addressId" | "regionId" | "districtId", ExtArgs["result"]["phone"]>
   export type PhoneInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     Currency?: boolean | Phone$CurrencyArgs<ExtArgs>
     Models?: boolean | Phone$ModelsArgs<ExtArgs>
@@ -15221,6 +15346,8 @@ export namespace Prisma {
     Reviews?: boolean | Phone$ReviewsArgs<ExtArgs>
     Archives?: boolean | Phone$ArchivesArgs<ExtArgs>
     Chats?: boolean | Phone$ChatsArgs<ExtArgs>
+    Region?: boolean | Phone$RegionArgs<ExtArgs>
+    District?: boolean | Phone$DistrictArgs<ExtArgs>
     _count?: boolean | PhoneCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type PhoneIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -15230,6 +15357,8 @@ export namespace Prisma {
     Color?: boolean | Phone$ColorArgs<ExtArgs>
     User?: boolean | Phone$UserArgs<ExtArgs>
     Address?: boolean | Phone$AddressArgs<ExtArgs>
+    Region?: boolean | Phone$RegionArgs<ExtArgs>
+    District?: boolean | Phone$DistrictArgs<ExtArgs>
   }
   export type PhoneIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     Currency?: boolean | Phone$CurrencyArgs<ExtArgs>
@@ -15238,6 +15367,8 @@ export namespace Prisma {
     Color?: boolean | Phone$ColorArgs<ExtArgs>
     User?: boolean | Phone$UserArgs<ExtArgs>
     Address?: boolean | Phone$AddressArgs<ExtArgs>
+    Region?: boolean | Phone$RegionArgs<ExtArgs>
+    District?: boolean | Phone$DistrictArgs<ExtArgs>
   }
 
   export type $PhonePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -15253,6 +15384,8 @@ export namespace Prisma {
       Reviews: Prisma.$ReviewPayload<ExtArgs>[]
       Archives: Prisma.$ArchivesPayload<ExtArgs>[]
       Chats: Prisma.$ChatPayload<ExtArgs>[]
+      Region: Prisma.$RegionPayload<ExtArgs> | null
+      District: Prisma.$DistrictPayload<ExtArgs> | null
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -15261,6 +15394,7 @@ export namespace Prisma {
       ram: string
       rom: string
       price: Prisma.Decimal
+      year: number
       box_with_document: boolean
       is_new: boolean
       posted_date: Date
@@ -15279,6 +15413,8 @@ export namespace Prisma {
       colorId: number | null
       userId: number | null
       addressId: number | null
+      regionId: number | null
+      districtId: number | null
     }, ExtArgs["result"]["phone"]>
     composites: {}
   }
@@ -15683,6 +15819,8 @@ export namespace Prisma {
     Reviews<T extends Phone$ReviewsArgs<ExtArgs> = {}>(args?: Subset<T, Phone$ReviewsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ReviewPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     Archives<T extends Phone$ArchivesArgs<ExtArgs> = {}>(args?: Subset<T, Phone$ArchivesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ArchivesPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     Chats<T extends Phone$ChatsArgs<ExtArgs> = {}>(args?: Subset<T, Phone$ChatsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ChatPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    Region<T extends Phone$RegionArgs<ExtArgs> = {}>(args?: Subset<T, Phone$RegionArgs<ExtArgs>>): Prisma__RegionClient<$Result.GetResult<Prisma.$RegionPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    District<T extends Phone$DistrictArgs<ExtArgs> = {}>(args?: Subset<T, Phone$DistrictArgs<ExtArgs>>): Prisma__DistrictClient<$Result.GetResult<Prisma.$DistrictPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -15718,6 +15856,7 @@ export namespace Prisma {
     readonly ram: FieldRef<"Phone", 'String'>
     readonly rom: FieldRef<"Phone", 'String'>
     readonly price: FieldRef<"Phone", 'Decimal'>
+    readonly year: FieldRef<"Phone", 'Int'>
     readonly box_with_document: FieldRef<"Phone", 'Boolean'>
     readonly is_new: FieldRef<"Phone", 'Boolean'>
     readonly posted_date: FieldRef<"Phone", 'DateTime'>
@@ -15736,6 +15875,8 @@ export namespace Prisma {
     readonly colorId: FieldRef<"Phone", 'Int'>
     readonly userId: FieldRef<"Phone", 'Int'>
     readonly addressId: FieldRef<"Phone", 'Int'>
+    readonly regionId: FieldRef<"Phone", 'Int'>
+    readonly districtId: FieldRef<"Phone", 'Int'>
   }
     
 
@@ -16339,6 +16480,44 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: ChatScalarFieldEnum | ChatScalarFieldEnum[]
+  }
+
+  /**
+   * Phone.Region
+   */
+  export type Phone$RegionArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Region
+     */
+    select?: RegionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Region
+     */
+    omit?: RegionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RegionInclude<ExtArgs> | null
+    where?: RegionWhereInput
+  }
+
+  /**
+   * Phone.District
+   */
+  export type Phone$DistrictArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the District
+     */
+    select?: DistrictSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the District
+     */
+    omit?: DistrictOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DistrictInclude<ExtArgs> | null
+    where?: DistrictWhereInput
   }
 
   /**
@@ -27554,6 +27733,7 @@ export namespace Prisma {
     ram: 'ram',
     rom: 'rom',
     price: 'price',
+    year: 'year',
     box_with_document: 'box_with_document',
     is_new: 'is_new',
     posted_date: 'posted_date',
@@ -27571,7 +27751,9 @@ export namespace Prisma {
     brandId: 'brandId',
     colorId: 'colorId',
     userId: 'userId',
-    addressId: 'addressId'
+    addressId: 'addressId',
+    regionId: 'regionId',
+    districtId: 'districtId'
   };
 
   export type PhoneScalarFieldEnum = (typeof PhoneScalarFieldEnum)[keyof typeof PhoneScalarFieldEnum]
@@ -27844,6 +28026,7 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"Region"> | Date | string
     updatedAt?: DateTimeFilter<"Region"> | Date | string
     Districts?: DistrictListRelationFilter
+    Phone?: PhoneListRelationFilter
   }
 
   export type RegionOrderByWithRelationInput = {
@@ -27852,6 +28035,7 @@ export namespace Prisma {
     createdAt?: SortOrder
     updatedAt?: SortOrder
     Districts?: DistrictOrderByRelationAggregateInput
+    Phone?: PhoneOrderByRelationAggregateInput
   }
 
   export type RegionWhereUniqueInput = Prisma.AtLeast<{
@@ -27863,6 +28047,7 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"Region"> | Date | string
     updatedAt?: DateTimeFilter<"Region"> | Date | string
     Districts?: DistrictListRelationFilter
+    Phone?: PhoneListRelationFilter
   }, "id" | "name">
 
   export type RegionOrderByWithAggregationInput = {
@@ -27898,6 +28083,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"District"> | Date | string
     Region?: XOR<RegionScalarRelationFilter, RegionWhereInput>
     Users?: UserListRelationFilter
+    Phone?: PhoneListRelationFilter
   }
 
   export type DistrictOrderByWithRelationInput = {
@@ -27908,6 +28094,7 @@ export namespace Prisma {
     updatedAt?: SortOrder
     Region?: RegionOrderByWithRelationInput
     Users?: UserOrderByRelationAggregateInput
+    Phone?: PhoneOrderByRelationAggregateInput
   }
 
   export type DistrictWhereUniqueInput = Prisma.AtLeast<{
@@ -27921,6 +28108,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"District"> | Date | string
     Region?: XOR<RegionScalarRelationFilter, RegionWhereInput>
     Users?: UserListRelationFilter
+    Phone?: PhoneListRelationFilter
   }, "id" | "name">
 
   export type DistrictOrderByWithAggregationInput = {
@@ -28480,6 +28668,7 @@ export namespace Prisma {
     ram?: StringFilter<"Phone"> | string
     rom?: StringFilter<"Phone"> | string
     price?: DecimalFilter<"Phone"> | Decimal | DecimalJsLike | number | string
+    year?: IntFilter<"Phone"> | number
     box_with_document?: BoolFilter<"Phone"> | boolean
     is_new?: BoolFilter<"Phone"> | boolean
     posted_date?: DateTimeFilter<"Phone"> | Date | string
@@ -28498,6 +28687,8 @@ export namespace Prisma {
     colorId?: IntNullableFilter<"Phone"> | number | null
     userId?: IntNullableFilter<"Phone"> | number | null
     addressId?: IntNullableFilter<"Phone"> | number | null
+    regionId?: IntNullableFilter<"Phone"> | number | null
+    districtId?: IntNullableFilter<"Phone"> | number | null
     Currency?: XOR<CurrencyNullableScalarRelationFilter, CurrencyWhereInput> | null
     Models?: XOR<ModelNullableScalarRelationFilter, ModelWhereInput> | null
     Brands?: XOR<BrandNullableScalarRelationFilter, BrandWhereInput> | null
@@ -28508,6 +28699,8 @@ export namespace Prisma {
     Reviews?: ReviewListRelationFilter
     Archives?: ArchivesListRelationFilter
     Chats?: ChatListRelationFilter
+    Region?: XOR<RegionNullableScalarRelationFilter, RegionWhereInput> | null
+    District?: XOR<DistrictNullableScalarRelationFilter, DistrictWhereInput> | null
   }
 
   export type PhoneOrderByWithRelationInput = {
@@ -28517,6 +28710,7 @@ export namespace Prisma {
     ram?: SortOrder
     rom?: SortOrder
     price?: SortOrder
+    year?: SortOrder
     box_with_document?: SortOrder
     is_new?: SortOrder
     posted_date?: SortOrder
@@ -28535,6 +28729,8 @@ export namespace Prisma {
     colorId?: SortOrderInput | SortOrder
     userId?: SortOrderInput | SortOrder
     addressId?: SortOrderInput | SortOrder
+    regionId?: SortOrderInput | SortOrder
+    districtId?: SortOrderInput | SortOrder
     Currency?: CurrencyOrderByWithRelationInput
     Models?: ModelOrderByWithRelationInput
     Brands?: BrandOrderByWithRelationInput
@@ -28545,6 +28741,8 @@ export namespace Prisma {
     Reviews?: ReviewOrderByRelationAggregateInput
     Archives?: ArchivesOrderByRelationAggregateInput
     Chats?: ChatOrderByRelationAggregateInput
+    Region?: RegionOrderByWithRelationInput
+    District?: DistrictOrderByWithRelationInput
   }
 
   export type PhoneWhereUniqueInput = Prisma.AtLeast<{
@@ -28557,6 +28755,7 @@ export namespace Prisma {
     ram?: StringFilter<"Phone"> | string
     rom?: StringFilter<"Phone"> | string
     price?: DecimalFilter<"Phone"> | Decimal | DecimalJsLike | number | string
+    year?: IntFilter<"Phone"> | number
     box_with_document?: BoolFilter<"Phone"> | boolean
     is_new?: BoolFilter<"Phone"> | boolean
     posted_date?: DateTimeFilter<"Phone"> | Date | string
@@ -28575,6 +28774,8 @@ export namespace Prisma {
     colorId?: IntNullableFilter<"Phone"> | number | null
     userId?: IntNullableFilter<"Phone"> | number | null
     addressId?: IntNullableFilter<"Phone"> | number | null
+    regionId?: IntNullableFilter<"Phone"> | number | null
+    districtId?: IntNullableFilter<"Phone"> | number | null
     Currency?: XOR<CurrencyNullableScalarRelationFilter, CurrencyWhereInput> | null
     Models?: XOR<ModelNullableScalarRelationFilter, ModelWhereInput> | null
     Brands?: XOR<BrandNullableScalarRelationFilter, BrandWhereInput> | null
@@ -28585,6 +28786,8 @@ export namespace Prisma {
     Reviews?: ReviewListRelationFilter
     Archives?: ArchivesListRelationFilter
     Chats?: ChatListRelationFilter
+    Region?: XOR<RegionNullableScalarRelationFilter, RegionWhereInput> | null
+    District?: XOR<DistrictNullableScalarRelationFilter, DistrictWhereInput> | null
   }, "id">
 
   export type PhoneOrderByWithAggregationInput = {
@@ -28594,6 +28797,7 @@ export namespace Prisma {
     ram?: SortOrder
     rom?: SortOrder
     price?: SortOrder
+    year?: SortOrder
     box_with_document?: SortOrder
     is_new?: SortOrder
     posted_date?: SortOrder
@@ -28612,6 +28816,8 @@ export namespace Prisma {
     colorId?: SortOrderInput | SortOrder
     userId?: SortOrderInput | SortOrder
     addressId?: SortOrderInput | SortOrder
+    regionId?: SortOrderInput | SortOrder
+    districtId?: SortOrderInput | SortOrder
     _count?: PhoneCountOrderByAggregateInput
     _avg?: PhoneAvgOrderByAggregateInput
     _max?: PhoneMaxOrderByAggregateInput
@@ -28629,6 +28835,7 @@ export namespace Prisma {
     ram?: StringWithAggregatesFilter<"Phone"> | string
     rom?: StringWithAggregatesFilter<"Phone"> | string
     price?: DecimalWithAggregatesFilter<"Phone"> | Decimal | DecimalJsLike | number | string
+    year?: IntWithAggregatesFilter<"Phone"> | number
     box_with_document?: BoolWithAggregatesFilter<"Phone"> | boolean
     is_new?: BoolWithAggregatesFilter<"Phone"> | boolean
     posted_date?: DateTimeWithAggregatesFilter<"Phone"> | Date | string
@@ -28647,6 +28854,8 @@ export namespace Prisma {
     colorId?: IntNullableWithAggregatesFilter<"Phone"> | number | null
     userId?: IntNullableWithAggregatesFilter<"Phone"> | number | null
     addressId?: IntNullableWithAggregatesFilter<"Phone"> | number | null
+    regionId?: IntNullableWithAggregatesFilter<"Phone"> | number | null
+    districtId?: IntNullableWithAggregatesFilter<"Phone"> | number | null
   }
 
   export type ImageWhereInput = {
@@ -29282,6 +29491,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     Districts?: DistrictCreateNestedManyWithoutRegionInput
+    Phone?: PhoneCreateNestedManyWithoutRegionInput
   }
 
   export type RegionUncheckedCreateInput = {
@@ -29290,6 +29500,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     Districts?: DistrictUncheckedCreateNestedManyWithoutRegionInput
+    Phone?: PhoneUncheckedCreateNestedManyWithoutRegionInput
   }
 
   export type RegionUpdateInput = {
@@ -29297,6 +29508,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     Districts?: DistrictUpdateManyWithoutRegionNestedInput
+    Phone?: PhoneUpdateManyWithoutRegionNestedInput
   }
 
   export type RegionUncheckedUpdateInput = {
@@ -29305,6 +29517,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     Districts?: DistrictUncheckedUpdateManyWithoutRegionNestedInput
+    Phone?: PhoneUncheckedUpdateManyWithoutRegionNestedInput
   }
 
   export type RegionCreateManyInput = {
@@ -29333,6 +29546,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     Region: RegionCreateNestedOneWithoutDistrictsInput
     Users?: UserCreateNestedManyWithoutDistrictInput
+    Phone?: PhoneCreateNestedManyWithoutDistrictInput
   }
 
   export type DistrictUncheckedCreateInput = {
@@ -29342,6 +29556,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     Users?: UserUncheckedCreateNestedManyWithoutDistrictInput
+    Phone?: PhoneUncheckedCreateNestedManyWithoutDistrictInput
   }
 
   export type DistrictUpdateInput = {
@@ -29350,6 +29565,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     Region?: RegionUpdateOneRequiredWithoutDistrictsNestedInput
     Users?: UserUpdateManyWithoutDistrictNestedInput
+    Phone?: PhoneUpdateManyWithoutDistrictNestedInput
   }
 
   export type DistrictUncheckedUpdateInput = {
@@ -29359,6 +29575,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     Users?: UserUncheckedUpdateManyWithoutDistrictNestedInput
+    Phone?: PhoneUncheckedUpdateManyWithoutDistrictNestedInput
   }
 
   export type DistrictCreateManyInput = {
@@ -29901,6 +30118,7 @@ export namespace Prisma {
     ram: string
     rom: string
     price: Decimal | DecimalJsLike | number | string
+    year: number
     box_with_document?: boolean
     is_new?: boolean
     posted_date?: Date | string
@@ -29923,6 +30141,8 @@ export namespace Prisma {
     Reviews?: ReviewCreateNestedManyWithoutPhoneInput
     Archives?: ArchivesCreateNestedManyWithoutPhoneInput
     Chats?: ChatCreateNestedManyWithoutPhoneInput
+    Region?: RegionCreateNestedOneWithoutPhoneInput
+    District?: DistrictCreateNestedOneWithoutPhoneInput
   }
 
   export type PhoneUncheckedCreateInput = {
@@ -29932,6 +30152,7 @@ export namespace Prisma {
     ram: string
     rom: string
     price: Decimal | DecimalJsLike | number | string
+    year: number
     box_with_document?: boolean
     is_new?: boolean
     posted_date?: Date | string
@@ -29950,6 +30171,8 @@ export namespace Prisma {
     colorId?: number | null
     userId?: number | null
     addressId?: number | null
+    regionId?: number | null
+    districtId?: number | null
     Images?: ImageUncheckedCreateNestedManyWithoutPhoneInput
     Reviews?: ReviewUncheckedCreateNestedManyWithoutPhoneInput
     Archives?: ArchivesUncheckedCreateNestedManyWithoutPhoneInput
@@ -29962,6 +30185,7 @@ export namespace Prisma {
     ram?: StringFieldUpdateOperationsInput | string
     rom?: StringFieldUpdateOperationsInput | string
     price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    year?: IntFieldUpdateOperationsInput | number
     box_with_document?: BoolFieldUpdateOperationsInput | boolean
     is_new?: BoolFieldUpdateOperationsInput | boolean
     posted_date?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -29984,6 +30208,8 @@ export namespace Prisma {
     Reviews?: ReviewUpdateManyWithoutPhoneNestedInput
     Archives?: ArchivesUpdateManyWithoutPhoneNestedInput
     Chats?: ChatUpdateManyWithoutPhoneNestedInput
+    Region?: RegionUpdateOneWithoutPhoneNestedInput
+    District?: DistrictUpdateOneWithoutPhoneNestedInput
   }
 
   export type PhoneUncheckedUpdateInput = {
@@ -29993,6 +30219,7 @@ export namespace Prisma {
     ram?: StringFieldUpdateOperationsInput | string
     rom?: StringFieldUpdateOperationsInput | string
     price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    year?: IntFieldUpdateOperationsInput | number
     box_with_document?: BoolFieldUpdateOperationsInput | boolean
     is_new?: BoolFieldUpdateOperationsInput | boolean
     posted_date?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -30011,6 +30238,8 @@ export namespace Prisma {
     colorId?: NullableIntFieldUpdateOperationsInput | number | null
     userId?: NullableIntFieldUpdateOperationsInput | number | null
     addressId?: NullableIntFieldUpdateOperationsInput | number | null
+    regionId?: NullableIntFieldUpdateOperationsInput | number | null
+    districtId?: NullableIntFieldUpdateOperationsInput | number | null
     Images?: ImageUncheckedUpdateManyWithoutPhoneNestedInput
     Reviews?: ReviewUncheckedUpdateManyWithoutPhoneNestedInput
     Archives?: ArchivesUncheckedUpdateManyWithoutPhoneNestedInput
@@ -30024,6 +30253,7 @@ export namespace Prisma {
     ram: string
     rom: string
     price: Decimal | DecimalJsLike | number | string
+    year: number
     box_with_document?: boolean
     is_new?: boolean
     posted_date?: Date | string
@@ -30042,6 +30272,8 @@ export namespace Prisma {
     colorId?: number | null
     userId?: number | null
     addressId?: number | null
+    regionId?: number | null
+    districtId?: number | null
   }
 
   export type PhoneUpdateManyMutationInput = {
@@ -30050,6 +30282,7 @@ export namespace Prisma {
     ram?: StringFieldUpdateOperationsInput | string
     rom?: StringFieldUpdateOperationsInput | string
     price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    year?: IntFieldUpdateOperationsInput | number
     box_with_document?: BoolFieldUpdateOperationsInput | boolean
     is_new?: BoolFieldUpdateOperationsInput | boolean
     posted_date?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -30071,6 +30304,7 @@ export namespace Prisma {
     ram?: StringFieldUpdateOperationsInput | string
     rom?: StringFieldUpdateOperationsInput | string
     price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    year?: IntFieldUpdateOperationsInput | number
     box_with_document?: BoolFieldUpdateOperationsInput | boolean
     is_new?: BoolFieldUpdateOperationsInput | boolean
     posted_date?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -30089,6 +30323,8 @@ export namespace Prisma {
     colorId?: NullableIntFieldUpdateOperationsInput | number | null
     userId?: NullableIntFieldUpdateOperationsInput | number | null
     addressId?: NullableIntFieldUpdateOperationsInput | number | null
+    regionId?: NullableIntFieldUpdateOperationsInput | number | null
+    districtId?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type ImageCreateInput = {
@@ -30740,7 +30976,17 @@ export namespace Prisma {
     none?: DistrictWhereInput
   }
 
+  export type PhoneListRelationFilter = {
+    every?: PhoneWhereInput
+    some?: PhoneWhereInput
+    none?: PhoneWhereInput
+  }
+
   export type DistrictOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type PhoneOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -30984,12 +31230,6 @@ export namespace Prisma {
     none?: PhoneNumberWhereInput
   }
 
-  export type PhoneListRelationFilter = {
-    every?: PhoneWhereInput
-    some?: PhoneWhereInput
-    none?: PhoneWhereInput
-  }
-
   export type AddressListRelationFilter = {
     every?: AddressWhereInput
     some?: AddressWhereInput
@@ -31024,10 +31264,6 @@ export namespace Prisma {
   }
 
   export type PhoneNumberOrderByRelationAggregateInput = {
-    _count?: SortOrder
-  }
-
-  export type PhoneOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -31458,6 +31694,11 @@ export namespace Prisma {
     none?: ArchivesWhereInput
   }
 
+  export type RegionNullableScalarRelationFilter = {
+    is?: RegionWhereInput | null
+    isNot?: RegionWhereInput | null
+  }
+
   export type ImageOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
@@ -31477,6 +31718,7 @@ export namespace Prisma {
     ram?: SortOrder
     rom?: SortOrder
     price?: SortOrder
+    year?: SortOrder
     box_with_document?: SortOrder
     is_new?: SortOrder
     posted_date?: SortOrder
@@ -31495,11 +31737,14 @@ export namespace Prisma {
     colorId?: SortOrder
     userId?: SortOrder
     addressId?: SortOrder
+    regionId?: SortOrder
+    districtId?: SortOrder
   }
 
   export type PhoneAvgOrderByAggregateInput = {
     id?: SortOrder
     price?: SortOrder
+    year?: SortOrder
     views?: SortOrder
     like_counts?: SortOrder
     currencyId?: SortOrder
@@ -31508,6 +31753,8 @@ export namespace Prisma {
     colorId?: SortOrder
     userId?: SortOrder
     addressId?: SortOrder
+    regionId?: SortOrder
+    districtId?: SortOrder
   }
 
   export type PhoneMaxOrderByAggregateInput = {
@@ -31517,6 +31764,7 @@ export namespace Prisma {
     ram?: SortOrder
     rom?: SortOrder
     price?: SortOrder
+    year?: SortOrder
     box_with_document?: SortOrder
     is_new?: SortOrder
     posted_date?: SortOrder
@@ -31535,6 +31783,8 @@ export namespace Prisma {
     colorId?: SortOrder
     userId?: SortOrder
     addressId?: SortOrder
+    regionId?: SortOrder
+    districtId?: SortOrder
   }
 
   export type PhoneMinOrderByAggregateInput = {
@@ -31544,6 +31794,7 @@ export namespace Prisma {
     ram?: SortOrder
     rom?: SortOrder
     price?: SortOrder
+    year?: SortOrder
     box_with_document?: SortOrder
     is_new?: SortOrder
     posted_date?: SortOrder
@@ -31562,11 +31813,14 @@ export namespace Prisma {
     colorId?: SortOrder
     userId?: SortOrder
     addressId?: SortOrder
+    regionId?: SortOrder
+    districtId?: SortOrder
   }
 
   export type PhoneSumOrderByAggregateInput = {
     id?: SortOrder
     price?: SortOrder
+    year?: SortOrder
     views?: SortOrder
     like_counts?: SortOrder
     currencyId?: SortOrder
@@ -31575,6 +31829,8 @@ export namespace Prisma {
     colorId?: SortOrder
     userId?: SortOrder
     addressId?: SortOrder
+    regionId?: SortOrder
+    districtId?: SortOrder
   }
 
   export type BigIntNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -32046,11 +32302,25 @@ export namespace Prisma {
     connect?: DistrictWhereUniqueInput | DistrictWhereUniqueInput[]
   }
 
+  export type PhoneCreateNestedManyWithoutRegionInput = {
+    create?: XOR<PhoneCreateWithoutRegionInput, PhoneUncheckedCreateWithoutRegionInput> | PhoneCreateWithoutRegionInput[] | PhoneUncheckedCreateWithoutRegionInput[]
+    connectOrCreate?: PhoneCreateOrConnectWithoutRegionInput | PhoneCreateOrConnectWithoutRegionInput[]
+    createMany?: PhoneCreateManyRegionInputEnvelope
+    connect?: PhoneWhereUniqueInput | PhoneWhereUniqueInput[]
+  }
+
   export type DistrictUncheckedCreateNestedManyWithoutRegionInput = {
     create?: XOR<DistrictCreateWithoutRegionInput, DistrictUncheckedCreateWithoutRegionInput> | DistrictCreateWithoutRegionInput[] | DistrictUncheckedCreateWithoutRegionInput[]
     connectOrCreate?: DistrictCreateOrConnectWithoutRegionInput | DistrictCreateOrConnectWithoutRegionInput[]
     createMany?: DistrictCreateManyRegionInputEnvelope
     connect?: DistrictWhereUniqueInput | DistrictWhereUniqueInput[]
+  }
+
+  export type PhoneUncheckedCreateNestedManyWithoutRegionInput = {
+    create?: XOR<PhoneCreateWithoutRegionInput, PhoneUncheckedCreateWithoutRegionInput> | PhoneCreateWithoutRegionInput[] | PhoneUncheckedCreateWithoutRegionInput[]
+    connectOrCreate?: PhoneCreateOrConnectWithoutRegionInput | PhoneCreateOrConnectWithoutRegionInput[]
+    createMany?: PhoneCreateManyRegionInputEnvelope
+    connect?: PhoneWhereUniqueInput | PhoneWhereUniqueInput[]
   }
 
   export type StringFieldUpdateOperationsInput = {
@@ -32075,6 +32345,20 @@ export namespace Prisma {
     deleteMany?: DistrictScalarWhereInput | DistrictScalarWhereInput[]
   }
 
+  export type PhoneUpdateManyWithoutRegionNestedInput = {
+    create?: XOR<PhoneCreateWithoutRegionInput, PhoneUncheckedCreateWithoutRegionInput> | PhoneCreateWithoutRegionInput[] | PhoneUncheckedCreateWithoutRegionInput[]
+    connectOrCreate?: PhoneCreateOrConnectWithoutRegionInput | PhoneCreateOrConnectWithoutRegionInput[]
+    upsert?: PhoneUpsertWithWhereUniqueWithoutRegionInput | PhoneUpsertWithWhereUniqueWithoutRegionInput[]
+    createMany?: PhoneCreateManyRegionInputEnvelope
+    set?: PhoneWhereUniqueInput | PhoneWhereUniqueInput[]
+    disconnect?: PhoneWhereUniqueInput | PhoneWhereUniqueInput[]
+    delete?: PhoneWhereUniqueInput | PhoneWhereUniqueInput[]
+    connect?: PhoneWhereUniqueInput | PhoneWhereUniqueInput[]
+    update?: PhoneUpdateWithWhereUniqueWithoutRegionInput | PhoneUpdateWithWhereUniqueWithoutRegionInput[]
+    updateMany?: PhoneUpdateManyWithWhereWithoutRegionInput | PhoneUpdateManyWithWhereWithoutRegionInput[]
+    deleteMany?: PhoneScalarWhereInput | PhoneScalarWhereInput[]
+  }
+
   export type IntFieldUpdateOperationsInput = {
     set?: number
     increment?: number
@@ -32097,6 +32381,20 @@ export namespace Prisma {
     deleteMany?: DistrictScalarWhereInput | DistrictScalarWhereInput[]
   }
 
+  export type PhoneUncheckedUpdateManyWithoutRegionNestedInput = {
+    create?: XOR<PhoneCreateWithoutRegionInput, PhoneUncheckedCreateWithoutRegionInput> | PhoneCreateWithoutRegionInput[] | PhoneUncheckedCreateWithoutRegionInput[]
+    connectOrCreate?: PhoneCreateOrConnectWithoutRegionInput | PhoneCreateOrConnectWithoutRegionInput[]
+    upsert?: PhoneUpsertWithWhereUniqueWithoutRegionInput | PhoneUpsertWithWhereUniqueWithoutRegionInput[]
+    createMany?: PhoneCreateManyRegionInputEnvelope
+    set?: PhoneWhereUniqueInput | PhoneWhereUniqueInput[]
+    disconnect?: PhoneWhereUniqueInput | PhoneWhereUniqueInput[]
+    delete?: PhoneWhereUniqueInput | PhoneWhereUniqueInput[]
+    connect?: PhoneWhereUniqueInput | PhoneWhereUniqueInput[]
+    update?: PhoneUpdateWithWhereUniqueWithoutRegionInput | PhoneUpdateWithWhereUniqueWithoutRegionInput[]
+    updateMany?: PhoneUpdateManyWithWhereWithoutRegionInput | PhoneUpdateManyWithWhereWithoutRegionInput[]
+    deleteMany?: PhoneScalarWhereInput | PhoneScalarWhereInput[]
+  }
+
   export type RegionCreateNestedOneWithoutDistrictsInput = {
     create?: XOR<RegionCreateWithoutDistrictsInput, RegionUncheckedCreateWithoutDistrictsInput>
     connectOrCreate?: RegionCreateOrConnectWithoutDistrictsInput
@@ -32110,11 +32408,25 @@ export namespace Prisma {
     connect?: UserWhereUniqueInput | UserWhereUniqueInput[]
   }
 
+  export type PhoneCreateNestedManyWithoutDistrictInput = {
+    create?: XOR<PhoneCreateWithoutDistrictInput, PhoneUncheckedCreateWithoutDistrictInput> | PhoneCreateWithoutDistrictInput[] | PhoneUncheckedCreateWithoutDistrictInput[]
+    connectOrCreate?: PhoneCreateOrConnectWithoutDistrictInput | PhoneCreateOrConnectWithoutDistrictInput[]
+    createMany?: PhoneCreateManyDistrictInputEnvelope
+    connect?: PhoneWhereUniqueInput | PhoneWhereUniqueInput[]
+  }
+
   export type UserUncheckedCreateNestedManyWithoutDistrictInput = {
     create?: XOR<UserCreateWithoutDistrictInput, UserUncheckedCreateWithoutDistrictInput> | UserCreateWithoutDistrictInput[] | UserUncheckedCreateWithoutDistrictInput[]
     connectOrCreate?: UserCreateOrConnectWithoutDistrictInput | UserCreateOrConnectWithoutDistrictInput[]
     createMany?: UserCreateManyDistrictInputEnvelope
     connect?: UserWhereUniqueInput | UserWhereUniqueInput[]
+  }
+
+  export type PhoneUncheckedCreateNestedManyWithoutDistrictInput = {
+    create?: XOR<PhoneCreateWithoutDistrictInput, PhoneUncheckedCreateWithoutDistrictInput> | PhoneCreateWithoutDistrictInput[] | PhoneUncheckedCreateWithoutDistrictInput[]
+    connectOrCreate?: PhoneCreateOrConnectWithoutDistrictInput | PhoneCreateOrConnectWithoutDistrictInput[]
+    createMany?: PhoneCreateManyDistrictInputEnvelope
+    connect?: PhoneWhereUniqueInput | PhoneWhereUniqueInput[]
   }
 
   export type RegionUpdateOneRequiredWithoutDistrictsNestedInput = {
@@ -32139,6 +32451,20 @@ export namespace Prisma {
     deleteMany?: UserScalarWhereInput | UserScalarWhereInput[]
   }
 
+  export type PhoneUpdateManyWithoutDistrictNestedInput = {
+    create?: XOR<PhoneCreateWithoutDistrictInput, PhoneUncheckedCreateWithoutDistrictInput> | PhoneCreateWithoutDistrictInput[] | PhoneUncheckedCreateWithoutDistrictInput[]
+    connectOrCreate?: PhoneCreateOrConnectWithoutDistrictInput | PhoneCreateOrConnectWithoutDistrictInput[]
+    upsert?: PhoneUpsertWithWhereUniqueWithoutDistrictInput | PhoneUpsertWithWhereUniqueWithoutDistrictInput[]
+    createMany?: PhoneCreateManyDistrictInputEnvelope
+    set?: PhoneWhereUniqueInput | PhoneWhereUniqueInput[]
+    disconnect?: PhoneWhereUniqueInput | PhoneWhereUniqueInput[]
+    delete?: PhoneWhereUniqueInput | PhoneWhereUniqueInput[]
+    connect?: PhoneWhereUniqueInput | PhoneWhereUniqueInput[]
+    update?: PhoneUpdateWithWhereUniqueWithoutDistrictInput | PhoneUpdateWithWhereUniqueWithoutDistrictInput[]
+    updateMany?: PhoneUpdateManyWithWhereWithoutDistrictInput | PhoneUpdateManyWithWhereWithoutDistrictInput[]
+    deleteMany?: PhoneScalarWhereInput | PhoneScalarWhereInput[]
+  }
+
   export type UserUncheckedUpdateManyWithoutDistrictNestedInput = {
     create?: XOR<UserCreateWithoutDistrictInput, UserUncheckedCreateWithoutDistrictInput> | UserCreateWithoutDistrictInput[] | UserUncheckedCreateWithoutDistrictInput[]
     connectOrCreate?: UserCreateOrConnectWithoutDistrictInput | UserCreateOrConnectWithoutDistrictInput[]
@@ -32151,6 +32477,20 @@ export namespace Prisma {
     update?: UserUpdateWithWhereUniqueWithoutDistrictInput | UserUpdateWithWhereUniqueWithoutDistrictInput[]
     updateMany?: UserUpdateManyWithWhereWithoutDistrictInput | UserUpdateManyWithWhereWithoutDistrictInput[]
     deleteMany?: UserScalarWhereInput | UserScalarWhereInput[]
+  }
+
+  export type PhoneUncheckedUpdateManyWithoutDistrictNestedInput = {
+    create?: XOR<PhoneCreateWithoutDistrictInput, PhoneUncheckedCreateWithoutDistrictInput> | PhoneCreateWithoutDistrictInput[] | PhoneUncheckedCreateWithoutDistrictInput[]
+    connectOrCreate?: PhoneCreateOrConnectWithoutDistrictInput | PhoneCreateOrConnectWithoutDistrictInput[]
+    upsert?: PhoneUpsertWithWhereUniqueWithoutDistrictInput | PhoneUpsertWithWhereUniqueWithoutDistrictInput[]
+    createMany?: PhoneCreateManyDistrictInputEnvelope
+    set?: PhoneWhereUniqueInput | PhoneWhereUniqueInput[]
+    disconnect?: PhoneWhereUniqueInput | PhoneWhereUniqueInput[]
+    delete?: PhoneWhereUniqueInput | PhoneWhereUniqueInput[]
+    connect?: PhoneWhereUniqueInput | PhoneWhereUniqueInput[]
+    update?: PhoneUpdateWithWhereUniqueWithoutDistrictInput | PhoneUpdateWithWhereUniqueWithoutDistrictInput[]
+    updateMany?: PhoneUpdateManyWithWhereWithoutDistrictInput | PhoneUpdateManyWithWhereWithoutDistrictInput[]
+    deleteMany?: PhoneScalarWhereInput | PhoneScalarWhereInput[]
   }
 
   export type UserCreateNestedManyWithoutLanguageInput = {
@@ -32981,6 +33321,18 @@ export namespace Prisma {
     connect?: ChatWhereUniqueInput | ChatWhereUniqueInput[]
   }
 
+  export type RegionCreateNestedOneWithoutPhoneInput = {
+    create?: XOR<RegionCreateWithoutPhoneInput, RegionUncheckedCreateWithoutPhoneInput>
+    connectOrCreate?: RegionCreateOrConnectWithoutPhoneInput
+    connect?: RegionWhereUniqueInput
+  }
+
+  export type DistrictCreateNestedOneWithoutPhoneInput = {
+    create?: XOR<DistrictCreateWithoutPhoneInput, DistrictUncheckedCreateWithoutPhoneInput>
+    connectOrCreate?: DistrictCreateOrConnectWithoutPhoneInput
+    connect?: DistrictWhereUniqueInput
+  }
+
   export type ImageUncheckedCreateNestedManyWithoutPhoneInput = {
     create?: XOR<ImageCreateWithoutPhoneInput, ImageUncheckedCreateWithoutPhoneInput> | ImageCreateWithoutPhoneInput[] | ImageUncheckedCreateWithoutPhoneInput[]
     connectOrCreate?: ImageCreateOrConnectWithoutPhoneInput | ImageCreateOrConnectWithoutPhoneInput[]
@@ -33131,6 +33483,26 @@ export namespace Prisma {
     update?: ChatUpdateWithWhereUniqueWithoutPhoneInput | ChatUpdateWithWhereUniqueWithoutPhoneInput[]
     updateMany?: ChatUpdateManyWithWhereWithoutPhoneInput | ChatUpdateManyWithWhereWithoutPhoneInput[]
     deleteMany?: ChatScalarWhereInput | ChatScalarWhereInput[]
+  }
+
+  export type RegionUpdateOneWithoutPhoneNestedInput = {
+    create?: XOR<RegionCreateWithoutPhoneInput, RegionUncheckedCreateWithoutPhoneInput>
+    connectOrCreate?: RegionCreateOrConnectWithoutPhoneInput
+    upsert?: RegionUpsertWithoutPhoneInput
+    disconnect?: RegionWhereInput | boolean
+    delete?: RegionWhereInput | boolean
+    connect?: RegionWhereUniqueInput
+    update?: XOR<XOR<RegionUpdateToOneWithWhereWithoutPhoneInput, RegionUpdateWithoutPhoneInput>, RegionUncheckedUpdateWithoutPhoneInput>
+  }
+
+  export type DistrictUpdateOneWithoutPhoneNestedInput = {
+    create?: XOR<DistrictCreateWithoutPhoneInput, DistrictUncheckedCreateWithoutPhoneInput>
+    connectOrCreate?: DistrictCreateOrConnectWithoutPhoneInput
+    upsert?: DistrictUpsertWithoutPhoneInput
+    disconnect?: DistrictWhereInput | boolean
+    delete?: DistrictWhereInput | boolean
+    connect?: DistrictWhereUniqueInput
+    update?: XOR<XOR<DistrictUpdateToOneWithWhereWithoutPhoneInput, DistrictUpdateWithoutPhoneInput>, DistrictUncheckedUpdateWithoutPhoneInput>
   }
 
   export type ImageUncheckedUpdateManyWithoutPhoneNestedInput = {
@@ -33727,6 +34099,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     Users?: UserCreateNestedManyWithoutDistrictInput
+    Phone?: PhoneCreateNestedManyWithoutDistrictInput
   }
 
   export type DistrictUncheckedCreateWithoutRegionInput = {
@@ -33735,6 +34108,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     Users?: UserUncheckedCreateNestedManyWithoutDistrictInput
+    Phone?: PhoneUncheckedCreateNestedManyWithoutDistrictInput
   }
 
   export type DistrictCreateOrConnectWithoutRegionInput = {
@@ -33744,6 +34118,81 @@ export namespace Prisma {
 
   export type DistrictCreateManyRegionInputEnvelope = {
     data: DistrictCreateManyRegionInput | DistrictCreateManyRegionInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type PhoneCreateWithoutRegionInput = {
+    title: string
+    description: string
+    ram: string
+    rom: string
+    price: Decimal | DecimalJsLike | number | string
+    year: number
+    box_with_document?: boolean
+    is_new?: boolean
+    posted_date?: Date | string
+    views?: bigint | number | null
+    like_counts?: bigint | number | null
+    is_negotiable?: boolean
+    brand?: string | null
+    model?: string | null
+    is_active?: boolean
+    is_checked?: boolean
+    is_archived?: boolean
+    is_deleted?: boolean
+    Currency?: CurrencyCreateNestedOneWithoutPhonesInput
+    Models?: ModelCreateNestedOneWithoutPhonesInput
+    Brands?: BrandCreateNestedOneWithoutPhonesInput
+    Color?: ColorCreateNestedOneWithoutPhonesInput
+    User?: UserCreateNestedOneWithoutPhoneInput
+    Address?: AddressCreateNestedOneWithoutPhonesInput
+    Images?: ImageCreateNestedManyWithoutPhoneInput
+    Reviews?: ReviewCreateNestedManyWithoutPhoneInput
+    Archives?: ArchivesCreateNestedManyWithoutPhoneInput
+    Chats?: ChatCreateNestedManyWithoutPhoneInput
+    District?: DistrictCreateNestedOneWithoutPhoneInput
+  }
+
+  export type PhoneUncheckedCreateWithoutRegionInput = {
+    id?: number
+    title: string
+    description: string
+    ram: string
+    rom: string
+    price: Decimal | DecimalJsLike | number | string
+    year: number
+    box_with_document?: boolean
+    is_new?: boolean
+    posted_date?: Date | string
+    views?: bigint | number | null
+    like_counts?: bigint | number | null
+    is_negotiable?: boolean
+    brand?: string | null
+    model?: string | null
+    is_active?: boolean
+    is_checked?: boolean
+    is_archived?: boolean
+    is_deleted?: boolean
+    currencyId?: number | null
+    modelId?: number | null
+    brandId?: number | null
+    colorId?: number | null
+    userId?: number | null
+    addressId?: number | null
+    districtId?: number | null
+    Images?: ImageUncheckedCreateNestedManyWithoutPhoneInput
+    Reviews?: ReviewUncheckedCreateNestedManyWithoutPhoneInput
+    Archives?: ArchivesUncheckedCreateNestedManyWithoutPhoneInput
+    Chats?: ChatUncheckedCreateNestedManyWithoutPhoneInput
+  }
+
+  export type PhoneCreateOrConnectWithoutRegionInput = {
+    where: PhoneWhereUniqueInput
+    create: XOR<PhoneCreateWithoutRegionInput, PhoneUncheckedCreateWithoutRegionInput>
+  }
+
+  export type PhoneCreateManyRegionInputEnvelope = {
+    data: PhoneCreateManyRegionInput | PhoneCreateManyRegionInput[]
     skipDuplicates?: boolean
   }
 
@@ -33774,10 +34223,60 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"District"> | Date | string
   }
 
+  export type PhoneUpsertWithWhereUniqueWithoutRegionInput = {
+    where: PhoneWhereUniqueInput
+    update: XOR<PhoneUpdateWithoutRegionInput, PhoneUncheckedUpdateWithoutRegionInput>
+    create: XOR<PhoneCreateWithoutRegionInput, PhoneUncheckedCreateWithoutRegionInput>
+  }
+
+  export type PhoneUpdateWithWhereUniqueWithoutRegionInput = {
+    where: PhoneWhereUniqueInput
+    data: XOR<PhoneUpdateWithoutRegionInput, PhoneUncheckedUpdateWithoutRegionInput>
+  }
+
+  export type PhoneUpdateManyWithWhereWithoutRegionInput = {
+    where: PhoneScalarWhereInput
+    data: XOR<PhoneUpdateManyMutationInput, PhoneUncheckedUpdateManyWithoutRegionInput>
+  }
+
+  export type PhoneScalarWhereInput = {
+    AND?: PhoneScalarWhereInput | PhoneScalarWhereInput[]
+    OR?: PhoneScalarWhereInput[]
+    NOT?: PhoneScalarWhereInput | PhoneScalarWhereInput[]
+    id?: IntFilter<"Phone"> | number
+    title?: StringFilter<"Phone"> | string
+    description?: StringFilter<"Phone"> | string
+    ram?: StringFilter<"Phone"> | string
+    rom?: StringFilter<"Phone"> | string
+    price?: DecimalFilter<"Phone"> | Decimal | DecimalJsLike | number | string
+    year?: IntFilter<"Phone"> | number
+    box_with_document?: BoolFilter<"Phone"> | boolean
+    is_new?: BoolFilter<"Phone"> | boolean
+    posted_date?: DateTimeFilter<"Phone"> | Date | string
+    views?: BigIntNullableFilter<"Phone"> | bigint | number | null
+    like_counts?: BigIntNullableFilter<"Phone"> | bigint | number | null
+    is_negotiable?: BoolFilter<"Phone"> | boolean
+    brand?: StringNullableFilter<"Phone"> | string | null
+    model?: StringNullableFilter<"Phone"> | string | null
+    is_active?: BoolFilter<"Phone"> | boolean
+    is_checked?: BoolFilter<"Phone"> | boolean
+    is_archived?: BoolFilter<"Phone"> | boolean
+    is_deleted?: BoolFilter<"Phone"> | boolean
+    currencyId?: IntNullableFilter<"Phone"> | number | null
+    modelId?: IntNullableFilter<"Phone"> | number | null
+    brandId?: IntNullableFilter<"Phone"> | number | null
+    colorId?: IntNullableFilter<"Phone"> | number | null
+    userId?: IntNullableFilter<"Phone"> | number | null
+    addressId?: IntNullableFilter<"Phone"> | number | null
+    regionId?: IntNullableFilter<"Phone"> | number | null
+    districtId?: IntNullableFilter<"Phone"> | number | null
+  }
+
   export type RegionCreateWithoutDistrictsInput = {
     name: string
     createdAt?: Date | string
     updatedAt?: Date | string
+    Phone?: PhoneCreateNestedManyWithoutRegionInput
   }
 
   export type RegionUncheckedCreateWithoutDistrictsInput = {
@@ -33785,6 +34284,7 @@ export namespace Prisma {
     name: string
     createdAt?: Date | string
     updatedAt?: Date | string
+    Phone?: PhoneUncheckedCreateNestedManyWithoutRegionInput
   }
 
   export type RegionCreateOrConnectWithoutDistrictsInput = {
@@ -33861,6 +34361,81 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type PhoneCreateWithoutDistrictInput = {
+    title: string
+    description: string
+    ram: string
+    rom: string
+    price: Decimal | DecimalJsLike | number | string
+    year: number
+    box_with_document?: boolean
+    is_new?: boolean
+    posted_date?: Date | string
+    views?: bigint | number | null
+    like_counts?: bigint | number | null
+    is_negotiable?: boolean
+    brand?: string | null
+    model?: string | null
+    is_active?: boolean
+    is_checked?: boolean
+    is_archived?: boolean
+    is_deleted?: boolean
+    Currency?: CurrencyCreateNestedOneWithoutPhonesInput
+    Models?: ModelCreateNestedOneWithoutPhonesInput
+    Brands?: BrandCreateNestedOneWithoutPhonesInput
+    Color?: ColorCreateNestedOneWithoutPhonesInput
+    User?: UserCreateNestedOneWithoutPhoneInput
+    Address?: AddressCreateNestedOneWithoutPhonesInput
+    Images?: ImageCreateNestedManyWithoutPhoneInput
+    Reviews?: ReviewCreateNestedManyWithoutPhoneInput
+    Archives?: ArchivesCreateNestedManyWithoutPhoneInput
+    Chats?: ChatCreateNestedManyWithoutPhoneInput
+    Region?: RegionCreateNestedOneWithoutPhoneInput
+  }
+
+  export type PhoneUncheckedCreateWithoutDistrictInput = {
+    id?: number
+    title: string
+    description: string
+    ram: string
+    rom: string
+    price: Decimal | DecimalJsLike | number | string
+    year: number
+    box_with_document?: boolean
+    is_new?: boolean
+    posted_date?: Date | string
+    views?: bigint | number | null
+    like_counts?: bigint | number | null
+    is_negotiable?: boolean
+    brand?: string | null
+    model?: string | null
+    is_active?: boolean
+    is_checked?: boolean
+    is_archived?: boolean
+    is_deleted?: boolean
+    currencyId?: number | null
+    modelId?: number | null
+    brandId?: number | null
+    colorId?: number | null
+    userId?: number | null
+    addressId?: number | null
+    regionId?: number | null
+    Images?: ImageUncheckedCreateNestedManyWithoutPhoneInput
+    Reviews?: ReviewUncheckedCreateNestedManyWithoutPhoneInput
+    Archives?: ArchivesUncheckedCreateNestedManyWithoutPhoneInput
+    Chats?: ChatUncheckedCreateNestedManyWithoutPhoneInput
+  }
+
+  export type PhoneCreateOrConnectWithoutDistrictInput = {
+    where: PhoneWhereUniqueInput
+    create: XOR<PhoneCreateWithoutDistrictInput, PhoneUncheckedCreateWithoutDistrictInput>
+  }
+
+  export type PhoneCreateManyDistrictInputEnvelope = {
+    data: PhoneCreateManyDistrictInput | PhoneCreateManyDistrictInput[]
+    skipDuplicates?: boolean
+  }
+
   export type RegionUpsertWithoutDistrictsInput = {
     update: XOR<RegionUpdateWithoutDistrictsInput, RegionUncheckedUpdateWithoutDistrictsInput>
     create: XOR<RegionCreateWithoutDistrictsInput, RegionUncheckedCreateWithoutDistrictsInput>
@@ -33876,6 +34451,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    Phone?: PhoneUpdateManyWithoutRegionNestedInput
   }
 
   export type RegionUncheckedUpdateWithoutDistrictsInput = {
@@ -33883,6 +34459,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    Phone?: PhoneUncheckedUpdateManyWithoutRegionNestedInput
   }
 
   export type UserUpsertWithWhereUniqueWithoutDistrictInput = {
@@ -33926,6 +34503,22 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"User"> | Date | string
     districtId?: IntNullableFilter<"User"> | number | null
     languageId?: IntNullableFilter<"User"> | number | null
+  }
+
+  export type PhoneUpsertWithWhereUniqueWithoutDistrictInput = {
+    where: PhoneWhereUniqueInput
+    update: XOR<PhoneUpdateWithoutDistrictInput, PhoneUncheckedUpdateWithoutDistrictInput>
+    create: XOR<PhoneCreateWithoutDistrictInput, PhoneUncheckedCreateWithoutDistrictInput>
+  }
+
+  export type PhoneUpdateWithWhereUniqueWithoutDistrictInput = {
+    where: PhoneWhereUniqueInput
+    data: XOR<PhoneUpdateWithoutDistrictInput, PhoneUncheckedUpdateWithoutDistrictInput>
+  }
+
+  export type PhoneUpdateManyWithWhereWithoutDistrictInput = {
+    where: PhoneScalarWhereInput
+    data: XOR<PhoneUpdateManyMutationInput, PhoneUncheckedUpdateManyWithoutDistrictInput>
   }
 
   export type UserCreateWithoutLanguageInput = {
@@ -34058,6 +34651,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     Region: RegionCreateNestedOneWithoutDistrictsInput
+    Phone?: PhoneCreateNestedManyWithoutDistrictInput
   }
 
   export type DistrictUncheckedCreateWithoutUsersInput = {
@@ -34066,6 +34660,7 @@ export namespace Prisma {
     regionId: number
     createdAt?: Date | string
     updatedAt?: Date | string
+    Phone?: PhoneUncheckedCreateNestedManyWithoutDistrictInput
   }
 
   export type DistrictCreateOrConnectWithoutUsersInput = {
@@ -34137,6 +34732,7 @@ export namespace Prisma {
     ram: string
     rom: string
     price: Decimal | DecimalJsLike | number | string
+    year: number
     box_with_document?: boolean
     is_new?: boolean
     posted_date?: Date | string
@@ -34158,6 +34754,8 @@ export namespace Prisma {
     Reviews?: ReviewCreateNestedManyWithoutPhoneInput
     Archives?: ArchivesCreateNestedManyWithoutPhoneInput
     Chats?: ChatCreateNestedManyWithoutPhoneInput
+    Region?: RegionCreateNestedOneWithoutPhoneInput
+    District?: DistrictCreateNestedOneWithoutPhoneInput
   }
 
   export type PhoneUncheckedCreateWithoutUserInput = {
@@ -34167,6 +34765,7 @@ export namespace Prisma {
     ram: string
     rom: string
     price: Decimal | DecimalJsLike | number | string
+    year: number
     box_with_document?: boolean
     is_new?: boolean
     posted_date?: Date | string
@@ -34184,6 +34783,8 @@ export namespace Prisma {
     brandId?: number | null
     colorId?: number | null
     addressId?: number | null
+    regionId?: number | null
+    districtId?: number | null
     Images?: ImageUncheckedCreateNestedManyWithoutPhoneInput
     Reviews?: ReviewUncheckedCreateNestedManyWithoutPhoneInput
     Archives?: ArchivesUncheckedCreateNestedManyWithoutPhoneInput
@@ -34376,6 +34977,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     Region?: RegionUpdateOneRequiredWithoutDistrictsNestedInput
+    Phone?: PhoneUpdateManyWithoutDistrictNestedInput
   }
 
   export type DistrictUncheckedUpdateWithoutUsersInput = {
@@ -34384,6 +34986,7 @@ export namespace Prisma {
     regionId?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    Phone?: PhoneUncheckedUpdateManyWithoutDistrictNestedInput
   }
 
   export type LanguageUpsertWithoutUsersInput = {
@@ -34478,36 +35081,6 @@ export namespace Prisma {
   export type PhoneUpdateManyWithWhereWithoutUserInput = {
     where: PhoneScalarWhereInput
     data: XOR<PhoneUpdateManyMutationInput, PhoneUncheckedUpdateManyWithoutUserInput>
-  }
-
-  export type PhoneScalarWhereInput = {
-    AND?: PhoneScalarWhereInput | PhoneScalarWhereInput[]
-    OR?: PhoneScalarWhereInput[]
-    NOT?: PhoneScalarWhereInput | PhoneScalarWhereInput[]
-    id?: IntFilter<"Phone"> | number
-    title?: StringFilter<"Phone"> | string
-    description?: StringFilter<"Phone"> | string
-    ram?: StringFilter<"Phone"> | string
-    rom?: StringFilter<"Phone"> | string
-    price?: DecimalFilter<"Phone"> | Decimal | DecimalJsLike | number | string
-    box_with_document?: BoolFilter<"Phone"> | boolean
-    is_new?: BoolFilter<"Phone"> | boolean
-    posted_date?: DateTimeFilter<"Phone"> | Date | string
-    views?: BigIntNullableFilter<"Phone"> | bigint | number | null
-    like_counts?: BigIntNullableFilter<"Phone"> | bigint | number | null
-    is_negotiable?: BoolFilter<"Phone"> | boolean
-    brand?: StringNullableFilter<"Phone"> | string | null
-    model?: StringNullableFilter<"Phone"> | string | null
-    is_active?: BoolFilter<"Phone"> | boolean
-    is_checked?: BoolFilter<"Phone"> | boolean
-    is_archived?: BoolFilter<"Phone"> | boolean
-    is_deleted?: BoolFilter<"Phone"> | boolean
-    currencyId?: IntNullableFilter<"Phone"> | number | null
-    modelId?: IntNullableFilter<"Phone"> | number | null
-    brandId?: IntNullableFilter<"Phone"> | number | null
-    colorId?: IntNullableFilter<"Phone"> | number | null
-    userId?: IntNullableFilter<"Phone"> | number | null
-    addressId?: IntNullableFilter<"Phone"> | number | null
   }
 
   export type AddressUpsertWithWhereUniqueWithoutUserInput = {
@@ -35068,6 +35641,7 @@ export namespace Prisma {
     ram: string
     rom: string
     price: Decimal | DecimalJsLike | number | string
+    year: number
     box_with_document?: boolean
     is_new?: boolean
     posted_date?: Date | string
@@ -35089,6 +35663,8 @@ export namespace Prisma {
     Reviews?: ReviewCreateNestedManyWithoutPhoneInput
     Archives?: ArchivesCreateNestedManyWithoutPhoneInput
     Chats?: ChatCreateNestedManyWithoutPhoneInput
+    Region?: RegionCreateNestedOneWithoutPhoneInput
+    District?: DistrictCreateNestedOneWithoutPhoneInput
   }
 
   export type PhoneUncheckedCreateWithoutCurrencyInput = {
@@ -35098,6 +35674,7 @@ export namespace Prisma {
     ram: string
     rom: string
     price: Decimal | DecimalJsLike | number | string
+    year: number
     box_with_document?: boolean
     is_new?: boolean
     posted_date?: Date | string
@@ -35115,6 +35692,8 @@ export namespace Prisma {
     colorId?: number | null
     userId?: number | null
     addressId?: number | null
+    regionId?: number | null
+    districtId?: number | null
     Images?: ImageUncheckedCreateNestedManyWithoutPhoneInput
     Reviews?: ReviewUncheckedCreateNestedManyWithoutPhoneInput
     Archives?: ArchivesUncheckedCreateNestedManyWithoutPhoneInput
@@ -35174,6 +35753,7 @@ export namespace Prisma {
     ram: string
     rom: string
     price: Decimal | DecimalJsLike | number | string
+    year: number
     box_with_document?: boolean
     is_new?: boolean
     posted_date?: Date | string
@@ -35195,6 +35775,8 @@ export namespace Prisma {
     Reviews?: ReviewCreateNestedManyWithoutPhoneInput
     Archives?: ArchivesCreateNestedManyWithoutPhoneInput
     Chats?: ChatCreateNestedManyWithoutPhoneInput
+    Region?: RegionCreateNestedOneWithoutPhoneInput
+    District?: DistrictCreateNestedOneWithoutPhoneInput
   }
 
   export type PhoneUncheckedCreateWithoutBrandsInput = {
@@ -35204,6 +35786,7 @@ export namespace Prisma {
     ram: string
     rom: string
     price: Decimal | DecimalJsLike | number | string
+    year: number
     box_with_document?: boolean
     is_new?: boolean
     posted_date?: Date | string
@@ -35221,6 +35804,8 @@ export namespace Prisma {
     colorId?: number | null
     userId?: number | null
     addressId?: number | null
+    regionId?: number | null
+    districtId?: number | null
     Images?: ImageUncheckedCreateNestedManyWithoutPhoneInput
     Reviews?: ReviewUncheckedCreateNestedManyWithoutPhoneInput
     Archives?: ArchivesUncheckedCreateNestedManyWithoutPhoneInput
@@ -35300,6 +35885,7 @@ export namespace Prisma {
     ram: string
     rom: string
     price: Decimal | DecimalJsLike | number | string
+    year: number
     box_with_document?: boolean
     is_new?: boolean
     posted_date?: Date | string
@@ -35321,6 +35907,8 @@ export namespace Prisma {
     Reviews?: ReviewCreateNestedManyWithoutPhoneInput
     Archives?: ArchivesCreateNestedManyWithoutPhoneInput
     Chats?: ChatCreateNestedManyWithoutPhoneInput
+    Region?: RegionCreateNestedOneWithoutPhoneInput
+    District?: DistrictCreateNestedOneWithoutPhoneInput
   }
 
   export type PhoneUncheckedCreateWithoutModelsInput = {
@@ -35330,6 +35918,7 @@ export namespace Prisma {
     ram: string
     rom: string
     price: Decimal | DecimalJsLike | number | string
+    year: number
     box_with_document?: boolean
     is_new?: boolean
     posted_date?: Date | string
@@ -35347,6 +35936,8 @@ export namespace Prisma {
     colorId?: number | null
     userId?: number | null
     addressId?: number | null
+    regionId?: number | null
+    districtId?: number | null
     Images?: ImageUncheckedCreateNestedManyWithoutPhoneInput
     Reviews?: ReviewUncheckedCreateNestedManyWithoutPhoneInput
     Archives?: ArchivesUncheckedCreateNestedManyWithoutPhoneInput
@@ -35407,6 +35998,7 @@ export namespace Prisma {
     ram: string
     rom: string
     price: Decimal | DecimalJsLike | number | string
+    year: number
     box_with_document?: boolean
     is_new?: boolean
     posted_date?: Date | string
@@ -35428,6 +36020,8 @@ export namespace Prisma {
     Reviews?: ReviewCreateNestedManyWithoutPhoneInput
     Archives?: ArchivesCreateNestedManyWithoutPhoneInput
     Chats?: ChatCreateNestedManyWithoutPhoneInput
+    Region?: RegionCreateNestedOneWithoutPhoneInput
+    District?: DistrictCreateNestedOneWithoutPhoneInput
   }
 
   export type PhoneUncheckedCreateWithoutColorInput = {
@@ -35437,6 +36031,7 @@ export namespace Prisma {
     ram: string
     rom: string
     price: Decimal | DecimalJsLike | number | string
+    year: number
     box_with_document?: boolean
     is_new?: boolean
     posted_date?: Date | string
@@ -35454,6 +36049,8 @@ export namespace Prisma {
     brandId?: number | null
     userId?: number | null
     addressId?: number | null
+    regionId?: number | null
+    districtId?: number | null
     Images?: ImageUncheckedCreateNestedManyWithoutPhoneInput
     Reviews?: ReviewUncheckedCreateNestedManyWithoutPhoneInput
     Archives?: ArchivesUncheckedCreateNestedManyWithoutPhoneInput
@@ -35720,6 +36317,48 @@ export namespace Prisma {
   export type ChatCreateManyPhoneInputEnvelope = {
     data: ChatCreateManyPhoneInput | ChatCreateManyPhoneInput[]
     skipDuplicates?: boolean
+  }
+
+  export type RegionCreateWithoutPhoneInput = {
+    name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    Districts?: DistrictCreateNestedManyWithoutRegionInput
+  }
+
+  export type RegionUncheckedCreateWithoutPhoneInput = {
+    id?: number
+    name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    Districts?: DistrictUncheckedCreateNestedManyWithoutRegionInput
+  }
+
+  export type RegionCreateOrConnectWithoutPhoneInput = {
+    where: RegionWhereUniqueInput
+    create: XOR<RegionCreateWithoutPhoneInput, RegionUncheckedCreateWithoutPhoneInput>
+  }
+
+  export type DistrictCreateWithoutPhoneInput = {
+    name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    Region: RegionCreateNestedOneWithoutDistrictsInput
+    Users?: UserCreateNestedManyWithoutDistrictInput
+  }
+
+  export type DistrictUncheckedCreateWithoutPhoneInput = {
+    id?: number
+    name: string
+    regionId: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    Users?: UserUncheckedCreateNestedManyWithoutDistrictInput
+  }
+
+  export type DistrictCreateOrConnectWithoutPhoneInput = {
+    where: DistrictWhereUniqueInput
+    create: XOR<DistrictCreateWithoutPhoneInput, DistrictUncheckedCreateWithoutPhoneInput>
   }
 
   export type CurrencyUpsertWithoutPhonesInput = {
@@ -36002,12 +36641,67 @@ export namespace Prisma {
     data: XOR<ChatUpdateManyMutationInput, ChatUncheckedUpdateManyWithoutPhoneInput>
   }
 
+  export type RegionUpsertWithoutPhoneInput = {
+    update: XOR<RegionUpdateWithoutPhoneInput, RegionUncheckedUpdateWithoutPhoneInput>
+    create: XOR<RegionCreateWithoutPhoneInput, RegionUncheckedCreateWithoutPhoneInput>
+    where?: RegionWhereInput
+  }
+
+  export type RegionUpdateToOneWithWhereWithoutPhoneInput = {
+    where?: RegionWhereInput
+    data: XOR<RegionUpdateWithoutPhoneInput, RegionUncheckedUpdateWithoutPhoneInput>
+  }
+
+  export type RegionUpdateWithoutPhoneInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    Districts?: DistrictUpdateManyWithoutRegionNestedInput
+  }
+
+  export type RegionUncheckedUpdateWithoutPhoneInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    Districts?: DistrictUncheckedUpdateManyWithoutRegionNestedInput
+  }
+
+  export type DistrictUpsertWithoutPhoneInput = {
+    update: XOR<DistrictUpdateWithoutPhoneInput, DistrictUncheckedUpdateWithoutPhoneInput>
+    create: XOR<DistrictCreateWithoutPhoneInput, DistrictUncheckedCreateWithoutPhoneInput>
+    where?: DistrictWhereInput
+  }
+
+  export type DistrictUpdateToOneWithWhereWithoutPhoneInput = {
+    where?: DistrictWhereInput
+    data: XOR<DistrictUpdateWithoutPhoneInput, DistrictUncheckedUpdateWithoutPhoneInput>
+  }
+
+  export type DistrictUpdateWithoutPhoneInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    Region?: RegionUpdateOneRequiredWithoutDistrictsNestedInput
+    Users?: UserUpdateManyWithoutDistrictNestedInput
+  }
+
+  export type DistrictUncheckedUpdateWithoutPhoneInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    regionId?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    Users?: UserUncheckedUpdateManyWithoutDistrictNestedInput
+  }
+
   export type PhoneCreateWithoutImagesInput = {
     title: string
     description: string
     ram: string
     rom: string
     price: Decimal | DecimalJsLike | number | string
+    year: number
     box_with_document?: boolean
     is_new?: boolean
     posted_date?: Date | string
@@ -36029,6 +36723,8 @@ export namespace Prisma {
     Reviews?: ReviewCreateNestedManyWithoutPhoneInput
     Archives?: ArchivesCreateNestedManyWithoutPhoneInput
     Chats?: ChatCreateNestedManyWithoutPhoneInput
+    Region?: RegionCreateNestedOneWithoutPhoneInput
+    District?: DistrictCreateNestedOneWithoutPhoneInput
   }
 
   export type PhoneUncheckedCreateWithoutImagesInput = {
@@ -36038,6 +36734,7 @@ export namespace Prisma {
     ram: string
     rom: string
     price: Decimal | DecimalJsLike | number | string
+    year: number
     box_with_document?: boolean
     is_new?: boolean
     posted_date?: Date | string
@@ -36056,6 +36753,8 @@ export namespace Prisma {
     colorId?: number | null
     userId?: number | null
     addressId?: number | null
+    regionId?: number | null
+    districtId?: number | null
     Reviews?: ReviewUncheckedCreateNestedManyWithoutPhoneInput
     Archives?: ArchivesUncheckedCreateNestedManyWithoutPhoneInput
     Chats?: ChatUncheckedCreateNestedManyWithoutPhoneInput
@@ -36083,6 +36782,7 @@ export namespace Prisma {
     ram?: StringFieldUpdateOperationsInput | string
     rom?: StringFieldUpdateOperationsInput | string
     price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    year?: IntFieldUpdateOperationsInput | number
     box_with_document?: BoolFieldUpdateOperationsInput | boolean
     is_new?: BoolFieldUpdateOperationsInput | boolean
     posted_date?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -36104,6 +36804,8 @@ export namespace Prisma {
     Reviews?: ReviewUpdateManyWithoutPhoneNestedInput
     Archives?: ArchivesUpdateManyWithoutPhoneNestedInput
     Chats?: ChatUpdateManyWithoutPhoneNestedInput
+    Region?: RegionUpdateOneWithoutPhoneNestedInput
+    District?: DistrictUpdateOneWithoutPhoneNestedInput
   }
 
   export type PhoneUncheckedUpdateWithoutImagesInput = {
@@ -36113,6 +36815,7 @@ export namespace Prisma {
     ram?: StringFieldUpdateOperationsInput | string
     rom?: StringFieldUpdateOperationsInput | string
     price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    year?: IntFieldUpdateOperationsInput | number
     box_with_document?: BoolFieldUpdateOperationsInput | boolean
     is_new?: BoolFieldUpdateOperationsInput | boolean
     posted_date?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -36131,6 +36834,8 @@ export namespace Prisma {
     colorId?: NullableIntFieldUpdateOperationsInput | number | null
     userId?: NullableIntFieldUpdateOperationsInput | number | null
     addressId?: NullableIntFieldUpdateOperationsInput | number | null
+    regionId?: NullableIntFieldUpdateOperationsInput | number | null
+    districtId?: NullableIntFieldUpdateOperationsInput | number | null
     Reviews?: ReviewUncheckedUpdateManyWithoutPhoneNestedInput
     Archives?: ArchivesUncheckedUpdateManyWithoutPhoneNestedInput
     Chats?: ChatUncheckedUpdateManyWithoutPhoneNestedInput
@@ -36142,6 +36847,7 @@ export namespace Prisma {
     ram: string
     rom: string
     price: Decimal | DecimalJsLike | number | string
+    year: number
     box_with_document?: boolean
     is_new?: boolean
     posted_date?: Date | string
@@ -36163,6 +36869,8 @@ export namespace Prisma {
     Images?: ImageCreateNestedManyWithoutPhoneInput
     Archives?: ArchivesCreateNestedManyWithoutPhoneInput
     Chats?: ChatCreateNestedManyWithoutPhoneInput
+    Region?: RegionCreateNestedOneWithoutPhoneInput
+    District?: DistrictCreateNestedOneWithoutPhoneInput
   }
 
   export type PhoneUncheckedCreateWithoutReviewsInput = {
@@ -36172,6 +36880,7 @@ export namespace Prisma {
     ram: string
     rom: string
     price: Decimal | DecimalJsLike | number | string
+    year: number
     box_with_document?: boolean
     is_new?: boolean
     posted_date?: Date | string
@@ -36190,6 +36899,8 @@ export namespace Prisma {
     colorId?: number | null
     userId?: number | null
     addressId?: number | null
+    regionId?: number | null
+    districtId?: number | null
     Images?: ImageUncheckedCreateNestedManyWithoutPhoneInput
     Archives?: ArchivesUncheckedCreateNestedManyWithoutPhoneInput
     Chats?: ChatUncheckedCreateNestedManyWithoutPhoneInput
@@ -36217,6 +36928,7 @@ export namespace Prisma {
     ram?: StringFieldUpdateOperationsInput | string
     rom?: StringFieldUpdateOperationsInput | string
     price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    year?: IntFieldUpdateOperationsInput | number
     box_with_document?: BoolFieldUpdateOperationsInput | boolean
     is_new?: BoolFieldUpdateOperationsInput | boolean
     posted_date?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -36238,6 +36950,8 @@ export namespace Prisma {
     Images?: ImageUpdateManyWithoutPhoneNestedInput
     Archives?: ArchivesUpdateManyWithoutPhoneNestedInput
     Chats?: ChatUpdateManyWithoutPhoneNestedInput
+    Region?: RegionUpdateOneWithoutPhoneNestedInput
+    District?: DistrictUpdateOneWithoutPhoneNestedInput
   }
 
   export type PhoneUncheckedUpdateWithoutReviewsInput = {
@@ -36247,6 +36961,7 @@ export namespace Prisma {
     ram?: StringFieldUpdateOperationsInput | string
     rom?: StringFieldUpdateOperationsInput | string
     price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    year?: IntFieldUpdateOperationsInput | number
     box_with_document?: BoolFieldUpdateOperationsInput | boolean
     is_new?: BoolFieldUpdateOperationsInput | boolean
     posted_date?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -36265,6 +36980,8 @@ export namespace Prisma {
     colorId?: NullableIntFieldUpdateOperationsInput | number | null
     userId?: NullableIntFieldUpdateOperationsInput | number | null
     addressId?: NullableIntFieldUpdateOperationsInput | number | null
+    regionId?: NullableIntFieldUpdateOperationsInput | number | null
+    districtId?: NullableIntFieldUpdateOperationsInput | number | null
     Images?: ImageUncheckedUpdateManyWithoutPhoneNestedInput
     Archives?: ArchivesUncheckedUpdateManyWithoutPhoneNestedInput
     Chats?: ChatUncheckedUpdateManyWithoutPhoneNestedInput
@@ -36276,6 +36993,7 @@ export namespace Prisma {
     ram: string
     rom: string
     price: Decimal | DecimalJsLike | number | string
+    year: number
     box_with_document?: boolean
     is_new?: boolean
     posted_date?: Date | string
@@ -36297,6 +37015,8 @@ export namespace Prisma {
     Images?: ImageCreateNestedManyWithoutPhoneInput
     Reviews?: ReviewCreateNestedManyWithoutPhoneInput
     Chats?: ChatCreateNestedManyWithoutPhoneInput
+    Region?: RegionCreateNestedOneWithoutPhoneInput
+    District?: DistrictCreateNestedOneWithoutPhoneInput
   }
 
   export type PhoneUncheckedCreateWithoutArchivesInput = {
@@ -36306,6 +37026,7 @@ export namespace Prisma {
     ram: string
     rom: string
     price: Decimal | DecimalJsLike | number | string
+    year: number
     box_with_document?: boolean
     is_new?: boolean
     posted_date?: Date | string
@@ -36324,6 +37045,8 @@ export namespace Prisma {
     colorId?: number | null
     userId?: number | null
     addressId?: number | null
+    regionId?: number | null
+    districtId?: number | null
     Images?: ImageUncheckedCreateNestedManyWithoutPhoneInput
     Reviews?: ReviewUncheckedCreateNestedManyWithoutPhoneInput
     Chats?: ChatUncheckedCreateNestedManyWithoutPhoneInput
@@ -36351,6 +37074,7 @@ export namespace Prisma {
     ram?: StringFieldUpdateOperationsInput | string
     rom?: StringFieldUpdateOperationsInput | string
     price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    year?: IntFieldUpdateOperationsInput | number
     box_with_document?: BoolFieldUpdateOperationsInput | boolean
     is_new?: BoolFieldUpdateOperationsInput | boolean
     posted_date?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -36372,6 +37096,8 @@ export namespace Prisma {
     Images?: ImageUpdateManyWithoutPhoneNestedInput
     Reviews?: ReviewUpdateManyWithoutPhoneNestedInput
     Chats?: ChatUpdateManyWithoutPhoneNestedInput
+    Region?: RegionUpdateOneWithoutPhoneNestedInput
+    District?: DistrictUpdateOneWithoutPhoneNestedInput
   }
 
   export type PhoneUncheckedUpdateWithoutArchivesInput = {
@@ -36381,6 +37107,7 @@ export namespace Prisma {
     ram?: StringFieldUpdateOperationsInput | string
     rom?: StringFieldUpdateOperationsInput | string
     price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    year?: IntFieldUpdateOperationsInput | number
     box_with_document?: BoolFieldUpdateOperationsInput | boolean
     is_new?: BoolFieldUpdateOperationsInput | boolean
     posted_date?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -36399,6 +37126,8 @@ export namespace Prisma {
     colorId?: NullableIntFieldUpdateOperationsInput | number | null
     userId?: NullableIntFieldUpdateOperationsInput | number | null
     addressId?: NullableIntFieldUpdateOperationsInput | number | null
+    regionId?: NullableIntFieldUpdateOperationsInput | number | null
+    districtId?: NullableIntFieldUpdateOperationsInput | number | null
     Images?: ImageUncheckedUpdateManyWithoutPhoneNestedInput
     Reviews?: ReviewUncheckedUpdateManyWithoutPhoneNestedInput
     Chats?: ChatUncheckedUpdateManyWithoutPhoneNestedInput
@@ -36474,6 +37203,7 @@ export namespace Prisma {
     ram: string
     rom: string
     price: Decimal | DecimalJsLike | number | string
+    year: number
     box_with_document?: boolean
     is_new?: boolean
     posted_date?: Date | string
@@ -36495,6 +37225,8 @@ export namespace Prisma {
     Reviews?: ReviewCreateNestedManyWithoutPhoneInput
     Archives?: ArchivesCreateNestedManyWithoutPhoneInput
     Chats?: ChatCreateNestedManyWithoutPhoneInput
+    Region?: RegionCreateNestedOneWithoutPhoneInput
+    District?: DistrictCreateNestedOneWithoutPhoneInput
   }
 
   export type PhoneUncheckedCreateWithoutAddressInput = {
@@ -36504,6 +37236,7 @@ export namespace Prisma {
     ram: string
     rom: string
     price: Decimal | DecimalJsLike | number | string
+    year: number
     box_with_document?: boolean
     is_new?: boolean
     posted_date?: Date | string
@@ -36521,6 +37254,8 @@ export namespace Prisma {
     brandId?: number | null
     colorId?: number | null
     userId?: number | null
+    regionId?: number | null
+    districtId?: number | null
     Images?: ImageUncheckedCreateNestedManyWithoutPhoneInput
     Reviews?: ReviewUncheckedCreateNestedManyWithoutPhoneInput
     Archives?: ArchivesUncheckedCreateNestedManyWithoutPhoneInput
@@ -36827,6 +37562,7 @@ export namespace Prisma {
     ram: string
     rom: string
     price: Decimal | DecimalJsLike | number | string
+    year: number
     box_with_document?: boolean
     is_new?: boolean
     posted_date?: Date | string
@@ -36848,6 +37584,8 @@ export namespace Prisma {
     Images?: ImageCreateNestedManyWithoutPhoneInput
     Reviews?: ReviewCreateNestedManyWithoutPhoneInput
     Archives?: ArchivesCreateNestedManyWithoutPhoneInput
+    Region?: RegionCreateNestedOneWithoutPhoneInput
+    District?: DistrictCreateNestedOneWithoutPhoneInput
   }
 
   export type PhoneUncheckedCreateWithoutChatsInput = {
@@ -36857,6 +37595,7 @@ export namespace Prisma {
     ram: string
     rom: string
     price: Decimal | DecimalJsLike | number | string
+    year: number
     box_with_document?: boolean
     is_new?: boolean
     posted_date?: Date | string
@@ -36875,6 +37614,8 @@ export namespace Prisma {
     colorId?: number | null
     userId?: number | null
     addressId?: number | null
+    regionId?: number | null
+    districtId?: number | null
     Images?: ImageUncheckedCreateNestedManyWithoutPhoneInput
     Reviews?: ReviewUncheckedCreateNestedManyWithoutPhoneInput
     Archives?: ArchivesUncheckedCreateNestedManyWithoutPhoneInput
@@ -36997,6 +37738,7 @@ export namespace Prisma {
     ram?: StringFieldUpdateOperationsInput | string
     rom?: StringFieldUpdateOperationsInput | string
     price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    year?: IntFieldUpdateOperationsInput | number
     box_with_document?: BoolFieldUpdateOperationsInput | boolean
     is_new?: BoolFieldUpdateOperationsInput | boolean
     posted_date?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -37018,6 +37760,8 @@ export namespace Prisma {
     Images?: ImageUpdateManyWithoutPhoneNestedInput
     Reviews?: ReviewUpdateManyWithoutPhoneNestedInput
     Archives?: ArchivesUpdateManyWithoutPhoneNestedInput
+    Region?: RegionUpdateOneWithoutPhoneNestedInput
+    District?: DistrictUpdateOneWithoutPhoneNestedInput
   }
 
   export type PhoneUncheckedUpdateWithoutChatsInput = {
@@ -37027,6 +37771,7 @@ export namespace Prisma {
     ram?: StringFieldUpdateOperationsInput | string
     rom?: StringFieldUpdateOperationsInput | string
     price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    year?: IntFieldUpdateOperationsInput | number
     box_with_document?: BoolFieldUpdateOperationsInput | boolean
     is_new?: BoolFieldUpdateOperationsInput | boolean
     posted_date?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -37045,6 +37790,8 @@ export namespace Prisma {
     colorId?: NullableIntFieldUpdateOperationsInput | number | null
     userId?: NullableIntFieldUpdateOperationsInput | number | null
     addressId?: NullableIntFieldUpdateOperationsInput | number | null
+    regionId?: NullableIntFieldUpdateOperationsInput | number | null
+    districtId?: NullableIntFieldUpdateOperationsInput | number | null
     Images?: ImageUncheckedUpdateManyWithoutPhoneNestedInput
     Reviews?: ReviewUncheckedUpdateManyWithoutPhoneNestedInput
     Archives?: ArchivesUncheckedUpdateManyWithoutPhoneNestedInput
@@ -37253,11 +38000,41 @@ export namespace Prisma {
     updatedAt?: Date | string
   }
 
+  export type PhoneCreateManyRegionInput = {
+    id?: number
+    title: string
+    description: string
+    ram: string
+    rom: string
+    price: Decimal | DecimalJsLike | number | string
+    year: number
+    box_with_document?: boolean
+    is_new?: boolean
+    posted_date?: Date | string
+    views?: bigint | number | null
+    like_counts?: bigint | number | null
+    is_negotiable?: boolean
+    brand?: string | null
+    model?: string | null
+    is_active?: boolean
+    is_checked?: boolean
+    is_archived?: boolean
+    is_deleted?: boolean
+    currencyId?: number | null
+    modelId?: number | null
+    brandId?: number | null
+    colorId?: number | null
+    userId?: number | null
+    addressId?: number | null
+    districtId?: number | null
+  }
+
   export type DistrictUpdateWithoutRegionInput = {
     name?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     Users?: UserUpdateManyWithoutDistrictNestedInput
+    Phone?: PhoneUpdateManyWithoutDistrictNestedInput
   }
 
   export type DistrictUncheckedUpdateWithoutRegionInput = {
@@ -37266,6 +38043,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     Users?: UserUncheckedUpdateManyWithoutDistrictNestedInput
+    Phone?: PhoneUncheckedUpdateManyWithoutDistrictNestedInput
   }
 
   export type DistrictUncheckedUpdateManyWithoutRegionInput = {
@@ -37273,6 +38051,100 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PhoneUpdateWithoutRegionInput = {
+    title?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    ram?: StringFieldUpdateOperationsInput | string
+    rom?: StringFieldUpdateOperationsInput | string
+    price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    year?: IntFieldUpdateOperationsInput | number
+    box_with_document?: BoolFieldUpdateOperationsInput | boolean
+    is_new?: BoolFieldUpdateOperationsInput | boolean
+    posted_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    views?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    like_counts?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    is_negotiable?: BoolFieldUpdateOperationsInput | boolean
+    brand?: NullableStringFieldUpdateOperationsInput | string | null
+    model?: NullableStringFieldUpdateOperationsInput | string | null
+    is_active?: BoolFieldUpdateOperationsInput | boolean
+    is_checked?: BoolFieldUpdateOperationsInput | boolean
+    is_archived?: BoolFieldUpdateOperationsInput | boolean
+    is_deleted?: BoolFieldUpdateOperationsInput | boolean
+    Currency?: CurrencyUpdateOneWithoutPhonesNestedInput
+    Models?: ModelUpdateOneWithoutPhonesNestedInput
+    Brands?: BrandUpdateOneWithoutPhonesNestedInput
+    Color?: ColorUpdateOneWithoutPhonesNestedInput
+    User?: UserUpdateOneWithoutPhoneNestedInput
+    Address?: AddressUpdateOneWithoutPhonesNestedInput
+    Images?: ImageUpdateManyWithoutPhoneNestedInput
+    Reviews?: ReviewUpdateManyWithoutPhoneNestedInput
+    Archives?: ArchivesUpdateManyWithoutPhoneNestedInput
+    Chats?: ChatUpdateManyWithoutPhoneNestedInput
+    District?: DistrictUpdateOneWithoutPhoneNestedInput
+  }
+
+  export type PhoneUncheckedUpdateWithoutRegionInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    title?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    ram?: StringFieldUpdateOperationsInput | string
+    rom?: StringFieldUpdateOperationsInput | string
+    price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    year?: IntFieldUpdateOperationsInput | number
+    box_with_document?: BoolFieldUpdateOperationsInput | boolean
+    is_new?: BoolFieldUpdateOperationsInput | boolean
+    posted_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    views?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    like_counts?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    is_negotiable?: BoolFieldUpdateOperationsInput | boolean
+    brand?: NullableStringFieldUpdateOperationsInput | string | null
+    model?: NullableStringFieldUpdateOperationsInput | string | null
+    is_active?: BoolFieldUpdateOperationsInput | boolean
+    is_checked?: BoolFieldUpdateOperationsInput | boolean
+    is_archived?: BoolFieldUpdateOperationsInput | boolean
+    is_deleted?: BoolFieldUpdateOperationsInput | boolean
+    currencyId?: NullableIntFieldUpdateOperationsInput | number | null
+    modelId?: NullableIntFieldUpdateOperationsInput | number | null
+    brandId?: NullableIntFieldUpdateOperationsInput | number | null
+    colorId?: NullableIntFieldUpdateOperationsInput | number | null
+    userId?: NullableIntFieldUpdateOperationsInput | number | null
+    addressId?: NullableIntFieldUpdateOperationsInput | number | null
+    districtId?: NullableIntFieldUpdateOperationsInput | number | null
+    Images?: ImageUncheckedUpdateManyWithoutPhoneNestedInput
+    Reviews?: ReviewUncheckedUpdateManyWithoutPhoneNestedInput
+    Archives?: ArchivesUncheckedUpdateManyWithoutPhoneNestedInput
+    Chats?: ChatUncheckedUpdateManyWithoutPhoneNestedInput
+  }
+
+  export type PhoneUncheckedUpdateManyWithoutRegionInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    title?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    ram?: StringFieldUpdateOperationsInput | string
+    rom?: StringFieldUpdateOperationsInput | string
+    price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    year?: IntFieldUpdateOperationsInput | number
+    box_with_document?: BoolFieldUpdateOperationsInput | boolean
+    is_new?: BoolFieldUpdateOperationsInput | boolean
+    posted_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    views?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    like_counts?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    is_negotiable?: BoolFieldUpdateOperationsInput | boolean
+    brand?: NullableStringFieldUpdateOperationsInput | string | null
+    model?: NullableStringFieldUpdateOperationsInput | string | null
+    is_active?: BoolFieldUpdateOperationsInput | boolean
+    is_checked?: BoolFieldUpdateOperationsInput | boolean
+    is_archived?: BoolFieldUpdateOperationsInput | boolean
+    is_deleted?: BoolFieldUpdateOperationsInput | boolean
+    currencyId?: NullableIntFieldUpdateOperationsInput | number | null
+    modelId?: NullableIntFieldUpdateOperationsInput | number | null
+    brandId?: NullableIntFieldUpdateOperationsInput | number | null
+    colorId?: NullableIntFieldUpdateOperationsInput | number | null
+    userId?: NullableIntFieldUpdateOperationsInput | number | null
+    addressId?: NullableIntFieldUpdateOperationsInput | number | null
+    districtId?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type UserCreateManyDistrictInput = {
@@ -37296,6 +38168,35 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     languageId?: number | null
+  }
+
+  export type PhoneCreateManyDistrictInput = {
+    id?: number
+    title: string
+    description: string
+    ram: string
+    rom: string
+    price: Decimal | DecimalJsLike | number | string
+    year: number
+    box_with_document?: boolean
+    is_new?: boolean
+    posted_date?: Date | string
+    views?: bigint | number | null
+    like_counts?: bigint | number | null
+    is_negotiable?: boolean
+    brand?: string | null
+    model?: string | null
+    is_active?: boolean
+    is_checked?: boolean
+    is_archived?: boolean
+    is_deleted?: boolean
+    currencyId?: number | null
+    modelId?: number | null
+    brandId?: number | null
+    colorId?: number | null
+    userId?: number | null
+    addressId?: number | null
+    regionId?: number | null
   }
 
   export type UserUpdateWithoutDistrictInput = {
@@ -37378,6 +38279,100 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     languageId?: NullableIntFieldUpdateOperationsInput | number | null
+  }
+
+  export type PhoneUpdateWithoutDistrictInput = {
+    title?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    ram?: StringFieldUpdateOperationsInput | string
+    rom?: StringFieldUpdateOperationsInput | string
+    price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    year?: IntFieldUpdateOperationsInput | number
+    box_with_document?: BoolFieldUpdateOperationsInput | boolean
+    is_new?: BoolFieldUpdateOperationsInput | boolean
+    posted_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    views?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    like_counts?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    is_negotiable?: BoolFieldUpdateOperationsInput | boolean
+    brand?: NullableStringFieldUpdateOperationsInput | string | null
+    model?: NullableStringFieldUpdateOperationsInput | string | null
+    is_active?: BoolFieldUpdateOperationsInput | boolean
+    is_checked?: BoolFieldUpdateOperationsInput | boolean
+    is_archived?: BoolFieldUpdateOperationsInput | boolean
+    is_deleted?: BoolFieldUpdateOperationsInput | boolean
+    Currency?: CurrencyUpdateOneWithoutPhonesNestedInput
+    Models?: ModelUpdateOneWithoutPhonesNestedInput
+    Brands?: BrandUpdateOneWithoutPhonesNestedInput
+    Color?: ColorUpdateOneWithoutPhonesNestedInput
+    User?: UserUpdateOneWithoutPhoneNestedInput
+    Address?: AddressUpdateOneWithoutPhonesNestedInput
+    Images?: ImageUpdateManyWithoutPhoneNestedInput
+    Reviews?: ReviewUpdateManyWithoutPhoneNestedInput
+    Archives?: ArchivesUpdateManyWithoutPhoneNestedInput
+    Chats?: ChatUpdateManyWithoutPhoneNestedInput
+    Region?: RegionUpdateOneWithoutPhoneNestedInput
+  }
+
+  export type PhoneUncheckedUpdateWithoutDistrictInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    title?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    ram?: StringFieldUpdateOperationsInput | string
+    rom?: StringFieldUpdateOperationsInput | string
+    price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    year?: IntFieldUpdateOperationsInput | number
+    box_with_document?: BoolFieldUpdateOperationsInput | boolean
+    is_new?: BoolFieldUpdateOperationsInput | boolean
+    posted_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    views?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    like_counts?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    is_negotiable?: BoolFieldUpdateOperationsInput | boolean
+    brand?: NullableStringFieldUpdateOperationsInput | string | null
+    model?: NullableStringFieldUpdateOperationsInput | string | null
+    is_active?: BoolFieldUpdateOperationsInput | boolean
+    is_checked?: BoolFieldUpdateOperationsInput | boolean
+    is_archived?: BoolFieldUpdateOperationsInput | boolean
+    is_deleted?: BoolFieldUpdateOperationsInput | boolean
+    currencyId?: NullableIntFieldUpdateOperationsInput | number | null
+    modelId?: NullableIntFieldUpdateOperationsInput | number | null
+    brandId?: NullableIntFieldUpdateOperationsInput | number | null
+    colorId?: NullableIntFieldUpdateOperationsInput | number | null
+    userId?: NullableIntFieldUpdateOperationsInput | number | null
+    addressId?: NullableIntFieldUpdateOperationsInput | number | null
+    regionId?: NullableIntFieldUpdateOperationsInput | number | null
+    Images?: ImageUncheckedUpdateManyWithoutPhoneNestedInput
+    Reviews?: ReviewUncheckedUpdateManyWithoutPhoneNestedInput
+    Archives?: ArchivesUncheckedUpdateManyWithoutPhoneNestedInput
+    Chats?: ChatUncheckedUpdateManyWithoutPhoneNestedInput
+  }
+
+  export type PhoneUncheckedUpdateManyWithoutDistrictInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    title?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    ram?: StringFieldUpdateOperationsInput | string
+    rom?: StringFieldUpdateOperationsInput | string
+    price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    year?: IntFieldUpdateOperationsInput | number
+    box_with_document?: BoolFieldUpdateOperationsInput | boolean
+    is_new?: BoolFieldUpdateOperationsInput | boolean
+    posted_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    views?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    like_counts?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    is_negotiable?: BoolFieldUpdateOperationsInput | boolean
+    brand?: NullableStringFieldUpdateOperationsInput | string | null
+    model?: NullableStringFieldUpdateOperationsInput | string | null
+    is_active?: BoolFieldUpdateOperationsInput | boolean
+    is_checked?: BoolFieldUpdateOperationsInput | boolean
+    is_archived?: BoolFieldUpdateOperationsInput | boolean
+    is_deleted?: BoolFieldUpdateOperationsInput | boolean
+    currencyId?: NullableIntFieldUpdateOperationsInput | number | null
+    modelId?: NullableIntFieldUpdateOperationsInput | number | null
+    brandId?: NullableIntFieldUpdateOperationsInput | number | null
+    colorId?: NullableIntFieldUpdateOperationsInput | number | null
+    userId?: NullableIntFieldUpdateOperationsInput | number | null
+    addressId?: NullableIntFieldUpdateOperationsInput | number | null
+    regionId?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type UserCreateManyLanguageInput = {
@@ -37506,6 +38501,7 @@ export namespace Prisma {
     ram: string
     rom: string
     price: Decimal | DecimalJsLike | number | string
+    year: number
     box_with_document?: boolean
     is_new?: boolean
     posted_date?: Date | string
@@ -37523,6 +38519,8 @@ export namespace Prisma {
     brandId?: number | null
     colorId?: number | null
     addressId?: number | null
+    regionId?: number | null
+    districtId?: number | null
   }
 
   export type AddressCreateManyUserInput = {
@@ -37609,6 +38607,7 @@ export namespace Prisma {
     ram?: StringFieldUpdateOperationsInput | string
     rom?: StringFieldUpdateOperationsInput | string
     price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    year?: IntFieldUpdateOperationsInput | number
     box_with_document?: BoolFieldUpdateOperationsInput | boolean
     is_new?: BoolFieldUpdateOperationsInput | boolean
     posted_date?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -37630,6 +38629,8 @@ export namespace Prisma {
     Reviews?: ReviewUpdateManyWithoutPhoneNestedInput
     Archives?: ArchivesUpdateManyWithoutPhoneNestedInput
     Chats?: ChatUpdateManyWithoutPhoneNestedInput
+    Region?: RegionUpdateOneWithoutPhoneNestedInput
+    District?: DistrictUpdateOneWithoutPhoneNestedInput
   }
 
   export type PhoneUncheckedUpdateWithoutUserInput = {
@@ -37639,6 +38640,7 @@ export namespace Prisma {
     ram?: StringFieldUpdateOperationsInput | string
     rom?: StringFieldUpdateOperationsInput | string
     price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    year?: IntFieldUpdateOperationsInput | number
     box_with_document?: BoolFieldUpdateOperationsInput | boolean
     is_new?: BoolFieldUpdateOperationsInput | boolean
     posted_date?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -37656,6 +38658,8 @@ export namespace Prisma {
     brandId?: NullableIntFieldUpdateOperationsInput | number | null
     colorId?: NullableIntFieldUpdateOperationsInput | number | null
     addressId?: NullableIntFieldUpdateOperationsInput | number | null
+    regionId?: NullableIntFieldUpdateOperationsInput | number | null
+    districtId?: NullableIntFieldUpdateOperationsInput | number | null
     Images?: ImageUncheckedUpdateManyWithoutPhoneNestedInput
     Reviews?: ReviewUncheckedUpdateManyWithoutPhoneNestedInput
     Archives?: ArchivesUncheckedUpdateManyWithoutPhoneNestedInput
@@ -37669,6 +38673,7 @@ export namespace Prisma {
     ram?: StringFieldUpdateOperationsInput | string
     rom?: StringFieldUpdateOperationsInput | string
     price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    year?: IntFieldUpdateOperationsInput | number
     box_with_document?: BoolFieldUpdateOperationsInput | boolean
     is_new?: BoolFieldUpdateOperationsInput | boolean
     posted_date?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -37686,6 +38691,8 @@ export namespace Prisma {
     brandId?: NullableIntFieldUpdateOperationsInput | number | null
     colorId?: NullableIntFieldUpdateOperationsInput | number | null
     addressId?: NullableIntFieldUpdateOperationsInput | number | null
+    regionId?: NullableIntFieldUpdateOperationsInput | number | null
+    districtId?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type AddressUpdateWithoutUserInput = {
@@ -38007,6 +39014,7 @@ export namespace Prisma {
     ram: string
     rom: string
     price: Decimal | DecimalJsLike | number | string
+    year: number
     box_with_document?: boolean
     is_new?: boolean
     posted_date?: Date | string
@@ -38024,6 +39032,8 @@ export namespace Prisma {
     colorId?: number | null
     userId?: number | null
     addressId?: number | null
+    regionId?: number | null
+    districtId?: number | null
   }
 
   export type PhoneUpdateWithoutCurrencyInput = {
@@ -38032,6 +39042,7 @@ export namespace Prisma {
     ram?: StringFieldUpdateOperationsInput | string
     rom?: StringFieldUpdateOperationsInput | string
     price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    year?: IntFieldUpdateOperationsInput | number
     box_with_document?: BoolFieldUpdateOperationsInput | boolean
     is_new?: BoolFieldUpdateOperationsInput | boolean
     posted_date?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -38053,6 +39064,8 @@ export namespace Prisma {
     Reviews?: ReviewUpdateManyWithoutPhoneNestedInput
     Archives?: ArchivesUpdateManyWithoutPhoneNestedInput
     Chats?: ChatUpdateManyWithoutPhoneNestedInput
+    Region?: RegionUpdateOneWithoutPhoneNestedInput
+    District?: DistrictUpdateOneWithoutPhoneNestedInput
   }
 
   export type PhoneUncheckedUpdateWithoutCurrencyInput = {
@@ -38062,6 +39075,7 @@ export namespace Prisma {
     ram?: StringFieldUpdateOperationsInput | string
     rom?: StringFieldUpdateOperationsInput | string
     price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    year?: IntFieldUpdateOperationsInput | number
     box_with_document?: BoolFieldUpdateOperationsInput | boolean
     is_new?: BoolFieldUpdateOperationsInput | boolean
     posted_date?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -38079,6 +39093,8 @@ export namespace Prisma {
     colorId?: NullableIntFieldUpdateOperationsInput | number | null
     userId?: NullableIntFieldUpdateOperationsInput | number | null
     addressId?: NullableIntFieldUpdateOperationsInput | number | null
+    regionId?: NullableIntFieldUpdateOperationsInput | number | null
+    districtId?: NullableIntFieldUpdateOperationsInput | number | null
     Images?: ImageUncheckedUpdateManyWithoutPhoneNestedInput
     Reviews?: ReviewUncheckedUpdateManyWithoutPhoneNestedInput
     Archives?: ArchivesUncheckedUpdateManyWithoutPhoneNestedInput
@@ -38092,6 +39108,7 @@ export namespace Prisma {
     ram?: StringFieldUpdateOperationsInput | string
     rom?: StringFieldUpdateOperationsInput | string
     price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    year?: IntFieldUpdateOperationsInput | number
     box_with_document?: BoolFieldUpdateOperationsInput | boolean
     is_new?: BoolFieldUpdateOperationsInput | boolean
     posted_date?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -38109,6 +39126,8 @@ export namespace Prisma {
     colorId?: NullableIntFieldUpdateOperationsInput | number | null
     userId?: NullableIntFieldUpdateOperationsInput | number | null
     addressId?: NullableIntFieldUpdateOperationsInput | number | null
+    regionId?: NullableIntFieldUpdateOperationsInput | number | null
+    districtId?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type ModelCreateManyBrandInput = {
@@ -38123,6 +39142,7 @@ export namespace Prisma {
     ram: string
     rom: string
     price: Decimal | DecimalJsLike | number | string
+    year: number
     box_with_document?: boolean
     is_new?: boolean
     posted_date?: Date | string
@@ -38140,6 +39160,8 @@ export namespace Prisma {
     colorId?: number | null
     userId?: number | null
     addressId?: number | null
+    regionId?: number | null
+    districtId?: number | null
   }
 
   export type ModelUpdateWithoutBrandInput = {
@@ -38164,6 +39186,7 @@ export namespace Prisma {
     ram?: StringFieldUpdateOperationsInput | string
     rom?: StringFieldUpdateOperationsInput | string
     price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    year?: IntFieldUpdateOperationsInput | number
     box_with_document?: BoolFieldUpdateOperationsInput | boolean
     is_new?: BoolFieldUpdateOperationsInput | boolean
     posted_date?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -38185,6 +39208,8 @@ export namespace Prisma {
     Reviews?: ReviewUpdateManyWithoutPhoneNestedInput
     Archives?: ArchivesUpdateManyWithoutPhoneNestedInput
     Chats?: ChatUpdateManyWithoutPhoneNestedInput
+    Region?: RegionUpdateOneWithoutPhoneNestedInput
+    District?: DistrictUpdateOneWithoutPhoneNestedInput
   }
 
   export type PhoneUncheckedUpdateWithoutBrandsInput = {
@@ -38194,6 +39219,7 @@ export namespace Prisma {
     ram?: StringFieldUpdateOperationsInput | string
     rom?: StringFieldUpdateOperationsInput | string
     price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    year?: IntFieldUpdateOperationsInput | number
     box_with_document?: BoolFieldUpdateOperationsInput | boolean
     is_new?: BoolFieldUpdateOperationsInput | boolean
     posted_date?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -38211,6 +39237,8 @@ export namespace Prisma {
     colorId?: NullableIntFieldUpdateOperationsInput | number | null
     userId?: NullableIntFieldUpdateOperationsInput | number | null
     addressId?: NullableIntFieldUpdateOperationsInput | number | null
+    regionId?: NullableIntFieldUpdateOperationsInput | number | null
+    districtId?: NullableIntFieldUpdateOperationsInput | number | null
     Images?: ImageUncheckedUpdateManyWithoutPhoneNestedInput
     Reviews?: ReviewUncheckedUpdateManyWithoutPhoneNestedInput
     Archives?: ArchivesUncheckedUpdateManyWithoutPhoneNestedInput
@@ -38224,6 +39252,7 @@ export namespace Prisma {
     ram?: StringFieldUpdateOperationsInput | string
     rom?: StringFieldUpdateOperationsInput | string
     price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    year?: IntFieldUpdateOperationsInput | number
     box_with_document?: BoolFieldUpdateOperationsInput | boolean
     is_new?: BoolFieldUpdateOperationsInput | boolean
     posted_date?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -38241,6 +39270,8 @@ export namespace Prisma {
     colorId?: NullableIntFieldUpdateOperationsInput | number | null
     userId?: NullableIntFieldUpdateOperationsInput | number | null
     addressId?: NullableIntFieldUpdateOperationsInput | number | null
+    regionId?: NullableIntFieldUpdateOperationsInput | number | null
+    districtId?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type PhoneCreateManyModelsInput = {
@@ -38250,6 +39281,7 @@ export namespace Prisma {
     ram: string
     rom: string
     price: Decimal | DecimalJsLike | number | string
+    year: number
     box_with_document?: boolean
     is_new?: boolean
     posted_date?: Date | string
@@ -38267,6 +39299,8 @@ export namespace Prisma {
     colorId?: number | null
     userId?: number | null
     addressId?: number | null
+    regionId?: number | null
+    districtId?: number | null
   }
 
   export type PhoneUpdateWithoutModelsInput = {
@@ -38275,6 +39309,7 @@ export namespace Prisma {
     ram?: StringFieldUpdateOperationsInput | string
     rom?: StringFieldUpdateOperationsInput | string
     price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    year?: IntFieldUpdateOperationsInput | number
     box_with_document?: BoolFieldUpdateOperationsInput | boolean
     is_new?: BoolFieldUpdateOperationsInput | boolean
     posted_date?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -38296,6 +39331,8 @@ export namespace Prisma {
     Reviews?: ReviewUpdateManyWithoutPhoneNestedInput
     Archives?: ArchivesUpdateManyWithoutPhoneNestedInput
     Chats?: ChatUpdateManyWithoutPhoneNestedInput
+    Region?: RegionUpdateOneWithoutPhoneNestedInput
+    District?: DistrictUpdateOneWithoutPhoneNestedInput
   }
 
   export type PhoneUncheckedUpdateWithoutModelsInput = {
@@ -38305,6 +39342,7 @@ export namespace Prisma {
     ram?: StringFieldUpdateOperationsInput | string
     rom?: StringFieldUpdateOperationsInput | string
     price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    year?: IntFieldUpdateOperationsInput | number
     box_with_document?: BoolFieldUpdateOperationsInput | boolean
     is_new?: BoolFieldUpdateOperationsInput | boolean
     posted_date?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -38322,6 +39360,8 @@ export namespace Prisma {
     colorId?: NullableIntFieldUpdateOperationsInput | number | null
     userId?: NullableIntFieldUpdateOperationsInput | number | null
     addressId?: NullableIntFieldUpdateOperationsInput | number | null
+    regionId?: NullableIntFieldUpdateOperationsInput | number | null
+    districtId?: NullableIntFieldUpdateOperationsInput | number | null
     Images?: ImageUncheckedUpdateManyWithoutPhoneNestedInput
     Reviews?: ReviewUncheckedUpdateManyWithoutPhoneNestedInput
     Archives?: ArchivesUncheckedUpdateManyWithoutPhoneNestedInput
@@ -38335,6 +39375,7 @@ export namespace Prisma {
     ram?: StringFieldUpdateOperationsInput | string
     rom?: StringFieldUpdateOperationsInput | string
     price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    year?: IntFieldUpdateOperationsInput | number
     box_with_document?: BoolFieldUpdateOperationsInput | boolean
     is_new?: BoolFieldUpdateOperationsInput | boolean
     posted_date?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -38352,6 +39393,8 @@ export namespace Prisma {
     colorId?: NullableIntFieldUpdateOperationsInput | number | null
     userId?: NullableIntFieldUpdateOperationsInput | number | null
     addressId?: NullableIntFieldUpdateOperationsInput | number | null
+    regionId?: NullableIntFieldUpdateOperationsInput | number | null
+    districtId?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type PhoneCreateManyColorInput = {
@@ -38361,6 +39404,7 @@ export namespace Prisma {
     ram: string
     rom: string
     price: Decimal | DecimalJsLike | number | string
+    year: number
     box_with_document?: boolean
     is_new?: boolean
     posted_date?: Date | string
@@ -38378,6 +39422,8 @@ export namespace Prisma {
     brandId?: number | null
     userId?: number | null
     addressId?: number | null
+    regionId?: number | null
+    districtId?: number | null
   }
 
   export type PhoneUpdateWithoutColorInput = {
@@ -38386,6 +39432,7 @@ export namespace Prisma {
     ram?: StringFieldUpdateOperationsInput | string
     rom?: StringFieldUpdateOperationsInput | string
     price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    year?: IntFieldUpdateOperationsInput | number
     box_with_document?: BoolFieldUpdateOperationsInput | boolean
     is_new?: BoolFieldUpdateOperationsInput | boolean
     posted_date?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -38407,6 +39454,8 @@ export namespace Prisma {
     Reviews?: ReviewUpdateManyWithoutPhoneNestedInput
     Archives?: ArchivesUpdateManyWithoutPhoneNestedInput
     Chats?: ChatUpdateManyWithoutPhoneNestedInput
+    Region?: RegionUpdateOneWithoutPhoneNestedInput
+    District?: DistrictUpdateOneWithoutPhoneNestedInput
   }
 
   export type PhoneUncheckedUpdateWithoutColorInput = {
@@ -38416,6 +39465,7 @@ export namespace Prisma {
     ram?: StringFieldUpdateOperationsInput | string
     rom?: StringFieldUpdateOperationsInput | string
     price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    year?: IntFieldUpdateOperationsInput | number
     box_with_document?: BoolFieldUpdateOperationsInput | boolean
     is_new?: BoolFieldUpdateOperationsInput | boolean
     posted_date?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -38433,6 +39483,8 @@ export namespace Prisma {
     brandId?: NullableIntFieldUpdateOperationsInput | number | null
     userId?: NullableIntFieldUpdateOperationsInput | number | null
     addressId?: NullableIntFieldUpdateOperationsInput | number | null
+    regionId?: NullableIntFieldUpdateOperationsInput | number | null
+    districtId?: NullableIntFieldUpdateOperationsInput | number | null
     Images?: ImageUncheckedUpdateManyWithoutPhoneNestedInput
     Reviews?: ReviewUncheckedUpdateManyWithoutPhoneNestedInput
     Archives?: ArchivesUncheckedUpdateManyWithoutPhoneNestedInput
@@ -38446,6 +39498,7 @@ export namespace Prisma {
     ram?: StringFieldUpdateOperationsInput | string
     rom?: StringFieldUpdateOperationsInput | string
     price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    year?: IntFieldUpdateOperationsInput | number
     box_with_document?: BoolFieldUpdateOperationsInput | boolean
     is_new?: BoolFieldUpdateOperationsInput | boolean
     posted_date?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -38463,6 +39516,8 @@ export namespace Prisma {
     brandId?: NullableIntFieldUpdateOperationsInput | number | null
     userId?: NullableIntFieldUpdateOperationsInput | number | null
     addressId?: NullableIntFieldUpdateOperationsInput | number | null
+    regionId?: NullableIntFieldUpdateOperationsInput | number | null
+    districtId?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type ImageCreateManyPhoneInput = {
@@ -38562,6 +39617,7 @@ export namespace Prisma {
     ram: string
     rom: string
     price: Decimal | DecimalJsLike | number | string
+    year: number
     box_with_document?: boolean
     is_new?: boolean
     posted_date?: Date | string
@@ -38579,6 +39635,8 @@ export namespace Prisma {
     brandId?: number | null
     colorId?: number | null
     userId?: number | null
+    regionId?: number | null
+    districtId?: number | null
   }
 
   export type PhoneUpdateWithoutAddressInput = {
@@ -38587,6 +39645,7 @@ export namespace Prisma {
     ram?: StringFieldUpdateOperationsInput | string
     rom?: StringFieldUpdateOperationsInput | string
     price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    year?: IntFieldUpdateOperationsInput | number
     box_with_document?: BoolFieldUpdateOperationsInput | boolean
     is_new?: BoolFieldUpdateOperationsInput | boolean
     posted_date?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -38608,6 +39667,8 @@ export namespace Prisma {
     Reviews?: ReviewUpdateManyWithoutPhoneNestedInput
     Archives?: ArchivesUpdateManyWithoutPhoneNestedInput
     Chats?: ChatUpdateManyWithoutPhoneNestedInput
+    Region?: RegionUpdateOneWithoutPhoneNestedInput
+    District?: DistrictUpdateOneWithoutPhoneNestedInput
   }
 
   export type PhoneUncheckedUpdateWithoutAddressInput = {
@@ -38617,6 +39678,7 @@ export namespace Prisma {
     ram?: StringFieldUpdateOperationsInput | string
     rom?: StringFieldUpdateOperationsInput | string
     price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    year?: IntFieldUpdateOperationsInput | number
     box_with_document?: BoolFieldUpdateOperationsInput | boolean
     is_new?: BoolFieldUpdateOperationsInput | boolean
     posted_date?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -38634,6 +39696,8 @@ export namespace Prisma {
     brandId?: NullableIntFieldUpdateOperationsInput | number | null
     colorId?: NullableIntFieldUpdateOperationsInput | number | null
     userId?: NullableIntFieldUpdateOperationsInput | number | null
+    regionId?: NullableIntFieldUpdateOperationsInput | number | null
+    districtId?: NullableIntFieldUpdateOperationsInput | number | null
     Images?: ImageUncheckedUpdateManyWithoutPhoneNestedInput
     Reviews?: ReviewUncheckedUpdateManyWithoutPhoneNestedInput
     Archives?: ArchivesUncheckedUpdateManyWithoutPhoneNestedInput
@@ -38647,6 +39711,7 @@ export namespace Prisma {
     ram?: StringFieldUpdateOperationsInput | string
     rom?: StringFieldUpdateOperationsInput | string
     price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    year?: IntFieldUpdateOperationsInput | number
     box_with_document?: BoolFieldUpdateOperationsInput | boolean
     is_new?: BoolFieldUpdateOperationsInput | boolean
     posted_date?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -38664,6 +39729,8 @@ export namespace Prisma {
     brandId?: NullableIntFieldUpdateOperationsInput | number | null
     colorId?: NullableIntFieldUpdateOperationsInput | number | null
     userId?: NullableIntFieldUpdateOperationsInput | number | null
+    regionId?: NullableIntFieldUpdateOperationsInput | number | null
+    districtId?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type MessageCreateManyChatInput = {

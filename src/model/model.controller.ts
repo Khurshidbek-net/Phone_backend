@@ -10,7 +10,7 @@ import { JwtAdminAuthGuard } from '../common/guards/jwt_admin_auth.guard';
 export class ModelController {
   constructor(private readonly modelService: ModelService) {}
 
-  @UseGuards(JwtAdminAuthGuard)
+  // @UseGuards(JwtAdminAuthGuard)
   @Post()
   create(@Body() createModelDto: CreateModelDto) {
     return this.modelService.create(createModelDto);
@@ -26,13 +26,13 @@ export class ModelController {
     return this.modelService.findOne(+id);
   }
 
-  @UseGuards(JwtAdminAuthGuard)
+  // @UseGuards(JwtAdminAuthGuard)
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateModelDto: UpdateModelDto) {
     return this.modelService.update(+id, updateModelDto);
   }
 
-  @UseGuards(JwtAdminAuthGuard)
+  // @UseGuards(JwtAdminAuthGuard)
   @Delete(':id')
   remove(@Param('id') id: string) {
     return this.modelService.remove(+id);

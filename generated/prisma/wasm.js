@@ -211,6 +211,7 @@ exports.Prisma.PhoneScalarFieldEnum = {
   ram: 'ram',
   rom: 'rom',
   price: 'price',
+  year: 'year',
   box_with_document: 'box_with_document',
   is_new: 'is_new',
   posted_date: 'posted_date',
@@ -228,7 +229,9 @@ exports.Prisma.PhoneScalarFieldEnum = {
   brandId: 'brandId',
   colorId: 'colorId',
   userId: 'userId',
-  addressId: 'addressId'
+  addressId: 'addressId',
+  regionId: 'regionId',
+  districtId: 'districtId'
 };
 
 exports.Prisma.ImageScalarFieldEnum = {

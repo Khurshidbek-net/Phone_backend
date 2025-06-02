@@ -27,6 +27,7 @@ model Region {
   updatedAt DateTime @updatedAt
 
   Districts District[]
+  Phone     Phone[]
 }
 
 model District {
@@ -39,6 +40,7 @@ model District {
   Region Region @relation(fields: [regionId], references: [id], onDelete: Cascade)
 
   Users User[]
+  Phone Phone[]
 }
 
 model Language {
@@ -154,11 +156,12 @@ model Phone {
   ram               String // Enum o'rniga oddiy string
   rom               String // Enum o'rniga oddiy string
   price             Decimal
+  year              Int
   box_with_document Boolean  @default(true)
   is_new            Boolean  @default(false)
   posted_date       DateTime @default(now())
-  views             BigInt?
-  like_counts       BigInt?
+  views             BigInt?  @default(0)
+  like_counts       BigInt?  @default(0)
   is_negotiable     Boolean  @default(false)
   brand             String?
   model             String?
@@ -173,6 +176,8 @@ model Phone {
   colorId    Int?
   userId     Int?
   addressId  Int?
+  regionId   Int?
+  districtId Int?
 
   Currency Currency? @relation(fields: [currencyId], references: [id])
   Models   Model?    @relation(fields: [modelId], references: [id])
@@ -186,6 +191,8 @@ model Phone {
   Reviews  Review[]
   Archives Archives[]
   Chats    Chat[]
+  Region   Region?    @relation(fields: [regionId], references: [id])
+  District District?  @relation(fields: [districtId], references: [id])
 }
 
 model Image {

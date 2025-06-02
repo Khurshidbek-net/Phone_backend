@@ -21,7 +21,7 @@ export class FileService {
       fs.writeFileSync(path.join(filePath, fileName), file.buffer);
 
       const baseUrl = process.env.BASE_URL;
-      return `${baseUrl}/admins/${fileName}`;
+      return `${baseUrl}/uploads/admins/${fileName}`;
     } catch (error) {
       throw new InternalServerErrorException('Filega yozishda xatolik');
     }
@@ -47,7 +47,7 @@ export class FileService {
         const fileName = uuid.v4() + ext;
 
         fs.writeFileSync(path.join(filePath, fileName), file.buffer);
-        urls.push(`${baseUrl}/${folder}/${fileName}`);
+        urls.push(`${baseUrl}/uploads/${folder}/${fileName}`);
       }
 
       return urls;

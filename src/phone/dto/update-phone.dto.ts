@@ -1,114 +1,106 @@
-import { ApiProperty } from "@nestjs/swagger";
-import { IsBoolean, IsDate, IsEnum, IsNotEmpty, IsNumber, IsOptional, IsString } from "class-validator";
+import { ApiProperty } from '@nestjs/swagger';
+import {
+  IsBoolean,
+  IsDate,
+  IsEnum,
+  IsInt,
+  IsNotEmpty,
+  IsNumber,
+  IsOptional,
+  IsString,
+} from 'class-validator';
 
 export class UpdatePhoneDto {
-    @ApiProperty()
-    @IsString()
-    @IsNotEmpty()
-    title: string;
+  @ApiProperty()
+  @IsString()
+  @IsNotEmpty()
+  title: string;
 
-    @ApiProperty()
-    @IsString()
-    @IsNotEmpty()
-    description: string;
+  @ApiProperty()
+  @IsString()
+  @IsNotEmpty()
+  description: string;
 
-    @ApiProperty()
-    @IsString()
-    @IsNotEmpty()
-    ram: string;
+  @ApiProperty()
+  @IsNotEmpty()
+  price: number;
 
-    @ApiProperty()
-    @IsString()
-    @IsNotEmpty()
-    rom: string;
+  @ApiProperty()
+  @IsNotEmpty()
+  year: number;
 
-    @ApiProperty()
-    @IsBoolean()
-    @IsNotEmpty()
-    box_with_document: boolean;
+  @ApiProperty()
+  @IsString()
+  @IsNotEmpty()
+  ram: string;
 
-    @ApiProperty()
-    @IsBoolean()
-    @IsNotEmpty()
-    is_new: boolean;
+  @ApiProperty()
+  @IsString()
+  @IsNotEmpty()
+  rom: string;
 
-    @ApiProperty()
-    @IsDate()
-    @IsNotEmpty()
-    posted_date: Date;
+  @ApiProperty()
+  @IsBoolean()
+  @IsNotEmpty()
+  box_with_document: boolean;
 
-    @ApiProperty()
-    @IsNumber()
-    @IsNotEmpty()
-    views: bigint;
+  @ApiProperty()
+  @IsBoolean()
+  @IsNotEmpty()
+  is_new: boolean;
 
-    @ApiProperty()
-    @IsNumber()
-    @IsNotEmpty()
-    like_counts: bigint;
+  @ApiProperty()
+  @IsBoolean()
+  @IsNotEmpty()
+  is_negotiable: boolean;
 
-    @ApiProperty()
-    @IsBoolean()
-    @IsNotEmpty()
-    is_negotiable: boolean;
+  @ApiProperty({ required: false })
+  @IsString()
+  @IsOptional()
+  brand?: string;
 
-    @ApiProperty()
-    @IsString()
-    @IsNotEmpty()
-    brand: string;
+  @ApiProperty({ required: false })
+  @IsString()
+  @IsOptional()
+  model?: string;
 
-    @ApiProperty()
-    @IsString()
-    @IsNotEmpty()
-    model: string;
+  @ApiProperty()
+  @IsInt()
+  @IsOptional()
+  currencyId: number;
 
-    @ApiProperty()
-    @IsBoolean()
-    @IsNotEmpty()
-    is_active: boolean;
+  @ApiProperty({ required: false })
+  @IsInt()
+  @IsOptional()
+  modelId?: number;
 
-    @ApiProperty()
-    @IsBoolean()
-    @IsNotEmpty()
-    is_checked: boolean;
+  @ApiProperty({ required: false })
+  @IsInt()
+  @IsOptional()
+  regionId?: number;
 
-    @ApiProperty()
-    @IsBoolean()
-    @IsNotEmpty()
-    is_archived: boolean;
+  @ApiProperty({ required: false })
+  @IsInt()
+  @IsOptional()
+  districtId?: number;
 
-    @ApiProperty()
-    @IsBoolean()
-    @IsNotEmpty()
-    is_deleted: boolean;
+  @ApiProperty({ required: false })
+  @IsInt()
+  @IsOptional()
+  brandId?: number;
 
-    @ApiProperty()
-    @IsNumber()
-    @IsOptional()
-    currencyId: number;
+  @ApiProperty()
+  @IsInt()
+  @IsOptional()
+  colorId: number;
 
-    @ApiProperty()
-    @IsNumber()
-    @IsOptional()
-    modelId: number;
+  @ApiProperty()
+  @IsInt()
+  @IsOptional()
+  addressId: number;
 
-    @ApiProperty()
-    @IsNumber()
-    @IsOptional()
-    brandId: number;
-
-    @ApiProperty()
-    @IsNumber()
-    @IsOptional()
-    colorId: number;
-
-    // @ApiProperty()
-    // @IsNumber()
-    // @IsOptional()
-    // addressId: number;
-
-    @ApiProperty()
-    @IsNumber()
-    @IsOptional()
-    userId: number;
+  @ApiProperty()
+  @IsInt()
+  @IsOptional()
+  userId: number;
 }

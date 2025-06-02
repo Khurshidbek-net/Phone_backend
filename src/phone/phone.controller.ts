@@ -23,31 +23,31 @@ import { AccessTokenGuard } from '../common/guards';
 export class PhoneController {
   constructor(private readonly phoneService: PhoneService) {}
 
-  @UseGuards(JwtAuthGuard, ProfileCompleteGuard)
+  // @UseGuards(JwtAuthGuard, ProfileCompleteGuard)
   @Post()
   create(@Body() createPhoneDto: CreatePhoneDto) {
     return this.phoneService.create(createPhoneDto);
   }
 
-  @UseGuards(JwtAuthGuard)
+  // @UseGuards(JwtAuthGuard)
   @Get()
   findAll() {
     return this.phoneService.findAll();
   }
 
-  @UseGuards(JwtAuthGuard)
+  // @UseGuards(JwtAuthGuard)
   @Get(':id')
   findOne(@Param('id') id: string) {
     return this.phoneService.findOne(+id);
   }
 
-  @UseGuards(JwtAuthGuard)
+  // @UseGuards(JwtAuthGuard)
   @Patch(':id')
   update(@Param('id') id: string, @Body() updatePhoneDto: UpdatePhoneDto) {
     return this.phoneService.update(+id, updatePhoneDto);
   }
 
-  @UseGuards(JwtAuthGuard)
+  // @UseGuards(JwtAuthGuard)
   @Delete(':id')
   remove(@Param('id') id: string) {
     return this.phoneService.remove(+id);

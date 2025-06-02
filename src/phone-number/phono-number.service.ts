@@ -18,6 +18,14 @@ export class PhonoNumberService {
     });
   }
 
+  async findPhoneNumbersByUserId(id:number) {
+    return await this.primsa.phoneNumber.findMany({
+      include: {
+        User: true,
+      }
+    });
+  }
+
   findOne(id: number) {
     return `This action returns a #${id} phonoNumber`;
   }

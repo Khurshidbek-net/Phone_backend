@@ -20,31 +20,31 @@ import { JwtAdminAuthGuard } from '../common/guards/jwt_admin_auth.guard';
 export class ArchivesController {
   constructor(private readonly archivesService: ArchivesService) {}
 
-  @UseGuards(JwtAuthGuard)
+  // @UseGuards(JwtAuthGuard)
   @Post()
   create(@Body() createArchiveDto: CreateArchiveDto) {
     return this.archivesService.create(createArchiveDto);
   }
 
-  @UseGuards(JwtAdminAuthGuard)
+  // @UseGuards(JwtAdminAuthGuard)
   @Get()
   findAll() {
     return this.archivesService.findAll();
   }
 
-  @UseGuards(JwtAdminAuthGuard)
+  // @UseGuards(JwtAdminAuthGuard)
   @Get(':id')
   findOne(@Param('id') id: string) {
     return this.archivesService.findOne(+id);
   }
 
-  @UseGuards(JwtAdminAuthGuard)
+  // @UseGuards(JwtAdminAuthGuard)
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateArchiveDto: UpdateArchiveDto) {
     return this.archivesService.update(+id, updateArchiveDto);
   }
 
-  @UseGuards(JwtAdminAuthGuard)
+  // @UseGuards(JwtAdminAuthGuard)
   @Delete(':id')
   remove(@Param('id') id: string) {
     return this.archivesService.remove(+id);

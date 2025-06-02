@@ -10,7 +10,7 @@ import { JwtAdminAuthGuard } from '../common/guards/jwt_admin_auth.guard';
 export class CurrencyController {
   constructor(private readonly currencyService: CurrencyService) {}
 
-  @UseGuards(JwtAdminAuthGuard)
+  // @UseGuards(JwtAdminAuthGuard)
   @Post()
   create(@Body() createCurrencyDto: CreateCurrencyDto) {
     return this.currencyService.create(createCurrencyDto);
@@ -26,7 +26,7 @@ export class CurrencyController {
     return this.currencyService.findOne(+id);
   }
 
-  @UseGuards(JwtAdminAuthGuard)
+  // @UseGuards(JwtAdminAuthGuard)
   @Patch(':id')
   update(
     @Param('id') id: string,
@@ -35,7 +35,7 @@ export class CurrencyController {
     return this.currencyService.update(+id, updateCurrencyDto);
   }
 
-  @UseGuards(JwtAdminAuthGuard)
+  // @UseGuards(JwtAdminAuthGuard)
   @Delete(':id')
   remove(@Param('id') id: string) {
     return this.currencyService.remove(+id);

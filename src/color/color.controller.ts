@@ -19,7 +19,7 @@ import { JwtAdminAuthGuard } from '../common/guards/jwt_admin_auth.guard';
 export class ColorController {
   constructor(private readonly colorService: ColorService) {}
 
-  @UseGuards(JwtAdminAuthGuard)
+  // @UseGuards(JwtAdminAuthGuard)
   @Post()
   create(@Body() createColorDto: CreateColorDto) {
     return this.colorService.create(createColorDto);
@@ -30,13 +30,13 @@ export class ColorController {
     return this.colorService.findAll();
   }
 
-  @UseGuards(JwtAdminAuthGuard)
+  // @UseGuards(JwtAdminAuthGuard)
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateColorDto: UpdateColorDto) {
     return this.colorService.update(+id, updateColorDto);
   }
 
-  @UseGuards(JwtAdminAuthGuard)
+  // @UseGuards(JwtAdminAuthGuard)
   @Delete(':id')
   remove(@Param('id') id: string) {
     return this.colorService.remove(+id);

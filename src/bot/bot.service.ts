@@ -2,6 +2,7 @@ import { forwardRef, Inject, Injectable } from '@nestjs/common';
 import { Context, Telegraf } from 'telegraf';
 import { PhoneService } from '../phone/phone.service';
 import { InjectBot } from 'nestjs-telegraf';
+import { InputMediaPhoto } from 'telegraf/typings/core/types/typegram';
 
 @Injectable()
 export class BotService {
@@ -30,6 +31,65 @@ export class BotService {
       },
     });
   }
+  // async sendAdToAdmin(text: string, advertiseId: number, images: string[]) {
+  //   const adminId = process.env.ADMIN_ID as string;
+
+  //   if (images.length > 0) {
+  //     const media: InputMediaPhoto[] = images.map((url, index) => ({
+  //       type: 'photo',
+  //       media: url,
+  //       ...(index === 0 && { caption: text, parse_mode: 'HTML' }),
+  //     }));
+
+  //     // Rasmlar yuboriladi (caption faqat birinchi rasmda)
+  //     await this.bot.telegram.sendMediaGroup(adminId, media);
+
+  //     // Tugmalarni alohida yuboramiz
+  //     await this.bot.telegram.sendMessage(
+  //       adminId,
+  //       "👇 E'lonni tasdiqlash/bekor qilish",
+  //       {
+  //         reply_markup: {
+  //           inline_keyboard: [
+  //             [
+  //               {
+  //                 text: '✅ Tasdiqlash',
+  //                 callback_data: `approve_${advertiseId}`,
+  //               },
+  //             ],
+  //             [
+  //               {
+  //                 text: '❌ Bekor qilish',
+  //                 callback_data: `reject_${advertiseId}`,
+  //               },
+  //             ],
+  //           ],
+  //         },
+  //       },
+  //     );
+  //   } else {
+  //     // Agar rasm yo'q bo‘lsa, oddiy text + tugmalar yuboramiz
+  //     await this.bot.telegram.sendMessage(adminId, text, {
+  //       parse_mode: 'HTML',
+  //       reply_markup: {
+  //         inline_keyboard: [
+  //           [
+  //             {
+  //               text: '✅ Tasdiqlash',
+  //               callback_data: `approve_${advertiseId}`,
+  //             },
+  //           ],
+  //           [
+  //             {
+  //               text: '❌ Bekor qilish',
+  //               callback_data: `reject_${advertiseId}`,
+  //             },
+  //           ],
+  //         ],
+  //       },
+  //     });
+  //   }
+  // }
 
   async onApprove(ctx: Context) {
     try {
