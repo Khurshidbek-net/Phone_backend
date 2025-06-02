@@ -1,4 +1,9 @@
-import { forwardRef, Inject, Injectable } from '@nestjs/common';
+import {
+  forwardRef,
+  Inject,
+  Injectable,
+  NotFoundException,
+} from '@nestjs/common';
 import { CreatePhoneDto } from './dto/create-phone.dto';
 import { UpdatePhoneDto } from './dto/update-phone.dto';
 import { PrismaService } from '../prisma/prisma.service';
@@ -62,6 +67,7 @@ export class PhoneService {
         Images: true,
         Region: true,
         District: true,
+        Reviews: true,
       },
     });
     return phones.map((phone) => ({
@@ -84,6 +90,7 @@ export class PhoneService {
         Images: true,
         Region: true,
         District: true,
+        Reviews: true,
       },
     });
     return {
