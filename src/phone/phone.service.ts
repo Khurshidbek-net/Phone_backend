@@ -57,6 +57,12 @@ export class PhoneService {
 
   async findAll() {
     const phones = await this.prisma.phone.findMany({
+      where: {
+        is_deleted: false,
+        is_active: true,
+        is_archived: false,
+        is_checked: true,
+      },
       include: {
         Currency: true,
         Models: true,
@@ -79,7 +85,13 @@ export class PhoneService {
 
   async findOne(id: number) {
     const phone = await this.prisma.phone.findUnique({
-      where: { id },
+      where: {
+        id,
+        is_deleted: false,
+        is_active: true,
+        is_archived: false,
+        is_checked: true,
+      },
       include: {
         Currency: true,
         Models: true,
