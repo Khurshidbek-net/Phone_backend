@@ -32,7 +32,7 @@ export class UserController {
     return this.userService.create(createUserDto);
   }
 
-  @UseGuards(JwtAdminAuthGuard)
+  // @UseGuards(JwtAdminAuthGuard)
   @Get()
   findAll() {
     return this.userService.findAll();

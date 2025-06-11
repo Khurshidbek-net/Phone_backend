@@ -23,7 +23,8 @@ export class PhoneService {
         ...createPhoneDto,
       },
     });
-    const phone2 = await this.findOne(phone.id);
+    const phone2 = await this.findOneForBot(phone.id);
+    console.log(phone2);
 
     const message = `📢 <b>Yangi e'lon</b>
 💬 ${phone2?.title}
@@ -81,6 +82,34 @@ export class PhoneService {
       views: phone.views?.toString(),
       like_counts: phone.like_counts?.toString(),
     }));
+  }
+
+  async findOneForBot(id: number) {
+    const phone = await this.prisma.phone.findUnique({
+      where: {
+        id,
+        is_deleted: false,
+        is_active: true,
+        is_archived: false,
+      },
+      include: {
+        Currency: true,
+        Models: true,
+        Brands: true,
+        Color: true,
+        User: true,
+        Address: true,
+        Images: true,
+        Region: true,
+        District: true,
+        Reviews: true,
+      },
+    });
+    return {
+      ...phone,
+      views: phone?.views?.toString(),
+      like_counts: phone?.like_counts?.toString(),
+    };
   }
 
   async findOne(id: number) {
