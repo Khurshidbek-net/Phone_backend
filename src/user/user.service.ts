@@ -11,6 +11,7 @@ import { PrismaService } from '../prisma/prisma.service';
 // import { Prisma } from '@prisma/client';
 import { Email, PhoneNumber } from '../../generated/prisma';
 import * as bcrypt from 'bcrypt';
+import { convertBigIntToString } from '../common/utils/convertBigint.util';
 
 @Injectable()
 export class UserService {
@@ -80,11 +81,11 @@ export class UserService {
       },
     });
 
-    return updatedUser;
+    return convertBigIntToString(updatedUser);;
   }
 
   async findAll() {
-    return await this.prisma.user.findMany({
+    const user = await this.prisma.user.findMany({
       where: { isDeleted: false },
       include: {
         PhoneNumbers: true,
@@ -97,10 +98,12 @@ export class UserService {
         Address: true
       },
     });
+
+    return convertBigIntToString(user);
   }
 
   async findOne(id: number) {
-    return await this.prisma.user.findFirst({
+    const user = await this.prisma.user.findFirst({
       where: {
         id,
         isDeleted: false,
@@ -114,6 +117,8 @@ export class UserService {
         language: true,
       },
     });
+
+    return convertBigIntToString(user);
   }
 
   async activate(link: string) {
@@ -145,7 +150,7 @@ export class UserService {
   }
 
   async update(id: number, updateUserDto: UpdateUserDto) {
-    return await this.prisma.user.update({
+    const user = await this.prisma.user.update({
       where: { id },
       data: updateUserDto,
       include: {
@@ -157,6 +162,8 @@ export class UserService {
         language: true,
       },
     });
+
+    return convertBigIntToString(user);
   }
 
   async updateProfileImage(id: number, filename: string) {
@@ -223,7 +230,7 @@ export class UserService {
       throw new NotFoundException('User with this phone number not found.');
     }
 
-    return phoneRecord.user;
+    return convertBigIntToString(phoneRecord.user);
   }
 
   async findUserByEmail(email: string) {
@@ -245,7 +252,7 @@ export class UserService {
       throw new NotFoundException('User with this email not found.');
     }
 
-    return emailRecord.user;
+    return convertBigIntToString(emailRecord.user);
   }
 
   async findUserByEmailOrPhone(email: string, phone: string) {
@@ -261,7 +268,7 @@ export class UserService {
       },
     });
 
-    return user;
+    return convertBigIntToString(user);
   }
 
   async updateRefreshToken(id: number, hashedRefreshToken: string | null) {

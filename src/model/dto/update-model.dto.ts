@@ -8,7 +8,7 @@ export class UpdateModelDto {
     name: string;
 
     @ApiProperty()
-    @IsString()
     @IsNumber()
+    @IsNotEmpty()
     brandId: number;
 }

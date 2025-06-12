@@ -351,7 +351,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "C:\\Users\\Avrora\\Desktop\\phono2\\generated\\prisma",
+      "value": "/home/muzaffar/Phone_backend/generated/prisma",
       "fromEnvVar": null
     },
     "config": {
@@ -360,17 +360,16 @@ const config = {
     "binaryTargets": [
       {
         "fromEnvVar": null,
-        "value": "windows",
+        "value": "debian-openssl-3.0.x",
         "native": true
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "C:\\Users\\Avrora\\Desktop\\phono2\\prisma\\schema.prisma",
+    "sourceFilePath": "/home/muzaffar/Phone_backend/prisma/schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
-    "rootEnvPath": null,
-    "schemaEnvPath": "../../.env"
+    "rootEnvPath": null
   },
   "relativePath": "../../prisma",
   "clientVersion": "6.7.0",
@@ -379,11 +378,12 @@ const config = {
     "db"
   ],
   "activeProvider": "postgresql",
+  "postinstall": true,
   "inlineDatasources": {
     "db": {
       "url": {
         "fromEnvVar": "DATABASE_URL",
-        "value": "postgresql://postgres:ali18022002@localhost:5432/phono?schema=public"
+        "value": null
       }
     }
   },
