@@ -149,6 +149,30 @@ export class UserService {
     return response;
   }
 
+  // ...existing code...
+
+async updateUserStatus(userId: number, isActive: boolean) {
+  const user = await this.prisma.user.findUnique({
+    where: { id: userId },
+  });
+
+  if (!user) {
+    throw new NotFoundException('User not found');
+  }
+
+  const updatedUser = await this.prisma.user.update({
+    where: { id: userId },
+    data: { isActive },
+  });
+
+  return {
+    message: `User status updated successfully to ${isActive ? 'active' : 'inactive'}`,
+    user: convertBigIntToString(updatedUser),
+  };
+}
+
+// ...existing code...
+
   async update(id: number, updateUserDto: UpdateUserDto) {
     const user = await this.prisma.user.update({
       where: { id },

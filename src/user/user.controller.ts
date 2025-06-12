@@ -32,7 +32,7 @@ export class UserController {
     return this.userService.create(createUserDto);
   }
 
-  // @UseGuards(JwtAdminAuthGuard)
+  @UseGuards(JwtAdminAuthGuard)
   @Get()
   findAll() {
     return this.userService.findAll();
@@ -74,6 +74,14 @@ export class UserController {
   ) {
     const { phoneId } = updateMainPhonwDto;
     return this.userService.setMainPhone(userId, phoneId);
+  }
+
+  @Patch(':id/status')
+  async updateUserStatus(
+    @Param('id') id: number,
+    @Body('isActive') isActive: boolean,
+  ) {
+    return this.userService.updateUserStatus(id, isActive);
   }
 
   @Post(':id/profile-image')
