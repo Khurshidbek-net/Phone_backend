@@ -14843,6 +14843,7 @@ export namespace Prisma {
     rom: string | null
     price: Decimal | null
     year: number | null
+    user_phone_number: string | null
     box_with_document: boolean | null
     is_new: boolean | null
     posted_date: Date | null
@@ -14873,6 +14874,7 @@ export namespace Prisma {
     rom: string | null
     price: Decimal | null
     year: number | null
+    user_phone_number: string | null
     box_with_document: boolean | null
     is_new: boolean | null
     posted_date: Date | null
@@ -14903,6 +14905,7 @@ export namespace Prisma {
     rom: number
     price: number
     year: number
+    user_phone_number: number
     box_with_document: number
     is_new: number
     posted_date: number
@@ -14967,6 +14970,7 @@ export namespace Prisma {
     rom?: true
     price?: true
     year?: true
+    user_phone_number?: true
     box_with_document?: true
     is_new?: true
     posted_date?: true
@@ -14997,6 +15001,7 @@ export namespace Prisma {
     rom?: true
     price?: true
     year?: true
+    user_phone_number?: true
     box_with_document?: true
     is_new?: true
     posted_date?: true
@@ -15027,6 +15032,7 @@ export namespace Prisma {
     rom?: true
     price?: true
     year?: true
+    user_phone_number?: true
     box_with_document?: true
     is_new?: true
     posted_date?: true
@@ -15144,6 +15150,7 @@ export namespace Prisma {
     rom: string
     price: Decimal
     year: number
+    user_phone_number: string
     box_with_document: boolean
     is_new: boolean
     posted_date: Date
@@ -15193,6 +15200,7 @@ export namespace Prisma {
     rom?: boolean
     price?: boolean
     year?: boolean
+    user_phone_number?: boolean
     box_with_document?: boolean
     is_new?: boolean
     posted_date?: boolean
@@ -15236,6 +15244,7 @@ export namespace Prisma {
     rom?: boolean
     price?: boolean
     year?: boolean
+    user_phone_number?: boolean
     box_with_document?: boolean
     is_new?: boolean
     posted_date?: boolean
@@ -15274,6 +15283,7 @@ export namespace Prisma {
     rom?: boolean
     price?: boolean
     year?: boolean
+    user_phone_number?: boolean
     box_with_document?: boolean
     is_new?: boolean
     posted_date?: boolean
@@ -15312,6 +15322,7 @@ export namespace Prisma {
     rom?: boolean
     price?: boolean
     year?: boolean
+    user_phone_number?: boolean
     box_with_document?: boolean
     is_new?: boolean
     posted_date?: boolean
@@ -15334,7 +15345,7 @@ export namespace Prisma {
     districtId?: boolean
   }
 
-  export type PhoneOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "description" | "ram" | "rom" | "price" | "year" | "box_with_document" | "is_new" | "posted_date" | "views" | "like_counts" | "is_negotiable" | "brand" | "model" | "is_active" | "is_checked" | "is_archived" | "is_deleted" | "currencyId" | "modelId" | "brandId" | "colorId" | "userId" | "addressId" | "regionId" | "districtId", ExtArgs["result"]["phone"]>
+  export type PhoneOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "description" | "ram" | "rom" | "price" | "year" | "user_phone_number" | "box_with_document" | "is_new" | "posted_date" | "views" | "like_counts" | "is_negotiable" | "brand" | "model" | "is_active" | "is_checked" | "is_archived" | "is_deleted" | "currencyId" | "modelId" | "brandId" | "colorId" | "userId" | "addressId" | "regionId" | "districtId", ExtArgs["result"]["phone"]>
   export type PhoneInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     Currency?: boolean | Phone$CurrencyArgs<ExtArgs>
     Models?: boolean | Phone$ModelsArgs<ExtArgs>
@@ -15395,6 +15406,7 @@ export namespace Prisma {
       rom: string
       price: Prisma.Decimal
       year: number
+      user_phone_number: string
       box_with_document: boolean
       is_new: boolean
       posted_date: Date
@@ -15857,6 +15869,7 @@ export namespace Prisma {
     readonly rom: FieldRef<"Phone", 'String'>
     readonly price: FieldRef<"Phone", 'Decimal'>
     readonly year: FieldRef<"Phone", 'Int'>
+    readonly user_phone_number: FieldRef<"Phone", 'String'>
     readonly box_with_document: FieldRef<"Phone", 'Boolean'>
     readonly is_new: FieldRef<"Phone", 'Boolean'>
     readonly posted_date: FieldRef<"Phone", 'DateTime'>
@@ -27734,6 +27747,7 @@ export namespace Prisma {
     rom: 'rom',
     price: 'price',
     year: 'year',
+    user_phone_number: 'user_phone_number',
     box_with_document: 'box_with_document',
     is_new: 'is_new',
     posted_date: 'posted_date',
@@ -28669,6 +28683,7 @@ export namespace Prisma {
     rom?: StringFilter<"Phone"> | string
     price?: DecimalFilter<"Phone"> | Decimal | DecimalJsLike | number | string
     year?: IntFilter<"Phone"> | number
+    user_phone_number?: StringFilter<"Phone"> | string
     box_with_document?: BoolFilter<"Phone"> | boolean
     is_new?: BoolFilter<"Phone"> | boolean
     posted_date?: DateTimeFilter<"Phone"> | Date | string
@@ -28711,6 +28726,7 @@ export namespace Prisma {
     rom?: SortOrder
     price?: SortOrder
     year?: SortOrder
+    user_phone_number?: SortOrder
     box_with_document?: SortOrder
     is_new?: SortOrder
     posted_date?: SortOrder
@@ -28756,6 +28772,7 @@ export namespace Prisma {
     rom?: StringFilter<"Phone"> | string
     price?: DecimalFilter<"Phone"> | Decimal | DecimalJsLike | number | string
     year?: IntFilter<"Phone"> | number
+    user_phone_number?: StringFilter<"Phone"> | string
     box_with_document?: BoolFilter<"Phone"> | boolean
     is_new?: BoolFilter<"Phone"> | boolean
     posted_date?: DateTimeFilter<"Phone"> | Date | string
@@ -28798,6 +28815,7 @@ export namespace Prisma {
     rom?: SortOrder
     price?: SortOrder
     year?: SortOrder
+    user_phone_number?: SortOrder
     box_with_document?: SortOrder
     is_new?: SortOrder
     posted_date?: SortOrder
@@ -28836,6 +28854,7 @@ export namespace Prisma {
     rom?: StringWithAggregatesFilter<"Phone"> | string
     price?: DecimalWithAggregatesFilter<"Phone"> | Decimal | DecimalJsLike | number | string
     year?: IntWithAggregatesFilter<"Phone"> | number
+    user_phone_number?: StringWithAggregatesFilter<"Phone"> | string
     box_with_document?: BoolWithAggregatesFilter<"Phone"> | boolean
     is_new?: BoolWithAggregatesFilter<"Phone"> | boolean
     posted_date?: DateTimeWithAggregatesFilter<"Phone"> | Date | string
@@ -30119,6 +30138,7 @@ export namespace Prisma {
     rom: string
     price: Decimal | DecimalJsLike | number | string
     year: number
+    user_phone_number: string
     box_with_document?: boolean
     is_new?: boolean
     posted_date?: Date | string
@@ -30153,6 +30173,7 @@ export namespace Prisma {
     rom: string
     price: Decimal | DecimalJsLike | number | string
     year: number
+    user_phone_number: string
     box_with_document?: boolean
     is_new?: boolean
     posted_date?: Date | string
@@ -30186,6 +30207,7 @@ export namespace Prisma {
     rom?: StringFieldUpdateOperationsInput | string
     price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     year?: IntFieldUpdateOperationsInput | number
+    user_phone_number?: StringFieldUpdateOperationsInput | string
     box_with_document?: BoolFieldUpdateOperationsInput | boolean
     is_new?: BoolFieldUpdateOperationsInput | boolean
     posted_date?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -30220,6 +30242,7 @@ export namespace Prisma {
     rom?: StringFieldUpdateOperationsInput | string
     price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     year?: IntFieldUpdateOperationsInput | number
+    user_phone_number?: StringFieldUpdateOperationsInput | string
     box_with_document?: BoolFieldUpdateOperationsInput | boolean
     is_new?: BoolFieldUpdateOperationsInput | boolean
     posted_date?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -30254,6 +30277,7 @@ export namespace Prisma {
     rom: string
     price: Decimal | DecimalJsLike | number | string
     year: number
+    user_phone_number: string
     box_with_document?: boolean
     is_new?: boolean
     posted_date?: Date | string
@@ -30283,6 +30307,7 @@ export namespace Prisma {
     rom?: StringFieldUpdateOperationsInput | string
     price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     year?: IntFieldUpdateOperationsInput | number
+    user_phone_number?: StringFieldUpdateOperationsInput | string
     box_with_document?: BoolFieldUpdateOperationsInput | boolean
     is_new?: BoolFieldUpdateOperationsInput | boolean
     posted_date?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -30305,6 +30330,7 @@ export namespace Prisma {
     rom?: StringFieldUpdateOperationsInput | string
     price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     year?: IntFieldUpdateOperationsInput | number
+    user_phone_number?: StringFieldUpdateOperationsInput | string
     box_with_document?: BoolFieldUpdateOperationsInput | boolean
     is_new?: BoolFieldUpdateOperationsInput | boolean
     posted_date?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -31719,6 +31745,7 @@ export namespace Prisma {
     rom?: SortOrder
     price?: SortOrder
     year?: SortOrder
+    user_phone_number?: SortOrder
     box_with_document?: SortOrder
     is_new?: SortOrder
     posted_date?: SortOrder
@@ -31765,6 +31792,7 @@ export namespace Prisma {
     rom?: SortOrder
     price?: SortOrder
     year?: SortOrder
+    user_phone_number?: SortOrder
     box_with_document?: SortOrder
     is_new?: SortOrder
     posted_date?: SortOrder
@@ -31795,6 +31823,7 @@ export namespace Prisma {
     rom?: SortOrder
     price?: SortOrder
     year?: SortOrder
+    user_phone_number?: SortOrder
     box_with_document?: SortOrder
     is_new?: SortOrder
     posted_date?: SortOrder
@@ -34128,6 +34157,7 @@ export namespace Prisma {
     rom: string
     price: Decimal | DecimalJsLike | number | string
     year: number
+    user_phone_number: string
     box_with_document?: boolean
     is_new?: boolean
     posted_date?: Date | string
@@ -34161,6 +34191,7 @@ export namespace Prisma {
     rom: string
     price: Decimal | DecimalJsLike | number | string
     year: number
+    user_phone_number: string
     box_with_document?: boolean
     is_new?: boolean
     posted_date?: Date | string
@@ -34250,6 +34281,7 @@ export namespace Prisma {
     rom?: StringFilter<"Phone"> | string
     price?: DecimalFilter<"Phone"> | Decimal | DecimalJsLike | number | string
     year?: IntFilter<"Phone"> | number
+    user_phone_number?: StringFilter<"Phone"> | string
     box_with_document?: BoolFilter<"Phone"> | boolean
     is_new?: BoolFilter<"Phone"> | boolean
     posted_date?: DateTimeFilter<"Phone"> | Date | string
@@ -34368,6 +34400,7 @@ export namespace Prisma {
     rom: string
     price: Decimal | DecimalJsLike | number | string
     year: number
+    user_phone_number: string
     box_with_document?: boolean
     is_new?: boolean
     posted_date?: Date | string
@@ -34401,6 +34434,7 @@ export namespace Prisma {
     rom: string
     price: Decimal | DecimalJsLike | number | string
     year: number
+    user_phone_number: string
     box_with_document?: boolean
     is_new?: boolean
     posted_date?: Date | string
@@ -34733,6 +34767,7 @@ export namespace Prisma {
     rom: string
     price: Decimal | DecimalJsLike | number | string
     year: number
+    user_phone_number: string
     box_with_document?: boolean
     is_new?: boolean
     posted_date?: Date | string
@@ -34766,6 +34801,7 @@ export namespace Prisma {
     rom: string
     price: Decimal | DecimalJsLike | number | string
     year: number
+    user_phone_number: string
     box_with_document?: boolean
     is_new?: boolean
     posted_date?: Date | string
@@ -35642,6 +35678,7 @@ export namespace Prisma {
     rom: string
     price: Decimal | DecimalJsLike | number | string
     year: number
+    user_phone_number: string
     box_with_document?: boolean
     is_new?: boolean
     posted_date?: Date | string
@@ -35675,6 +35712,7 @@ export namespace Prisma {
     rom: string
     price: Decimal | DecimalJsLike | number | string
     year: number
+    user_phone_number: string
     box_with_document?: boolean
     is_new?: boolean
     posted_date?: Date | string
@@ -35754,6 +35792,7 @@ export namespace Prisma {
     rom: string
     price: Decimal | DecimalJsLike | number | string
     year: number
+    user_phone_number: string
     box_with_document?: boolean
     is_new?: boolean
     posted_date?: Date | string
@@ -35787,6 +35826,7 @@ export namespace Prisma {
     rom: string
     price: Decimal | DecimalJsLike | number | string
     year: number
+    user_phone_number: string
     box_with_document?: boolean
     is_new?: boolean
     posted_date?: Date | string
@@ -35886,6 +35926,7 @@ export namespace Prisma {
     rom: string
     price: Decimal | DecimalJsLike | number | string
     year: number
+    user_phone_number: string
     box_with_document?: boolean
     is_new?: boolean
     posted_date?: Date | string
@@ -35919,6 +35960,7 @@ export namespace Prisma {
     rom: string
     price: Decimal | DecimalJsLike | number | string
     year: number
+    user_phone_number: string
     box_with_document?: boolean
     is_new?: boolean
     posted_date?: Date | string
@@ -35999,6 +36041,7 @@ export namespace Prisma {
     rom: string
     price: Decimal | DecimalJsLike | number | string
     year: number
+    user_phone_number: string
     box_with_document?: boolean
     is_new?: boolean
     posted_date?: Date | string
@@ -36032,6 +36075,7 @@ export namespace Prisma {
     rom: string
     price: Decimal | DecimalJsLike | number | string
     year: number
+    user_phone_number: string
     box_with_document?: boolean
     is_new?: boolean
     posted_date?: Date | string
@@ -36702,6 +36746,7 @@ export namespace Prisma {
     rom: string
     price: Decimal | DecimalJsLike | number | string
     year: number
+    user_phone_number: string
     box_with_document?: boolean
     is_new?: boolean
     posted_date?: Date | string
@@ -36735,6 +36780,7 @@ export namespace Prisma {
     rom: string
     price: Decimal | DecimalJsLike | number | string
     year: number
+    user_phone_number: string
     box_with_document?: boolean
     is_new?: boolean
     posted_date?: Date | string
@@ -36783,6 +36829,7 @@ export namespace Prisma {
     rom?: StringFieldUpdateOperationsInput | string
     price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     year?: IntFieldUpdateOperationsInput | number
+    user_phone_number?: StringFieldUpdateOperationsInput | string
     box_with_document?: BoolFieldUpdateOperationsInput | boolean
     is_new?: BoolFieldUpdateOperationsInput | boolean
     posted_date?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -36816,6 +36863,7 @@ export namespace Prisma {
     rom?: StringFieldUpdateOperationsInput | string
     price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     year?: IntFieldUpdateOperationsInput | number
+    user_phone_number?: StringFieldUpdateOperationsInput | string
     box_with_document?: BoolFieldUpdateOperationsInput | boolean
     is_new?: BoolFieldUpdateOperationsInput | boolean
     posted_date?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -36848,6 +36896,7 @@ export namespace Prisma {
     rom: string
     price: Decimal | DecimalJsLike | number | string
     year: number
+    user_phone_number: string
     box_with_document?: boolean
     is_new?: boolean
     posted_date?: Date | string
@@ -36881,6 +36930,7 @@ export namespace Prisma {
     rom: string
     price: Decimal | DecimalJsLike | number | string
     year: number
+    user_phone_number: string
     box_with_document?: boolean
     is_new?: boolean
     posted_date?: Date | string
@@ -36929,6 +36979,7 @@ export namespace Prisma {
     rom?: StringFieldUpdateOperationsInput | string
     price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     year?: IntFieldUpdateOperationsInput | number
+    user_phone_number?: StringFieldUpdateOperationsInput | string
     box_with_document?: BoolFieldUpdateOperationsInput | boolean
     is_new?: BoolFieldUpdateOperationsInput | boolean
     posted_date?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -36962,6 +37013,7 @@ export namespace Prisma {
     rom?: StringFieldUpdateOperationsInput | string
     price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     year?: IntFieldUpdateOperationsInput | number
+    user_phone_number?: StringFieldUpdateOperationsInput | string
     box_with_document?: BoolFieldUpdateOperationsInput | boolean
     is_new?: BoolFieldUpdateOperationsInput | boolean
     posted_date?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -36994,6 +37046,7 @@ export namespace Prisma {
     rom: string
     price: Decimal | DecimalJsLike | number | string
     year: number
+    user_phone_number: string
     box_with_document?: boolean
     is_new?: boolean
     posted_date?: Date | string
@@ -37027,6 +37080,7 @@ export namespace Prisma {
     rom: string
     price: Decimal | DecimalJsLike | number | string
     year: number
+    user_phone_number: string
     box_with_document?: boolean
     is_new?: boolean
     posted_date?: Date | string
@@ -37075,6 +37129,7 @@ export namespace Prisma {
     rom?: StringFieldUpdateOperationsInput | string
     price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     year?: IntFieldUpdateOperationsInput | number
+    user_phone_number?: StringFieldUpdateOperationsInput | string
     box_with_document?: BoolFieldUpdateOperationsInput | boolean
     is_new?: BoolFieldUpdateOperationsInput | boolean
     posted_date?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -37108,6 +37163,7 @@ export namespace Prisma {
     rom?: StringFieldUpdateOperationsInput | string
     price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     year?: IntFieldUpdateOperationsInput | number
+    user_phone_number?: StringFieldUpdateOperationsInput | string
     box_with_document?: BoolFieldUpdateOperationsInput | boolean
     is_new?: BoolFieldUpdateOperationsInput | boolean
     posted_date?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -37204,6 +37260,7 @@ export namespace Prisma {
     rom: string
     price: Decimal | DecimalJsLike | number | string
     year: number
+    user_phone_number: string
     box_with_document?: boolean
     is_new?: boolean
     posted_date?: Date | string
@@ -37237,6 +37294,7 @@ export namespace Prisma {
     rom: string
     price: Decimal | DecimalJsLike | number | string
     year: number
+    user_phone_number: string
     box_with_document?: boolean
     is_new?: boolean
     posted_date?: Date | string
@@ -37563,6 +37621,7 @@ export namespace Prisma {
     rom: string
     price: Decimal | DecimalJsLike | number | string
     year: number
+    user_phone_number: string
     box_with_document?: boolean
     is_new?: boolean
     posted_date?: Date | string
@@ -37596,6 +37655,7 @@ export namespace Prisma {
     rom: string
     price: Decimal | DecimalJsLike | number | string
     year: number
+    user_phone_number: string
     box_with_document?: boolean
     is_new?: boolean
     posted_date?: Date | string
@@ -37739,6 +37799,7 @@ export namespace Prisma {
     rom?: StringFieldUpdateOperationsInput | string
     price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     year?: IntFieldUpdateOperationsInput | number
+    user_phone_number?: StringFieldUpdateOperationsInput | string
     box_with_document?: BoolFieldUpdateOperationsInput | boolean
     is_new?: BoolFieldUpdateOperationsInput | boolean
     posted_date?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -37772,6 +37833,7 @@ export namespace Prisma {
     rom?: StringFieldUpdateOperationsInput | string
     price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     year?: IntFieldUpdateOperationsInput | number
+    user_phone_number?: StringFieldUpdateOperationsInput | string
     box_with_document?: BoolFieldUpdateOperationsInput | boolean
     is_new?: BoolFieldUpdateOperationsInput | boolean
     posted_date?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -38008,6 +38070,7 @@ export namespace Prisma {
     rom: string
     price: Decimal | DecimalJsLike | number | string
     year: number
+    user_phone_number: string
     box_with_document?: boolean
     is_new?: boolean
     posted_date?: Date | string
@@ -38060,6 +38123,7 @@ export namespace Prisma {
     rom?: StringFieldUpdateOperationsInput | string
     price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     year?: IntFieldUpdateOperationsInput | number
+    user_phone_number?: StringFieldUpdateOperationsInput | string
     box_with_document?: BoolFieldUpdateOperationsInput | boolean
     is_new?: BoolFieldUpdateOperationsInput | boolean
     posted_date?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -38093,6 +38157,7 @@ export namespace Prisma {
     rom?: StringFieldUpdateOperationsInput | string
     price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     year?: IntFieldUpdateOperationsInput | number
+    user_phone_number?: StringFieldUpdateOperationsInput | string
     box_with_document?: BoolFieldUpdateOperationsInput | boolean
     is_new?: BoolFieldUpdateOperationsInput | boolean
     posted_date?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -38126,6 +38191,7 @@ export namespace Prisma {
     rom?: StringFieldUpdateOperationsInput | string
     price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     year?: IntFieldUpdateOperationsInput | number
+    user_phone_number?: StringFieldUpdateOperationsInput | string
     box_with_document?: BoolFieldUpdateOperationsInput | boolean
     is_new?: BoolFieldUpdateOperationsInput | boolean
     posted_date?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -38178,6 +38244,7 @@ export namespace Prisma {
     rom: string
     price: Decimal | DecimalJsLike | number | string
     year: number
+    user_phone_number: string
     box_with_document?: boolean
     is_new?: boolean
     posted_date?: Date | string
@@ -38288,6 +38355,7 @@ export namespace Prisma {
     rom?: StringFieldUpdateOperationsInput | string
     price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     year?: IntFieldUpdateOperationsInput | number
+    user_phone_number?: StringFieldUpdateOperationsInput | string
     box_with_document?: BoolFieldUpdateOperationsInput | boolean
     is_new?: BoolFieldUpdateOperationsInput | boolean
     posted_date?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -38321,6 +38389,7 @@ export namespace Prisma {
     rom?: StringFieldUpdateOperationsInput | string
     price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     year?: IntFieldUpdateOperationsInput | number
+    user_phone_number?: StringFieldUpdateOperationsInput | string
     box_with_document?: BoolFieldUpdateOperationsInput | boolean
     is_new?: BoolFieldUpdateOperationsInput | boolean
     posted_date?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -38354,6 +38423,7 @@ export namespace Prisma {
     rom?: StringFieldUpdateOperationsInput | string
     price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     year?: IntFieldUpdateOperationsInput | number
+    user_phone_number?: StringFieldUpdateOperationsInput | string
     box_with_document?: BoolFieldUpdateOperationsInput | boolean
     is_new?: BoolFieldUpdateOperationsInput | boolean
     posted_date?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -38502,6 +38572,7 @@ export namespace Prisma {
     rom: string
     price: Decimal | DecimalJsLike | number | string
     year: number
+    user_phone_number: string
     box_with_document?: boolean
     is_new?: boolean
     posted_date?: Date | string
@@ -38608,6 +38679,7 @@ export namespace Prisma {
     rom?: StringFieldUpdateOperationsInput | string
     price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     year?: IntFieldUpdateOperationsInput | number
+    user_phone_number?: StringFieldUpdateOperationsInput | string
     box_with_document?: BoolFieldUpdateOperationsInput | boolean
     is_new?: BoolFieldUpdateOperationsInput | boolean
     posted_date?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -38641,6 +38713,7 @@ export namespace Prisma {
     rom?: StringFieldUpdateOperationsInput | string
     price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     year?: IntFieldUpdateOperationsInput | number
+    user_phone_number?: StringFieldUpdateOperationsInput | string
     box_with_document?: BoolFieldUpdateOperationsInput | boolean
     is_new?: BoolFieldUpdateOperationsInput | boolean
     posted_date?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -38674,6 +38747,7 @@ export namespace Prisma {
     rom?: StringFieldUpdateOperationsInput | string
     price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     year?: IntFieldUpdateOperationsInput | number
+    user_phone_number?: StringFieldUpdateOperationsInput | string
     box_with_document?: BoolFieldUpdateOperationsInput | boolean
     is_new?: BoolFieldUpdateOperationsInput | boolean
     posted_date?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -39015,6 +39089,7 @@ export namespace Prisma {
     rom: string
     price: Decimal | DecimalJsLike | number | string
     year: number
+    user_phone_number: string
     box_with_document?: boolean
     is_new?: boolean
     posted_date?: Date | string
@@ -39043,6 +39118,7 @@ export namespace Prisma {
     rom?: StringFieldUpdateOperationsInput | string
     price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     year?: IntFieldUpdateOperationsInput | number
+    user_phone_number?: StringFieldUpdateOperationsInput | string
     box_with_document?: BoolFieldUpdateOperationsInput | boolean
     is_new?: BoolFieldUpdateOperationsInput | boolean
     posted_date?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -39076,6 +39152,7 @@ export namespace Prisma {
     rom?: StringFieldUpdateOperationsInput | string
     price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     year?: IntFieldUpdateOperationsInput | number
+    user_phone_number?: StringFieldUpdateOperationsInput | string
     box_with_document?: BoolFieldUpdateOperationsInput | boolean
     is_new?: BoolFieldUpdateOperationsInput | boolean
     posted_date?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -39109,6 +39186,7 @@ export namespace Prisma {
     rom?: StringFieldUpdateOperationsInput | string
     price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     year?: IntFieldUpdateOperationsInput | number
+    user_phone_number?: StringFieldUpdateOperationsInput | string
     box_with_document?: BoolFieldUpdateOperationsInput | boolean
     is_new?: BoolFieldUpdateOperationsInput | boolean
     posted_date?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -39143,6 +39221,7 @@ export namespace Prisma {
     rom: string
     price: Decimal | DecimalJsLike | number | string
     year: number
+    user_phone_number: string
     box_with_document?: boolean
     is_new?: boolean
     posted_date?: Date | string
@@ -39187,6 +39266,7 @@ export namespace Prisma {
     rom?: StringFieldUpdateOperationsInput | string
     price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     year?: IntFieldUpdateOperationsInput | number
+    user_phone_number?: StringFieldUpdateOperationsInput | string
     box_with_document?: BoolFieldUpdateOperationsInput | boolean
     is_new?: BoolFieldUpdateOperationsInput | boolean
     posted_date?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -39220,6 +39300,7 @@ export namespace Prisma {
     rom?: StringFieldUpdateOperationsInput | string
     price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     year?: IntFieldUpdateOperationsInput | number
+    user_phone_number?: StringFieldUpdateOperationsInput | string
     box_with_document?: BoolFieldUpdateOperationsInput | boolean
     is_new?: BoolFieldUpdateOperationsInput | boolean
     posted_date?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -39253,6 +39334,7 @@ export namespace Prisma {
     rom?: StringFieldUpdateOperationsInput | string
     price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     year?: IntFieldUpdateOperationsInput | number
+    user_phone_number?: StringFieldUpdateOperationsInput | string
     box_with_document?: BoolFieldUpdateOperationsInput | boolean
     is_new?: BoolFieldUpdateOperationsInput | boolean
     posted_date?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -39282,6 +39364,7 @@ export namespace Prisma {
     rom: string
     price: Decimal | DecimalJsLike | number | string
     year: number
+    user_phone_number: string
     box_with_document?: boolean
     is_new?: boolean
     posted_date?: Date | string
@@ -39310,6 +39393,7 @@ export namespace Prisma {
     rom?: StringFieldUpdateOperationsInput | string
     price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     year?: IntFieldUpdateOperationsInput | number
+    user_phone_number?: StringFieldUpdateOperationsInput | string
     box_with_document?: BoolFieldUpdateOperationsInput | boolean
     is_new?: BoolFieldUpdateOperationsInput | boolean
     posted_date?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -39343,6 +39427,7 @@ export namespace Prisma {
     rom?: StringFieldUpdateOperationsInput | string
     price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     year?: IntFieldUpdateOperationsInput | number
+    user_phone_number?: StringFieldUpdateOperationsInput | string
     box_with_document?: BoolFieldUpdateOperationsInput | boolean
     is_new?: BoolFieldUpdateOperationsInput | boolean
     posted_date?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -39376,6 +39461,7 @@ export namespace Prisma {
     rom?: StringFieldUpdateOperationsInput | string
     price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     year?: IntFieldUpdateOperationsInput | number
+    user_phone_number?: StringFieldUpdateOperationsInput | string
     box_with_document?: BoolFieldUpdateOperationsInput | boolean
     is_new?: BoolFieldUpdateOperationsInput | boolean
     posted_date?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -39405,6 +39491,7 @@ export namespace Prisma {
     rom: string
     price: Decimal | DecimalJsLike | number | string
     year: number
+    user_phone_number: string
     box_with_document?: boolean
     is_new?: boolean
     posted_date?: Date | string
@@ -39433,6 +39520,7 @@ export namespace Prisma {
     rom?: StringFieldUpdateOperationsInput | string
     price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     year?: IntFieldUpdateOperationsInput | number
+    user_phone_number?: StringFieldUpdateOperationsInput | string
     box_with_document?: BoolFieldUpdateOperationsInput | boolean
     is_new?: BoolFieldUpdateOperationsInput | boolean
     posted_date?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -39466,6 +39554,7 @@ export namespace Prisma {
     rom?: StringFieldUpdateOperationsInput | string
     price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     year?: IntFieldUpdateOperationsInput | number
+    user_phone_number?: StringFieldUpdateOperationsInput | string
     box_with_document?: BoolFieldUpdateOperationsInput | boolean
     is_new?: BoolFieldUpdateOperationsInput | boolean
     posted_date?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -39499,6 +39588,7 @@ export namespace Prisma {
     rom?: StringFieldUpdateOperationsInput | string
     price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     year?: IntFieldUpdateOperationsInput | number
+    user_phone_number?: StringFieldUpdateOperationsInput | string
     box_with_document?: BoolFieldUpdateOperationsInput | boolean
     is_new?: BoolFieldUpdateOperationsInput | boolean
     posted_date?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -39618,6 +39708,7 @@ export namespace Prisma {
     rom: string
     price: Decimal | DecimalJsLike | number | string
     year: number
+    user_phone_number: string
     box_with_document?: boolean
     is_new?: boolean
     posted_date?: Date | string
@@ -39646,6 +39737,7 @@ export namespace Prisma {
     rom?: StringFieldUpdateOperationsInput | string
     price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     year?: IntFieldUpdateOperationsInput | number
+    user_phone_number?: StringFieldUpdateOperationsInput | string
     box_with_document?: BoolFieldUpdateOperationsInput | boolean
     is_new?: BoolFieldUpdateOperationsInput | boolean
     posted_date?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -39679,6 +39771,7 @@ export namespace Prisma {
     rom?: StringFieldUpdateOperationsInput | string
     price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     year?: IntFieldUpdateOperationsInput | number
+    user_phone_number?: StringFieldUpdateOperationsInput | string
     box_with_document?: BoolFieldUpdateOperationsInput | boolean
     is_new?: BoolFieldUpdateOperationsInput | boolean
     posted_date?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -39712,6 +39805,7 @@ export namespace Prisma {
     rom?: StringFieldUpdateOperationsInput | string
     price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     year?: IntFieldUpdateOperationsInput | number
+    user_phone_number?: StringFieldUpdateOperationsInput | string
     box_with_document?: BoolFieldUpdateOperationsInput | boolean
     is_new?: BoolFieldUpdateOperationsInput | boolean
     posted_date?: DateTimeFieldUpdateOperationsInput | Date | string

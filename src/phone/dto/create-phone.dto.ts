@@ -37,6 +37,11 @@ export class CreatePhoneDto {
   rom: string;
 
   @ApiProperty()
+  @IsString()
+  @IsNotEmpty()
+  user_phone_number: string;
+
+  @ApiProperty()
   @IsBoolean()
   @IsNotEmpty()
   box_with_document: boolean;

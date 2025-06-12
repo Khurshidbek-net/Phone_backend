@@ -86,7 +86,6 @@ export class UserService {
 
   async findAll() {
     const user = await this.prisma.user.findMany({
-      where: { isDeleted: false },
       include: {
         PhoneNumbers: true,
         Emails: true,
@@ -149,29 +148,25 @@ export class UserService {
     return response;
   }
 
-  // ...existing code...
+  async updateUserStatus(userId: number, isActive: boolean) {
+    const user = await this.prisma.user.findUnique({
+      where: { id: userId },
+    });
 
-async updateUserStatus(userId: number, isActive: boolean) {
-  const user = await this.prisma.user.findUnique({
-    where: { id: userId },
-  });
+    if (!user) {
+      throw new NotFoundException('User not found');
+    }
 
-  if (!user) {
-    throw new NotFoundException('User not found');
+    const updatedUser = await this.prisma.user.update({
+      where: { id: userId },
+      data: { isActive },
+    });
+
+    return {
+      message: `User status updated successfully to ${isActive ? 'active' : 'inactive'}`,
+      user: convertBigIntToString(updatedUser),
+    };
   }
-
-  const updatedUser = await this.prisma.user.update({
-    where: { id: userId },
-    data: { isActive },
-  });
-
-  return {
-    message: `User status updated successfully to ${isActive ? 'active' : 'inactive'}`,
-    user: convertBigIntToString(updatedUser),
-  };
-}
-
-// ...existing code...
 
   async update(id: number, updateUserDto: UpdateUserDto) {
     const user = await this.prisma.user.update({
@@ -198,9 +193,8 @@ async updateUserStatus(userId: number, isActive: boolean) {
   }
 
   async remove(id: number) {
-    return this.prisma.user.update({
-      where: { id },
-      data: { isDeleted: true, isActive: false },
+    return this.prisma.user.delete({
+      where: { id }
     });
   }
 
