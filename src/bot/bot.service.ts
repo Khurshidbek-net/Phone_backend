@@ -14,22 +14,32 @@ export class BotService {
   ) {}
 
   async sendAdToAdmin(text: string, advertiseId: number) {
-    const adminId = process.env.ADMIN_ID as string;
+    const adminIds = (process.env.ADMIN_IDS || '')
+      .split(',')
+      .map((id) => id.trim())
+      .filter((id) => id.length > 0);
 
-    await this.bot.telegram.sendMessage(adminId, text, {
-      parse_mode:"HTML",
-      reply_markup: {
-        inline_keyboard: [
-          [
-            {
-              text: '✅ Tasdiqlash',
-              callback_data: `approve_${advertiseId}`,
-            },
+    for (const adminId of adminIds) {
+      await this.bot.telegram.sendMessage(adminId, text, {
+        parse_mode: 'HTML',
+        reply_markup: {
+          inline_keyboard: [
+            [
+              {
+                text: '✅ Tasdiqlash',
+                callback_data: `approve_${advertiseId}`,
+              },
+            ],
+            [
+              {
+                text: '❌ Bekor qilish',
+                callback_data: `reject_${advertiseId}`,
+              },
+            ],
           ],
-          [{ text: '❌ Bekor qilish', callback_data: `reject_${advertiseId}` }],
-        ],
-      },
-    });
+        },
+      });
+    }
   }
   // async sendAdToAdmin(text: string, advertiseId: number, images: string[]) {
   //   const adminId = process.env.ADMIN_ID as string;
