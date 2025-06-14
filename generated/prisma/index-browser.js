@@ -212,6 +212,7 @@ exports.Prisma.PhoneScalarFieldEnum = {
   rom: 'rom',
   price: 'price',
   year: 'year',
+  user_phone_number: 'user_phone_number',
   box_with_document: 'box_with_document',
   is_new: 'is_new',
   posted_date: 'posted_date',

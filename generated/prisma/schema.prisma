@@ -157,6 +157,7 @@ model Phone {
   rom               String // Enum o'rniga oddiy string
   price             Decimal
   year              Int
+  user_phone_number String
   box_with_document Boolean  @default(true)
   is_new            Boolean  @default(false)
   posted_date       DateTime @default(now())

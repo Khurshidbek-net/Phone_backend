@@ -1,9 +1,9 @@
 import { ApiProperty } from '@nestjs/swagger';
 import {
+  IsBoolean,
   IsEmail,
   IsNotEmpty,
   IsOptional,
-  IsPhoneNumber,
   IsString,
   Matches,
   MaxLength,
@@ -49,4 +49,9 @@ export class CreateAdminDto {
   @IsOptional()
   @IsString()
   image?: string;
+
+  @ApiProperty()
+  @IsOptional()
+  @IsBoolean()
+  is_creator?: boolean;
 }
